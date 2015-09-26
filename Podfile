@@ -3,6 +3,9 @@
 
 target 'L-FMS-iOS' do
 
+pod 'AFNetworking', '~> 2.6.0'
+pod 'AVOSCloud'
+
 end
 
 target 'L-FMS-iOSTests' do

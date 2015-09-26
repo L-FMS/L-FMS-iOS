@@ -5,6 +5,7 @@ target 'L-FMS-iOS' do
 
 pod 'AFNetworking', '~> 2.6.0'
 pod 'AVOSCloud'
+pod 'Masonry', '~> 0.6.3'
 
 end
 

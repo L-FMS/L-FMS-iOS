@@ -8,15 +8,63 @@
 
 #import "AppDelegate.h"
 
+#import "LFViewControllerSBIDs.h"
+#define kRegisteAndLoginSBName @"Registe&Login"
+
+#import <AVOSCloud/AVOSCloud.h>
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
++ (AppDelegate *)globalAppdelegate {
+    return [UIApplication sharedApplication].delegate ;
+}
+
+#pragma mark - 界面
+
+- (void)toMain {
+#warning 没写
+}
+
+- (void)toRegiste {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil] ;
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFRegisteViewControllerSBID] ;
+    self.window.rootViewController = vc ;
+}
+
+- (void)toLogin {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil] ;
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFLoginViewControllerSBID] ;
+    self.window.rootViewController = vc ;
+}
+
+#pragma mark - AVOSCloud 
+
+#define AVOSAPPID  @"rx17l6bweypfcjvxj7rt6c6fybalxfqe4991jnm00qhpyhpp"
+#define AVOSAPPKEY @"x0surp0ssgm5zda9b66rykzcamohkxu0a8ez4iuqyx2d7qju"
+
+- (void)setUpAVOSCloudWithOptions:(NSDictionary *)launchOptions {
+    [AVOSCloud setApplicationId:AVOSAPPID
+                      clientKey:AVOSAPPKEY] ;
+    //统计应用打开情况
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions] ;
+}
+
+#pragma makr - Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [self setUpAVOSCloudWithOptions:launchOptions] ;
+    
+    if ( [AVUser currentUser] ) {
+        [self toMain] ;
+    } else {
+        [self toLogin] ;
+    }
+    
     return YES;
 }
 

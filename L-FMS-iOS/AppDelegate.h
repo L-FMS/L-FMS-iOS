@@ -11,6 +11,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
++ (AppDelegate *)globalAppdelegate ;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -19,6 +21,12 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+#pragma mark - 界面
+
+- (void)toMain ;
+- (void)toRegiste ;
+- (void)toLogin ;
 
 
 @end

@@ -15,6 +15,13 @@
 		1909E4BA1BB043FF00662CD3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1909E4B91BB043FF00662CD3 /* Images.xcassets */; };
 		1909E4BD1BB043FF00662CD3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1909E4BB1BB043FF00662CD3 /* LaunchScreen.xib */; };
 		1909E4C91BB043FF00662CD3 /* L_FMS_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1909E4C81BB043FF00662CD3 /* L_FMS_iOSTests.m */; };
+		191B03981BB6CBC300C8B3F8 /* Registe&Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191B03971BB6CBC300C8B3F8 /* Registe&Login.storyboard */; };
+		191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B039C1BB6CBFE00C8B3F8 /* LFLoginViewController.m */; };
+		191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B039F1BB6CC5A00C8B3F8 /* LFRegisteViewController.m */; };
+		191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03A81BB6DEAA00C8B3F8 /* LFUtils.m */; };
+		191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03AC1BB6E02E00C8B3F8 /* UIImage+ZRResize.m */; };
+		191B03B41BB6E3B500C8B3F8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 191B03B11BB6E3B500C8B3F8 /* SVProgressHUD.bundle */; };
+		191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +51,23 @@
 		1909E4C21BB043FF00662CD3 /* L-FMS-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "L-FMS-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1909E4C71BB043FF00662CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1909E4C81BB043FF00662CD3 /* L_FMS_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = L_FMS_iOSTests.m; sourceTree = "<group>"; };
+		191B03971BB6CBC300C8B3F8 /* Registe&Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Registe&Login.storyboard"; sourceTree = "<group>"; };
+		191B039B1BB6CBFE00C8B3F8 /* LFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLoginViewController.h; sourceTree = "<group>"; };
+		191B039C1BB6CBFE00C8B3F8 /* LFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLoginViewController.m; sourceTree = "<group>"; };
+		191B039E1BB6CC5A00C8B3F8 /* LFRegisteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRegisteViewController.h; sourceTree = "<group>"; };
+		191B039F1BB6CC5A00C8B3F8 /* LFRegisteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRegisteViewController.m; sourceTree = "<group>"; };
+		191B03A21BB6DDFD00C8B3F8 /* LFLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFLogger.h; sourceTree = "<group>"; };
+		191B03A31BB6DE2D00C8B3F8 /* LFCommonDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFCommonDefine.h; sourceTree = "<group>"; };
+		191B03A41BB6DE5E00C8B3F8 /* LFCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFCommon.h; sourceTree = "<group>"; };
+		191B03A71BB6DEAA00C8B3F8 /* LFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUtils.h; sourceTree = "<group>"; };
+		191B03A81BB6DEAA00C8B3F8 /* LFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUtils.m; sourceTree = "<group>"; };
+		191B03AB1BB6E02E00C8B3F8 /* UIImage+ZRResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZRResize.h"; sourceTree = "<group>"; };
+		191B03AC1BB6E02E00C8B3F8 /* UIImage+ZRResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZRResize.m"; sourceTree = "<group>"; };
+		191B03B01BB6E3B500C8B3F8 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		191B03B11BB6E3B500C8B3F8 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		191B03B21BB6E3B500C8B3F8 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		191B03BC1BB6ECB200C8B3F8 /* LFViewControllerSBIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFViewControllerSBIDs.h; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,14 +114,11 @@
 		1909E4A81BB043FF00662CD3 /* L-FMS-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				1909E4AD1BB043FF00662CD3 /* AppDelegate.h */,
-				1909E4AE1BB043FF00662CD3 /* AppDelegate.m */,
-				1909E4B31BB043FF00662CD3 /* ViewController.h */,
-				1909E4B41BB043FF00662CD3 /* ViewController.m */,
-				1909E4B61BB043FF00662CD3 /* Main.storyboard */,
-				1909E4B91BB043FF00662CD3 /* Images.xcassets */,
-				1909E4BB1BB043FF00662CD3 /* LaunchScreen.xib */,
-				1909E4B01BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld */,
+				191B03BA1BB6EC8500C8B3F8 /* App */,
+				191B03B61BB6E97200C8B3F8 /* 模块 */,
+				191B03AE1BB6E3A800C8B3F8 /* ThirdPartByHand */,
+				191B03A51BB6DE7500C8B3F8 /* Services */,
+				191B03A11BB6DDBC00C8B3F8 /* Settings */,
 				1909E4A91BB043FF00662CD3 /* Supporting Files */,
 			);
 			path = "L-FMS-iOS";
@@ -127,6 +148,138 @@
 				1909E4C71BB043FF00662CD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		191B03961BB6CBA500C8B3F8 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				191B039A1BB6CBD900C8B3F8 /* ViewController */,
+				191B03991BB6CBCF00C8B3F8 /* IB */,
+			);
+			name = "登录注册";
+			sourceTree = "<group>";
+		};
+		191B03991BB6CBCF00C8B3F8 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				191B03971BB6CBC300C8B3F8 /* Registe&Login.storyboard */,
+			);
+			name = IB;
+			sourceTree = "<group>";
+		};
+		191B039A1BB6CBD900C8B3F8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				191B039B1BB6CBFE00C8B3F8 /* LFLoginViewController.h */,
+				191B039C1BB6CBFE00C8B3F8 /* LFLoginViewController.m */,
+				191B039E1BB6CC5A00C8B3F8 /* LFRegisteViewController.h */,
+				191B039F1BB6CC5A00C8B3F8 /* LFRegisteViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		191B03A11BB6DDBC00C8B3F8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				191B03A21BB6DDFD00C8B3F8 /* LFLogger.h */,
+				191B03A31BB6DE2D00C8B3F8 /* LFCommonDefine.h */,
+				191B03A41BB6DE5E00C8B3F8 /* LFCommon.h */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		191B03A51BB6DE7500C8B3F8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				191B03AA1BB6E01100C8B3F8 /* UIImage */,
+				191B03A61BB6DE8600C8B3F8 /* Utils */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		191B03A61BB6DE8600C8B3F8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				191B03A71BB6DEAA00C8B3F8 /* LFUtils.h */,
+				191B03A81BB6DEAA00C8B3F8 /* LFUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		191B03AA1BB6E01100C8B3F8 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				191B03AB1BB6E02E00C8B3F8 /* UIImage+ZRResize.h */,
+				191B03AC1BB6E02E00C8B3F8 /* UIImage+ZRResize.m */,
+			);
+			name = UIImage;
+			sourceTree = "<group>";
+		};
+		191B03AE1BB6E3A800C8B3F8 /* ThirdPartByHand */ = {
+			isa = PBXGroup;
+			children = (
+				191B03AF1BB6E3B500C8B3F8 /* svprogress */,
+			);
+			name = ThirdPartByHand;
+			sourceTree = "<group>";
+		};
+		191B03AF1BB6E3B500C8B3F8 /* svprogress */ = {
+			isa = PBXGroup;
+			children = (
+				191B03B01BB6E3B500C8B3F8 /* SVProgressHUD-Prefix.pch */,
+				191B03B11BB6E3B500C8B3F8 /* SVProgressHUD.bundle */,
+				191B03B21BB6E3B500C8B3F8 /* SVProgressHUD.h */,
+				191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */,
+			);
+			path = svprogress;
+			sourceTree = "<group>";
+		};
+		191B03B61BB6E97200C8B3F8 /* 模块 */ = {
+			isa = PBXGroup;
+			children = (
+				191B03B91BB6EC7800C8B3F8 /* Test */,
+				191B03B71BB6E97D00C8B3F8 /* 主界面 */,
+				191B03961BB6CBA500C8B3F8 /* 登录注册 */,
+			);
+			name = "模块";
+			sourceTree = "<group>";
+		};
+		191B03B71BB6E97D00C8B3F8 /* 主界面 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "主界面";
+			sourceTree = "<group>";
+		};
+		191B03B91BB6EC7800C8B3F8 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				1909E4B31BB043FF00662CD3 /* ViewController.h */,
+				1909E4B41BB043FF00662CD3 /* ViewController.m */,
+				1909E4B61BB043FF00662CD3 /* Main.storyboard */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		191B03BA1BB6EC8500C8B3F8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				191B03BB1BB6EC9900C8B3F8 /* Marco */,
+				1909E4B91BB043FF00662CD3 /* Images.xcassets */,
+				1909E4B01BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld */,
+				1909E4BB1BB043FF00662CD3 /* LaunchScreen.xib */,
+				1909E4AD1BB043FF00662CD3 /* AppDelegate.h */,
+				1909E4AE1BB043FF00662CD3 /* AppDelegate.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		191B03BB1BB6EC9900C8B3F8 /* Marco */ = {
+			isa = PBXGroup;
+			children = (
+				191B03BC1BB6ECB200C8B3F8 /* LFViewControllerSBIDs.h */,
+			);
+			name = Marco;
 			sourceTree = "<group>";
 		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
@@ -228,7 +381,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191B03B41BB6E3B500C8B3F8 /* SVProgressHUD.bundle in Resources */,
 				1909E4B81BB043FF00662CD3 /* Main.storyboard in Resources */,
+				191B03981BB6CBC300C8B3F8 /* Registe&Login.storyboard in Resources */,
 				1909E4BD1BB043FF00662CD3 /* LaunchScreen.xib in Resources */,
 				1909E4BA1BB043FF00662CD3 /* Images.xcassets in Resources */,
 			);
@@ -281,10 +436,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
+				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
+				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
+				191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */,
 				1909E4B51BB043FF00662CD3 /* ViewController.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
+				191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

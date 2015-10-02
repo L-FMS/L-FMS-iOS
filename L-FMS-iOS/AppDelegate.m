@@ -12,12 +12,67 @@
 #define kRegisteAndLoginSBName @"Registe&Login"
 
 #import <AVOSCloud/AVOSCloud.h>
+#import <JVFloatingDrawer/JVFloatingDrawerView.h>
+#import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
 
 @interface AppDelegate ()
+
+#pragma mark - 左右侧栏
+
+/**
+ *  整体的ViewController
+ */
+@property (nonatomic, strong) JVFloatingDrawerViewController *drawerViewController ;
+
+@property (nonatomic, strong, readonly) UIStoryboard *mainStoryboard ;
 
 @end
 
 @implementation AppDelegate
+
+#pragma mark - getter && setter 
+
+@synthesize mainStoryboard = _mainStoryboard ;
+
+- (JVFloatingDrawerViewController *)drawerViewController {
+    if ( !_drawerViewController ) {
+        _drawerViewController = [[JVFloatingDrawerViewController alloc] init] ;
+        _drawerViewController.leftDrawerWidth = 240.0f ;
+        _drawerViewController.rightDrawerWidth = 120.0f ;
+        
+        _drawerViewController.leftViewController = [self controllerWithId:@"JVLeftDrawerTableViewControllerSBID"] ;
+        _drawerViewController.rightViewController = [self controllerWithId:@"JVRightDrawerTableViewControllerSBID"] ;
+        _drawerViewController.centerViewController = [self controllerWithId:@"MainTabbarVCSBID"] ;
+        
+        //animator
+        _drawerViewController.animator = [self getADrawerAnimator] ;
+        
+        _drawerViewController.backgroundImage = [UIImage imageNamed:@"背景.png"] ;
+    }
+    return _drawerViewController ;
+}
+
+- (JVFloatingDrawerSpringAnimator *)getADrawerAnimator {
+    JVFloatingDrawerSpringAnimator *animator = [[JVFloatingDrawerSpringAnimator alloc] init] ;
+    
+    animator.animationDelay = 0.0 ;
+    animator.animationDuration = 0.8 ;
+    animator.initialSpringVelocity = 9.0 ;
+    animator.springDamping = 2.0 ;
+    
+    return animator ;
+}
+
+- (UIViewController *)controllerWithId:(NSString *)VCSBID {
+    if ( !VCSBID ) return nil ;
+    return [self.mainStoryboard instantiateViewControllerWithIdentifier:VCSBID] ;
+}
+
+- (UIStoryboard *)mainStoryboard {
+    if(!_mainStoryboard)
+        _mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil] ;
+    return _mainStoryboard ;
+}
 
 + (AppDelegate *)globalAppdelegate {
     return [UIApplication sharedApplication].delegate ;
@@ -26,7 +81,7 @@
 #pragma mark - 界面
 
 - (void)toMain {
-#warning 没写
+    self.window.rootViewController = self.drawerViewController ;
 }
 
 - (void)toRegiste {
@@ -170,6 +225,19 @@
             abort();
         }
     }
+}
+
+#pragma mark - 抽屉
+
+/*
+ *  控制弹回
+ */
+- (void)toggleLeftDrawer:(id)sender animated:(BOOL)animated {
+    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideLeft animated:animated completion:nil] ;
+}
+
+- (void)toggleRightDrawer:(id)sender animated:(BOOL)animated {
+    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideRight animated:animated completion:nil] ;
 }
 
 @end

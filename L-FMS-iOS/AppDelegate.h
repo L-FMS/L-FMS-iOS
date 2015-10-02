@@ -28,6 +28,10 @@
 - (void)toRegiste ;
 - (void)toLogin ;
 
+#pragma mark - 抽屉
+
+- (void)toggleLeftDrawer:(id)sender animated:(BOOL)animated ;
+- (void)toggleRightDrawer:(id)sender animated:(BOOL)animated ;
 
 @end
 

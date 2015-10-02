@@ -21,16 +21,19 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AVOSCloud (3.1.4)
+  - JVFloatingDrawer (0.1.0)
   - Masonry (0.6.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.0)
   - AVOSCloud
+  - JVFloatingDrawer (~> 0.1.0)
   - Masonry (~> 0.6.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   AVOSCloud: 2be1640178facaac8343d67ed4d5348f4dffecd7
+  JVFloatingDrawer: 4782b1df21411aef2c1818f3b346cace02cc2e24
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
 
 COCOAPODS: 0.37.1

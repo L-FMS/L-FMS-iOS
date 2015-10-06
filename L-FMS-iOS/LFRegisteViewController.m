@@ -42,15 +42,21 @@
         return ;
     }
     
-    AVUser *user = [AVUser user] ;
+    if ( ![ZRUtils validateEmail:username] ) {
+        [LFUtils alert:@"用户名不合法，请输入邮箱"] ;
+        return ;
+    }
+    
+    LFUser *user = [LFUser user] ;
     
     user.username = username ;
     user.password = password ;
+    user.email = username ;
     [SVProgressHUD show] ;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if ( succeeded ) {
             [SVProgressHUD showWithStatus:@"注册成功"] ;
-            [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
+            [LFUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
                 if ( user ) {
                     [SVProgressHUD showSuccessWithStatus:@"登录成功"] ;
                     [LFUtils toMain] ;
@@ -63,7 +69,6 @@
         } else {
             [SVProgressHUD showErrorWithStatus:@"注册失败"] ;
             QYDebugLog(@"注册失败 Error:[%@]",error) ;
-            
         }
     }] ;
     

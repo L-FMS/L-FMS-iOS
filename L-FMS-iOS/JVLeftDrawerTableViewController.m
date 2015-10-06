@@ -7,6 +7,13 @@
 //
 
 #import "JVLeftDrawerTableViewController.h"
+#import "LFCommon.h"
+#import "AppDelegate.h"
+
+#import "JVLeftDrawerCell.h"
+
+#import <JVFloatingDrawer/JVFloatingDrawerView.h>
+#import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
 
 #define kHEIGHT_RATIO ([UIScreen mainScreen].bounds.size.height)/568.0
 
@@ -14,9 +21,46 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 
 @interface JVLeftDrawerTableViewController ()
 
+@property (strong,nonatomic) UIImageView *avatarImageView ;
+@property (strong,nonatomic) UILabel *nameLabel ;
+
 @end
 
 @implementation JVLeftDrawerTableViewController
+
+#pragma mark - getter && setter
+
+- (UIImageView *)avatarImageView {
+    if ( !_avatarImageView ) {
+        _avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(36, -40, 45, 45)] ;
+        _avatarImageView.userInteractionEnabled = YES ;
+        UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewClicked:)] ;
+        [_avatarImageView addGestureRecognizer:singleTap1] ;
+        
+        [_avatarImageView.layer setCornerRadius:CGRectGetHeight([_avatarImageView bounds]) / 2.0f] ;
+        _avatarImageView.layer.masksToBounds = YES ;
+    }
+    return _avatarImageView ;
+}
+
+- (UILabel *)nameLabel {
+    if ( !_nameLabel ) {
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(98, -36, 80, 25)] ;
+        _nameLabel.font = [UIFont systemFontOfSize:15.0f] ;
+        _nameLabel.text = @"" ;
+    }
+    return _nameLabel ;
+}
+
+#pragma mark - Life Cycle 
+
+- (void)setUpUIControls {
+    //头像
+    [self.view addSubview:self.avatarImageView] ;
+    
+    //昵称
+    [self.view addSubview:self.nameLabel] ;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +68,15 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     self.tableView.backgroundColor = [UIColor clearColor] ;
     self.tableView.contentInset = UIEdgeInsetsMake(kJVTableViewTopInset*kHEIGHT_RATIO, 0.0, 0.0, 0.0) ;
     self.clearsSelectionOnViewWillAppear = NO ;
+    
+    [self setUpUIControls] ;
+    
+    {
+        //test
+        self.nameLabel.text = @"test" ;
+        [self.avatarImageView setImage:[UIImage imageNamed:@"testAvatar1"]] ;
+//        self.view.backgroundColor = [UIColor colorWithRed:125/255.0 green:125/255.0 blue:125/255.0 alpha:0.5f] ;
+    }
     
 }
 
@@ -36,66 +89,78 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return 4 ;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 48 * kHEIGHT_RATIO ;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *reuseId = @"JVLeftDrawerCellReuseIdentifier" ;
     
-    // Configure the cell...
+    JVLeftDrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
+    
+    [cell setIconImage:[UIImage imageNamed:@"testIcon1"]] ;
+    switch (indexPath.row) {
+        case 0 : {
+            [cell setTitleText:@"个人信息"] ;
+            break ;
+        }
+        
+        case 1 : {
+            [cell setTitleText:@"关于我们"] ;
+            break ;
+        }
+            
+        case 2 : {
+            [cell setTitleText:@"设置"] ;
+        }
+            
+        case 3 : {
+            [cell setTitleText:@"版本说明"] ;
+        }
+            
+        default:
+            break;
+    }
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 0 : {
+            id vc = [AppDelegate getViewControllerById:@"UserInformationViewControllerSBID"] ;
+            [self toVC:vc] ;
+            break ;
+        }
+        default :
+            [self toVC:nil] ;
+            break;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO] ;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark - IBActions 
+
+- (void)avatarImageViewClicked:(id)sender {
+    QYDebugLog(@"点击了头像") ;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void)toVC:(id)vc {
+    if ( vc ) {
+        UITabBarController *mainTabbarVc = (id)[[AppDelegate globalAppdelegate] drawerViewController].centerViewController ;
+        UINavigationController *mainNavc = mainTabbarVc.viewControllers[0] ;
+        [mainNavc pushViewController:vc animated:NO] ;
+    }
+    
+    [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES] ;
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

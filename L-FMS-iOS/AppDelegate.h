@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
+@class JVFloatingDrawerViewController ;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 + (AppDelegate *)globalAppdelegate ;
@@ -27,6 +29,13 @@
 - (void)toMain ;
 - (void)toRegiste ;
 - (void)toLogin ;
+
++ (id)getViewControllerById:(NSString *)VCSBID ;
+
+/**
+ *  整体的ViewController
+ */
+@property (nonatomic, strong) JVFloatingDrawerViewController *drawerViewController ;
 
 #pragma mark - 抽屉
 

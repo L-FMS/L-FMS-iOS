@@ -16,5 +16,9 @@
 
 #import "SVProgressHUD.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import <Masonry/Masonry.h>
+
+#import "LFAVOSCloudModels.h"
+#import "ZRUtils.h"
 
 #endif

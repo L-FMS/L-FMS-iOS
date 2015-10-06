@@ -7,8 +7,17 @@
 //
 
 #import "JVRightDrawerTableViewController.h"
+#import "JVRightDrawerCell.h"
+
+#import "LFCommon.h"
+#import "AppDelegate.h"
+
+#define kWIDTH_RATIO ([UIScreen mainScreen].bounds.size.width)/320.0
+#define kHEIGHT_RATIO ([UIScreen mainScreen].bounds.size.height)/568.0
 
 @interface JVRightDrawerTableViewController ()
+
+@property (nonatomic,strong) NSArray *operationTitles ;
 
 @end
 
@@ -17,81 +26,92 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone ;
     self.tableView.backgroundColor = [UIColor clearColor] ;
-    //    self.tableView.contentInset = UIEdgeInsetsMake(kJVTableViewTopInset*kHEIGHT_RATIO, 0.0, 0.0, 0.0) ;
+    self.tableView.contentInset = UIEdgeInsetsMake(80*kHEIGHT_RATIO, 0.0, 0.0, 0.0) ;
     self.clearsSelectionOnViewWillAppear = NO ;
     
+    self.operationTitles = @[@"添加",@"搜索",@"扫一扫"] ;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
+    return 1 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+    return self.operationTitles.count ;
 }
 
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70*kHEIGHT_RATIO ;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *reuseId = @"JVRightDrawerCellReuseIdentifier" ;
     
-    // Configure the cell...
+    JVRightDrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
+    
+    cell.titleText = self.operationTitles[indexPath.row] ;
+    cell.iconImage = [UIImage imageNamed:@"testIcon1"] ;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - UITableViewDelegate 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.row ;
+    switch (index) {
+        case 0 : {
+            //添加
+            [self addBtnClicked] ;
+            break ;
+        }
+            
+        case 1 : {
+            //搜索
+            [self searchBtnClicked] ;
+            break ;
+        }
+            
+        case 2 : {
+            //扫一扫
+            [self scanQRBtnClicked] ;
+            break ;
+        }
+            
+        default:
+            break;
+    }
+    
+    [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO] ;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+#pragma mark - Actions
+
+- (void)addBtnClicked {
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (void)searchBtnClicked {
+    
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)scanQRBtnClicked {
+    
 }
-*/
 
-/*
-#pragma mark - Navigation
+#pragma mark - Helper
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)toVC:(UIViewController *)vc {
+    
 }
-*/
 
 @end

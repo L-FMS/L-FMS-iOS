@@ -15,14 +15,11 @@
 #import <JVFloatingDrawer/JVFloatingDrawerView.h>
 #import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
 
+#import "LFAVSubclassRegister.h"
+
 @interface AppDelegate ()
 
 #pragma mark - 左右侧栏
-
-/**
- *  整体的ViewController
- */
-@property (nonatomic, strong) JVFloatingDrawerViewController *drawerViewController ;
 
 @property (nonatomic, strong, readonly) UIStoryboard *mainStoryboard ;
 
@@ -96,6 +93,11 @@
     self.window.rootViewController = vc ;
 }
 
++ (id)getViewControllerById:(NSString *)VCSBID {
+    id vc = [[[self globalAppdelegate] mainStoryboard] instantiateViewControllerWithIdentifier:VCSBID] ;
+    return vc ;
+}
+
 #pragma mark - AVOSCloud 
 
 #define AVOSAPPID  @"rx17l6bweypfcjvxj7rt6c6fybalxfqe4991jnm00qhpyhpp"
@@ -112,6 +114,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [LFAVSubclassRegister registeAllAVSubclasses] ;
     [self setUpAVOSCloudWithOptions:launchOptions] ;
     
     if ( [AVUser currentUser] ) {

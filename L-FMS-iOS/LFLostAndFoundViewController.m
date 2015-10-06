@@ -17,14 +17,17 @@
 @implementation LFLostAndFoundViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+    [super viewDidLoad] ;
+    [self.navigationController.navigationBar setTranslucent:FALSE] ;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated] ;
+    [self.tabBarController.tabBar setHidden:NO] ;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
 #pragma mark - IBActions

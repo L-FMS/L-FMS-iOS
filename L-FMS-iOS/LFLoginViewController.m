@@ -49,7 +49,7 @@
 //    password = @"123456" ;
     
     [SVProgressHUD show] ;
-    [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
+    [LFUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
         if ( user ) {
             [SVProgressHUD showSuccessWithStatus:@"登录成功"] ;
             [LFUtils toMain] ;

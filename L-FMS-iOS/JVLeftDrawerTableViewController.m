@@ -45,7 +45,7 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 
 - (UILabel *)nameLabel {
     if ( !_nameLabel ) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(98, -36, 80, 25)] ;
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, -36, 80, 25)] ;
         _nameLabel.font = [UIFont systemFontOfSize:15.0f] ;
         _nameLabel.text = @"" ;
     }
@@ -71,29 +71,23 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     
     [self setUpUIControls] ;
     
-    {
-        //test
-        self.nameLabel.text = @"test" ;
-        [self.avatarImageView setImage:[UIImage imageNamed:@"testAvatar1"]] ;
-//        self.view.backgroundColor = [UIColor colorWithRed:125/255.0 green:125/255.0 blue:125/255.0 alpha:0.5f] ;
-    }
+    self.nameLabel.text = [[LFUser currentUser] displayName] ;
+    [self.nameLabel sizeToFit] ;
+    [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return 4 ;
 }
 
@@ -120,10 +114,12 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
             
         case 2 : {
             [cell setTitleText:@"设置"] ;
+            break ;
         }
             
         case 3 : {
             [cell setTitleText:@"版本说明"] ;
+            break ;
         }
             
         default:

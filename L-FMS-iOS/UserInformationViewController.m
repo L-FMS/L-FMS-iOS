@@ -13,8 +13,8 @@
 
 @interface UserInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIButton *avatarBtn ;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 
 @property (nonatomic) NSArray *titles ;
 
@@ -25,11 +25,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
-    [self.avatarBtn.layer setMasksToBounds:YES] ;
-    [self.avatarBtn.layer setCornerRadius:self.avatarBtn.bounds.size.height/2] ;
+    [self.avatarImageView.layer setMasksToBounds:YES] ;
+    [self.avatarImageView.layer setCornerRadius:self.avatarImageView.bounds.size.height/2] ;
     
     self.titles = @[@"邮箱",@"昵称",@"性别"] ;
     self.title = @"账号信息" ;
+    
+    [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

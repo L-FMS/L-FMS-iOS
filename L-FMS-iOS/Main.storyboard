@@ -17,19 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rjg-pZ-9b0">
-                                <rect key="frame" x="110" y="13" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Y5u-4d-DhJ"/>
-                                    <constraint firstAttribute="height" constant="100" id="uBb-ls-B6Z"/>
-                                </constraints>
-                                <state key="normal" image="testAvatar1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="avatarBtnClicked:" destination="bbo-0v-Uyv" eventType="touchUpInside" id="ESO-hv-s8s"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="u1S-hy-siu">
                                 <rect key="frame" x="0.0" y="142" width="320" height="304"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,6 +81,13 @@
                                     <action selector="logoffBtnClicked:" destination="bbo-0v-Uyv" eventType="touchUpInside" id="5eQ-KV-Odf"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qNC-mi-S7R" userLabel="AvatarImageView">
+                                <rect key="frame" x="110" y="13" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="7EQ-ZJ-4o2"/>
+                                    <constraint firstAttribute="width" constant="100" id="sXl-yx-1Ol"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.91372549533843994" green="0.91372549533843994" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -102,10 +96,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="u1S-hy-siu" secondAttribute="trailing" constant="-16" id="DOe-JM-v8U"/>
                             <constraint firstItem="9eQ-dM-geo" firstAttribute="top" secondItem="u1S-hy-siu" secondAttribute="bottom" constant="20" id="GIe-WL-5Q0"/>
                             <constraint firstAttribute="centerX" secondItem="9eQ-dM-geo" secondAttribute="centerX" id="ISt-tj-Rfb"/>
-                            <constraint firstItem="u1S-hy-siu" firstAttribute="top" secondItem="Rjg-pZ-9b0" secondAttribute="bottom" constant="29" id="TDE-wT-UvQ"/>
+                            <constraint firstItem="qNC-mi-S7R" firstAttribute="top" secondItem="L5L-x8-Zxf" secondAttribute="bottom" constant="13" id="Q3O-5b-B8d"/>
+                            <constraint firstItem="u1S-hy-siu" firstAttribute="top" secondItem="qNC-mi-S7R" secondAttribute="bottom" constant="29" id="QgO-Dp-61e"/>
                             <constraint firstAttribute="centerY" secondItem="9eQ-dM-geo" secondAttribute="centerY" constant="-229" id="dxF-7d-T3Y"/>
-                            <constraint firstAttribute="centerX" secondItem="Rjg-pZ-9b0" secondAttribute="centerX" id="nWe-Wb-vJq"/>
-                            <constraint firstItem="Rjg-pZ-9b0" firstAttribute="top" secondItem="L5L-x8-Zxf" secondAttribute="bottom" constant="13" id="pSh-kG-ehz"/>
+                            <constraint firstAttribute="centerX" secondItem="qNC-mi-S7R" secondAttribute="centerX" id="yuR-Tr-EvB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -117,13 +111,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="avatarBtn" destination="Rjg-pZ-9b0" id="nUK-yl-1xF"/>
+                        <outlet property="avatarImageView" destination="qNC-mi-S7R" id="4mz-hf-c8H"/>
                         <outlet property="tableView" destination="u1S-hy-siu" id="GgA-hT-8w5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XRf-2a-AFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-208" y="-561"/>
+            <point key="canvasLocation" x="-185" y="-581"/>
         </scene>
         <!--(Left)左侧栏-->
         <scene sceneID="IjT-V5-9kG">
@@ -245,7 +239,7 @@
             </objects>
             <point key="canvasLocation" x="947" y="396"/>
         </scene>
-        <!--Mail Box Table View Controller-->
+        <!--私信-->
         <scene sceneID="L0d-cf-3bR">
             <objects>
                 <tableViewController storyboardIdentifier="LFMailBoxTableViewControllerSBID" id="WpE-XB-B36" customClass="LFMailBoxTableViewController" sceneMemberID="viewController">
@@ -295,12 +289,34 @@
                             <outlet property="delegate" destination="WpE-XB-B36" id="3eu-XH-n7G"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Lps-iu-wK7"/>
+                    <navigationItem key="navigationItem" title="私信" id="Lps-iu-wK7"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ng8-NC-mwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947" y="1133"/>
+        </scene>
+        <!--My Item View Controller-->
+        <scene sceneID="JIQ-0s-s5n">
+            <objects>
+                <viewController storyboardIdentifier="LFMyItemViewControllerSBID" id="dvj-45-OVz" customClass="LFMyItemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QJN-KR-i4B"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Kh-BO-uzN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ThC-bn-EVd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0FX-0S-UXj">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8T-Ae-W9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="1133"/>
         </scene>
         <!--MainTabbarVC-->
         <scene sceneID="4o0-uC-BPW">
@@ -316,6 +332,7 @@
                     <connections>
                         <segue destination="tAs-bn-UIA" kind="relationship" relationship="viewControllers" id="2W1-bC-YcV"/>
                         <segue destination="qsm-br-4yK" kind="relationship" relationship="viewControllers" id="38W-6q-X8I"/>
+                        <segue destination="zfc-EL-UMU" kind="relationship" relationship="viewControllers" id="cFI-2b-Rga"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxa-aW-Yln" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -383,9 +400,27 @@
             </objects>
             <point key="canvasLocation" x="1744" y="-561"/>
         </scene>
+        <!--我的-->
+        <scene sceneID="cCb-Jq-x02">
+            <objects>
+                <navigationController storyboardIdentifier="LFMyItemViewControllerNavSBID" id="zfc-EL-UMU" userLabel="我的" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的" image="地图(tabbar)" id="9rM-y7-1lv"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="w98-YP-Ssh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dvj-45-OVz" kind="relationship" relationship="rootViewController" id="VcB-CT-h9i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iPy-Tx-NuQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="396"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="testAvatar1" width="100" height="100"/>
         <image name="地图(tabbar)" width="20" height="20"/>
         <image name="通知(tabbar)" width="20" height="20"/>
     </resources>

@@ -7,6 +7,7 @@ pod 'AFNetworking', '~> 2.6.0'
 pod 'AVOSCloud'
 pod 'Masonry', '~> 0.6.3'
 pod 'JVFloatingDrawer', '~> 0.1.0'
+pod 'SDWebImage', '~> 3.7.3'
 
 end
 

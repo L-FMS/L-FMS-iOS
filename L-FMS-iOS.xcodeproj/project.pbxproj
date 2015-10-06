@@ -27,6 +27,10 @@
 		19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B0C1BC3B49900E48ED4 /* LFUser.m */; };
 		19335B121BC3CAA400E48ED4 /* ZRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B111BC3CAA400E48ED4 /* ZRUtils.m */; };
 		19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B151BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m */; };
+		19335B1B1BC3ECCE00E48ED4 /* LFCacheService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B1A1BC3ECCE00E48ED4 /* LFCacheService.m */; };
+		19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B1F1BC3ECED00E48ED4 /* LFFileService.m */; };
+		19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */; };
+		19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */; };
 		19367BAA1BBED9090009D628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19367BA91BBED9090009D628 /* Main.storyboard */; };
 		19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */; };
 		19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */; };
@@ -96,6 +100,14 @@
 		19335B141BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRRegularExpressionValidateUtilsImp.h; sourceTree = "<group>"; };
 		19335B151BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRRegularExpressionValidateUtilsImp.m; sourceTree = "<group>"; };
 		19335B171BC3D0DF00E48ED4 /* ZRRegularExpressionValidateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZRRegularExpressionValidateUtils.h; sourceTree = "<group>"; };
+		19335B191BC3ECCE00E48ED4 /* LFCacheService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCacheService.h; sourceTree = "<group>"; };
+		19335B1A1BC3ECCE00E48ED4 /* LFCacheService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCacheService.m; sourceTree = "<group>"; };
+		19335B1E1BC3ECED00E48ED4 /* LFFileService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFFileService.h; sourceTree = "<group>"; };
+		19335B1F1BC3ECED00E48ED4 /* LFFileService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFFileService.m; sourceTree = "<group>"; };
+		19335B221BC415AF00E48ED4 /* LFMyItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFMyItemViewController.h; sourceTree = "<group>"; };
+		19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFMyItemViewController.m; sourceTree = "<group>"; };
+		19335B291BC4261300E48ED4 /* LFActivityIndicatorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFActivityIndicatorLabel.h; sourceTree = "<group>"; };
+		19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFActivityIndicatorLabel.m; sourceTree = "<group>"; };
 		19367BA91BBED9090009D628 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		19367BAE1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLeftDrawerTableViewController.h; sourceTree = "<group>"; };
 		19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLeftDrawerTableViewController.m; sourceTree = "<group>"; };
@@ -293,6 +305,7 @@
 				19367BAD1BBEDB490009D628 /* 右侧栏 */,
 				19367BB41BBEEBE10009D628 /* 失物&&地图 */,
 				19367BB81BBEEF650009D628 /* 私信 */,
+				19335B211BC4159500E48ED4 /* 我的 */,
 			);
 			name = "主界面";
 			sourceTree = "<group>";
@@ -343,6 +356,7 @@
 		19335B0E1BC3CA8400E48ED4 /* Service&Utils */ = {
 			isa = PBXGroup;
 			children = (
+				19335B181BC3ECBD00E48ED4 /* Service */,
 				19335B0F1BC3CA9300E48ED4 /* Utils */,
 			);
 			name = "Service&Utils";
@@ -366,6 +380,52 @@
 				19335B171BC3D0DF00E48ED4 /* ZRRegularExpressionValidateUtils.h */,
 			);
 			name = "正则表达式";
+			sourceTree = "<group>";
+		};
+		19335B181BC3ECBD00E48ED4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				19335B1D1BC3ECD800E48ED4 /* 文件 */,
+				19335B1C1BC3ECD300E48ED4 /* 缓存 */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		19335B1C1BC3ECD300E48ED4 /* 缓存 */ = {
+			isa = PBXGroup;
+			children = (
+				19335B191BC3ECCE00E48ED4 /* LFCacheService.h */,
+				19335B1A1BC3ECCE00E48ED4 /* LFCacheService.m */,
+			);
+			name = "缓存";
+			sourceTree = "<group>";
+		};
+		19335B1D1BC3ECD800E48ED4 /* 文件 */ = {
+			isa = PBXGroup;
+			children = (
+				19335B1E1BC3ECED00E48ED4 /* LFFileService.h */,
+				19335B1F1BC3ECED00E48ED4 /* LFFileService.m */,
+			);
+			name = "文件";
+			sourceTree = "<group>";
+		};
+		19335B211BC4159500E48ED4 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				19335B251BC41F6200E48ED4 /* View */,
+				19335B221BC415AF00E48ED4 /* LFMyItemViewController.h */,
+				19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */,
+			);
+			name = "我的";
+			sourceTree = "<group>";
+		};
+		19335B251BC41F6200E48ED4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19335B291BC4261300E48ED4 /* LFActivityIndicatorLabel.h */,
+				19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		19367BAC1BBEDB3F0009D628 /* 左侧栏 */ = {
@@ -646,15 +706,19 @@
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
 				19335B121BC3CAA400E48ED4 /* ZRUtils.m in Sources */,
+				19335B1B1BC3ECCE00E48ED4 /* LFCacheService.m in Sources */,
 				19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */,
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
+				19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */,
 				19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */,
+				19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */,
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
 				19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */,
 				19367BB71BBEEC900009D628 /* LFLostAndFoundViewController.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
 				191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */,
+				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
 				1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */,
 				19C92FAE1BC12DEA00316F0F /* NewItemTableViewController.m in Sources */,
 				1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */,

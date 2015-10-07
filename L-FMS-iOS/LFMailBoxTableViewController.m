@@ -10,6 +10,8 @@
 #import "LFMailBoxTableViewCell.h"
 #import "LFMailBoxCommentTableViewCell.h"
 
+#import "LFChatRoomViewController.h"
+
 #import "LFCommon.h"
 
 @interface LFMailBoxTableViewController ()
@@ -20,8 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
-    
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated] ;
+    [self.tabBarController.tabBar setHidden:NO] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +71,8 @@
     } else {
         //到聊天界面。
         QYDebugLog(@"到聊天Room") ;
+        LFChatRoomViewController *vc = [[LFChatRoomViewController alloc] init] ;
+        [self.navigationController pushViewController:vc animated:YES] ;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES] ;

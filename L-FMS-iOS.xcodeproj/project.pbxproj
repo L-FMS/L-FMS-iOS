@@ -33,6 +33,7 @@
 		19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */; };
 		19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B2F1BC4E97800E48ED4 /* LFItemTableViewCell.m */; };
 		19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */; };
+		19335B371BC50FFD00E48ED4 /* LFChatRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B361BC50FFD00E48ED4 /* LFChatRoomViewController.m */; };
 		19367BAA1BBED9090009D628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19367BA91BBED9090009D628 /* Main.storyboard */; };
 		19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */; };
 		19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */; };
@@ -114,6 +115,8 @@
 		19335B2F1BC4E97800E48ED4 /* LFItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemTableViewCell.m; sourceTree = "<group>"; };
 		19335B311BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFMailBoxCommentTableViewCell.h; sourceTree = "<group>"; };
 		19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFMailBoxCommentTableViewCell.m; sourceTree = "<group>"; };
+		19335B351BC50FFD00E48ED4 /* LFChatRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFChatRoomViewController.h; sourceTree = "<group>"; };
+		19335B361BC50FFD00E48ED4 /* LFChatRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFChatRoomViewController.m; sourceTree = "<group>"; };
 		19367BA91BBED9090009D628 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		19367BAE1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLeftDrawerTableViewController.h; sourceTree = "<group>"; };
 		19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLeftDrawerTableViewController.m; sourceTree = "<group>"; };
@@ -428,6 +431,23 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		19335B341BC50FD300E48ED4 /* 聊天室 */ = {
+			isa = PBXGroup;
+			children = (
+				19335B381BC5114600E48ED4 /* Models */,
+				19335B351BC50FFD00E48ED4 /* LFChatRoomViewController.h */,
+				19335B361BC50FFD00E48ED4 /* LFChatRoomViewController.m */,
+			);
+			name = "聊天室";
+			sourceTree = "<group>";
+		};
+		19335B381BC5114600E48ED4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		19367BAC1BBEDB3F0009D628 /* 左侧栏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +482,7 @@
 		19367BB81BBEEF650009D628 /* 私信 */ = {
 			isa = PBXGroup;
 			children = (
+				19335B341BC50FD300E48ED4 /* 聊天室 */,
 				1977C0F91BBFCA6400F15DC7 /* Cell */,
 				1977C0F61BBFCA5E00F15DC7 /* LFMailBoxTableViewController.h */,
 				1977C0F71BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m */,
@@ -705,6 +726,7 @@
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
+				19335B371BC50FFD00E48ED4 /* LFChatRoomViewController.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,

@@ -14,4 +14,6 @@
 
 - (void)showIndicator:(BOOL)show ;
 
+- (BOOL)isRefreshing ;
+
 @end

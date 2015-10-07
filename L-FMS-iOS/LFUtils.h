@@ -55,4 +55,16 @@
 
 + (NSString*)uuid ;
 
+#pragma mark - UIImagePickerController
+
+/**
+ *  从相册选照片
+ */
++ (void)pickImageFromPhotoLibraryAtController:(UIViewController *)controller ;
+
+/**
+ *  拍照
+ */
++ (void)pickImageFromCameraAtController:(UIViewController *)controller ;
+
 @end

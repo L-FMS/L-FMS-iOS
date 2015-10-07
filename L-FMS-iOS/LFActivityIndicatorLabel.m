@@ -66,4 +66,8 @@
     return _indicatorView ;
 }
 
+- (BOOL)isRefreshing {
+    return [self.indicatorView isAnimating] ;
+}
+
 @end

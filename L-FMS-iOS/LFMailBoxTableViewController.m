@@ -8,6 +8,9 @@
 
 #import "LFMailBoxTableViewController.h"
 #import "LFMailBoxTableViewCell.h"
+#import "LFMailBoxCommentTableViewCell.h"
+
+#import "LFCommon.h"
 
 @interface LFMailBoxTableViewController ()
 
@@ -36,15 +39,35 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2 ;
+    return 1 + 2 ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *reuseId = @"LFMailBoxTableViewCellReuseId" ;
-    LFMailBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
-    [cell.avatarImageView setImage:[UIImage imageNamed:@"testAvatar1"]] ;
+    NSInteger row = indexPath.row ;
+    if ( row == 0 ) {
+        //评论
+        LFMailBoxCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFMailBoxCommentTableViewCellReuseId" forIndexPath:indexPath] ;
+        return cell ;
+    }
     
+    LFMailBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFMailBoxTableViewCellReuseId" forIndexPath:indexPath] ;
+    [cell.avatarImageView setImage:[UIImage imageNamed:@"testAvatar1"]] ;
     return cell ;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row ;
+    if ( row == 0 ) {
+        //到评论。
+        QYDebugLog(@"到评论") ;
+    } else {
+        //到聊天界面。
+        QYDebugLog(@"到聊天Room") ;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
 }
 
 @end

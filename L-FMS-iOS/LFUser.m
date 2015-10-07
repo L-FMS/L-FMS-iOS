@@ -21,6 +21,7 @@
 @dynamic name ;
 @dynamic gender ;
 @dynamic birth ;
+@dynamic avatar ;
 
 + (NSString *)parseClassName {
     return @"_User" ;

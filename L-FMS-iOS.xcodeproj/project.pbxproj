@@ -31,6 +31,8 @@
 		19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B1F1BC3ECED00E48ED4 /* LFFileService.m */; };
 		19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */; };
 		19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */; };
+		19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B2F1BC4E97800E48ED4 /* LFItemTableViewCell.m */; };
+		19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */; };
 		19367BAA1BBED9090009D628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19367BA91BBED9090009D628 /* Main.storyboard */; };
 		19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */; };
 		19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */; };
@@ -108,6 +110,10 @@
 		19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFMyItemViewController.m; sourceTree = "<group>"; };
 		19335B291BC4261300E48ED4 /* LFActivityIndicatorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFActivityIndicatorLabel.h; sourceTree = "<group>"; };
 		19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFActivityIndicatorLabel.m; sourceTree = "<group>"; };
+		19335B2E1BC4E97800E48ED4 /* LFItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemTableViewCell.h; sourceTree = "<group>"; };
+		19335B2F1BC4E97800E48ED4 /* LFItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemTableViewCell.m; sourceTree = "<group>"; };
+		19335B311BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFMailBoxCommentTableViewCell.h; sourceTree = "<group>"; };
+		19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFMailBoxCommentTableViewCell.m; sourceTree = "<group>"; };
 		19367BA91BBED9090009D628 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		19367BAE1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLeftDrawerTableViewController.h; sourceTree = "<group>"; };
 		19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLeftDrawerTableViewController.m; sourceTree = "<group>"; };
@@ -178,7 +184,6 @@
 				191B03BA1BB6EC8500C8B3F8 /* App */,
 				191B03B61BB6E97200C8B3F8 /* 模块 */,
 				191B03AE1BB6E3A800C8B3F8 /* ThirdPartByHand */,
-				191B03A51BB6DE7500C8B3F8 /* Services */,
 				191B03A11BB6DDBC00C8B3F8 /* Settings */,
 				1909E4A91BB043FF00662CD3 /* Supporting Files */,
 			);
@@ -239,24 +244,6 @@
 				191B03A41BB6DE5E00C8B3F8 /* LFCommon.h */,
 			);
 			name = Settings;
-			sourceTree = "<group>";
-		};
-		191B03A51BB6DE7500C8B3F8 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				191B03AA1BB6E01100C8B3F8 /* UIImage */,
-				191B03A61BB6DE8600C8B3F8 /* Utils */,
-			);
-			name = Services;
-			sourceTree = "<group>";
-		};
-		191B03A61BB6DE8600C8B3F8 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				191B03A71BB6DEAA00C8B3F8 /* LFUtils.h */,
-				191B03A81BB6DEAA00C8B3F8 /* LFUtils.m */,
-			);
-			name = Utils;
 			sourceTree = "<group>";
 		};
 		191B03AA1BB6E01100C8B3F8 /* UIImage */ = {
@@ -365,6 +352,9 @@
 		19335B0F1BC3CA9300E48ED4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				191B03AA1BB6E01100C8B3F8 /* UIImage */,
+				191B03A71BB6DEAA00C8B3F8 /* LFUtils.h */,
+				191B03A81BB6DEAA00C8B3F8 /* LFUtils.m */,
 				19335B131BC3CAAC00E48ED4 /* 正则表达式 */,
 				19335B101BC3CAA400E48ED4 /* ZRUtils.h */,
 				19335B111BC3CAA400E48ED4 /* ZRUtils.m */,
@@ -412,6 +402,7 @@
 		19335B211BC4159500E48ED4 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				19335B2D1BC4E91800E48ED4 /* Cell */,
 				19335B251BC41F6200E48ED4 /* View */,
 				19335B221BC415AF00E48ED4 /* LFMyItemViewController.h */,
 				19335B231BC415AF00E48ED4 /* LFMyItemViewController.m */,
@@ -426,6 +417,15 @@
 				19335B2A1BC4261300E48ED4 /* LFActivityIndicatorLabel.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		19335B2D1BC4E91800E48ED4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19335B2E1BC4E97800E48ED4 /* LFItemTableViewCell.h */,
+				19335B2F1BC4E97800E48ED4 /* LFItemTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		19367BAC1BBEDB3F0009D628 /* 左侧栏 */ = {
@@ -501,6 +501,8 @@
 			children = (
 				1977C0FA1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.h */,
 				1977C0FB1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m */,
+				19335B311BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.h */,
+				19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -701,6 +703,7 @@
 			files = (
 				19335B051BC3B25100E48ED4 /* Item.m in Sources */,
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
+				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
@@ -714,6 +717,7 @@
 				19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */,
 				19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */,
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
+				19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */,
 				19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */,
 				19367BB71BBEEC900009D628 /* LFLostAndFoundViewController.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,

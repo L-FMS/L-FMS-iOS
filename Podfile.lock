@@ -21,8 +21,11 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AVOSCloud (3.1.4)
+  - AVOSCloudIM (3.1.4):
+    - AVOSCloud
   - JVFloatingDrawer (0.1.0)
   - Masonry (0.6.3)
+  - MessageDisplayKit (5.3)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -30,15 +33,19 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6.0)
   - AVOSCloud
+  - AVOSCloudIM (~> 3.1.4)
   - JVFloatingDrawer (~> 0.1.0)
   - Masonry (~> 0.6.3)
+  - MessageDisplayKit (~> 5.3)
   - SDWebImage (~> 3.7.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 79f7eb1a0fcfa7beb409332b2ca49afe9ce53b05
   AVOSCloud: 2be1640178facaac8343d67ed4d5348f4dffecd7
+  AVOSCloudIM: e2934a3128b018eeb5c9d923822ab287315b0b7f
   JVFloatingDrawer: 4782b1df21411aef2c1818f3b346cace02cc2e24
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
+  MessageDisplayKit: 9f899bbb9dbf45c008d29de5003f997260a4a109
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
 
 COCOAPODS: 0.37.1

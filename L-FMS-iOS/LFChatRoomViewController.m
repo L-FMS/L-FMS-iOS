@@ -36,13 +36,18 @@
 }
 
 - (void)setUp {
-    self.hidesBottomBarWhenPushed = YES ;
 }
 
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"testChatRoomBackgroundImg"] ;
+    UIImageView *backgroundView =[[UIImageView alloc] initWithImage:backgroundImage] ;
+    backgroundView.contentMode = UIViewContentModeScaleAspectFill ;
+    
+    [self.messageTableView setBackgroundView:backgroundView] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

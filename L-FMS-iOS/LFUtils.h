@@ -51,6 +51,8 @@
 //时间转年龄
 + (NSInteger)ageWithDateOfBirth:(NSDate *)date ;
 
++ (NSString *)date2LongTimeStr:(NSDate *)date ;
+
 #pragma mark - UUID
 
 + (NSString*)uuid ;

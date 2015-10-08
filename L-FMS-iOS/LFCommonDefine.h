@@ -9,11 +9,11 @@
 #ifndef L_FMS_iOS_LFCommonDefine_h
 #define L_FMS_iOS_LFCommonDefine_h
 
-#define WEAKSELF  typeof(self) __weak weakSelf=self ;
+#define LFWEAKSELF  typeof(self) __weak weakSelf=self ;
 
 #import "LFLogger.h"
 
 #define LFRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-#define LFRGB(r,g,b) QYRGBA(r,g,b,1.0)
+#define LFRGB(r,g,b) LFRGBA(r,g,b,1.0)
 
 #endif

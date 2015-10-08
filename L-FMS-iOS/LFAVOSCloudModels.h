@@ -11,6 +11,6 @@
 
 #import "Item.h"
 #import "LFUser.h"
-
+#import "LFComment.h"
 
 #endif

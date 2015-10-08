@@ -114,6 +114,11 @@
     return iAge ;
 }
 
++ (NSString *)date2LongTimeStr:(NSDate *)date {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy/M/d HH:mm"] ;
+    return [formatter stringFromDate:date] ;
+}
 
 #pragma mark - UUID
 

@@ -11,6 +11,7 @@
 #import "LFMailBoxCommentTableViewCell.h"
 
 #import "LFChatRoomViewController.h"
+#import "AppDelegate.h"
 
 #import "LFCommon.h"
 
@@ -68,10 +69,15 @@
     if ( row == 0 ) {
         //到评论。
         QYDebugLog(@"到评论") ;
+        UIViewController *vc = [AppDelegate getViewControllerById:@"LFCommentNoticeTableViewControllerSBID"] ;
+        vc.hidesBottomBarWhenPushed = YES ;
+        [self.navigationController pushViewController:vc animated:YES] ;
+        
     } else {
         //到聊天界面。
         QYDebugLog(@"到聊天Room") ;
         LFChatRoomViewController *vc = [[LFChatRoomViewController alloc] init] ;
+        vc.hidesBottomBarWhenPushed = YES ;
         [self.navigationController pushViewController:vc animated:YES] ;
     }
     

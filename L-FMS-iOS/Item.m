@@ -8,7 +8,17 @@
 
 #import "Item.h"
 
+#import <AVOSCloud/AVOSCloud.h>
+
 @implementation Item
+
+@dynamic itemDescription ;
+@dynamic tags ;
+@dynamic place ;
+@dynamic name ;
+@dynamic type ;
+@dynamic image ;
+@dynamic user ;
 
 + (NSString *)parseClassName {
     return NSStringFromClass(self) ;

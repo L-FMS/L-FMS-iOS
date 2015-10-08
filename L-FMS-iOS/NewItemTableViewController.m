@@ -8,6 +8,8 @@
 
 #import "NewItemTableViewController.h"
 
+#import "LFCommon.h"
+
 @interface NewItemTableViewController ()
 
 @end
@@ -17,80 +19,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
+
+#pragma mark - UITableViewDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row ;
+    BOOL isSeparator = (row % 2)^TRUE ;
+    row = row / 2 ;
+    if ( isSeparator ) {
+        return 36 ;
+    } else {
+        return 44 ;
+    }
+    
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0 ;
+    return 1 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0 ;
+    return 2 * 2 ;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    NSInteger row = indexPath.row ;
+    BOOL isSeparator = (row % 2)^TRUE ;
+    row = row / 2 ;
+    if ( isSeparator ) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFSeparatorTableViewCellReuseId" forIndexPath:indexPath] ;
+        return cell ;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFTextFieldTableViewCellReuseId" forIndexPath:indexPath] ;
+        return cell;
+    }
+
+}
+
+- (IBAction)ensureBtnClicked:(id)sender {
+    QYDebugLog(@"确定按钮") ;
     
-    // Configure the cell...
+    Item *newItem = [Item object] ;
+    newItem.itemDescription = @"TestDesc" ;
+    newItem.name = @"TestName" ;
+    newItem.tags = @[@"Tag1",@"Tag2",@"Tag3"] ;
+    newItem.type = @"found" ;
+    newItem.user = [LFUser currentUser] ;
     
-    return cell;
+    [SVProgressHUD show] ;
+    [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [SVProgressHUD dismiss] ;
+        if ( succeeded ) {
+            QYDebugLog(@"Successed") ;
+            [self.navigationController popViewControllerAnimated:YES] ;
+        } else {
+            QYDebugLog(@"Error:[%@]",error) ;
+        }
+    }] ;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark -
 
 @end

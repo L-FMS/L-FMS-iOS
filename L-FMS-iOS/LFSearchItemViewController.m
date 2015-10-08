@@ -1,0 +1,25 @@
+//
+//  LFSearchItemViewController.m
+//  L-FMS-iOS
+//
+//  Created by 虎猫儿 on 15/10/8.
+//  Copyright (c) 2015年 虎猫儿. All rights reserved.
+//
+
+#import "LFSearchItemViewController.h"
+
+@interface LFSearchItemViewController ()
+
+@end
+
+@implementation LFSearchItemViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad] ;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning] ;
+}
+
+@end

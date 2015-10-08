@@ -12,6 +12,9 @@
 #import "LFCommon.h"
 #import "AppDelegate.h"
 
+#import <JVFloatingDrawer/JVFloatingDrawerView.h>
+#import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
+
 #define kWIDTH_RATIO ([UIScreen mainScreen].bounds.size.width)/320.0
 #define kHEIGHT_RATIO ([UIScreen mainScreen].bounds.size.height)/568.0
 
@@ -90,18 +93,21 @@
             break;
     }
     
-    [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO] ;
 }
 
 #pragma mark - Actions
 
 - (void)addBtnClicked {
+    UIViewController *vc = [AppDelegate getViewControllerById:@"NewItemTableViewControllerSBID"] ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self toVC:vc] ;
 }
 
 - (void)searchBtnClicked {
-    
+    UIViewController *vc = [AppDelegate getViewControllerById:@"LFSearchItemViewControllerSBID"] ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self toVC:vc] ;
 }
 
 - (void)scanQRBtnClicked {
@@ -110,8 +116,14 @@
 
 #pragma mark - Helper
 
-- (void)toVC:(UIViewController *)vc {
+- (void)toVC:(id)vc {
+    if ( vc ) {
+        UITabBarController *mainTabbarVc = (id)[[AppDelegate globalAppdelegate] drawerViewController].centerViewController ;
+        UINavigationController *mainNavc = mainTabbarVc.viewControllers[0] ;
+        [mainNavc pushViewController:vc animated:NO] ;
+    }
     
+    [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES] ;
 }
 
 @end

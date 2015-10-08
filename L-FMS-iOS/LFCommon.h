@@ -20,5 +20,8 @@
 
 #import "LFAVOSCloudModels.h"
 #import "ZRUtils.h"
+#import "UIImage+ZRResize.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #endif

@@ -17,6 +17,7 @@
     dispatch_once(&onceToken, ^{
         [Item registerSubclass] ;
         [LFUser registerSubclass] ;
+        [LFComment registerSubclass] ;
     }) ;
 }
 

@@ -328,10 +328,10 @@
         <scene sceneID="sCr-qv-0Ny">
             <objects>
                 <tableViewController storyboardIdentifier="LFCommentNoticeTableViewControllerSBID" id="PmG-Du-5Df" customClass="LFCommentNoticeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N3h-Fc-vIi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N3h-Fc-vIi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.91372549533843994" green="0.91372549533843994" blue="0.91764706373214722" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="PmG-Du-5Df" id="zlm-SH-JEe"/>
                             <outlet property="delegate" destination="PmG-Du-5Df" id="WjE-E8-qVh"/>

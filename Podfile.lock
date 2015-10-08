@@ -24,6 +24,7 @@ PODS:
   - AVOSCloudIM (3.1.4):
     - AVOSCloud
   - JVFloatingDrawer (0.1.0)
+  - libqrencode (3.4.2)
   - Masonry (0.6.3)
   - MessageDisplayKit (5.3)
   - SDWebImage (3.7.3):
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - AVOSCloud
   - AVOSCloudIM (~> 3.1.4)
   - JVFloatingDrawer (~> 0.1.0)
+  - libqrencode (~> 3.4.2)
   - Masonry (~> 0.6.3)
   - MessageDisplayKit (~> 5.3)
   - SDWebImage (~> 3.7.3)
@@ -44,6 +46,7 @@ SPEC CHECKSUMS:
   AVOSCloud: 2be1640178facaac8343d67ed4d5348f4dffecd7
   AVOSCloudIM: e2934a3128b018eeb5c9d923822ab287315b0b7f
   JVFloatingDrawer: 4782b1df21411aef2c1818f3b346cace02cc2e24
+  libqrencode: 43dc34b89af83ea4b07c409cd8e09c87aa3a1c9f
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   MessageDisplayKit: 9f899bbb9dbf45c008d29de5003f997260a4a109
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

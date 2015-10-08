@@ -32,10 +32,7 @@ typedef struct {
 
 #pragma mark - Life Cycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad] ;
-    
-    [self calculateHeightPerLine] ;
+- (void)makeTestData {
     {
         //make demo data
         LFComment *commet = [LFComment object] ;
@@ -46,15 +43,23 @@ typedef struct {
             item.name = @"Test" ;
             item.user = [LFUser currentUser] ;
             item.itemDescription = @"卧槽，我捡到了扒拉扒拉" ;
-//            item.image = 
+            //            item.image =
         }
         commet.item = item ;
         
         commet.cellHeight = @([self getCellHeightFrom:commet]) ;
         
         [self.dataSource addObject:commet] ;
+        [self.dataSource addObject:commet] ;
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad] ;
     
+    [self calculateHeightPerLine] ;
+    
+    [self makeTestData] ;
     
     [self.tableView registerClass:[LFCommentTableViewCell class] forCellReuseIdentifier:@"LFCommentTableViewCellReuseId"] ;
 }
@@ -65,8 +70,12 @@ typedef struct {
 
 #pragma mark - UITableViewDelegate 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 8.0f ;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFComment *comment = self.dataSource[indexPath.row] ;
+    LFComment *comment = self.dataSource[indexPath.section] ;
     return [comment.cellHeight floatValue] ;
 }
 
@@ -76,8 +85,12 @@ typedef struct {
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count ;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1 ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,7 +99,7 @@ typedef struct {
         cell = [[LFCommentTableViewCell alloc] init] ;
     }
     
-    [cell setUpWithLFComment:self.dataSource[indexPath.row]] ;
+    [cell setUpWithLFComment:self.dataSource[indexPath.section]] ;
     
     return cell;
 }

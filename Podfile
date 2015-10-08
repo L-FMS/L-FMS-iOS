@@ -10,6 +10,7 @@ pod 'JVFloatingDrawer', '~> 0.1.0'
 pod 'SDWebImage', '~> 3.7.3'
 pod 'MessageDisplayKit', '~> 5.3'
 pod 'AVOSCloudIM', '~> 3.1.4'
+pod 'libqrencode', '~> 3.4.2' , :inhibit_warnings => true
 
 end
 

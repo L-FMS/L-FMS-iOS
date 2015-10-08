@@ -40,6 +40,10 @@
 		1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECAF1BC6B3A10047C1A6 /* LFCommentTableViewCell.m */; };
 		1935ECB41BC6B5A30047C1A6 /* LFItemSurveyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECB31BC6B5A30047C1A6 /* LFItemSurveyView.m */; };
 		1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECB61BC6FC440047C1A6 /* LFComment.m */; };
+		1935ECC51BC70C200047C1A6 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECBC1BC70C200047C1A6 /* QRCameraSwitchButton.m */; };
+		1935ECC61BC70C200047C1A6 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECBF1BC70C200047C1A6 /* QRCodeReaderView.m */; };
+		1935ECC71BC70C200047C1A6 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECC11BC70C200047C1A6 /* QRCodeReaderViewController.m */; };
+		1935ECC81BC70C200047C1A6 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1935ECC41BC70C200047C1A6 /* QRCodeGenerator.m */; };
 		19367BAA1BBED9090009D628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19367BA91BBED9090009D628 /* Main.storyboard */; };
 		19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */; };
 		19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */; };
@@ -138,6 +142,15 @@
 		1935ECB31BC6B5A30047C1A6 /* LFItemSurveyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemSurveyView.m; sourceTree = "<group>"; };
 		1935ECB51BC6FC440047C1A6 /* LFComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFComment.h; sourceTree = "<group>"; };
 		1935ECB61BC6FC440047C1A6 /* LFComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFComment.m; sourceTree = "<group>"; };
+		1935ECBB1BC70C200047C1A6 /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		1935ECBC1BC70C200047C1A6 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		1935ECBD1BC70C200047C1A6 /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		1935ECBE1BC70C200047C1A6 /* QRCodeReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderView.h; sourceTree = "<group>"; };
+		1935ECBF1BC70C200047C1A6 /* QRCodeReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderView.m; sourceTree = "<group>"; };
+		1935ECC01BC70C200047C1A6 /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		1935ECC11BC70C200047C1A6 /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeReaderViewController.m; sourceTree = "<group>"; };
+		1935ECC31BC70C200047C1A6 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		1935ECC41BC70C200047C1A6 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
 		19367BA91BBED9090009D628 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		19367BAE1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVLeftDrawerTableViewController.h; sourceTree = "<group>"; };
 		19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLeftDrawerTableViewController.m; sourceTree = "<group>"; };
@@ -340,6 +353,7 @@
 		191B03BA1BB6EC8500C8B3F8 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1935ECB81BC70BEF0047C1A6 /* ThirdPartByHand */,
 				19335B0E1BC3CA8400E48ED4 /* Service&Utils */,
 				19C92FA91BC114A800316F0F /* Model */,
 				191B03BB1BB6EC9900C8B3F8 /* Marco */,
@@ -405,6 +419,7 @@
 		19335B181BC3ECBD00E48ED4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				1935ECC91BC70D4B0047C1A6 /* 二维码 */,
 				19688CE41BC571F800ED9C96 /* 定位 */,
 				19335B1D1BC3ECD800E48ED4 /* 文件 */,
 				19335B1C1BC3ECD300E48ED4 /* 缓存 */,
@@ -515,6 +530,53 @@
 				1935ECB31BC6B5A30047C1A6 /* LFItemSurveyView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		1935ECB81BC70BEF0047C1A6 /* ThirdPartByHand */ = {
+			isa = PBXGroup;
+			children = (
+				1935ECB91BC70C200047C1A6 /* 二维码扫描 */,
+				1935ECC21BC70C200047C1A6 /* 二维码生成 */,
+			);
+			name = ThirdPartByHand;
+			sourceTree = "<group>";
+		};
+		1935ECB91BC70C200047C1A6 /* 二维码扫描 */ = {
+			isa = PBXGroup;
+			children = (
+				1935ECBA1BC70C200047C1A6 /* QRCodeReaderViewController */,
+			);
+			path = "二维码扫描";
+			sourceTree = "<group>";
+		};
+		1935ECBA1BC70C200047C1A6 /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1935ECBB1BC70C200047C1A6 /* QRCameraSwitchButton.h */,
+				1935ECBC1BC70C200047C1A6 /* QRCameraSwitchButton.m */,
+				1935ECBD1BC70C200047C1A6 /* QRCodeReaderDelegate.h */,
+				1935ECBE1BC70C200047C1A6 /* QRCodeReaderView.h */,
+				1935ECBF1BC70C200047C1A6 /* QRCodeReaderView.m */,
+				1935ECC01BC70C200047C1A6 /* QRCodeReaderViewController.h */,
+				1935ECC11BC70C200047C1A6 /* QRCodeReaderViewController.m */,
+			);
+			path = QRCodeReaderViewController;
+			sourceTree = "<group>";
+		};
+		1935ECC21BC70C200047C1A6 /* 二维码生成 */ = {
+			isa = PBXGroup;
+			children = (
+				1935ECC31BC70C200047C1A6 /* QRCodeGenerator.h */,
+				1935ECC41BC70C200047C1A6 /* QRCodeGenerator.m */,
+			);
+			path = "二维码生成";
+			sourceTree = "<group>";
+		};
+		1935ECC91BC70D4B0047C1A6 /* 二维码 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "二维码";
 			sourceTree = "<group>";
 		};
 		19367BAC1BBEDB3F0009D628 /* 左侧栏 */ = {
@@ -826,10 +888,12 @@
 				19335B051BC3B25100E48ED4 /* Item.m in Sources */,
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
+				1935ECC81BC70C200047C1A6 /* QRCodeGenerator.m in Sources */,
 				1935ECB41BC6B5A30047C1A6 /* LFItemSurveyView.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
 				19335B371BC50FFD00E48ED4 /* LFChatRoomViewController.m in Sources */,
 				1935EC9F1BC68B8F0047C1A6 /* LFTextFieldTableViewCell.m in Sources */,
+				1935ECC71BC70C200047C1A6 /* QRCodeReaderViewController.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
@@ -850,11 +914,13 @@
 				19367BB71BBEEC900009D628 /* LFLostAndFoundViewController.m in Sources */,
 				1935ECA21BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
+				1935ECC51BC70C200047C1A6 /* QRCameraSwitchButton.m in Sources */,
 				191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */,
 				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
 				1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */,
 				1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */,
 				19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */,
+				1935ECC61BC70C200047C1A6 /* QRCodeReaderView.m in Sources */,
 				19C92FAE1BC12DEA00316F0F /* NewItemTableViewController.m in Sources */,
 				1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */,
 				1909E4B51BB043FF00662CD3 /* ViewController.m in Sources */,

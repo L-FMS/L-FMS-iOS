@@ -18,8 +18,11 @@
 #import "LFAVSubclassRegister.h"
 #import "LFCommon.h"
 #import "LFIMClient.h"
+#import "LFBaiduMapKit.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    BMKMapManager *_mapManager ;
+}
 
 #pragma mark - 左右侧栏
 
@@ -122,6 +125,11 @@
 #pragma makr - Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    _mapManager = [[BMKMapManager alloc] init] ;
+    BOOL ret = [_mapManager start:@"n3DceW93ZTS7LG8OVF4Hcu1d" generalDelegate:nil] ;
+    if ( !ret ) {
+        NSLog(@"manager start failed!") ;
+    }
     
     [LFAVSubclassRegister registeAllAVSubclasses] ;
     [self setUpAVOSCloudWithOptions:launchOptions] ;

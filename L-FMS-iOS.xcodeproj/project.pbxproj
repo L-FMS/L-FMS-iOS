@@ -63,6 +63,18 @@
 		19F73D6C1BC7FF660096A517 /* LFStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D6B1BC7FF660096A517 /* LFStorage.m */; };
 		19F73D6F1BC7FF970096A517 /* LFChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D6E1BC7FF970096A517 /* LFChatRoom.m */; };
 		19F73D721BC80A460096A517 /* AVIMConversation+LFApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D711BC80A460096A517 /* AVIMConversation+LFApp.m */; };
+		19F73D751BC827690096A517 /* LFLocationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D741BC827690096A517 /* LFLocationTableViewCell.m */; };
+		19F73D7B1BC836E90096A517 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D7A1BC836E90096A517 /* QuartzCore.framework */; };
+		19F73D7D1BC836F20096A517 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D7C1BC836F20096A517 /* OpenGLES.framework */; };
+		19F73D7F1BC837000096A517 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D7E1BC837000096A517 /* SystemConfiguration.framework */; };
+		19F73D811BC8370C0096A517 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D801BC8370C0096A517 /* CoreGraphics.framework */; };
+		19F73D831BC837180096A517 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D821BC837180096A517 /* Security.framework */; };
+		19F73D851BC838BC0096A517 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 19F73D841BC838BC0096A517 /* mapapi.bundle */; };
+		19F73D861BC83C480096A517 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F73D781BC836540096A517 /* BaiduMapAPI.framework */; };
+		19F73D891BC83C9A0096A517 /* ForBaiduMapKit.mm in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D881BC83C9A0096A517 /* ForBaiduMapKit.mm */; };
+		19F73D8C1BC83D1E0096A517 /* LFChooseLocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D8B1BC83D1E0096A517 /* LFChooseLocationMapViewController.m */; };
+		19F73D901BC83D3C0096A517 /* LFChooseLocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D8F1BC83D3C0096A517 /* LFChooseLocationTableViewController.m */; };
+		19F73D941BC859A70096A517 /* LFUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D931BC859A70096A517 /* LFUserAnnotation.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +204,24 @@
 		19F73D6E1BC7FF970096A517 /* LFChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFChatRoom.m; sourceTree = "<group>"; };
 		19F73D701BC80A460096A517 /* AVIMConversation+LFApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVIMConversation+LFApp.h"; sourceTree = "<group>"; };
 		19F73D711BC80A460096A517 /* AVIMConversation+LFApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVIMConversation+LFApp.m"; sourceTree = "<group>"; };
+		19F73D731BC827690096A517 /* LFLocationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLocationTableViewCell.h; sourceTree = "<group>"; };
+		19F73D741BC827690096A517 /* LFLocationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLocationTableViewCell.m; sourceTree = "<group>"; };
+		19F73D781BC836540096A517 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI.framework; sourceTree = "<group>"; };
+		19F73D7A1BC836E90096A517 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		19F73D7C1BC836F20096A517 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		19F73D7E1BC837000096A517 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		19F73D801BC8370C0096A517 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		19F73D821BC837180096A517 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		19F73D841BC838BC0096A517 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
+		19F73D871BC83C9A0096A517 /* ForBaiduMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForBaiduMapKit.h; sourceTree = "<group>"; };
+		19F73D881BC83C9A0096A517 /* ForBaiduMapKit.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ForBaiduMapKit.mm; sourceTree = "<group>"; };
+		19F73D8A1BC83D1E0096A517 /* LFChooseLocationMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFChooseLocationMapViewController.h; sourceTree = "<group>"; };
+		19F73D8B1BC83D1E0096A517 /* LFChooseLocationMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFChooseLocationMapViewController.m; sourceTree = "<group>"; };
+		19F73D8E1BC83D3C0096A517 /* LFChooseLocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFChooseLocationTableViewController.h; sourceTree = "<group>"; };
+		19F73D8F1BC83D3C0096A517 /* LFChooseLocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFChooseLocationTableViewController.m; sourceTree = "<group>"; };
+		19F73D921BC859A70096A517 /* LFUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserAnnotation.h; sourceTree = "<group>"; };
+		19F73D931BC859A70096A517 /* LFUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserAnnotation.m; sourceTree = "<group>"; };
+		19F73D951BC859DA0096A517 /* LFBaiduMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFBaiduMapKit.h; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -201,6 +231,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F73D861BC83C480096A517 /* BaiduMapAPI.framework in Frameworks */,
+				19F73D831BC837180096A517 /* Security.framework in Frameworks */,
+				19F73D811BC8370C0096A517 /* CoreGraphics.framework in Frameworks */,
+				19F73D7F1BC837000096A517 /* SystemConfiguration.framework in Frameworks */,
+				19F73D7D1BC836F20096A517 /* OpenGLES.framework in Frameworks */,
+				19F73D7B1BC836E90096A517 /* QuartzCore.framework in Frameworks */,
 				19688CE31BC5627100ED9C96 /* CoreLocation.framework in Frameworks */,
 				A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */,
 			);
@@ -516,6 +552,8 @@
 				1935EC9E1BC68B8F0047C1A6 /* LFTextFieldTableViewCell.m */,
 				1935ECA01BC68E7B0047C1A6 /* LFSeparatorTableViewCell.h */,
 				1935ECA11BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m */,
+				19F73D731BC827690096A517 /* LFLocationTableViewCell.h */,
+				19F73D741BC827690096A517 /* LFLocationTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -552,6 +590,7 @@
 		1935ECB81BC70BEF0047C1A6 /* ThirdPartByHand */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D771BC836540096A517 /* 百度地图 */,
 				1935ECB91BC70C200047C1A6 /* 二维码扫描 */,
 				1935ECC21BC70C200047C1A6 /* 二维码生成 */,
 			);
@@ -713,6 +752,7 @@
 		19C92FAB1BC12DB300316F0F /* 发布 */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D761BC82A320096A517 /* 选位置VC */,
 				1935EC9C1BC68B750047C1A6 /* Cells */,
 				19C92FAC1BC12DEA00316F0F /* NewItemTableViewController.h */,
 				19C92FAD1BC12DEA00316F0F /* NewItemTableViewController.m */,
@@ -777,6 +817,47 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		19F73D761BC82A320096A517 /* 选位置VC */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D911BC8597D0096A517 /* Models */,
+				19F73D8D1BC83D210096A517 /* 列表选位置 */,
+				19F73D8A1BC83D1E0096A517 /* LFChooseLocationMapViewController.h */,
+				19F73D8B1BC83D1E0096A517 /* LFChooseLocationMapViewController.m */,
+			);
+			name = "选位置VC";
+			sourceTree = "<group>";
+		};
+		19F73D771BC836540096A517 /* 百度地图 */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D841BC838BC0096A517 /* mapapi.bundle */,
+				19F73D781BC836540096A517 /* BaiduMapAPI.framework */,
+				19F73D871BC83C9A0096A517 /* ForBaiduMapKit.h */,
+				19F73D881BC83C9A0096A517 /* ForBaiduMapKit.mm */,
+				19F73D951BC859DA0096A517 /* LFBaiduMapKit.h */,
+			);
+			path = "百度地图";
+			sourceTree = "<group>";
+		};
+		19F73D8D1BC83D210096A517 /* 列表选位置 */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D8E1BC83D3C0096A517 /* LFChooseLocationTableViewController.h */,
+				19F73D8F1BC83D3C0096A517 /* LFChooseLocationTableViewController.m */,
+			);
+			name = "列表选位置";
+			sourceTree = "<group>";
+		};
+		19F73D911BC8597D0096A517 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D921BC859A70096A517 /* LFUserAnnotation.h */,
+				19F73D931BC859A70096A517 /* LFUserAnnotation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +870,11 @@
 		DDF97E83D11054A49B6F5D16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D821BC837180096A517 /* Security.framework */,
+				19F73D801BC8370C0096A517 /* CoreGraphics.framework */,
+				19F73D7E1BC837000096A517 /* SystemConfiguration.framework */,
+				19F73D7C1BC836F20096A517 /* OpenGLES.framework */,
+				19F73D7A1BC836E90096A517 /* QuartzCore.framework */,
 				19688CE21BC5627100ED9C96 /* CoreLocation.framework */,
 				DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */,
 			);
@@ -884,6 +970,7 @@
 				19367BAA1BBED9090009D628 /* Main.storyboard in Resources */,
 				1909E4BD1BB043FF00662CD3 /* LaunchScreen.xib in Resources */,
 				1909E4BA1BB043FF00662CD3 /* Images.xcassets in Resources */,
+				19F73D851BC838BC0096A517 /* mapapi.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,10 +1026,12 @@
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
 				1935ECC81BC70C200047C1A6 /* QRCodeGenerator.m in Sources */,
 				1935ECB41BC6B5A30047C1A6 /* LFItemSurveyView.m in Sources */,
+				19F73D751BC827690096A517 /* LFLocationTableViewCell.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
 				19335B371BC50FFD00E48ED4 /* LFChatRoomViewController.m in Sources */,
 				1935EC9F1BC68B8F0047C1A6 /* LFTextFieldTableViewCell.m in Sources */,
 				1935ECC71BC70C200047C1A6 /* QRCodeReaderViewController.m in Sources */,
+				19F73D8C1BC83D1E0096A517 /* LFChooseLocationMapViewController.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
@@ -951,7 +1040,9 @@
 				19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */,
 				1935ECAC1BC6AFCF0047C1A6 /* LFCommentNoticeTableViewController.m in Sources */,
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
+				19F73D901BC83D3C0096A517 /* LFChooseLocationTableViewController.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
+				19F73D891BC83C9A0096A517 /* ForBaiduMapKit.mm in Sources */,
 				19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */,
 				1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */,
 				19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */,
@@ -966,6 +1057,7 @@
 				1935ECA21BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
 				1935ECC51BC70C200047C1A6 /* QRCameraSwitchButton.m in Sources */,
+				19F73D941BC859A70096A517 /* LFUserAnnotation.m in Sources */,
 				191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */,
 				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
 				1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */,
@@ -1110,6 +1202,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/L-FMS-iOS/百度地图",
+				);
 				INFOPLIST_FILE = "L-FMS-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1125,6 +1221,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/L-FMS-iOS/百度地图",
+				);
 				INFOPLIST_FILE = "L-FMS-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

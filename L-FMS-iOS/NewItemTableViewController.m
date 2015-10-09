@@ -10,6 +10,12 @@
 
 #import "LFCommon.h"
 
+#import "LFLocationTableViewCell.h"
+
+#define KTwo 2
+
+#define kNewItemVC2ChooseLocationMapVCSegueId @"NewItemVC2ChooseLocationMapVCSegueId"
+
 @interface NewItemTableViewController ()
 
 @end
@@ -26,6 +32,24 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row / 2 ;
+    
+    switch (row) {
+        case 2 : {
+            //到选地图界面
+            [self performSegueWithIdentifier:kNewItemVC2ChooseLocationMapVCSegueId sender:self] ;
+            break ;
+        }
+            
+        default : {
+            break ;
+        }
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -46,7 +70,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2 * 2 ;
+    return KTwo * 3 ;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,10 +79,23 @@
     row = row / 2 ;
     if ( isSeparator ) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFSeparatorTableViewCellReuseId" forIndexPath:indexPath] ;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone ;
         return cell ;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFTextFieldTableViewCellReuseId" forIndexPath:indexPath] ;
-        return cell;
+        UITableViewCell *cell ;
+        switch (row) {
+            case 2 : {
+                cell = [tableView dequeueReusableCellWithIdentifier:@"LFLocationTableViewCellReuseId" forIndexPath:indexPath] ;
+                break ;
+            }
+                
+            default : {
+                cell = [tableView dequeueReusableCellWithIdentifier:@"LFTextFieldTableViewCellReuseId" forIndexPath:indexPath] ;
+                break ;
+            }
+        }
+        
+        return cell ;
     }
 
 }

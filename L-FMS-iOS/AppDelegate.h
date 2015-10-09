@@ -11,7 +11,7 @@
 
 @class JVFloatingDrawerViewController ;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate> 
 
 + (AppDelegate *)globalAppdelegate ;
 

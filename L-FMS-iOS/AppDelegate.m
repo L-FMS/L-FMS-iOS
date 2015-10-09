@@ -16,6 +16,8 @@
 #import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
 
 #import "LFAVSubclassRegister.h"
+#import "LFCommon.h"
+#import "LFIMClient.h"
 
 @interface AppDelegate ()
 
@@ -78,6 +80,13 @@
 #pragma mark - 界面
 
 - (void)toMain {
+    LFUser *user = [LFUser currentUser] ;
+    if ( nil == user.imClient ) {
+        user.imClient = [[LFIMClient alloc] init] ;
+        [user.imClient openSessionWithClientID:user.objectId completion:^(BOOL succeeded, NSError *error) {            
+        }] ;
+    }
+    
     self.window.rootViewController = self.drawerViewController ;
 }
 

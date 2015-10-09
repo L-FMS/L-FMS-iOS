@@ -17,7 +17,8 @@
 
 @property (nonatomic,copy) NSString *itemDescription ;
 @property (nonatomic,copy) NSArray *tags ;
-@property (nonatomic,copy) AVGeoPoint *place ;
+@property (nonatomic,copy) NSString *place ;
+@property (nonatomic) AVGeoPoint *location ;
 @property (nonatomic,copy) NSString *name ;
 @property (nonatomic,copy) NSString *type ;
 @property (nonatomic,copy) AVFile *image ;

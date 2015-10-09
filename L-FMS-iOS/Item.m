@@ -15,6 +15,7 @@
 @dynamic itemDescription ;
 @dynamic tags ;
 @dynamic place ;
+@dynamic location ;
 @dynamic name ;
 @dynamic type ;
 @dynamic image ;

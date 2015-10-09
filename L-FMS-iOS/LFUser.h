@@ -11,6 +11,7 @@
 #import <AVSubclassing.h>
 
 @class UIImageView ;
+@class LFIMClient ;
 
 @interface LFUser : AVUser<AVSubclassing>
 
@@ -24,5 +25,8 @@
 - (void)displayAvatarAtImageView:(UIImageView *)avatarImageView ;
 
 - (NSString *)displayName ;
+
+
+@property (nonatomic,strong) LFIMClient *imClient ;
 
 @end

@@ -58,6 +58,11 @@
 		19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C92FB11BC13DF500316F0F /* UserInformationViewController.m */; };
 		19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DF15931BC664E8007924A0 /* LFSearchItemViewController.m */; };
 		19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DF15971BC66CC4007924A0 /* LFItemDetailViewController.m */; };
+		19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D5E1BC79A5F0096A517 /* LFIMClient.m */; };
+		19F73D631BC79C020096A517 /* LFNotify.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D621BC79C020096A517 /* LFNotify.m */; };
+		19F73D6C1BC7FF660096A517 /* LFStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D6B1BC7FF660096A517 /* LFStorage.m */; };
+		19F73D6F1BC7FF970096A517 /* LFChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D6E1BC7FF970096A517 /* LFChatRoom.m */; };
+		19F73D721BC80A460096A517 /* AVIMConversation+LFApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D711BC80A460096A517 /* AVIMConversation+LFApp.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +182,16 @@
 		19DF15931BC664E8007924A0 /* LFSearchItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSearchItemViewController.m; sourceTree = "<group>"; };
 		19DF15961BC66CC4007924A0 /* LFItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailViewController.h; sourceTree = "<group>"; };
 		19DF15971BC66CC4007924A0 /* LFItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailViewController.m; sourceTree = "<group>"; };
+		19F73D5D1BC79A5F0096A517 /* LFIMClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFIMClient.h; sourceTree = "<group>"; };
+		19F73D5E1BC79A5F0096A517 /* LFIMClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFIMClient.m; sourceTree = "<group>"; };
+		19F73D611BC79C020096A517 /* LFNotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFNotify.h; sourceTree = "<group>"; };
+		19F73D621BC79C020096A517 /* LFNotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFNotify.m; sourceTree = "<group>"; };
+		19F73D6A1BC7FF660096A517 /* LFStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFStorage.h; sourceTree = "<group>"; };
+		19F73D6B1BC7FF660096A517 /* LFStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFStorage.m; sourceTree = "<group>"; };
+		19F73D6D1BC7FF970096A517 /* LFChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFChatRoom.h; sourceTree = "<group>"; };
+		19F73D6E1BC7FF970096A517 /* LFChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFChatRoom.m; sourceTree = "<group>"; };
+		19F73D701BC80A460096A517 /* AVIMConversation+LFApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVIMConversation+LFApp.h"; sourceTree = "<group>"; };
+		19F73D711BC80A460096A517 /* AVIMConversation+LFApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVIMConversation+LFApp.m"; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -419,10 +434,12 @@
 		19335B181BC3ECBD00E48ED4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D601BC79BF30096A517 /* NSNotificationCenter */,
 				1935ECC91BC70D4B0047C1A6 /* 二维码 */,
 				19688CE41BC571F800ED9C96 /* 定位 */,
 				19335B1D1BC3ECD800E48ED4 /* 文件 */,
 				19335B1C1BC3ECD300E48ED4 /* 缓存 */,
+				19F73D651BC7C8450096A517 /* 存储 */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -671,7 +688,10 @@
 		19C92FA91BC114A800316F0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D691BC7D2230096A517 /* Models */,
 				19C92FAA1BC114AE00316F0F /* AVOSCloudModel */,
+				19F73D5D1BC79A5F0096A517 /* LFIMClient.h */,
+				19F73D5E1BC79A5F0096A517 /* LFIMClient.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -726,6 +746,35 @@
 				19DF15971BC66CC4007924A0 /* LFItemDetailViewController.m */,
 			);
 			name = "物品详情";
+			sourceTree = "<group>";
+		};
+		19F73D601BC79BF30096A517 /* NSNotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D611BC79C020096A517 /* LFNotify.h */,
+				19F73D621BC79C020096A517 /* LFNotify.m */,
+			);
+			name = NSNotificationCenter;
+			sourceTree = "<group>";
+		};
+		19F73D651BC7C8450096A517 /* 存储 */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D6A1BC7FF660096A517 /* LFStorage.h */,
+				19F73D6B1BC7FF660096A517 /* LFStorage.m */,
+			);
+			name = "存储";
+			sourceTree = "<group>";
+		};
+		19F73D691BC7D2230096A517 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D6D1BC7FF970096A517 /* LFChatRoom.h */,
+				19F73D6E1BC7FF970096A517 /* LFChatRoom.m */,
+				19F73D701BC80A460096A517 /* AVIMConversation+LFApp.h */,
+				19F73D711BC80A460096A517 /* AVIMConversation+LFApp.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
@@ -903,10 +952,12 @@
 				1935ECAC1BC6AFCF0047C1A6 /* LFCommentNoticeTableViewController.m in Sources */,
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
+				19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */,
 				1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */,
 				19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */,
 				19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */,
 				19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */,
+				19F73D631BC79C020096A517 /* LFNotify.m in Sources */,
 				19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */,
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
 				19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */,
@@ -920,8 +971,11 @@
 				1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */,
 				1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */,
 				19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */,
+				19F73D6F1BC7FF970096A517 /* LFChatRoom.m in Sources */,
 				1935ECC61BC70C200047C1A6 /* QRCodeReaderView.m in Sources */,
 				19C92FAE1BC12DEA00316F0F /* NewItemTableViewController.m in Sources */,
+				19F73D6C1BC7FF660096A517 /* LFStorage.m in Sources */,
+				19F73D721BC80A460096A517 /* AVIMConversation+LFApp.m in Sources */,
 				1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */,
 				1909E4B51BB043FF00662CD3 /* ViewController.m in Sources */,
 				19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */,

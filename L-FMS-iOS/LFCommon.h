@@ -22,6 +22,11 @@
 #import "ZRUtils.h"
 #import "UIImage+ZRResize.h"
 
+#import "LFNotify.h"
+#import "LFStorage.h"
+#import "LFIMClient.h"
+#import "AVIMConversation+LFApp.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #endif

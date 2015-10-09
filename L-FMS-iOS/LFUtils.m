@@ -89,6 +89,7 @@
     return confromTimesp ;
 }
 + (NSDate *)timestamp2date:(NSTimeInterval)timestamp {
+    if ( !timestamp ) return nil ;
     assert(timestamp) ;
     return [NSDate dateWithTimeIntervalSince1970:timestamp] ;
 }

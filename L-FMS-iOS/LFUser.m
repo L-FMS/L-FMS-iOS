@@ -11,8 +11,14 @@
 
 #import <UIKit/UIKit.h>
 #import <AVOSCloud/AVOSCloud.h>
+#import "LFIMClient.h"
+#import "LFCommon.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
+
+@interface LFUser ()
+
+@end
 
 @implementation LFUser
 
@@ -28,6 +34,16 @@
 }
 
 + (void)logOut {
+    LFUser *user = [LFUser currentUser] ;
+    if ( user.imClient ) {
+        [user.imClient closeSessionCompletion:^(BOOL succeeded, NSError *error) {
+            if ( error ) {
+                QYDebugLog(@"Close Session Error:[%@]",error) ;
+            }
+            user.imClient = nil ;
+        }] ;
+    }
+    user = nil ;
     [super logOut] ;
     [AppDelegate globalAppdelegate].drawerViewController = nil ;
 }
@@ -42,5 +58,7 @@
 - (NSString *)displayName {
     return self.name ? : self.username ? : @"" ;
 }
+
+#pragma mark - getter && setter 
 
 @end

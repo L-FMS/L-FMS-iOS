@@ -26,6 +26,7 @@
 #import "LFStorage.h"
 #import "LFIMClient.h"
 #import "AVIMConversation+LFApp.h"
+#import "LFUserDefaultService.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 

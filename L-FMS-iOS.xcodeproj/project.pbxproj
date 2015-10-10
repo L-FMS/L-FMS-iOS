@@ -47,7 +47,7 @@
 		19367BAA1BBED9090009D628 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19367BA91BBED9090009D628 /* Main.storyboard */; };
 		19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */; };
 		19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */; };
-		19367BB71BBEEC900009D628 /* LFLostAndFoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB61BBEEC900009D628 /* LFLostAndFoundViewController.m */; };
+		19367BB71BBEEC900009D628 /* LFLostAndFoundMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19367BB61BBEEC900009D628 /* LFLostAndFoundMapViewController.m */; };
 		195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 195102801BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m */; };
 		19688CE31BC5627100ED9C96 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19688CE21BC5627100ED9C96 /* CoreLocation.framework */; };
 		1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1977C0F01BBEF6E100F15DC7 /* JVLeftDrawerCell.m */; };
@@ -75,6 +75,10 @@
 		19F73D8C1BC83D1E0096A517 /* LFChooseLocationMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D8B1BC83D1E0096A517 /* LFChooseLocationMapViewController.m */; };
 		19F73D901BC83D3C0096A517 /* LFChooseLocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D8F1BC83D3C0096A517 /* LFChooseLocationTableViewController.m */; };
 		19F73D941BC859A70096A517 /* LFUserAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D931BC859A70096A517 /* LFUserAnnotation.m */; };
+		19F73D981BC914EC0096A517 /* NewItemViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D971BC914EC0096A517 /* NewItemViewController2.m */; };
+		19F73D9C1BC92CFD0096A517 /* LFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D9B1BC92CFD0096A517 /* LFImageView.m */; };
+		19F73DA31BC976770096A517 /* LFUserDefaultService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73DA21BC976770096A517 /* LFUserDefaultService.m */; };
+		19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -173,8 +177,8 @@
 		19367BAF1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVLeftDrawerTableViewController.m; sourceTree = "<group>"; };
 		19367BB11BBEDBF80009D628 /* JVRightDrawerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JVRightDrawerTableViewController.h; sourceTree = "<group>"; };
 		19367BB21BBEDBF80009D628 /* JVRightDrawerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JVRightDrawerTableViewController.m; sourceTree = "<group>"; };
-		19367BB51BBEEC900009D628 /* LFLostAndFoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLostAndFoundViewController.h; sourceTree = "<group>"; };
-		19367BB61BBEEC900009D628 /* LFLostAndFoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLostAndFoundViewController.m; sourceTree = "<group>"; };
+		19367BB51BBEEC900009D628 /* LFLostAndFoundMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLostAndFoundMapViewController.h; sourceTree = "<group>"; };
+		19367BB61BBEEC900009D628 /* LFLostAndFoundMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLostAndFoundMapViewController.m; sourceTree = "<group>"; };
 		1951027F1BC25DAB00AB12A4 /* UserInfoItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoItemTableViewCell.h; sourceTree = "<group>"; };
 		195102801BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoItemTableViewCell.m; sourceTree = "<group>"; };
 		19688CE21BC5627100ED9C96 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -222,6 +226,15 @@
 		19F73D921BC859A70096A517 /* LFUserAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserAnnotation.h; sourceTree = "<group>"; };
 		19F73D931BC859A70096A517 /* LFUserAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserAnnotation.m; sourceTree = "<group>"; };
 		19F73D951BC859DA0096A517 /* LFBaiduMapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFBaiduMapKit.h; sourceTree = "<group>"; };
+		19F73D961BC914EC0096A517 /* NewItemViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController2.h; sourceTree = "<group>"; };
+		19F73D971BC914EC0096A517 /* NewItemViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController2.m; sourceTree = "<group>"; };
+		19F73D9A1BC92CFD0096A517 /* LFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFImageView.h; sourceTree = "<group>"; };
+		19F73D9B1BC92CFD0096A517 /* LFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFImageView.m; sourceTree = "<group>"; };
+		19F73D9E1BC94FEA0096A517 /* LFChooseLocationNotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFChooseLocationNotificationCenter.h; sourceTree = "<group>"; };
+		19F73DA11BC976770096A517 /* LFUserDefaultService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserDefaultService.h; sourceTree = "<group>"; };
+		19F73DA21BC976770096A517 /* LFUserDefaultService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserDefaultService.m; sourceTree = "<group>"; };
+		19F73DA51BC991E20096A517 /* LFLostAFoundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLostAFoundTableViewCell.h; sourceTree = "<group>"; };
+		19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLostAFoundTableViewCell.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -470,6 +483,7 @@
 		19335B181BC3ECBD00E48ED4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				19F73DA01BC9765E0096A517 /* UserDefault */,
 				19F73D601BC79BF30096A517 /* NSNotificationCenter */,
 				1935ECC91BC70D4B0047C1A6 /* 二维码 */,
 				19688CE41BC571F800ED9C96 /* 定位 */,
@@ -661,8 +675,9 @@
 		19367BB41BBEEBE10009D628 /* 失物&&地图 */ = {
 			isa = PBXGroup;
 			children = (
-				19367BB51BBEEC900009D628 /* LFLostAndFoundViewController.h */,
-				19367BB61BBEEC900009D628 /* LFLostAndFoundViewController.m */,
+				19F73DA41BC991C50096A517 /* Cell */,
+				19367BB51BBEEC900009D628 /* LFLostAndFoundMapViewController.h */,
+				19367BB61BBEEC900009D628 /* LFLostAndFoundMapViewController.m */,
 			);
 			name = "失物&&地图";
 			sourceTree = "<group>";
@@ -752,10 +767,12 @@
 		19C92FAB1BC12DB300316F0F /* 发布 */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D9F1BC954CF0096A517 /* Old */,
 				19F73D761BC82A320096A517 /* 选位置VC */,
 				1935EC9C1BC68B750047C1A6 /* Cells */,
-				19C92FAC1BC12DEA00316F0F /* NewItemTableViewController.h */,
-				19C92FAD1BC12DEA00316F0F /* NewItemTableViewController.m */,
+				19F73D991BC92CE20096A517 /* Views */,
+				19F73D961BC914EC0096A517 /* NewItemViewController2.h */,
+				19F73D971BC914EC0096A517 /* NewItemViewController2.m */,
 			);
 			name = "发布";
 			sourceTree = "<group>";
@@ -820,6 +837,7 @@
 		19F73D761BC82A320096A517 /* 选位置VC */ = {
 			isa = PBXGroup;
 			children = (
+				19F73D9D1BC94FC80096A517 /* NotificationCenter */,
 				19F73D911BC8597D0096A517 /* Models */,
 				19F73D8D1BC83D210096A517 /* 列表选位置 */,
 				19F73D8A1BC83D1E0096A517 /* LFChooseLocationMapViewController.h */,
@@ -856,6 +874,50 @@
 				19F73D931BC859A70096A517 /* LFUserAnnotation.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		19F73D991BC92CE20096A517 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D9A1BC92CFD0096A517 /* LFImageView.h */,
+				19F73D9B1BC92CFD0096A517 /* LFImageView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		19F73D9D1BC94FC80096A517 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				19F73D9E1BC94FEA0096A517 /* LFChooseLocationNotificationCenter.h */,
+			);
+			name = NotificationCenter;
+			sourceTree = "<group>";
+		};
+		19F73D9F1BC954CF0096A517 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				19C92FAC1BC12DEA00316F0F /* NewItemTableViewController.h */,
+				19C92FAD1BC12DEA00316F0F /* NewItemTableViewController.m */,
+			);
+			name = Old;
+			sourceTree = "<group>";
+		};
+		19F73DA01BC9765E0096A517 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				19F73DA11BC976770096A517 /* LFUserDefaultService.h */,
+				19F73DA21BC976770096A517 /* LFUserDefaultService.m */,
+			);
+			name = UserDefault;
+			sourceTree = "<group>";
+		};
+		19F73DA41BC991C50096A517 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19F73DA51BC991E20096A517 /* LFLostAFoundTableViewCell.h */,
+				19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
@@ -1033,6 +1095,7 @@
 				1935ECC71BC70C200047C1A6 /* QRCodeReaderViewController.m in Sources */,
 				19F73D8C1BC83D1E0096A517 /* LFChooseLocationMapViewController.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
+				19F73D9C1BC92CFD0096A517 /* LFImageView.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
 				19335B121BC3CAA400E48ED4 /* ZRUtils.m in Sources */,
@@ -1044,6 +1107,7 @@
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
 				19F73D891BC83C9A0096A517 /* ForBaiduMapKit.mm in Sources */,
 				19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */,
+				19F73DA31BC976770096A517 /* LFUserDefaultService.m in Sources */,
 				1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */,
 				19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */,
 				19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */,
@@ -1053,7 +1117,7 @@
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
 				19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */,
 				19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */,
-				19367BB71BBEEC900009D628 /* LFLostAndFoundViewController.m in Sources */,
+				19367BB71BBEEC900009D628 /* LFLostAndFoundMapViewController.m in Sources */,
 				1935ECA21BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
 				1935ECC51BC70C200047C1A6 /* QRCameraSwitchButton.m in Sources */,
@@ -1062,6 +1126,7 @@
 				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
 				1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */,
 				1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */,
+				19F73D981BC914EC0096A517 /* NewItemViewController2.m in Sources */,
 				19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */,
 				19F73D6F1BC7FF970096A517 /* LFChatRoom.m in Sources */,
 				1935ECC61BC70C200047C1A6 /* QRCodeReaderView.m in Sources */,
@@ -1073,6 +1138,7 @@
 				19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */,
 				1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
+				19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */,
 				191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

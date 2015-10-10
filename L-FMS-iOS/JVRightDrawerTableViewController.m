@@ -99,7 +99,9 @@
 #pragma mark - Actions
 
 - (void)addBtnClicked {
-    UIViewController *vc = [AppDelegate getViewControllerById:@"NewItemTableViewControllerSBID"] ;
+    NSString *SBID = @"NewItemViewController2SBID" ;
+    //@"NewItemTableViewControllerSBID"
+    UIViewController *vc = [AppDelegate getViewControllerById:SBID] ;
     vc.hidesBottomBarWhenPushed = YES ;
     [self toVC:vc] ;
 }

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LFLostAndFoundViewController : UIViewController
+@interface LFLostAndFoundMapViewController : UIViewController
 
 @end

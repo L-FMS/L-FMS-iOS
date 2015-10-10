@@ -13,9 +13,14 @@
 #import "LFBaiduMapKit.h"
 #import "LFUserAnnotation.h"
 
+#import "LFChooseLocationNotificationCenter.h"
+
 #define kChooseLocationMapVC2ChooseLocationTableVCSegueId @"ChooseLocationMapVC2ChooseLocationTableVCSegueId"
 
-@interface LFChooseLocationMapViewController ()<UISearchBarDelegate,BMKSuggestionSearchDelegate,BMKLocationServiceDelegate,BMKMapViewDelegate> {
+
+static CLLocation *locatedUserLocation = nil ;
+
+@interface LFChooseLocationMapViewController ()<UISearchBarDelegate,BMKSuggestionSearchDelegate,BMKLocationServiceDelegate,BMKMapViewDelegate,LFChooseLocationTableViewControllerDelegate> {
     BOOL _isChoosed ;
     CLLocationCoordinate2D _chosedCorrdinate ;
 }
@@ -35,20 +40,23 @@
     
     self.searchBar.delegate = self ;
     
-    //设置定位精确度，默认：kCLLocationAccuracyBest
-    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBest] ;
-    //指定最小距离更新(米)，默认：kCLDistanceFilterNone
-    [BMKLocationService setLocationDistanceFilter:100.f] ;
-    //初始化BMKLocationService
-    self.service = [[BMKLocationService alloc] init] ;
-    self.service.delegate = self ;
-    //启动LocationService
-    [self.service startUserLocationService] ;
-    
     self.mapView.zoomLevel = 18 ;
-    
     self.mapView.minZoomLevel = 18 ;
     self.mapView.maxZoomLevel = 20 ;
+    
+    if ( !locatedUserLocation ) {
+        //设置定位精确度，默认：kCLLocationAccuracyBest
+        [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBest] ;
+        //指定最小距离更新(米)，默认：kCLDistanceFilterNone
+        [BMKLocationService setLocationDistanceFilter:100.f] ;
+        //初始化BMKLocationService
+        self.service = [[BMKLocationService alloc] init] ;
+        self.service.delegate = self ;
+        //启动LocationService
+        [self.service startUserLocationService] ;
+    } else {
+        [self.mapView setCenterCoordinate:locatedUserLocation.coordinate] ;
+    }
     
     _isChoosed = NO ;
     [self.ensureBtn setEnabled:NO] ;
@@ -133,6 +141,7 @@
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
     QYDebugLog(@"定位成功") ;
+    locatedUserLocation = userLocation.location ;
     LFUserAnnotation *annotation = [[LFUserAnnotation alloc] initWithCLCorrdinate:userLocation.location.coordinate] ;
     [self.mapView removeAnnotations:self.mapView.annotations] ;
     [self.mapView addAnnotation:annotation] ;
@@ -151,7 +160,7 @@
     QYDebugLog(@"定位失败Error:[%@]",error) ;
 }
 
-#pragma mark - 地图Delegate
+#pragma mark - BMKMapViewDelegate
 
 /**
  *点中底图空白处会回调此接口
@@ -167,19 +176,35 @@
     QYDebugLog(@"点击了地图:[%f,%f]",coordinate.latitude,coordinate.longitude) ;
 }
 
-#pragma mark - 
+#pragma mark -
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ( [segue.identifier isEqualToString:kChooseLocationMapVC2ChooseLocationTableVCSegueId]) {
         LFChooseLocationTableViewController *vc = segue.destinationViewController ;
+        vc.delegate = self ;
         vc.searchResult = sender ;
     }
+}
+
+#pragma mark - 
+
+- (void)viewController:(LFChooseLocationTableViewController *)vc didChooseLocation:(CLLocation *)location {
+    [vc.navigationController popViewControllerAnimated:YES] ;
+    LFUserAnnotation *annotation = [[LFUserAnnotation alloc] initWithCLCorrdinate:location.coordinate] ;
+    [self.mapView removeAnnotations:self.mapView.annotations] ;
+    [self.mapView addAnnotation:annotation] ;
+    [self.mapView setCenterCoordinate:location.coordinate] ;
+    [self setSelectedWithCoordinate:location.coordinate] ;
 }
 
 #pragma mark - IBActions 
 
 - (IBAction)ensureBtnClicked:(id)sender {
     QYDebugLog(@"确定了") ;
+    if ( [self.delegate respondsToSelector:@selector(viewController:didClickedLocation:)]) {
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:_chosedCorrdinate.latitude longitude:_chosedCorrdinate.longitude] ;
+        [self.delegate viewController:self didClickedLocation:location] ;
+    }
     [self.navigationController popViewControllerAnimated:YES] ;
 }
 

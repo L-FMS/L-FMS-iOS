@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class CLLocation ;
+@protocol LFChooseLocationMapViewControllerDelegate ;
+
 @interface LFChooseLocationMapViewController : UIViewController
+
+@property (weak) id<LFChooseLocationMapViewControllerDelegate> delegate ;
+
+@end
+
+@protocol LFChooseLocationMapViewControllerDelegate <NSObject>
+
+- (void)viewController:(LFChooseLocationMapViewController *)vc didClickedLocation:(CLLocation *)location ;
 
 @end

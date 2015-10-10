@@ -13,6 +13,9 @@
 
 #import "LFCommon.h"
 
+#import "LFChooseLocationNotificationCenter.h"
+#import <CoreLocation/CoreLocation.h>
+
 @interface LFChooseLocationTableViewController ()
 
 @end
@@ -27,7 +30,21 @@
     [super didReceiveMemoryWarning] ;
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSValue *value = self.searchResult.ptList[indexPath.row] ;
+    CLLocationCoordinate2D coor;
+    [value getValue:&coor] ;
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:coor.latitude longitude:coor.longitude] ;
+    if ( [self.delegate respondsToSelector:@selector(viewController:didChooseLocation:)]) {
+        [self.delegate viewController:self didChooseLocation:location] ;
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+}
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1 ;

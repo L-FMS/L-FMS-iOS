@@ -42,6 +42,10 @@
     self.notify = [LFNotify shareInstance] ;
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    QYDebugLog(@"...") ;
+}
+
 #pragma mark - session
 
 - (void)openSessionWithClientID:(NSString *)clientID

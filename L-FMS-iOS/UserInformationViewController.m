@@ -36,6 +36,7 @@
     
     [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -107,6 +108,7 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    QYDebugLog("选中了图片") ;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         UIImage *imageToSave = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         

@@ -38,4 +38,7 @@
  */
 - (void)findConvsWithBlock:(AVIMArrayResultBlock)block ;
 
+#warning AVOSCloud的SDK的bug。user save的时候会调用这个。。不是dynamic也会调用。之后提issue。
+- (void)encodeWithCoder:(NSCoder *)aCoder ;
+
 @end

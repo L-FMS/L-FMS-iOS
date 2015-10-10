@@ -25,4 +25,8 @@
     return NSStringFromClass(self) ;
 }
 
+- (BOOL)isLost {
+    return [self.type isEqualToString:@"lost"] ;
+}
+
 @end

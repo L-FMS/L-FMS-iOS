@@ -24,4 +24,6 @@
 @property (nonatomic,copy) AVFile *image ;
 @property (nonatomic) LFUser *user ;
 
+- (BOOL)isLost ;
+
 @end

@@ -22,6 +22,7 @@
 		191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03AC1BB6E02E00C8B3F8 /* UIImage+ZRResize.m */; };
 		191B03B41BB6E3B500C8B3F8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 191B03B11BB6E3B500C8B3F8 /* SVProgressHUD.bundle */; };
 		191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */; };
+		191C5C531BC9BF170062442F /* LFToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C521BC9BF170062442F /* LFToolBarView.m */; };
 		19335B051BC3B25100E48ED4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B041BC3B25100E48ED4 /* Item.m */; };
 		19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B091BC3B3B600E48ED4 /* LFAVSubclassRegister.m */; };
 		19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B0C1BC3B49900E48ED4 /* LFUser.m */; };
@@ -125,6 +126,8 @@
 		191B03B21BB6E3B500C8B3F8 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		191B03BC1BB6ECB200C8B3F8 /* LFViewControllerSBIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFViewControllerSBIDs.h; sourceTree = "<group>"; };
+		191C5C511BC9BF170062442F /* LFToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFToolBarView.h; sourceTree = "<group>"; };
+		191C5C521BC9BF170062442F /* LFToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFToolBarView.m; sourceTree = "<group>"; };
 		19335B031BC3B25100E48ED4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		19335B041BC3B25100E48ED4 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		19335B061BC3B33300E48ED4 /* LFAVOSCloudModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFAVOSCloudModels.h; sourceTree = "<group>"; };
@@ -436,6 +439,22 @@
 				191B03BC1BB6ECB200C8B3F8 /* LFViewControllerSBIDs.h */,
 			);
 			name = Marco;
+			sourceTree = "<group>";
+		};
+		191C5C4F1BC9BEFA0062442F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		191C5C501BC9BF000062442F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C511BC9BF170062442F /* LFToolBarView.h */,
+				191C5C521BC9BF170062442F /* LFToolBarView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		19335B071BC3B39500E48ED4 /* Header */ = {
@@ -799,6 +818,8 @@
 		19DF15951BC66CB1007924A0 /* 物品详情 */ = {
 			isa = PBXGroup;
 			children = (
+				191C5C501BC9BF000062442F /* View */,
+				191C5C4F1BC9BEFA0062442F /* Cell */,
 				19DF15961BC66CC4007924A0 /* LFItemDetailViewController.h */,
 				19DF15971BC66CC4007924A0 /* LFItemDetailViewController.m */,
 			);
@@ -1103,6 +1124,7 @@
 				19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */,
 				1935ECAC1BC6AFCF0047C1A6 /* LFCommentNoticeTableViewController.m in Sources */,
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
+				191C5C531BC9BF170062442F /* LFToolBarView.m in Sources */,
 				19F73D901BC83D3C0096A517 /* LFChooseLocationTableViewController.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
 				19F73D891BC83C9A0096A517 /* ForBaiduMapKit.mm in Sources */,

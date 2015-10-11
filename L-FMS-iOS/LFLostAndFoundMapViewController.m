@@ -7,6 +7,7 @@
 //
 
 #import "LFLostAndFoundMapViewController.h"
+#import "LFItemDetailViewController.h"
 
 #import "LFLostAFoundTableViewCell.h"
 
@@ -169,6 +170,11 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //到详情界面
+    Item *item = self.items[indexPath.row] ;
+    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
+    vc.item = item ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self.navigationController pushViewController:vc animated:NO] ;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
 }

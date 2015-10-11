@@ -23,6 +23,13 @@
 		191B03B41BB6E3B500C8B3F8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 191B03B11BB6E3B500C8B3F8 /* SVProgressHUD.bundle */; };
 		191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 191B03B31BB6E3B500C8B3F8 /* SVProgressHUD.m */; };
 		191C5C531BC9BF170062442F /* LFToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C521BC9BF170062442F /* LFToolBarView.m */; };
+		191C5C571BC9E5EF0062442F /* LFCheckItemAtMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C561BC9E5EF0062442F /* LFCheckItemAtMapViewController.m */; };
+		191C5C5A1BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C591BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.m */; };
+		191C5C5D1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C5C1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.m */; };
+		191C5C631BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C621BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m */; };
+		191C5C661BC9E8A60062442F /* LFitemDetailCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C651BC9E8A60062442F /* LFitemDetailCommentTableViewCell.m */; };
+		191C5C6A1BC9E9140062442F /* LFItemDetailInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C691BC9E9140062442F /* LFItemDetailInformationTableViewCell.m */; };
+		191C5C6E1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 191C5C6D1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m */; };
 		19335B051BC3B25100E48ED4 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B041BC3B25100E48ED4 /* Item.m */; };
 		19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B091BC3B3B600E48ED4 /* LFAVSubclassRegister.m */; };
 		19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 19335B0C1BC3B49900E48ED4 /* LFUser.m */; };
@@ -128,6 +135,20 @@
 		191B03BC1BB6ECB200C8B3F8 /* LFViewControllerSBIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFViewControllerSBIDs.h; sourceTree = "<group>"; };
 		191C5C511BC9BF170062442F /* LFToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFToolBarView.h; sourceTree = "<group>"; };
 		191C5C521BC9BF170062442F /* LFToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFToolBarView.m; sourceTree = "<group>"; };
+		191C5C551BC9E5EF0062442F /* LFCheckItemAtMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCheckItemAtMapViewController.h; sourceTree = "<group>"; };
+		191C5C561BC9E5EF0062442F /* LFCheckItemAtMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCheckItemAtMapViewController.m; sourceTree = "<group>"; };
+		191C5C581BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailUserInfoTableViewCell.h; sourceTree = "<group>"; };
+		191C5C591BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailUserInfoTableViewCell.m; sourceTree = "<group>"; };
+		191C5C5B1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailSeparateTableViewCell.h; sourceTree = "<group>"; };
+		191C5C5C1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailSeparateTableViewCell.m; sourceTree = "<group>"; };
+		191C5C611BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailCommentNavTableViewCell.h; sourceTree = "<group>"; };
+		191C5C621BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailCommentNavTableViewCell.m; sourceTree = "<group>"; };
+		191C5C641BC9E8A60062442F /* LFitemDetailCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFitemDetailCommentTableViewCell.h; sourceTree = "<group>"; };
+		191C5C651BC9E8A60062442F /* LFitemDetailCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFitemDetailCommentTableViewCell.m; sourceTree = "<group>"; };
+		191C5C681BC9E9140062442F /* LFItemDetailInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailInformationTableViewCell.h; sourceTree = "<group>"; };
+		191C5C691BC9E9140062442F /* LFItemDetailInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailInformationTableViewCell.m; sourceTree = "<group>"; };
+		191C5C6C1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailTagsTableViewCell.h; sourceTree = "<group>"; };
+		191C5C6D1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemDetailTagsTableViewCell.m; sourceTree = "<group>"; };
 		19335B031BC3B25100E48ED4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		19335B041BC3B25100E48ED4 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		19335B061BC3B33300E48ED4 /* LFAVOSCloudModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LFAVOSCloudModels.h; sourceTree = "<group>"; };
@@ -444,6 +465,11 @@
 		191C5C4F1BC9BEFA0062442F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				191C5C6B1BC9EA590062442F /* Tag */,
+				191C5C671BC9E8FF0062442F /* Item */,
+				191C5C601BC9E8480062442F /* 评论 */,
+				191C5C5F1BC9E8390062442F /* 用户 */,
+				191C5C5E1BC9E8210062442F /* 分割 */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -455,6 +481,62 @@
 				191C5C521BC9BF170062442F /* LFToolBarView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		191C5C541BC9E5D10062442F /* 在地图上查看 */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C551BC9E5EF0062442F /* LFCheckItemAtMapViewController.h */,
+				191C5C561BC9E5EF0062442F /* LFCheckItemAtMapViewController.m */,
+			);
+			name = "在地图上查看";
+			sourceTree = "<group>";
+		};
+		191C5C5E1BC9E8210062442F /* 分割 */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C5B1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.h */,
+				191C5C5C1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.m */,
+			);
+			name = "分割";
+			sourceTree = "<group>";
+		};
+		191C5C5F1BC9E8390062442F /* 用户 */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C581BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.h */,
+				191C5C591BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.m */,
+			);
+			name = "用户";
+			sourceTree = "<group>";
+		};
+		191C5C601BC9E8480062442F /* 评论 */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C611BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.h */,
+				191C5C621BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m */,
+				191C5C641BC9E8A60062442F /* LFitemDetailCommentTableViewCell.h */,
+				191C5C651BC9E8A60062442F /* LFitemDetailCommentTableViewCell.m */,
+			);
+			name = "评论";
+			sourceTree = "<group>";
+		};
+		191C5C671BC9E8FF0062442F /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C681BC9E9140062442F /* LFItemDetailInformationTableViewCell.h */,
+				191C5C691BC9E9140062442F /* LFItemDetailInformationTableViewCell.m */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		191C5C6B1BC9EA590062442F /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				191C5C6C1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.h */,
+				191C5C6D1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m */,
+			);
+			name = Tag;
 			sourceTree = "<group>";
 		};
 		19335B071BC3B39500E48ED4 /* Header */ = {
@@ -818,6 +900,7 @@
 		19DF15951BC66CB1007924A0 /* 物品详情 */ = {
 			isa = PBXGroup;
 			children = (
+				191C5C541BC9E5D10062442F /* 在地图上查看 */,
 				191C5C501BC9BF000062442F /* View */,
 				191C5C4F1BC9BEFA0062442F /* Cell */,
 				19DF15961BC66CC4007924A0 /* LFItemDetailViewController.h */,
@@ -1104,6 +1187,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191C5C571BC9E5EF0062442F /* LFCheckItemAtMapViewController.m in Sources */,
+				191C5C631BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m in Sources */,
 				19335B051BC3B25100E48ED4 /* Item.m in Sources */,
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
@@ -1112,9 +1197,11 @@
 				19F73D751BC827690096A517 /* LFLocationTableViewCell.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
 				19335B371BC50FFD00E48ED4 /* LFChatRoomViewController.m in Sources */,
+				191C5C661BC9E8A60062442F /* LFitemDetailCommentTableViewCell.m in Sources */,
 				1935EC9F1BC68B8F0047C1A6 /* LFTextFieldTableViewCell.m in Sources */,
 				1935ECC71BC70C200047C1A6 /* QRCodeReaderViewController.m in Sources */,
 				19F73D8C1BC83D1E0096A517 /* LFChooseLocationMapViewController.m in Sources */,
+				191C5C5A1BC9E78B0062442F /* LFItemDetailUserInfoTableViewCell.m in Sources */,
 				191B03A91BB6DEAA00C8B3F8 /* LFUtils.m in Sources */,
 				19F73D9C1BC92CFD0096A517 /* LFImageView.m in Sources */,
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
@@ -1143,6 +1230,7 @@
 				1935ECA21BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
 				1935ECC51BC70C200047C1A6 /* QRCameraSwitchButton.m in Sources */,
+				191C5C5D1BC9E7FC0062442F /* LFItemDetailSeparateTableViewCell.m in Sources */,
 				19F73D941BC859A70096A517 /* LFUserAnnotation.m in Sources */,
 				191B03B51BB6E3B500C8B3F8 /* SVProgressHUD.m in Sources */,
 				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
@@ -1161,7 +1249,9 @@
 				1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
 				19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */,
+				191C5C6A1BC9E9140062442F /* LFItemDetailInformationTableViewCell.m in Sources */,
 				191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */,
+				191C5C6E1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

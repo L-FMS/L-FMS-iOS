@@ -36,4 +36,21 @@
     return location ;
 }
 
++ (void)setChatRoomBackgroundSwitch:(BOOL)show {
+    NSNumber *s = [NSNumber numberWithBool:show] ;
+    [[NSUserDefaults standardUserDefaults] setObject:s
+                                              forKey:@"showChatRoomBackgroundImage"] ;
+    [[NSUserDefaults standardUserDefaults] synchronize] ;
+}
+
++ (BOOL)getChatRoomBackgroundSwitch {
+    NSNumber *s = [[NSUserDefaults standardUserDefaults] objectForKey:@"showChatRoomBackgroundImage"] ;
+    if ( !s ) {
+        s = [NSNumber numberWithBool:NO] ;
+        [self setChatRoomBackgroundSwitch:NO] ;
+    }
+    
+    return [s boolValue] ;
+}
+
 @end

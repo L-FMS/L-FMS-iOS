@@ -17,4 +17,8 @@
 
 + (CLLocation *)getUserLocationForUser:(LFUser *)user ;
 
++ (void)setChatRoomBackgroundSwitch:(BOOL)show ;
+
++ (BOOL)getChatRoomBackgroundSwitch ;
+
 @end

@@ -61,6 +61,7 @@
     
     user.username = username ;
     user.password = password ;
+    user.name = @"未设置昵称" ;
     user.email = username ;
     [SVProgressHUD show] ;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

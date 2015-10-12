@@ -8,6 +8,7 @@
 
 #import "LFChatRoomViewController.h"
 #import <AVOSCloudIM/AVOSCloudIM.h>
+#import "LFCommon.h"
 
 @interface LFChatRoomViewController ()
 
@@ -41,14 +42,21 @@
 
 #pragma mark - Life Cycle
 
+- (void)setUpChatRoomBackgroundImage {
+    if ( [LFUserDefaultService getChatRoomBackgroundSwitch] ) {
+        UIImage *backgroundImage = [UIImage imageNamed:@"testChatRoomBackgroundImg"] ;
+        UIImageView *backgroundView =[[UIImageView alloc] initWithImage:backgroundImage] ;
+        backgroundView.contentMode = UIViewContentModeScaleAspectFill ;
+        
+        [self.messageTableView setBackgroundView:backgroundView] ;
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
-    UIImage *backgroundImage = [UIImage imageNamed:@"testChatRoomBackgroundImg"] ;
-    UIImageView *backgroundView =[[UIImageView alloc] initWithImage:backgroundImage] ;
-    backgroundView.contentMode = UIViewContentModeScaleAspectFill ;
-    
-    [self.messageTableView setBackgroundView:backgroundView] ;
+    [self setUpChatRoomBackgroundImage] ;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

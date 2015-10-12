@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UIButton *lotoutButton;
 
 @property (nonatomic) NSArray *titles ;
 
@@ -30,13 +31,15 @@
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewClicked:)] ;
     [self.avatarImageView addGestureRecognizer:tapGes] ;
     self.avatarImageView.userInteractionEnabled = YES ;
-    
-    self.titles = @[@"邮箱",@"昵称",@"性别"] ;
+
     self.title = @"账号信息" ;
+    
+    self.titles = @[@"昵称",@"地址",@"邮箱",@"学院",@"手机号",@"性别",@"生日"] ;
     
     [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
-    
+    [self.lotoutButton.layer setMasksToBounds:YES] ;
+    [self.lotoutButton.layer setCornerRadius:5.0f] ;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -68,7 +71,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50 ;
+    return 60 ;
 }
 
 #pragma mark - UITableViewDelegate

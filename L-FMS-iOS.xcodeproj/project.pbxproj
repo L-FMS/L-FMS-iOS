@@ -96,6 +96,8 @@
 		19FEDC9B1BCBE10700C41186 /* LFVersionDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC9A1BCBE10700C41186 /* LFVersionDescriptionViewController.m */; };
 		19FEDCA11BCBE29100C41186 /* LFAboutUsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA01BCBE29100C41186 /* LFAboutUsTableViewController.m */; };
 		19FEDCA51BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */; };
+		19FEDCA91BCBFB5D00C41186 /* LFSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */; };
+		19FEDCAD1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -286,6 +288,10 @@
 		19FEDCA01BCBE29100C41186 /* LFAboutUsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAboutUsTableViewController.m; sourceTree = "<group>"; };
 		19FEDCA31BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAboutUsAuthorInfoTableViewCell.h; sourceTree = "<group>"; };
 		19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAboutUsAuthorInfoTableViewCell.m; sourceTree = "<group>"; };
+		19FEDCA71BCBFB5D00C41186 /* LFSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSettingTableViewController.h; sourceTree = "<group>"; };
+		19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingTableViewController.m; sourceTree = "<group>"; };
+		19FEDCAB1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSettingSwitchTableViewCell.h; sourceTree = "<group>"; };
+		19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingSwitchTableViewCell.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -914,6 +920,7 @@
 		19C92FAF1BC13DD500316F0F /* 个人信息 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDCA61BCBFA4B00C41186 /* 输入信息 */,
 				1951027E1BC25D9700AB12A4 /* Cell */,
 				19C92FB01BC13DF500316F0F /* UserInformationViewController.h */,
 				19C92FB11BC13DF500316F0F /* UserInformationViewController.m */,
@@ -1152,6 +1159,9 @@
 		19FEDC981BCBDE7200C41186 /* 设置 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDCAA1BCBFC4D00C41186 /* Cell */,
+				19FEDCA71BCBFB5D00C41186 /* LFSettingTableViewController.h */,
+				19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */,
 			);
 			name = "设置";
 			sourceTree = "<group>";
@@ -1161,6 +1171,22 @@
 			children = (
 				19FEDCA31BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.h */,
 				19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		19FEDCA61BCBFA4B00C41186 /* 输入信息 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "输入信息";
+			sourceTree = "<group>";
+		};
+		19FEDCAA1BCBFC4D00C41186 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCAB1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.h */,
+				19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1351,6 +1377,7 @@
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
 				19335B121BC3CAA400E48ED4 /* ZRUtils.m in Sources */,
+				19FEDCA91BCBFB5D00C41186 /* LFSettingTableViewController.m in Sources */,
 				19335B1B1BC3ECCE00E48ED4 /* LFCacheService.m in Sources */,
 				19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */,
 				1935ECAC1BC6AFCF0047C1A6 /* LFCommentNoticeTableViewController.m in Sources */,
@@ -1365,6 +1392,7 @@
 				1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */,
 				19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */,
 				19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */,
+				19FEDCAD1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m in Sources */,
 				19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */,
 				19F73D631BC79C020096A517 /* LFNotify.m in Sources */,
 				19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */,

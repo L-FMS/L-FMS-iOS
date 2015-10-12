@@ -131,6 +131,8 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
             
         case 1 : {
             //设置
+            UIViewController *vc = [AppDelegate getViewControllerById:@"LFSettingTableViewControllerSBID"] ;
+            [self toVC:vc] ;
             break ;
         }
             

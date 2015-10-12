@@ -144,7 +144,7 @@
 #pragma mark - Observer 
 
 - (void)loadMessage {
-    
+    [self loadMessagesWithLoadMore:NO] ;
 }
 
 #pragma mark - actions
@@ -355,6 +355,8 @@
 - (BOOL)shouldPreventScrollToBottomWhileUserScrolling {
     return YES ;
 }
+
+#pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -590,16 +592,24 @@
     
     //设置头像
     {
-        message.sender = fromUser.name ;
+        message.sender = fromUser.objectId ;
+        //fromUser.name ;
         message.avatarUrl = fromUser.avatar.url ;
-        message.avatar = message.avatarUrl ? [UIImage imageNamed:@"testAvatar1"] : nil ;
+        message.avatar = message.avatarUrl ? nil : [UIImage imageNamed:@"testAvatar1"] ;
     }
     
     //设置message的bubbleMessageType
-    if (avMessage.ioType == AVIMMessageIOTypeIn )
-        message.bubbleMessageType = XHBubbleMessageTypeReceiving ;
-    else
+#warning 因为不知道是AVOSCloud序列化的Bug还是FMBD序列化的BUG。这里修正判断方式为临时的。。
+    NSString *fromUserId = avMessage.clientId ;
+    if ( [fromUserId isEqualToString:[LFUser currentUser].objectId] )
         message.bubbleMessageType = XHBubbleMessageTypeSending ;
+    else
+        message.bubbleMessageType = XHBubbleMessageTypeReceiving ;
+    
+//    if (avMessage.ioType == AVIMMessageIOTypeIn )
+//        message.bubbleMessageType = XHBubbleMessageTypeReceiving ;
+//    else
+//        message.bubbleMessageType = XHBubbleMessageTypeSending ;
     
     
     if (avMessage.status == AVIMMessageStatusSent) {

@@ -82,7 +82,22 @@
         
         LFMailBoxTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFMailBoxTableViewCellReuseId" forIndexPath:indexPath] ;
         cell.nameLabel.text = [room.conv title] ;
-        cell.lastMessageLabel.text = room.lastMsg.text ;
+        
+        if ( [room.lastMsg isKindOfClass:[AVIMTextMessage class]]) {
+            cell.lastMessageLabel.text = room.lastMsg.text ;
+        }
+        
+        if ( [room.lastMsg isKindOfClass:[AVIMAudioMessage class]] ) {
+            cell.lastMessageLabel.text = @"[语音]" ;
+        }
+        
+        if ( [room.lastMsg isKindOfClass:[AVIMImageMessage class]] ) {
+            cell.lastMessageLabel.text = @"[图片]" ;
+        }
+        
+        if ( [room.lastMsg isKindOfClass:[AVIMLocationMessage class]] ) {
+            cell.lastMessageLabel.text = @"[坐标]" ;
+        }
         
         {
             NSDate *timestamp = [LFUtils timestamp2date:room.lastMsg.sendTimestamp] ;

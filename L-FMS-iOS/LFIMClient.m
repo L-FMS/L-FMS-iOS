@@ -17,7 +17,7 @@
 
 @property (nonatomic,strong) AVIMClient *aAVIMClient ;
 
-@property (nonatomic,copy) NSString *clientId ;
+@property (nonatomic,copy) NSString *clientId ;//userId
 
 @property (weak) LFStorage *storage ;
 
@@ -166,9 +166,9 @@
  */
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
     QYDebugLog(@"接收到新的富媒体消息。") ;
-    if(message.messageId){
-        [self didReceiveMessage:message fromConversation:conversation];
-    }else{
+    if( message.messageId ) {
+        [self didReceiveMessage:message fromConversation:conversation] ;
+    } else {
         QYDebugLog(@"Received message , but messageId is nil") ;
     }
 }
@@ -340,13 +340,13 @@
         result=objects;
         blockError=error;
         dispatch_semaphore_signal(sema);
-    }];
-    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    }] ;
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER) ;
     
-    *theError=blockError;
-    if(blockError==nil){
+    *theError=blockError ;
+    if( blockError == nil ){
     }
-    return result;
+    return result ;
 }
 
 - (NSString *)uuid {

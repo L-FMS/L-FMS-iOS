@@ -18,6 +18,7 @@
 
 - (void)awakeFromNib {
     
+    self.lastMessageLabel.text = @"" ;
     [self.avatarImageView.layer setMasksToBounds:YES] ;
     [self.avatarImageView.layer setCornerRadius:[self.avatarImageView bounds].size.height/2] ;
 }

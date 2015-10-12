@@ -21,13 +21,14 @@
 #import "LFBaiduMapKit.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import "QRCodeReaderViewController.h"
 
 typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     segnmentIndexForTable = 0 ,
     segnmentIndexForMap   = 1 ,
 } ;
 
-@interface LFLostAndFoundMapViewController ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,LFItemInfoPaopaoCustomViewDelegate>
+@interface LFLostAndFoundMapViewController ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,LFItemInfoPaopaoCustomViewDelegate,QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -303,6 +304,17 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 
 - (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item {
     [self toItemDetailViewControllerWithItem:item] ;
+}
+
+
+#pragma mark - QRCodeReaderDelegate
+
+- (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
+    [self.navigationController popViewControllerAnimated:YES] ;
+}
+
+- (void)readerDidCancel:(QRCodeReaderViewController *)reader {
+    [self.navigationController popViewControllerAnimated:YES] ;
 }
 
 @end

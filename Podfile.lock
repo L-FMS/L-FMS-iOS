@@ -29,6 +29,8 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - JVFloatingDrawer (0.1.0)
+  - LeanCloudFeedback (0.0.7):
+    - AVOSCloud (~> 3.1)
   - libqrencode (3.4.2)
   - Masonry (0.6.3)
   - MessageDisplayKit (5.3)
@@ -42,6 +44,7 @@ DEPENDENCIES:
   - AVOSCloudIM (~> 3.1.4)
   - FMDB (~> 2.5)
   - JVFloatingDrawer (~> 0.1.0)
+  - LeanCloudFeedback (~> 0.0.7)
   - libqrencode (~> 3.4.2)
   - Masonry (~> 0.6.3)
   - MessageDisplayKit (~> 5.3)
@@ -53,6 +56,7 @@ SPEC CHECKSUMS:
   AVOSCloudIM: e2934a3128b018eeb5c9d923822ab287315b0b7f
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   JVFloatingDrawer: 4782b1df21411aef2c1818f3b346cace02cc2e24
+  LeanCloudFeedback: 35d2effa89e03e9a3ce2158874a6f127751f7257
   libqrencode: 43dc34b89af83ea4b07c409cd8e09c87aa3a1c9f
   Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   MessageDisplayKit: 9f899bbb9dbf45c008d29de5003f997260a4a109

@@ -181,7 +181,7 @@
     }
 
     self.cancelButton                                       = [[UIButton alloc] init];
-    self.cancelButton.hidden                                = YES;
+    self.cancelButton.hidden                                = NO;
     _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
     [_cancelButton setTitle:cancelButtonTitle forState:UIControlStateNormal];
     [_cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];

@@ -93,6 +93,9 @@
 		19FEDC891BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC881BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m */; };
 		19FEDC8D1BCAF39200C41186 /* NewItemStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC8C1BCAF39200C41186 /* NewItemStep2ViewController.m */; };
 		19FEDC951BCB11D500C41186 /* LFTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC941BCB11D500C41186 /* LFTapGestureRecognizer.m */; };
+		19FEDC9B1BCBE10700C41186 /* LFVersionDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC9A1BCBE10700C41186 /* LFVersionDescriptionViewController.m */; };
+		19FEDCA11BCBE29100C41186 /* LFAboutUsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA01BCBE29100C41186 /* LFAboutUsTableViewController.m */; };
+		19FEDCA51BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -277,6 +280,12 @@
 		19FEDC8C1BCAF39200C41186 /* NewItemStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemStep2ViewController.m; sourceTree = "<group>"; };
 		19FEDC931BCB11D500C41186 /* LFTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFTapGestureRecognizer.h; sourceTree = "<group>"; };
 		19FEDC941BCB11D500C41186 /* LFTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFTapGestureRecognizer.m; sourceTree = "<group>"; };
+		19FEDC991BCBE10700C41186 /* LFVersionDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFVersionDescriptionViewController.h; sourceTree = "<group>"; };
+		19FEDC9A1BCBE10700C41186 /* LFVersionDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFVersionDescriptionViewController.m; sourceTree = "<group>"; };
+		19FEDC9F1BCBE29100C41186 /* LFAboutUsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAboutUsTableViewController.h; sourceTree = "<group>"; };
+		19FEDCA01BCBE29100C41186 /* LFAboutUsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAboutUsTableViewController.m; sourceTree = "<group>"; };
+		19FEDCA31BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFAboutUsAuthorInfoTableViewCell.h; sourceTree = "<group>"; };
+		19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFAboutUsAuthorInfoTableViewCell.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -771,6 +780,9 @@
 		19367BAC1BBEDB3F0009D628 /* 左侧栏 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDC981BCBDE7200C41186 /* 设置 */,
+				19FEDC971BCBDE6700C41186 /* 关于我们 */,
+				19FEDC961BCBDE5E00C41186 /* 版本说明 */,
 				19C92FAF1BC13DD500316F0F /* 个人信息 */,
 				1977C0EE1BBEF6CC00F15DC7 /* Cell */,
 				19367BAE1BBEDB7B0009D628 /* JVLeftDrawerTableViewController.h */,
@@ -1118,6 +1130,41 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		19FEDC961BCBDE5E00C41186 /* 版本说明 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC991BCBE10700C41186 /* LFVersionDescriptionViewController.h */,
+				19FEDC9A1BCBE10700C41186 /* LFVersionDescriptionViewController.m */,
+			);
+			name = "版本说明";
+			sourceTree = "<group>";
+		};
+		19FEDC971BCBDE6700C41186 /* 关于我们 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCA21BCBE6ED00C41186 /* Cell */,
+				19FEDC9F1BCBE29100C41186 /* LFAboutUsTableViewController.h */,
+				19FEDCA01BCBE29100C41186 /* LFAboutUsTableViewController.m */,
+			);
+			name = "关于我们";
+			sourceTree = "<group>";
+		};
+		19FEDC981BCBDE7200C41186 /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "设置";
+			sourceTree = "<group>";
+		};
+		19FEDCA21BCBE6ED00C41186 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCA31BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.h */,
+				19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1330,7 @@
 			files = (
 				191C5C571BC9E5EF0062442F /* LFCheckItemAtMapViewController.m in Sources */,
 				191C5C631BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m in Sources */,
+				19FEDC9B1BCBE10700C41186 /* LFVersionDescriptionViewController.m in Sources */,
 				19335B051BC3B25100E48ED4 /* Item.m in Sources */,
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
@@ -1348,7 +1396,9 @@
 				19FEDC951BCB11D500C41186 /* LFTapGestureRecognizer.m in Sources */,
 				1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
+				19FEDCA11BCBE29100C41186 /* LFAboutUsTableViewController.m in Sources */,
 				19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */,
+				19FEDCA51BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m in Sources */,
 				191C5C6A1BC9E9140062442F /* LFItemDetailInformationTableViewCell.m in Sources */,
 				191B03AD1BB6E02E00C8B3F8 /* UIImage+ZRResize.m in Sources */,
 				191C5C6E1BC9EA6D0062442F /* LFItemDetailTagsTableViewCell.m in Sources */,

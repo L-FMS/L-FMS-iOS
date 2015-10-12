@@ -14,6 +14,7 @@
 
 #import <JVFloatingDrawer/JVFloatingDrawerView.h>
 #import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
+#import <LeanCloudFeedback/LeanCloudFeedback.h>
 
 #define kHEIGHT_RATIO ([UIScreen mainScreen].bounds.size.height)/568.0
 
@@ -129,15 +130,28 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
         }
             
         case 1 : {
-            //
+            //设置
             break ;
         }
             
         case 2 : {
+            //版本说明
+            id vc = [AppDelegate getViewControllerById:@"LFVersionDescriptionViewControllerSBID"] ;
+            [self toVC:vc] ;
             break ;
         }
             
         case 3 : {
+            //意见反馈
+            [self toFeedBack] ;
+            break ;
+        }
+            
+        case 4 : {
+            //关于我们
+            UIViewController *vc = [AppDelegate getViewControllerById:@"LFAboutUsTableViewControllerSBID"] ;
+            vc.hidesBottomBarWhenPushed = YES ;
+            [self toVC:vc] ;
             break ;
         }
             
@@ -162,6 +176,20 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     }
     
     [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES] ;
+}
+
+- (void)toFeedBack {
+    //等动画结束
+    [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES] ;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        LCUserFeedbackAgent *agent = [LCUserFeedbackAgent sharedInstance] ;
+        UITabBarController *mainTabbarVc = (id)[[AppDelegate globalAppdelegate] drawerViewController].centerViewController ;
+        UINavigationController *mainNavc = mainTabbarVc.viewControllers[0] ;
+        UIViewController *vc = mainNavc.topViewController ;
+
+        [agent showConversations:vc title:@"意见反馈" contact:[LFUser currentUser].username] ;
+    });
+    
 }
 
 @end

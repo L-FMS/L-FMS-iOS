@@ -15,6 +15,8 @@
 #import <JVFloatingDrawer/JVFloatingDrawerView.h>
 #import <JVFloatingDrawer/JVFloatingDrawerSpringAnimator.h>
 
+#import "QRCodeReaderViewController.h"
+
 #define kWIDTH_RATIO ([UIScreen mainScreen].bounds.size.width)/320.0
 #define kHEIGHT_RATIO ([UIScreen mainScreen].bounds.size.height)/568.0
 
@@ -115,7 +117,16 @@
 }
 
 - (void)scanQRBtnClicked {
+    UITabBarController *tbc = (id)[[[AppDelegate globalAppdelegate] drawerViewController] centerViewController] ;
+    UINavigationController *nav = tbc.viewControllers[0] ;
+    UIViewController<QRCodeReaderDelegate> *vc = (id)nav.topViewController ;
     
+    QRCodeReaderViewController *reader = [[QRCodeReaderViewController alloc] initWithCancelButtonTitle:@"取消"] ;
+    reader.hidesBottomBarWhenPushed = YES ;
+    reader.modalPresentationStyle = UIModalPresentationFormSheet ;
+    reader.delegate = vc ;
+    
+    [self toVC:reader] ;
 }
 
 #pragma mark - Helper

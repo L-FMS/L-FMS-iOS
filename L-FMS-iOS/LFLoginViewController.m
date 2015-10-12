@@ -31,6 +31,7 @@
         [view.layer setMasksToBounds:YES] ;
         [view.layer setCornerRadius:5.0f] ;
     }] ;
+    
 }
 
 - (void)didReceiveMemoryWarning {

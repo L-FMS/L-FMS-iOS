@@ -14,6 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *registeButton ;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
+@property (weak, nonatomic) IBOutlet UIView *usernameView;
+@property (weak, nonatomic) IBOutlet UIView *registeInfoContainerView;
 
 @end
 
@@ -21,6 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
+    
+    NSArray *views = @[self.registeButton,self.passwordView,self.usernameView,self.registeInfoContainerView] ;
+    [views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view.layer setMasksToBounds:YES] ;
+        [view.layer setCornerRadius:5.0f] ;
+    }] ;
 }
 
 - (void)didReceiveMemoryWarning {

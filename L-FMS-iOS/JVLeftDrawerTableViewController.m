@@ -79,11 +79,12 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     [self.nameLabel sizeToFit] ;
     [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
-    self.operationTitles = @[@"个人信息",@"关于我们",@"设置",@"版本说明"] ;
+    self.operationTitles = @[@"个人信息",@"设置",@"版本说明",@"意见反馈",@"关于我们",] ;
     self.iconImangeNames = @[@"selfInfoIcon(LeftDrawer)",
-                             @"aboutUsIcon(LeftDrawer)",
-                             @"testIcon1",
-                             @"versionReadmeIcon(LeftDrawer)"] ;
+                             @"settingIcon(LeftDrawer)",
+                             @"versionReadmeIcon(LeftDrawer)",
+                             @"fankui(LeftDrawer)",
+                             @"aboutUsIcon(LeftDrawer)"] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,7 +98,7 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4 ;
+    return self.operationTitles.count ;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,12 +119,28 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ///@[@"个人信息",@"设置",@"版本说明",@"意见反馈",@"关于我们",] ;
     switch (indexPath.row) {
         case 0 : {
+            //个人信息
             id vc = [AppDelegate getViewControllerById:@"UserInformationViewControllerSBID"] ;
             [self toVC:vc] ;
             break ;
         }
+            
+        case 1 : {
+            //
+            break ;
+        }
+            
+        case 2 : {
+            break ;
+        }
+            
+        case 3 : {
+            break ;
+        }
+            
         default :
             [self toVC:nil] ;
             break;

@@ -14,19 +14,27 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIView *loginInfoContainerView;
+@property (weak, nonatomic) IBOutlet UIView *passwordView;
+@property (weak, nonatomic) IBOutlet UIView *usernameView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
 @implementation LFLoginViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [super viewDidLoad] ;
+    
+    NSArray *views = @[self.loginButton,self.passwordView,self.usernameView,self.loginInfoContainerView] ;
+    [views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view.layer setMasksToBounds:YES] ;
+        [view.layer setCornerRadius:5.0f] ;
+    }] ;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning] ;
 }
 
 #pragma mark - IBActions

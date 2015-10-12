@@ -24,6 +24,10 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
 @property (strong,nonatomic) UIImageView *avatarImageView ;
 @property (strong,nonatomic) UILabel *nameLabel ;
 
+@property (nonatomic,strong) NSArray *operationTitles ;
+@property (nonatomic,strong) NSArray *iconImangeNames ;
+
+
 @end
 
 @implementation JVLeftDrawerTableViewController
@@ -75,6 +79,11 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     [self.nameLabel sizeToFit] ;
     [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
+    self.operationTitles = @[@"个人信息",@"关于我们",@"设置",@"版本说明"] ;
+    self.iconImangeNames = @[@"selfInfoIcon(LeftDrawer)",
+                             @"aboutUsIcon(LeftDrawer)",
+                             @"testIcon1",
+                             @"versionReadmeIcon(LeftDrawer)"] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,30 +110,9 @@ static CGFloat kJVTableViewTopInset = 110.0 ;
     JVLeftDrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
     
     [cell setIconImage:[UIImage imageNamed:@"testIcon1"]] ;
-    switch (indexPath.row) {
-        case 0 : {
-            [cell setTitleText:@"个人信息"] ;
-            break ;
-        }
-        
-        case 1 : {
-            [cell setTitleText:@"关于我们"] ;
-            break ;
-        }
-            
-        case 2 : {
-            [cell setTitleText:@"设置"] ;
-            break ;
-        }
-            
-        case 3 : {
-            [cell setTitleText:@"版本说明"] ;
-            break ;
-        }
-            
-        default:
-            break;
-    }
+    
+    [cell setIconImage:[UIImage imageNamed:self.iconImangeNames[indexPath.row]]] ;
+    [cell setTitleText:self.operationTitles[indexPath.row]] ;
     
     return cell;
 }

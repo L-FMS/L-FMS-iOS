@@ -90,6 +90,9 @@
 
 - (void)deleteBtnClicked {
     [self set2PlaceHolderImage] ;
+    if ( [self.delegate respondsToSelector:@selector(imageViewDidDeleteImage:)] ) {
+        [self.delegate imageViewDidDeleteImage:self] ;
+    }
 }
 
 @end

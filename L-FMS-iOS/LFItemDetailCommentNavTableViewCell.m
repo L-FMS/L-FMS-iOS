@@ -10,8 +10,6 @@
 
 @interface LFItemDetailCommentNavTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIView *commentCountLabel ;
-
 @end
 
 @implementation LFItemDetailCommentNavTableViewCell

@@ -21,7 +21,7 @@
 @property (nonatomic) AVGeoPoint *location ;
 @property (nonatomic,copy) NSString *name ;
 @property (nonatomic,copy) NSString *type ;
-@property (nonatomic,copy) AVFile *image ;
+@property (nonatomic) AVFile *image ;
 @property (nonatomic) LFUser *user ;
 
 - (BOOL)isLost ;

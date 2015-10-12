@@ -21,6 +21,7 @@
 @interface JVRightDrawerTableViewController ()
 
 @property (nonatomic,strong) NSArray *operationTitles ;
+@property (nonatomic,strong) NSArray *iconImangeNames ;
 
 @end
 
@@ -35,6 +36,7 @@
     self.clearsSelectionOnViewWillAppear = NO ;
     
     self.operationTitles = @[@"添加",@"搜索",@"扫一扫"] ;
+    self.iconImangeNames = @[@"addIcon(RightDrawer)",@"searchIcon(RightDrawer)",@"qrScanIcon(RightDrawer)"] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +63,7 @@
     JVRightDrawerCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
     
     cell.titleText = self.operationTitles[indexPath.row] ;
-    cell.iconImage = [UIImage imageNamed:@"testIcon1"] ;
+    cell.iconImage = [UIImage imageNamed:self.iconImangeNames[indexPath.row]] ;    
     
     return cell;
 }

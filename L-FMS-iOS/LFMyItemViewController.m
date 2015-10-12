@@ -21,10 +21,14 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong) UIRefreshControl *refreshControl ;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (nonatomic,strong) NSMutableArray *dataSource ;
 
 - (BOOL)isRefreshing ;
+
+@property (strong) NSMutableArray *items ;
+@property (strong) NSMutableDictionary *itemsDic ;
 
 @end
 
@@ -43,6 +47,8 @@
 //    });
 //
     
+    self.items = [NSMutableArray array] ;
+    self.itemsDic = [NSMutableDictionary dictionary] ;
     [self.tableView addSubview:self.refreshControl] ;
 }
 
@@ -62,7 +68,7 @@
     LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
     vc.item = item ;
     vc.hidesBottomBarWhenPushed = YES ;
-    [self.navigationController pushViewController:vc animated:YES] ;
+    [self.navigationController pushViewController:vc animated:NO] ;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
 }
@@ -86,12 +92,13 @@
     Item *item = self.dataSource[indexPath.row] ;
     cell.ItemDescriptionLabel.text = item.name ;
     cell.timeLabel.text = [LFUtils date2LongTimeStr:item.createdAt] ;
-    
+    cell.descImageView.image = item.isLost ? [UIImage imageNamed:@"Lost"] :
+                                             [UIImage imageNamed:@"Found"] ;
     
     return cell ;
 }
 
-#pragma mark - getter && setter 
+#pragma mark - getter && setter
 
 - (LFActivityIndicatorLabel *)titleLabel {
     if ( !_titleLabel ) {
@@ -146,19 +153,53 @@
     
     AVQuery *query = [AVQuery queryWithClassName:NSStringFromClass([Item class])] ;
     [query whereKey:@"user" equalTo:[LFUser currentUser]] ;
+    [query includeKey:@"user"] ;
     LFWEAKSELF
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [weakSelf setRefreshing:NO] ;
         if ( objects ) {
-            NSMutableSet *set = [NSMutableSet setWithArray:self.dataSource] ;
-            [set addObjectsFromArray:objects] ;
-            self.dataSource = [NSMutableArray arrayWithArray:set.allObjects] ;
-            //排序
-            [weakSelf.tableView reloadData] ;
+            [weakSelf addItems:objects] ;
         } else {
             [LFUtils alertError:error] ;
         }
     }] ;
 }
+
+- (IBAction)changeSegument:(UISegmentedControl *)sender {
+    NSString *type = sender.selectedSegmentIndex == 0 ? @"found" : @"lost" ;
+    [self filterItemsByType:type] ;
+}
+
+#pragma mark - Helper 
+
+- (void)addItems:(NSArray *)items {
+    if ( !items ) return ;
+    
+    [items enumerateObjectsUsingBlock:^(Item *item, NSUInteger idx, BOOL *stop) {
+        if ( !self.itemsDic[item.objectId] ) {
+            [self.itemsDic setObject:item forKey:item.objectId] ;
+            [self.items addObject:item] ;
+        }
+    }] ;
+    
+    [self filterItemsByType:self.segmentedControl.selectedSegmentIndex==0?@"found":@"lost"] ;
+}
+
+- (void)filterItemsByType:(NSString *)type {
+    //塞选
+    NSMutableArray *dataSource = [NSMutableArray array] ;
+    [self.items enumerateObjectsUsingBlock:^(Item *item, NSUInteger idx, BOOL *stop) {
+        if ( [item.type isEqualToString:type] ) {
+            [dataSource addObject:item] ;
+        }
+    }] ;
+    self.dataSource = dataSource ;
+    
+    [self.tableView reloadData] ;
+}
+
+//- (void)sortItemsByCreateDateWithAscending:(BOOL)isAscending {
+//    
+//}
 
 @end

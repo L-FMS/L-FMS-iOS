@@ -9,6 +9,10 @@
 #import "LFLostAndFoundMapViewController.h"
 #import "LFItemDetailViewController.h"
 
+#import "LFItemInfoPaopaoCustomView.h"
+#import "LFBMKMapViewAnnotation.h"
+#import "LFItemAnnotationView.h"
+
 #import "LFLostAFoundTableViewCell.h"
 
 #import "AppDelegate.h"
@@ -17,12 +21,13 @@
 #import "LFBaiduMapKit.h"
 #import <CoreLocation/CoreLocation.h>
 
+
 typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     segnmentIndexForTable = 0 ,
     segnmentIndexForMap   = 1 ,
 } ;
 
-@interface LFLostAndFoundMapViewController ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface LFLostAndFoundMapViewController ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,LFItemInfoPaopaoCustomViewDelegate>
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,7 +47,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 
 - (void)setUpMapView {
     self.mapView.zoomLevel = 18 ;
-    self.mapView.minZoomLevel = 18 ;
+//    self.mapView.minZoomLevel = 18 ;
     self.mapView.maxZoomLevel = 20 ;
     
     CLLocation *userLocation = [LFUserDefaultService getUserLocationForUser:[LFUser currentUser]] ;
@@ -159,8 +164,35 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     }] ;
     
     [self.tableView reloadData] ;
+    
+    
+    //添加地图的标记
+    
+    [self.mapView removeAnnotations:self.mapView.annotations] ;
+    NSMutableArray *annotations = [NSMutableArray array] ;
+    
+    [items enumerateObjectsUsingBlock:^(Item *item, NSUInteger idx, BOOL *stop) {
+        if ( item.location ) {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:item.location.latitude longitude:item.location.longitude] ;
+            LFBMKMapViewAnnotation *annotation = [[LFBMKMapViewAnnotation alloc] initWithCLCorrdinate:location.coordinate] ;
+            annotation.item = item ;
+            [annotations addObject:annotation] ;
+        }
+    }] ;
+    [self.mapView addAnnotations:annotations] ;
+    
+    LFBMKMapViewAnnotation *firstAnnotation = annotations[0] ;
+    [self.mapView setCenterCoordinate:firstAnnotation.coordinate] ;
 }
 
+- (void)toItemDetailViewControllerWithItem:(Item *)item {
+    if ( !item ) return ;
+    
+    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
+    vc.item = item ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self.navigationController pushViewController:vc animated:NO] ;
+}
 
 #pragma mark - UITableViewDelegate 
 
@@ -171,10 +203,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //到详情界面
     Item *item = self.items[indexPath.row] ;
-    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
-    vc.item = item ;
-    vc.hidesBottomBarWhenPushed = YES ;
-    [self.navigationController pushViewController:vc animated:NO] ;
+    [self toItemDetailViewControllerWithItem:item] ;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
 }
@@ -192,7 +221,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     cell.itemNameLabel.text = item.name ;
     cell.itemDescriptionLabel.text = item.itemDescription ;
     cell.iconImageView.image = [item isLost] ? [UIImage imageNamed:@"Lost"] : [UIImage imageNamed:@"Found"] ;
-    cell.nameLabel.text = item.user.username ;
+    cell.nameLabel.text = [item.user displayName] ;
 
     
     [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:item.user.avatar.url]
@@ -246,6 +275,34 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
         default:
             break;
     }
+}
+
+/**
+ *根据anntation生成对应的View
+ *@param mapView 地图View
+ *@param annotation 指定的标注
+ *@return 生成的标注View
+ */
+- (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
+    LFItemAnnotationView *annotationView = (id)[mapView dequeueReusableAnnotationViewWithIdentifier:@"LFItemAnnotationViewReuseId"] ;
+    if ( !annotationView ) {
+        annotationView = [[LFItemAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"LFItemAnnotationViewReuseId"] ;
+    }
+    
+    LFBMKMapViewAnnotation *lfAnnotation = annotation ;
+    annotationView.image = lfAnnotation.annotationImage ;
+    
+    LFItemInfoPaopaoCustomView *customView = [[LFItemInfoPaopaoCustomView alloc] initWithItem:lfAnnotation.item] ;
+    customView.delegate = self ;
+    annotationView.paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:customView] ;
+    
+    return annotationView ;
+}
+
+#pragma mark - LFItemInfoPaopaoCustomViewDelegate
+
+- (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item {
+    [self toItemDetailViewControllerWithItem:item] ;
 }
 
 @end

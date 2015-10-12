@@ -19,6 +19,7 @@
 @property (nonatomic) Item *item ;
 @property (nonatomic) LFUser *author ;
 @property (nonatomic) LFUser *replyTo ;
+@property (nonatomic) NSArray *replyToUsers ;
 
 @end
 

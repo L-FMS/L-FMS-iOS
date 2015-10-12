@@ -15,6 +15,7 @@
 @dynamic item ;
 @dynamic author ;
 @dynamic replyTo ;
+@dynamic replyToUsers ;
 
 + (NSString *)parseClassName {
     return @"Comment" ;

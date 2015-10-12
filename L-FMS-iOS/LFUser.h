@@ -26,7 +26,6 @@
 
 - (NSString *)displayName ;
 
-
 @property (nonatomic,strong) LFIMClient *imClient ;
 
 @end

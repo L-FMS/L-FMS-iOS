@@ -7,6 +7,7 @@
 //
 
 #import "NewItemViewController2.h"
+#import "NewItemStep2ViewController.h"
 #import "LFChooseLocationMapViewController.h"
 
 #import "LFCommon.h"
@@ -16,17 +17,23 @@
 #import "LFBaiduMapKit.h"
 
 #define kNewItemVC22ChooseLocationMapVCSegueId @"NewItemVC22ChooseLocationMapVCSegueId"
+#define kNewItemStep1ToNewItemSetp2VCSegueId @"newItemStep1ToNewItemSetp2VCSegueId"
 
-@interface NewItemViewController2 ()<UITextViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,LFChooseLocationMapViewControllerDelegate,BMKGeoCodeSearchDelegate> {
+@interface NewItemViewController2 ()<UITextViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,LFChooseLocationMapViewControllerDelegate,BMKGeoCodeSearchDelegate,LFImageViewDelegate> {
     BOOL _isLost ;
     NSString *_locationString ;
     CLLocationCoordinate2D _choosedCoordinate2D ;
+    UIImage *_choosedImage ;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *textView ;
+@property (weak, nonatomic) IBOutlet UITextField *placeHolderTextField ;
+
+
 @property (weak, nonatomic) IBOutlet LFImageView *imageView ;
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView ;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextSetpButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel ;
 
@@ -56,6 +63,10 @@
     [self.locationLabel addGestureRecognizer:tapGes] ;
     
     self.textView.text = @"" ;
+    self.textView.delegate = self ;
+    
+    self.nextSetpButton.enabled = NO ;
+    self.placeHolderTextField.userInteractionEnabled = NO ;
     
 }
 
@@ -92,6 +103,29 @@
     [self performSegueWithIdentifier:kNewItemVC22ChooseLocationMapVCSegueId sender:self] ;
 }
 
+- (IBAction)nextSetpButtonClicked:(id)sender {
+    QYDebugLog(@"发布下一步") ;
+    Item *item = [Item object] ;
+    item.itemDescription = self.textView.text ;
+    item.type = _isLost ? @"lost" : @"found" ;
+    //image
+    if ( _choosedImage ) {
+        
+        NSData *imageData = UIImagePNGRepresentation(_choosedImage) ;
+        AVFile *file = [AVFile fileWithData:imageData] ;
+        item.image = file ;
+    }
+    
+    //location && coordinate
+    if ( _locationString ) {
+        item.place = _locationString ;
+        item.location = [AVGeoPoint geoPointWithLatitude:_choosedCoordinate2D.latitude longitude:_choosedCoordinate2D.longitude] ;
+    }
+    
+    [self performSegueWithIdentifier:kNewItemStep1ToNewItemSetp2VCSegueId sender:item] ;
+}
+
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -126,6 +160,7 @@
         UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage] ;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.imageView setImage:image] ;
+            _choosedImage = image ;
         }) ;
     });
     
@@ -146,11 +181,27 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ( [segue.identifier isEqualToString:kNewItemVC22ChooseLocationMapVCSegueId]) {
+    if ( [segue.identifier isEqualToString:kNewItemVC22ChooseLocationMapVCSegueId] ) {
         LFChooseLocationMapViewController *vc = segue.destinationViewController ;
         vc.delegate = self ;
+        return ;
+    }
+    
+    if ( [segue.identifier isEqualToString:kNewItemStep1ToNewItemSetp2VCSegueId] ) {
+        NewItemStep2ViewController *vc = segue.destinationViewController ;
+        vc.item = sender ;
+        return ;
     }
 }
+
+
+#pragma mark - UITextViewDelegate
+
+- (void)textViewDidChange:(UITextView *)textView {
+    self.placeHolderTextField.hidden = self.textView.text.length > 0 ;
+    self.nextSetpButton.enabled = self.textView.text.length > 0 ;
+}
+
 
 #pragma mark - LFChooseLocationMapViewControllerDelegate
 
@@ -169,6 +220,12 @@
         QYDebugLog(@"请求失败") ;
     }
     
+}
+
+#pragma mark - LFImageViewDelegate
+
+- (void)imageViewDidDeleteImage:(LFImageView *)imageView {
+    _choosedImage = nil ;
 }
 
 #pragma mark - BMKGeoCodeSearchDelegate

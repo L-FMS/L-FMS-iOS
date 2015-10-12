@@ -26,6 +26,10 @@ typedef struct {
 @property (nonatomic,strong) UILabel *calculateHelperLabel ;
 
 
+@property (nonatomic,strong) NSMutableArray *comments ;
+@property (nonatomic,strong) NSMutableDictionary *commentsDic ;
+
+
 @end
 
 @implementation LFCommentNoticeTableViewController
@@ -62,10 +66,38 @@ typedef struct {
     [self makeTestData] ;
     
     [self.tableView registerClass:[LFCommentTableViewCell class] forCellReuseIdentifier:@"LFCommentTableViewCellReuseId"] ;
+    self.refreshControl = [[UIRefreshControl alloc] init] ;
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged] ;
+    [self.tableView addSubview:self.refreshControl] ;
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning] ;
+}
+
+
+#pragma mark - actions
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+
+    AVQuery *commentQuery = [LFComment query] ;
+    
+    [commentQuery includeKey:@"author"] ;
+    [commentQuery includeKey:@"item.user"] ;
+    [commentQuery includeKey:@"replyToUsers"] ;
+    [commentQuery whereKey:@"replyToUsers" containsAllObjectsInArray:@[[LFUser currentUser]]] ;    
+
+    LFWEAKSELF
+    [commentQuery findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        [weakSelf.refreshControl endRefreshing] ;
+        if ( comments ) {
+            [weakSelf addItemComments:comments] ;
+        } else {
+            QYDebugLog(@"查找回复出错 Error:[%@]",error) ;
+        }
+    }] ;
+    
 }
 
 #pragma mark - UITableViewDelegate 
@@ -75,7 +107,8 @@ typedef struct {
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFComment *comment = self.dataSource[indexPath.section] ;
+    LFComment *comment = self.comments[indexPath.section] ;
+    //= self.dataSource[indexPath.section] ;
     return [comment.cellHeight floatValue] ;
 }
 
@@ -86,7 +119,7 @@ typedef struct {
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.count ;
+    return self.comments.count ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -99,7 +132,8 @@ typedef struct {
         cell = [[LFCommentTableViewCell alloc] init] ;
     }
     
-    [cell setUpWithLFComment:self.dataSource[indexPath.section]] ;
+//    [cell setUpWithLFComment:self.dataSource[indexPath.section]] ;
+    [cell setUpWithLFComment:self.comments[indexPath.section]] ;
     
     return cell;
 }
@@ -114,6 +148,14 @@ typedef struct {
     return _calculateHelperLabel ?  : ( _calculateHelperLabel = [[UILabel alloc] init]) ;
 }
 
+- (NSMutableArray *)comments {
+    return _comments ? : ( _comments = [NSMutableArray array] ) ;
+}
+
+- (NSMutableDictionary *)commentsDic {
+    return _commentsDic ? : ( _commentsDic = [NSMutableDictionary dictionary] ) ;
+}
+
 #pragma mark - Helper 
 
 #define CheckViewInSuperView(view,superView) if ( !view.superview ) { [superView addSubview:view] ; }
@@ -122,7 +164,6 @@ typedef struct {
     CGFloat contentHeight = [self calculateLineNumber:comment.content].contentHeight ;
     return (10) + 30 + (5) + contentHeight + (10) + 60 + (10) ;//括号中是间距
 }
-
 
 /**
  *  计算文本的高度和行数
@@ -183,5 +224,18 @@ typedef struct {
     [self.calculateHelperLabel removeFromSuperview] ;
 }
 
+- (void)addItemComments:(NSArray *)comments {
+    if ( !comments ) return ;
+    
+    [comments enumerateObjectsUsingBlock:^(LFComment *comment, NSUInteger idx, BOOL *stop) {
+        if ( !self.commentsDic[comment.objectId]) {
+            comment.cellHeight = @([self getCellHeightFrom:comment]) ;            
+            [self.commentsDic setObject:comment forKey:comment.objectId] ;
+            [self.comments addObject:comment] ;
+        }
+    }] ;
+    
+    [self.tableView reloadData] ;
+}
 
 @end

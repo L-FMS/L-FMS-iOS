@@ -87,6 +87,12 @@
 		19F73D9C1BC92CFD0096A517 /* LFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D9B1BC92CFD0096A517 /* LFImageView.m */; };
 		19F73DA31BC976770096A517 /* LFUserDefaultService.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73DA21BC976770096A517 /* LFUserDefaultService.m */; };
 		19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */; };
+		19FEDC791BCA95C900C41186 /* LFWriteCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC781BCA95C900C41186 /* LFWriteCommentViewController.m */; };
+		19FEDC7D1BCAB53E00C41186 /* LFBMKMapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC7C1BCAB53E00C41186 /* LFBMKMapViewAnnotation.m */; };
+		19FEDC831BCABAEC00C41186 /* LFItemAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC821BCABAEC00C41186 /* LFItemAnnotationView.m */; };
+		19FEDC891BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC881BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m */; };
+		19FEDC8D1BCAF39200C41186 /* NewItemStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC8C1BCAF39200C41186 /* NewItemStep2ViewController.m */; };
+		19FEDC951BCB11D500C41186 /* LFTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDC941BCB11D500C41186 /* LFTapGestureRecognizer.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -259,6 +265,18 @@
 		19F73DA21BC976770096A517 /* LFUserDefaultService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserDefaultService.m; sourceTree = "<group>"; };
 		19F73DA51BC991E20096A517 /* LFLostAFoundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLostAFoundTableViewCell.h; sourceTree = "<group>"; };
 		19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLostAFoundTableViewCell.m; sourceTree = "<group>"; };
+		19FEDC771BCA95C900C41186 /* LFWriteCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFWriteCommentViewController.h; sourceTree = "<group>"; };
+		19FEDC781BCA95C900C41186 /* LFWriteCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFWriteCommentViewController.m; sourceTree = "<group>"; };
+		19FEDC7B1BCAB53E00C41186 /* LFBMKMapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFBMKMapViewAnnotation.h; sourceTree = "<group>"; };
+		19FEDC7C1BCAB53E00C41186 /* LFBMKMapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFBMKMapViewAnnotation.m; sourceTree = "<group>"; };
+		19FEDC811BCABAEC00C41186 /* LFItemAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemAnnotationView.h; sourceTree = "<group>"; };
+		19FEDC821BCABAEC00C41186 /* LFItemAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemAnnotationView.m; sourceTree = "<group>"; };
+		19FEDC871BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemInfoPaopaoCustomView.h; sourceTree = "<group>"; };
+		19FEDC881BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFItemInfoPaopaoCustomView.m; sourceTree = "<group>"; };
+		19FEDC8B1BCAF39200C41186 /* NewItemStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemStep2ViewController.h; sourceTree = "<group>"; };
+		19FEDC8C1BCAF39200C41186 /* NewItemStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemStep2ViewController.m; sourceTree = "<group>"; };
+		19FEDC931BCB11D500C41186 /* LFTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFTapGestureRecognizer.h; sourceTree = "<group>"; };
+		19FEDC941BCB11D500C41186 /* LFTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFTapGestureRecognizer.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -776,6 +794,8 @@
 		19367BB41BBEEBE10009D628 /* 失物&&地图 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDC7E1BCABABB00C41186 /* View */,
+				19FEDC7A1BCAB52500C41186 /* Model */,
 				19F73DA41BC991C50096A517 /* Cell */,
 				19367BB51BBEEC900009D628 /* LFLostAndFoundMapViewController.h */,
 				19367BB61BBEEC900009D628 /* LFLostAndFoundMapViewController.m */,
@@ -868,6 +888,7 @@
 		19C92FAB1BC12DB300316F0F /* 发布 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDC8A1BCAF37300C41186 /* 发布第二步 */,
 				19F73D9F1BC954CF0096A517 /* Old */,
 				19F73D761BC82A320096A517 /* 选位置VC */,
 				1935EC9C1BC68B750047C1A6 /* Cells */,
@@ -900,6 +921,7 @@
 		19DF15951BC66CB1007924A0 /* 物品详情 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDC761BCA95AC00C41186 /* 撰写评论 */,
 				191C5C541BC9E5D10062442F /* 在地图上查看 */,
 				191C5C501BC9BF000062442F /* View */,
 				191C5C4F1BC9BEFA0062442F /* Cell */,
@@ -1022,6 +1044,78 @@
 				19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */,
 			);
 			name = Cell;
+			sourceTree = "<group>";
+		};
+		19FEDC761BCA95AC00C41186 /* 撰写评论 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC771BCA95C900C41186 /* LFWriteCommentViewController.h */,
+				19FEDC781BCA95C900C41186 /* LFWriteCommentViewController.m */,
+			);
+			name = "撰写评论";
+			sourceTree = "<group>";
+		};
+		19FEDC7A1BCAB52500C41186 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC7B1BCAB53E00C41186 /* LFBMKMapViewAnnotation.h */,
+				19FEDC7C1BCAB53E00C41186 /* LFBMKMapViewAnnotation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		19FEDC7E1BCABABB00C41186 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC801BCABAC900C41186 /* 大头针泡泡View */,
+				19FEDC7F1BCABAC200C41186 /* 大头针Annotation */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		19FEDC7F1BCABAC200C41186 /* 大头针Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC811BCABAEC00C41186 /* LFItemAnnotationView.h */,
+				19FEDC821BCABAEC00C41186 /* LFItemAnnotationView.m */,
+			);
+			name = "大头针Annotation";
+			sourceTree = "<group>";
+		};
+		19FEDC801BCABAC900C41186 /* 大头针泡泡View */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC871BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.h */,
+				19FEDC881BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m */,
+			);
+			name = "大头针泡泡View";
+			sourceTree = "<group>";
+		};
+		19FEDC8A1BCAF37300C41186 /* 发布第二步 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC921BCB11C200C41186 /* Model */,
+				19FEDC8E1BCAFF4700C41186 /* View */,
+				19FEDC8B1BCAF39200C41186 /* NewItemStep2ViewController.h */,
+				19FEDC8C1BCAF39200C41186 /* NewItemStep2ViewController.m */,
+			);
+			name = "发布第二步";
+			sourceTree = "<group>";
+		};
+		19FEDC8E1BCAFF4700C41186 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		19FEDC921BCB11C200C41186 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDC931BCB11D500C41186 /* LFTapGestureRecognizer.h */,
+				19FEDC941BCB11D500C41186 /* LFTapGestureRecognizer.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
@@ -1192,7 +1286,9 @@
 				19335B051BC3B25100E48ED4 /* Item.m in Sources */,
 				191B03A01BB6CC5A00C8B3F8 /* LFRegisteViewController.m in Sources */,
 				19335B331BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m in Sources */,
+				19FEDC7D1BCAB53E00C41186 /* LFBMKMapViewAnnotation.m in Sources */,
 				1935ECC81BC70C200047C1A6 /* QRCodeGenerator.m in Sources */,
+				19FEDC8D1BCAF39200C41186 /* NewItemStep2ViewController.m in Sources */,
 				1935ECB41BC6B5A30047C1A6 /* LFItemSurveyView.m in Sources */,
 				19F73D751BC827690096A517 /* LFLocationTableViewCell.m in Sources */,
 				1909E4AF1BB043FF00662CD3 /* AppDelegate.m in Sources */,
@@ -1213,6 +1309,7 @@
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
 				191C5C531BC9BF170062442F /* LFToolBarView.m in Sources */,
 				19F73D901BC83D3C0096A517 /* LFChooseLocationTableViewController.m in Sources */,
+				19FEDC891BCAC0A800C41186 /* LFItemInfoPaopaoCustomView.m in Sources */,
 				1909E4B21BB043FF00662CD3 /* L_FMS_iOS.xcdatamodeld in Sources */,
 				19F73D891BC83C9A0096A517 /* ForBaiduMapKit.mm in Sources */,
 				19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */,
@@ -1226,6 +1323,7 @@
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
 				19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */,
 				19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */,
+				19FEDC831BCABAEC00C41186 /* LFItemAnnotationView.m in Sources */,
 				19367BB71BBEEC900009D628 /* LFLostAndFoundMapViewController.m in Sources */,
 				1935ECA21BC68E7B0047C1A6 /* LFSeparatorTableViewCell.m in Sources */,
 				19335B161BC3CAE400E48ED4 /* ZRRegularExpressionValidateUtilsImp.m in Sources */,
@@ -1245,7 +1343,9 @@
 				19F73D721BC80A460096A517 /* AVIMConversation+LFApp.m in Sources */,
 				1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */,
 				1909E4B51BB043FF00662CD3 /* ViewController.m in Sources */,
+				19FEDC791BCA95C900C41186 /* LFWriteCommentViewController.m in Sources */,
 				19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */,
+				19FEDC951BCB11D500C41186 /* LFTapGestureRecognizer.m in Sources */,
 				1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
 				19F73DA71BC991E20096A517 /* LFLostAFoundTableViewCell.m in Sources */,

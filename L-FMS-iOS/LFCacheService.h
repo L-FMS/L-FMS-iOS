@@ -8,6 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
+
+@class LFUser ;
+
 @interface LFCacheService : NSObject
+
++ (instancetype)shareInstance ;
+
+#pragma mark - User 
+
+- (void)cacheUser:(LFUser *)user ;
+
+- (LFUser *)getUserById:(NSString *)userId ;
+
+
+
+
+#warning 以下垃圾代码。。
+
++ (void)cacheUsersWithIds:(NSSet*)userIds callback:(AVBooleanResultBlock)callback ;
 
 @end

@@ -11,6 +11,7 @@
 #import "LFCommon.h"
 #import "LFStorage.h"
 #import "LFNotify.h"
+#import "LFCacheService.h"
 
 @interface LFIMClient ()<AVIMClientDelegate>
 
@@ -21,6 +22,18 @@
 @property (weak) LFStorage *storage ;
 
 @property (weak) LFNotify *notify ;
+
+
+
+
+
+
+
+
+/**
+ *  {[key]AVIMConversation.conversationId : [value]AVIMConversation}
+ */
+@property (nonatomic,strong) NSMutableDictionary* cachedConvs;//
 
 @end
 
@@ -40,10 +53,6 @@
     self.aAVIMClient.delegate = self ;
     self.storage = [LFStorage shareInstance] ;
     self.notify = [LFNotify shareInstance] ;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    QYDebugLog(@"...") ;
 }
 
 #pragma mark - session
@@ -215,6 +224,142 @@
     [q whereKey:@"m" containedIn:@[self.clientId]] ;
     q.limit = 1000 ;
     [q findConversationsWithCallback:block] ;
+}
+
+
+
+
+
+#warning 以下是垃圾代码。。无参考价值
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    QYDebugLog(@"...") ;
+}
+
+#pragma mark - conv cache
+
+/**
+ *  缓存room数组，并从服务器获取未缓存的room data。
+ *
+ *  @param rooms    Array<CDRoom>
+ *  @param callback (BOOL succeeded, NSError *error)
+ */
+-(void)cacheAndFillRooms:(NSMutableArray*)rooms callback:(AVBooleanResultBlock)callback {
+    NSMutableSet *convids = [NSMutableSet set] ;
+    
+    for( LFChatRoom *room in rooms )
+        [convids addObject:room.convid] ;
+    
+    
+    [self cacheConvsWithIds:convids callback:^(NSArray *conversations, NSError *error) {
+        if( error ) {
+            callback(NO,error) ;
+        } else {
+            for( LFChatRoom *room in rooms ) {
+                
+                room.conv = [self lookupConvById:room.convid] ;
+                if ( nil == room.conv ) {
+                    [NSException raise:@"not found conv" format:nil] ;
+                }
+            }
+            NSMutableSet *userIds = [NSMutableSet set] ;
+            for( LFChatRoom *room in rooms ) {
+                [userIds addObject:room.conv.otherId] ;
+            }
+            [LFCacheService cacheUsersWithIds:userIds callback:callback] ;
+        }
+    }];
+}
+
+- (void)cacheConvsWithIds:(NSMutableSet*)convids callback:(AVArrayResultBlock)callback {
+    
+    NSMutableSet *uncacheConvids = [NSMutableSet set] ;
+    //找出未缓存的部分。
+    for( NSString *convid in convids ){
+        if( nil == [self lookupConvById:convid] ){
+            [uncacheConvids addObject:convid];
+        }
+    }
+    //拉取未缓存的会话
+    [self fetchConvsWithConvids:uncacheConvids callback:^(NSArray *conversations, NSError *error) {
+        if( error ){
+            callback(nil,error) ;
+        } else {
+            //缓存拉取的会话
+            [self registerConvs:conversations];
+            callback(conversations,error);
+        }
+    }];
+}
+
+- (AVIMConversation *)lookupConvById:(NSString*)convid {
+    return [self.cachedConvs valueForKey:convid] ;
+}
+
+//缓存会话数组
+- (void)registerConvs:(NSArray*)convs {
+    for( AVIMConversation *conv in convs ){
+        [self.cachedConvs setValue:conv forKey:conv.conversationId] ;
+    }
+}
+
+/**
+ *  使用AVIMConversationQuery拉取convids里的所有AVIMConversation对象
+ *
+ *  @param convids  AVIMConversation.objectId
+ *  @param callback (NSArray *objects, NSError *error)
+ */
+- (void)fetchConvsWithConvids:(NSSet*)convids callback:(AVIMArrayResultBlock)callback {
+    
+    if( convids.count > 0 ) {
+        AVIMConversationQuery *q = [self.aAVIMClient conversationQuery] ;
+        [q whereKey:@"objectId" containedIn:[convids allObjects]] ;
+        q.limit = 1000 ;  // default limit:10
+        [q findConversationsWithCallback:callback] ;
+    } else {
+        callback([NSMutableArray array],nil) ;
+    }
+}
+
+#pragma mark - getter & setter
+
+- (NSMutableDictionary *)cachedConvs {
+    if ( _cachedConvs == nil ) _cachedConvs = [NSMutableDictionary new] ;
+    return _cachedConvs ;
+}
+
+#pragma mark - query msgs
+
+- (NSArray *)queryMsgsWithConv:(AVIMConversation*)conv msgId:(NSString*)msgId maxTime:(int64_t)time limit:(NSUInteger)limit error:(NSError**)theError {
+    dispatch_semaphore_t sema=dispatch_semaphore_create(0);
+    __block NSArray* result;
+    __block NSError* blockError=nil;
+    
+    
+    [conv queryMessagesBeforeId:msgId timestamp:time limit:limit callback:^(NSArray *objects, NSError *error) {
+        result=objects;
+        blockError=error;
+        dispatch_semaphore_signal(sema);
+    }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
+    *theError=blockError;
+    if(blockError==nil){
+    }
+    return result;
+}
+
+- (NSString *)uuid {
+    NSString *chars = @"abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" ;
+    assert(chars.length == 62) ;
+    int len = (int)chars.length ;
+    NSMutableString *result = [NSMutableString string] ;
+    for(int i = 0 ; i <24 ; i++ ) {
+        int p = arc4random_uniform(len) ;
+        NSRange range = NSMakeRange(p, 1) ;
+        [result appendString:[chars substringWithRange:range]] ;
+    }
+    return result ;
 }
 
 @end ;

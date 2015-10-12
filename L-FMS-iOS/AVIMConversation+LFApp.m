@@ -9,6 +9,7 @@
 #import "AVIMConversation+LFApp.h"
 
 #import "LFCommon.h"
+#import "LFCacheService.h"
 
 @implementation AVIMConversation (LFApp)
 
@@ -22,7 +23,9 @@
 }
 
 - (NSString *)displayName {
-    return @"对方名字" ;
+    if ( self.otherId == nil ) return @"无数据" ;
+    LFUser *user = [[LFCacheService shareInstance] getUserById:self.otherId] ;
+    return user.displayName ;
 }
 
 - (NSString *)title {

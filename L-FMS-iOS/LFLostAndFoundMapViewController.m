@@ -18,6 +18,7 @@
 #import "AppDelegate.h"
 
 #import "LFCommon.h"
+#import "LFCacheService.h"
 #import "LFBaiduMapKit.h"
 #import <CoreLocation/CoreLocation.h>
 
@@ -67,6 +68,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     //启动LocationService
     [self.service startUserLocationService] ;
     
+    [[LFCacheService shareInstance] cacheUser:[LFUser currentUser]] ;
 }
 
 - (void)setUpTableView {

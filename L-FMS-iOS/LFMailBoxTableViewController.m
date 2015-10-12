@@ -153,21 +153,19 @@
         }
         
         NSMutableArray *rooms = [[_storage getRooms] mutableCopy] ;
-        [rooms enumerateObjectsUsingBlock:^(LFChatRoom *room, NSUInteger idx, BOOL *stop) {
-            __block AVIMConversation *conv ;
-            [convs enumerateObjectsUsingBlock:^(AVIMConversation *tConv, NSUInteger idx, BOOL *stop) {
-                if ( [tConv.conversationId isEqualToString:room.convid] ) {
-                    conv = tConv ;
-                    *stop = YES ;
-                }
-            }] ;
-            room.conv = conv ;
-        }] ;
         
-        weakSelf.rooms = rooms ;
-        [weakSelf calculateUnreadCount:weakSelf.rooms] ;
-        [refreshControl endRefreshing] ;
-        [self.tableView reloadData] ;
+        [LFUtils showNetworkIndicator] ;
+        [weakSelf.IM cacheAndFillRooms:rooms callback:^(BOOL succeeded, NSError *error) {
+            [LFUtils hideNetworkIndicator] ;
+            [refreshControl endRefreshing] ;
+            
+            if ( !error ) {
+                weakSelf.rooms = rooms ;
+                [weakSelf calculateUnreadCount:weakSelf.rooms] ;
+                [weakSelf.tableView reloadData] ;
+            }
+        }] ;
+
     }] ;
 }
 

@@ -85,7 +85,7 @@
     return msg ;
 }
 
-- (BOOL)updateMsg:(AVIMTypedMessage*)msg byMsgId:(NSString*)msgId{
+- (BOOL)updateMsg:(AVIMTypedMessage*)msg byMsgId:(NSString*)msgId {
     __block BOOL result ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
         NSData* data=[NSKeyedArchiver archivedDataWithRootObject:msg] ;
@@ -94,31 +94,30 @@
     return result ;
 }
 
-- (BOOL)updateFailedMsg:(AVIMTypedMessage*)msg byTmpId:(NSString*)tmpId{
+- (BOOL)updateFailedMsg:(AVIMTypedMessage*)msg byTmpId:(NSString*)tmpId {
     __block BOOL result ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
-        NSData* data = [NSKeyedArchiver archivedDataWithRootObject:msg] ;
-        result=[db executeUpdate:@"UPDATE msgs SET object=?,time=?,msg_id=? WHERE msg_id=?"
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:msg] ;
+        result = [db executeUpdate:@"UPDATE msgs SET object=?,time=?,msg_id=? WHERE msg_id=?"
             withArgumentsInArray:@[data,[self strOfInt64:msg.sendTimestamp],msg.messageId,tmpId]] ;
     }] ;
     return result ;
 }
 
-- (BOOL)updateMessageStatus:(AVIMMessageStatus)status byMessageId:(NSString*)msgId{
-    AVIMTypedMessage* msg=[self getMsgByMsgId:msgId] ;
-    if(msg){
-        msg.status=status ;
+- (BOOL)updateMessageStatus:(AVIMMessageStatus)status byMessageId:(NSString*)msgId {
+    AVIMTypedMessage *msg = [self getMsgByMsgId:msgId] ;
+    if( msg ){
+        msg.status = status ;
         return [self updateMsg:msg byMsgId:msgId] ;
-    }else{
+    } else
         return NO ;
-    }
 }
 
 - (NSMutableArray *)getMsgsByResultSet:(FMResultSet*)rs{
     NSMutableArray *result = [NSMutableArray array] ;
-    while ([rs next]) {
-        AVIMTypedMessage* msg = [self getMsgByResultSet:rs] ;
-        if(msg != nil){
+    while ( [rs next] ) {
+        AVIMTypedMessage *msg = [self getMsgByResultSet:rs] ;
+        if( msg != nil ){
             [result addObject:msg] ;
         }
     }
@@ -129,7 +128,7 @@
 - (AVIMTypedMessage *)getMsgByResultSet:(FMResultSet*)rs{
     NSData *data = [rs objectForColumnName:FIELD_OBJECT] ;
     if( [data isKindOfClass:[NSData class]] && data.length > 0 ){
-        AVIMTypedMessage* msg ;
+        AVIMTypedMessage *msg ;
         @try {
             msg = [NSKeyedUnarchiver unarchiveObjectWithData:data] ;
         }
@@ -142,11 +141,11 @@
     }
 }
 
-- (int64_t)insertMessage:(AVIMTypedMessage*)msg{
+- (int64_t)insertMessage:(AVIMTypedMessage *)msg {
     DLog() ;
     __block int64_t rowId ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
-        NSData* data=[NSKeyedArchiver archivedDataWithRootObject:msg] ;
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:msg] ;
         [db executeUpdate:@"INSERT INTO msgs (msg_id,convid,object,time) VALUES(?,?,?,?)"
      withArgumentsInArray:@[msg.messageId,msg.conversationId,data,[self strOfInt64:msg.sendTimestamp]]] ;
         rowId = [db lastInsertRowId] ;
@@ -163,7 +162,7 @@
 
 #pragma mark - rooms table { convid , unread_count }
 
-- (LFChatRoom *)getRoomByResultSet:(FMResultSet*)rs {
+- (LFChatRoom *)getRoomByResultSet:(FMResultSet *)rs {
     LFChatRoom *room = [[LFChatRoom alloc] init] ;
     room.convid = [rs stringForColumn:FIELD_CONVID] ;
     room.unreadCount = [rs intForColumn:FIELD_UNREAD_COUNT] ;
@@ -172,7 +171,7 @@
 }
 
 - (NSArray *)getRooms {
-    NSMutableArray* rooms = [NSMutableArray array] ;
+    NSMutableArray *rooms = [NSMutableArray array] ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
         FMResultSet* rs = [db executeQuery:@"SELECT * FROM rooms LEFT JOIN (SELECT msgs.object,MAX(time) as time ,msgs.convid as msg_convid FROM msgs GROUP BY msgs.convid) ON rooms.convid=msg_convid ORDER BY time DESC"] ;
         while ([rs next]) {
@@ -197,15 +196,15 @@
     [_dbQueue inDatabase:^(FMDatabase *db) {
         FMResultSet* rs=[db executeQuery:@"SELECT SUM(rooms.unread_count) FROM rooms"] ;
         if ([rs next]) {
-            unreadCount=[rs intForColumnIndex:0] ;
+            unreadCount = [rs intForColumnIndex:0] ;
         }
     }] ;
     return unreadCount ;
 }
 
-- (void)insertRoomWithConversationId:(NSString*)convid{
+- (void)insertRoomWithConversationId:(NSString*)convid {
     [_dbQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet* rs=[db executeQuery:@"SELECT * FROM rooms WHERE convid=?",convid] ;
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM rooms WHERE convid=?",convid] ;
         if( [rs next] == NO ){
             [db executeUpdate:@"INSERT INTO rooms (convid) VALUES(?) ",convid] ;
         }
@@ -219,7 +218,7 @@
     }] ;
 }
 
-- (void)incrementUnreadWithConversationId:(NSString*)convid{
+- (void)incrementUnreadWithConversationId:(NSString*)convid {
     [_dbQueue inDatabase:^(FMDatabase *db) {
         [db executeUpdate:@"UPDATE rooms SET unread_count=unread_count+ 1 WHERE convid=?" withArgumentsInArray:@[convid]] ;
     }] ;
@@ -239,15 +238,15 @@
 
 #pragma mark - int64
 
-- (int64_t)int64OfStr:(NSString*)str{
+- (int64_t)int64OfStr:(NSString*)str {
     return [str longLongValue] ;
 }
 
-- (NSString *)strOfInt64:(int64_t)num{
+- (NSString *)strOfInt64:(int64_t)num {
     return [[NSNumber numberWithLongLong:num] stringValue] ;
 }
 
-- (NSArray *)reverseArray:(NSArray*)originArray{
+- (NSArray *)reverseArray:(NSArray*)originArray {
     NSMutableArray* array=[NSMutableArray arrayWithCapacity:[originArray count]] ;
     NSEnumerator* enumerator=[originArray reverseObjectEnumerator] ;
     for(id element in enumerator){

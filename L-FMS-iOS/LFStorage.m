@@ -53,7 +53,7 @@
 }
 
 - (void)setupWithUserId:(NSString*)userId{
-    _dbQueue=[FMDatabaseQueue databaseQueueWithPath:[self dbPathWithUserId:userId]] ;
+    _dbQueue = [FMDatabaseQueue databaseQueueWithPath:[self dbPathWithUserId:userId]] ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
         [db executeUpdate:MSG_TABLE_SQL] ;
         [db executeUpdate:ROOMS_TABLE_SQL] ;
@@ -62,23 +62,23 @@
 
 #pragma mark - msgs table { msg_id , convid , object , time }
 
-- (NSArray *)getMsgsWithConvid:(NSString*)convid maxTime:(int64_t)time limit:(NSInteger)limit{
+- (NSArray *)getMsgsWithConvid:(NSString*)convid maxTime:(int64_t)time limit:(NSInteger)limit {
     assert(convid) ;
     __block NSArray* msgs = nil ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
-        NSString* timeStr=[self strOfInt64:time] ;
-        FMResultSet* rs=[db executeQuery:@"select * from msgs where convid=? and time<? order by time desc limit ?" withArgumentsInArray:@[convid,timeStr,@(limit)]] ;
-        msgs=[self reverseArray:[self getMsgsByResultSet:rs]] ;
+        NSString *timeStr = [self strOfInt64:time] ;
+        FMResultSet *rs = [db executeQuery:@"select * from msgs where convid=? and time<? order by time desc limit ?" withArgumentsInArray:@[convid,timeStr,@(limit)]] ;
+        msgs = [self reverseArray:[self getMsgsByResultSet:rs]] ;
     }] ;
     return msgs ;
 }
 
-- (AVIMTypedMessage *)getMsgByMsgId:(NSString*)msgId{
-    __block AVIMTypedMessage* msg = nil ;
+- (AVIMTypedMessage *)getMsgByMsgId:(NSString*)msgId {
+    __block AVIMTypedMessage *msg = nil ;
     [_dbQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet* rs=[db executeQuery:@"SELECT * FROM msgs where msg_id=?" withArgumentsInArray:@[msgId]] ;
-        if([rs next]){
-            msg=[self getMsgByResultSet:rs] ;
+        FMResultSet *rs = [db executeQuery:@"SELECT * FROM msgs where msg_id=?" withArgumentsInArray:@[msgId]] ;
+        if( [rs next] ){
+            msg = [self getMsgByResultSet:rs] ;
         }
         [rs close] ;
     }] ;
@@ -206,7 +206,7 @@
 - (void)insertRoomWithConversationId:(NSString*)convid{
     [_dbQueue inDatabase:^(FMDatabase *db) {
         FMResultSet* rs=[db executeQuery:@"SELECT * FROM rooms WHERE convid=?",convid] ;
-        if([rs next]==NO){
+        if( [rs next] == NO ){
             [db executeUpdate:@"INSERT INTO rooms (convid) VALUES(?) ",convid] ;
         }
         [rs close] ;

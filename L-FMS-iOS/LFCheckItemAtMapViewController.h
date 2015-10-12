@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class CLLocation ;
+@class Item ;
+
 @interface LFCheckItemAtMapViewController : UIViewController
+
+@property (nonatomic) CLLocation *itemLocation ;
+
+@property (nonatomic) Item *item ;
 
 @end

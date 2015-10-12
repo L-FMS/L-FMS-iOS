@@ -7,10 +7,13 @@
 //
 
 #import "LFItemDetailViewController.h"
+#import "LFWriteCommentViewController.h"
+#import "LFCheckItemAtMapViewController.h"
+#import "LFUserMainPageTableViewController.h"
 
 #import "LFToolBarView.h"
 #import "LFCommon.h"
-#import "LFWriteCommentViewController.h"
+
 
 #import "LFItemDetailTagsTableViewCell.h"
 #import "LFItemDetailInformationTableViewCell.h" 
@@ -19,11 +22,16 @@
 #import "LFItemDetailUserInfoTableViewCell.h"
 #import "LFItemDetailSeparateTableViewCell.h"
 
+
 #import "AppDelegate.h"
 
 #import "LFCommentActionSheet.h"
 
 #define kItemDetailVC2WriteCommentVCSegueId @"itemDetailVC2WriteCommentVCSegueId"
+#define kItemDetailVC2CheckItemAtMapVCSegueId @"ItemDetailVC2CheckItemAtMapVCSegueId"
+#define kItemDetailVC2UserMainPageVC @"itemDetailVC2UserMainPageVC"
+
+#import "LFViewSingleImageViewController.h"
 
 @interface LFItemDetailViewController ()<LFToolBarViewDelegate,LFToolBarViewDataSource,UITableViewDelegate,UITableViewDataSource,LFWriteCommentViewControllerDelegate,UIActionSheetDelegate,LFItemDetailInformationTableViewCellDelegate> {
     NSArray *_titles ;
@@ -75,6 +83,7 @@
 
 - (void)toUserMainPage:(LFUser *)user {
     if ( !user ) return ;
+    [self performSegueWithIdentifier:kItemDetailVC2UserMainPageVC sender:user] ;
 }
 
 - (void)showActionSheetForComment:(LFComment *)comment {
@@ -103,14 +112,15 @@
 
 - (void)toLocationViewController {
     if ( !self.item.location ) return ;
-    
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.item.location.latitude longitude:self.item.location.longitude] ;
+    [self performSegueWithIdentifier:kItemDetailVC2CheckItemAtMapVCSegueId sender:location] ;
 }
 
 - (void)showItemImage {
     if ( !self.item.image ) return ;
-    
+//    [LFViewSingleImageViewController from:self zoomInImage:[UIImage imageNamed:@"testChatRoomBackgroundImg"]] ;
+    [LFViewSingleImageViewController from:self zoomInUrl:self.item.image.url] ;
 }
-
 
 
 #pragma mark - UIActionSheetDelegate
@@ -512,6 +522,22 @@
         vc.targetUser = nil ;
         vc.placeHolderString = nil ;
         vc.delegate = self ;
+        return ;
+    }
+    
+    if ( [segue.identifier isEqualToString:kItemDetailVC2CheckItemAtMapVCSegueId] ) {
+        //到地图
+        LFCheckItemAtMapViewController *vc = segue.destinationViewController ;
+        vc.itemLocation = sender ;
+        vc.item = self.item ;
+        
+        return ;        
+    }
+    
+    if ( [segue.identifier isEqualToString:kItemDetailVC2UserMainPageVC] ) {
+        LFUserMainPageTableViewController *vc = segue.destinationViewController ;
+        vc.user = sender ;        
+        return ;
     }
 }
 

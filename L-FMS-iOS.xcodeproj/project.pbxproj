@@ -99,6 +99,12 @@
 		19FEDCA91BCBFB5D00C41186 /* LFSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */; };
 		19FEDCAD1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */; };
 		19FEDCB11BCC12E100C41186 /* LFCommentActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCB01BCC12E100C41186 /* LFCommentActionSheet.m */; };
+		19FEDCB51BCC1CAF00C41186 /* LFSingleItemAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCB41BCC1CAF00C41186 /* LFSingleItemAnnotation.m */; };
+		19FEDCB91BCC28A800C41186 /* LFViewSingleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCB81BCC28A800C41186 /* LFViewSingleImageViewController.m */; };
+		19FEDCC01BCC31DB00C41186 /* LFUserMainPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCBF1BCC31DB00C41186 /* LFUserMainPageTableViewController.m */; };
+		19FEDCC41BCC350A00C41186 /* LFUserMainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCC31BCC350A00C41186 /* LFUserMainInfoTableViewCell.m */; };
+		19FEDCC91BCC353100C41186 /* LFUserInfoItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCC81BCC353100C41186 /* LFUserInfoItemTableViewCell.m */; };
+		19FEDCCD1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCCC1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -295,6 +301,18 @@
 		19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingSwitchTableViewCell.m; sourceTree = "<group>"; };
 		19FEDCAF1BCC12E100C41186 /* LFCommentActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCommentActionSheet.h; sourceTree = "<group>"; };
 		19FEDCB01BCC12E100C41186 /* LFCommentActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCommentActionSheet.m; sourceTree = "<group>"; };
+		19FEDCB31BCC1CAF00C41186 /* LFSingleItemAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSingleItemAnnotation.h; sourceTree = "<group>"; };
+		19FEDCB41BCC1CAF00C41186 /* LFSingleItemAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSingleItemAnnotation.m; sourceTree = "<group>"; };
+		19FEDCB71BCC28A800C41186 /* LFViewSingleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFViewSingleImageViewController.h; sourceTree = "<group>"; };
+		19FEDCB81BCC28A800C41186 /* LFViewSingleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFViewSingleImageViewController.m; sourceTree = "<group>"; };
+		19FEDCBE1BCC31DB00C41186 /* LFUserMainPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserMainPageTableViewController.h; sourceTree = "<group>"; };
+		19FEDCBF1BCC31DB00C41186 /* LFUserMainPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserMainPageTableViewController.m; sourceTree = "<group>"; };
+		19FEDCC21BCC350A00C41186 /* LFUserMainInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserMainInfoTableViewCell.h; sourceTree = "<group>"; };
+		19FEDCC31BCC350A00C41186 /* LFUserMainInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserMainInfoTableViewCell.m; sourceTree = "<group>"; };
+		19FEDCC71BCC353100C41186 /* LFUserInfoItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserInfoItemTableViewCell.h; sourceTree = "<group>"; };
+		19FEDCC81BCC353100C41186 /* LFUserInfoItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserInfoItemTableViewCell.m; sourceTree = "<group>"; };
+		19FEDCCB1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserMainPageButtonTableViewCell.h; sourceTree = "<group>"; };
+		19FEDCCC1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserMainPageButtonTableViewCell.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -524,6 +542,7 @@
 		191C5C541BC9E5D10062442F /* 在地图上查看 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDCB21BCC1C7B00C41186 /* Model */,
 				191C5C551BC9E5EF0062442F /* LFCheckItemAtMapViewController.h */,
 				191C5C561BC9E5EF0062442F /* LFCheckItemAtMapViewController.m */,
 			);
@@ -829,11 +848,11 @@
 		19367BB81BBEEF650009D628 /* 私信 */ = {
 			isa = PBXGroup;
 			children = (
-				1935ECA31BC6AC0D0047C1A6 /* 评论 */,
-				19335B341BC50FD300E48ED4 /* 聊天室 */,
 				1977C0F91BBFCA6400F15DC7 /* Cell */,
 				1977C0F61BBFCA5E00F15DC7 /* LFMailBoxTableViewController.h */,
 				1977C0F71BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m */,
+				19335B341BC50FD300E48ED4 /* 聊天室 */,
+				1935ECA31BC6AC0D0047C1A6 /* 评论 */,
 			);
 			name = "私信";
 			sourceTree = "<group>";
@@ -945,6 +964,8 @@
 		19DF15951BC66CB1007924A0 /* 物品详情 */ = {
 			isa = PBXGroup;
 			children = (
+				19FEDCBA1BCC30B200C41186 /* 个人主页 */,
+				19FEDCB61BCC288C00C41186 /* 查看图片 */,
 				19FEDC761BCA95AC00C41186 /* 撰写评论 */,
 				191C5C541BC9E5D10062442F /* 在地图上查看 */,
 				191C5C501BC9BF000062442F /* View */,
@@ -1196,6 +1217,71 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
+		19FEDCB21BCC1C7B00C41186 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCB31BCC1CAF00C41186 /* LFSingleItemAnnotation.h */,
+				19FEDCB41BCC1CAF00C41186 /* LFSingleItemAnnotation.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		19FEDCB61BCC288C00C41186 /* 查看图片 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCB71BCC28A800C41186 /* LFViewSingleImageViewController.h */,
+				19FEDCB81BCC28A800C41186 /* LFViewSingleImageViewController.m */,
+			);
+			name = "查看图片";
+			sourceTree = "<group>";
+		};
+		19FEDCBA1BCC30B200C41186 /* 个人主页 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCC11BCC34EB00C41186 /* Cell */,
+				19FEDCBE1BCC31DB00C41186 /* LFUserMainPageTableViewController.h */,
+				19FEDCBF1BCC31DB00C41186 /* LFUserMainPageTableViewController.m */,
+			);
+			name = "个人主页";
+			sourceTree = "<group>";
+		};
+		19FEDCC11BCC34EB00C41186 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCCA1BCC354A00C41186 /* 按钮 */,
+				19FEDCC61BCC351A00C41186 /* 字段 */,
+				19FEDCC51BCC350E00C41186 /* 头像姓名性别 */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		19FEDCC51BCC350E00C41186 /* 头像姓名性别 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCC21BCC350A00C41186 /* LFUserMainInfoTableViewCell.h */,
+				19FEDCC31BCC350A00C41186 /* LFUserMainInfoTableViewCell.m */,
+			);
+			name = "头像姓名性别";
+			sourceTree = "<group>";
+		};
+		19FEDCC61BCC351A00C41186 /* 字段 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCC71BCC353100C41186 /* LFUserInfoItemTableViewCell.h */,
+				19FEDCC81BCC353100C41186 /* LFUserInfoItemTableViewCell.m */,
+			);
+			name = "字段";
+			sourceTree = "<group>";
+		};
+		19FEDCCA1BCC354A00C41186 /* 按钮 */ = {
+			isa = PBXGroup;
+			children = (
+				19FEDCCB1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.h */,
+				19FEDCCC1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m */,
+			);
+			name = "按钮";
+			sourceTree = "<group>";
+		};
 		25BB05FB5F469E0EAF29410D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1383,8 +1469,10 @@
 				19335B0D1BC3B49900E48ED4 /* LFUser.m in Sources */,
 				195102811BC25DAB00AB12A4 /* UserInfoItemTableViewCell.m in Sources */,
 				19335B121BC3CAA400E48ED4 /* ZRUtils.m in Sources */,
+				19FEDCC01BCC31DB00C41186 /* LFUserMainPageTableViewController.m in Sources */,
 				19FEDCA91BCBFB5D00C41186 /* LFSettingTableViewController.m in Sources */,
 				19335B1B1BC3ECCE00E48ED4 /* LFCacheService.m in Sources */,
+				19FEDCC41BCC350A00C41186 /* LFUserMainInfoTableViewCell.m in Sources */,
 				19367BB01BBEDB7B0009D628 /* JVLeftDrawerTableViewController.m in Sources */,
 				1935ECAC1BC6AFCF0047C1A6 /* LFCommentNoticeTableViewController.m in Sources */,
 				1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */,
@@ -1396,14 +1484,17 @@
 				19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */,
 				19F73DA31BC976770096A517 /* LFUserDefaultService.m in Sources */,
 				1935ECB71BC6FC440047C1A6 /* LFComment.m in Sources */,
+				19FEDCB51BCC1CAF00C41186 /* LFSingleItemAnnotation.m in Sources */,
 				19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */,
 				19335B241BC415AF00E48ED4 /* LFMyItemViewController.m in Sources */,
 				19FEDCAD1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m in Sources */,
 				19335B0A1BC3B3B600E48ED4 /* LFAVSubclassRegister.m in Sources */,
 				19F73D631BC79C020096A517 /* LFNotify.m in Sources */,
+				19FEDCB91BCC28A800C41186 /* LFViewSingleImageViewController.m in Sources */,
 				19335B2B1BC4261300E48ED4 /* LFActivityIndicatorLabel.m in Sources */,
 				191B039D1BB6CBFE00C8B3F8 /* LFLoginViewController.m in Sources */,
 				19335B301BC4E97800E48ED4 /* LFItemTableViewCell.m in Sources */,
+				19FEDCCD1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m in Sources */,
 				19367BB31BBEDBF80009D628 /* JVRightDrawerTableViewController.m in Sources */,
 				19FEDC831BCABAEC00C41186 /* LFItemAnnotationView.m in Sources */,
 				19367BB71BBEEC900009D628 /* LFLostAndFoundMapViewController.m in Sources */,
@@ -1416,6 +1507,7 @@
 				19335B201BC3ECED00E48ED4 /* LFFileService.m in Sources */,
 				1935ECB01BC6B3A10047C1A6 /* LFCommentTableViewCell.m in Sources */,
 				1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */,
+				19FEDCC91BCC353100C41186 /* LFUserInfoItemTableViewCell.m in Sources */,
 				19F73D981BC914EC0096A517 /* NewItemViewController2.m in Sources */,
 				19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */,
 				19F73D6F1BC7FF970096A517 /* LFChatRoom.m in Sources */,

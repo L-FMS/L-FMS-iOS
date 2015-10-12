@@ -640,6 +640,9 @@
                     <navigationItem key="navigationItem" title="评论" id="4ns-Cf-kyR"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="mZm-h5-RsQ" kind="presentation" identifier="CommentNotice2WriteCommentVCSegueId" id="oDF-Ax-GZi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7QS-yl-RK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1664,6 +1667,7 @@
         <image name="testX" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RKG-Cq-NDH"/>
         <segue reference="y6Y-Y1-MBz"/>
     </inferredMetricsTieBreakers>
 </document>

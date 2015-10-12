@@ -7,16 +7,21 @@
 //
 
 #import "LFCommentNoticeTableViewController.h"
+#import "LFWriteCommentViewController.h"
+#import "LFItemDetailViewController.h"
 
 #import "LFCommentTableViewCell.h"
 #import "LFCommon.h"
+#import "AppDelegate.h"
 
 typedef struct {
     CGFloat lineNumber ;
     CGFloat contentHeight ;
 } PYQContentInfo ;
 
-@interface LFCommentNoticeTableViewController () {
+#define kCommentNotice2WriteCommentVCSegueId @"CommentNotice2WriteCommentVCSegueId"
+
+@interface LFCommentNoticeTableViewController ()<LFCommentTableViewCellDelegate,LFWriteCommentViewControllerDelegate> {
     NSInteger heightPerLine ;
     NSInteger containerWidth ;
 }
@@ -36,34 +41,34 @@ typedef struct {
 
 #pragma mark - Life Cycle
 
-- (void)makeTestData {
-    {
-        //make demo data
-        LFComment *commet = [LFComment object] ;
-        commet.author = [LFUser currentUser] ;
-        commet.content = @"卧槽，测试啊\n卧槽啊，测试两行了" ;
-        Item *item = [Item object] ;
-        {
-            item.name = @"Test" ;
-            item.user = [LFUser currentUser] ;
-            item.itemDescription = @"卧槽，我捡到了扒拉扒拉" ;
-            //            item.image =
-        }
-        commet.item = item ;
-        
-        commet.cellHeight = @([self getCellHeightFrom:commet]) ;
-        
-        [self.dataSource addObject:commet] ;
-        [self.dataSource addObject:commet] ;
-    }
-}
+//- (void)makeTestData {
+//    {
+//        //make demo data
+//        LFComment *commet = [LFComment object] ;
+//        commet.author = [LFUser currentUser] ;
+//        commet.content = @"卧槽，测试啊\n卧槽啊，测试两行了" ;
+//        Item *item = [Item object] ;
+//        {
+//            item.name = @"Test" ;
+//            item.user = [LFUser currentUser] ;
+//            item.itemDescription = @"卧槽，我捡到了扒拉扒拉" ;
+//            //            item.image =
+//        }
+//        commet.item = item ;
+//        
+//        commet.cellHeight = @([self getCellHeightFrom:commet]) ;
+//        
+//        [self.dataSource addObject:commet] ;
+//        [self.dataSource addObject:commet] ;
+//    }
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     
     [self calculateHeightPerLine] ;
     
-    [self makeTestData] ;
+//    [self makeTestData] ;
     
     [self.tableView registerClass:[LFCommentTableViewCell class] forCellReuseIdentifier:@"LFCommentTableViewCellReuseId"] ;
     self.refreshControl = [[UIRefreshControl alloc] init] ;
@@ -100,6 +105,19 @@ typedef struct {
     
 }
 
+- (void)toUserMainPage:(LFUser *)targetUser {
+    if ( !targetUser ) return ;
+#warning 下一步写
+}
+
+- (void)toItemDetailViewController:(Item *)item {
+    if ( !item ) return ;
+    
+    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
+    vc.item = item ;
+    [self.navigationController pushViewController:vc animated:YES] ;
+}
+
 #pragma mark - UITableViewDelegate 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -132,11 +150,92 @@ typedef struct {
         cell = [[LFCommentTableViewCell alloc] init] ;
     }
     
-//    [cell setUpWithLFComment:self.dataSource[indexPath.section]] ;
+    cell.delegate = self ;
     [cell setUpWithLFComment:self.comments[indexPath.section]] ;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     
     return cell;
 }
+
+
+#pragma mark - LFCommentTableViewCellDelegate
+
+//点击了回复
+- (void)commentCellDidClickedReplyButton:(LFCommentTableViewCell *)cell {
+    //
+    [self performSegueWithIdentifier:kCommentNotice2WriteCommentVCSegueId sender:cell.comment] ;
+}
+
+//点击了头像
+- (void)commentCellDidClickedUserAvatar:(LFCommentTableViewCell *)cell {
+    [self toUserMainPage:cell.author] ;
+}
+
+//点击了ItemView
+- (void)commentCellDidClickedItemView:(LFCommentTableViewCell *)cell {
+    [self toItemDetailViewController:cell.item] ;
+}
+
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ( [segue.identifier isEqualToString:kCommentNotice2WriteCommentVCSegueId] ) {
+        LFWriteCommentViewController *vc = segue.destinationViewController ;
+        vc.delegate = self ;
+        LFComment *comment = sender ;
+        vc.targetItem = comment.item ;
+        vc.targetUser = comment.author ;
+        NSString *name = comment.author.displayName ;
+        vc.placeHolderString = [NSString stringWithFormat:@"回复：%@",name] ;
+    }
+}
+
+
+#pragma mark - LFWriteCommentViewControllerDelegate
+
+- (void)viewControllerDidCancel:(LFWriteCommentViewController *)viewcontroller {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }] ;
+}
+
+- (void)viewController:(LFWriteCommentViewController *)viewcontroller shouldSendComent:(NSString *)comment {
+    Item *item = viewcontroller.targetItem ;
+    
+    LFUser *me = [LFUser currentUser] ;
+    LFUser *replyedUser = viewcontroller.targetUser ;
+    LFUser *itemAuthor = item.user ;
+    
+    //new
+    LFComment *aComment = [LFComment object] ;
+    aComment.content = comment ;
+    aComment.item = item ;
+    aComment.author = me ;
+    aComment.replyTo = replyedUser ;
+    
+    NSArray *replyToUsers ;
+    
+    //看item的主人和目标回复的人。
+    if ( [itemAuthor.objectId isEqualToString:replyedUser.objectId]) {
+        replyToUsers = @[itemAuthor] ;
+    } else {
+        replyToUsers = @[itemAuthor,
+                         replyedUser] ;
+    }
+    aComment.replyToUsers = replyToUsers ;
+    LFWEAKSELF
+    [aComment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if ( succeeded ) {
+            [weakSelf addItemComments:@[aComment]] ;
+        } else {
+            QYDebugLog(@"发表评论错误 Error:[%@]",error) ;
+        }
+    }] ;
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+    }] ;
+}
+
 
 #pragma mark - getter && setter 
 
@@ -155,6 +254,11 @@ typedef struct {
 - (NSMutableDictionary *)commentsDic {
     return _commentsDic ? : ( _commentsDic = [NSMutableDictionary dictionary] ) ;
 }
+
+
+
+
+
 
 #pragma mark - Helper 
 

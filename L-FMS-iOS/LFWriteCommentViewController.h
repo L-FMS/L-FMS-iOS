@@ -14,6 +14,11 @@
 
 @property (weak) id<LFWriteCommentViewControllerDelegate> delegate ;
 
+@property (nonatomic,copy) NSString *placeHolderString ;
+
+@property (nonatomic,strong) id targetItem ;
+@property (nonatomic,strong) id targetUser ;
+
 @end
 
 @protocol LFWriteCommentViewControllerDelegate <NSObject>

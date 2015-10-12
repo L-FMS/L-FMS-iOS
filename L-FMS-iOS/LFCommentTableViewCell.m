@@ -114,6 +114,10 @@
     if ( !_avatarImageView ) {
         _avatarImageView = [[UIImageView alloc] init] ;
         _avatarImageView.image = [UIImage imageNamed:@"testAvatar1"] ;
+        _avatarImageView.userInteractionEnabled = YES ;
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] init] ;
+        [tapGes addTarget:self action:@selector(avatarClicked)] ;
+        [_avatarImageView addGestureRecognizer:tapGes] ;
     }
     return _avatarImageView ;
 }
@@ -165,6 +169,10 @@
 - (LFItemSurveyView *)itemSurveyView {
     if ( !_itemSurveyView ) {
         _itemSurveyView = [[LFItemSurveyView alloc] init] ;
+        _itemSurveyView.userInteractionEnabled = YES ;
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] init] ;
+        [tapGes addTarget:self action:@selector(itemViewClicked)] ;
+        [_itemSurveyView addGestureRecognizer:tapGes] ;
     }
     return _itemSurveyView ;
 }
@@ -172,6 +180,9 @@
 #pragma mark - Data Input 
 
 - (void)setUpWithLFComment:(LFComment *)comment {
+    self.comment = comment ;
+    self.item = comment.item ;
+    self.author = comment.author ;
     
     self.nameLabel.text = comment.author.displayName ;
     self.timeLabel.text = [LFUtils date2LongTimeStr:comment.createdAt?:[NSDate date]] ;
@@ -189,7 +200,21 @@
 #pragma mark - IBActions
 
 - (void)replyBtnClicked:(UIButton *)sender {
-    NSLog(@"233") ;
+    if ( [self.delegate respondsToSelector:@selector(commentCellDidClickedReplyButton:)]) {
+        [self.delegate commentCellDidClickedReplyButton:self] ;
+    }
+}
+
+- (void)avatarClicked {
+    if ( [self.delegate respondsToSelector:@selector(commentCellDidClickedUserAvatar:)]) {
+        [self.delegate commentCellDidClickedUserAvatar:self] ;
+    }
+}
+
+- (void)itemViewClicked {
+    if ( [self.delegate respondsToSelector:@selector(commentCellDidClickedItemView:)]) {
+        [self.delegate commentCellDidClickedItemView:self] ;
+    }
 }
 
 @end

@@ -19,9 +19,13 @@
 #import "LFItemDetailUserInfoTableViewCell.h"
 #import "LFItemDetailSeparateTableViewCell.h"
 
+#import "AppDelegate.h"
+
+#import "LFCommentActionSheet.h"
+
 #define kItemDetailVC2WriteCommentVCSegueId @"itemDetailVC2WriteCommentVCSegueId"
 
-@interface LFItemDetailViewController ()<LFToolBarViewDelegate,LFToolBarViewDataSource,UITableViewDelegate,UITableViewDataSource,LFWriteCommentViewControllerDelegate> {
+@interface LFItemDetailViewController ()<LFToolBarViewDelegate,LFToolBarViewDataSource,UITableViewDelegate,UITableViewDataSource,LFWriteCommentViewControllerDelegate,UIActionSheetDelegate,LFItemDetailInformationTableViewCellDelegate> {
     NSArray *_titles ;
 }
 
@@ -67,9 +71,98 @@
 }
 
 
+#pragma mark - actions 
+
+- (void)toUserMainPage:(LFUser *)user {
+    if ( !user ) return ;
+}
+
+- (void)showActionSheetForComment:(LFComment *)comment {
+    if ( !comment ) return ;
+    
+    LFCommentActionSheet *actionSheet = [[LFCommentActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"回复", nil] ;
+    actionSheet.comment = comment ;
+    actionSheet.delegate = self ;
+    
+    [actionSheet showInView:self.view] ;
+}
+
+- (void)replyToComments:(LFComment *)comment {
+    if ( !comment ) return ;
+    
+    LFWriteCommentViewController *vc = [AppDelegate getViewControllerById:@"LFWriteCommentViewControllerSBID"] ;
+    vc.delegate = self ;
+    vc.targetItem = comment.item ;
+    vc.targetUser = comment.author ;
+    NSString *name = comment.author.displayName ;
+    vc.placeHolderString = [NSString stringWithFormat:@"回复：%@",name] ;
+    
+    [self presentViewController:vc animated:YES completion:^{
+    }] ;
+}
+
+- (void)toLocationViewController {
+    if ( !self.item.location ) return ;
+    
+}
+
+- (void)showItemImage {
+    if ( !self.item.image ) return ;
+    
+}
+
+
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ( [actionSheet isKindOfClass:[LFCommentActionSheet class]] ) {
+        //评论
+        LFCommentActionSheet *commentAS = (id)actionSheet ;
+        LFComment *comment = commentAS.comment ;
+        commentAS.comment = nil ;
+        if ( buttonIndex != commentAS.cancelButtonIndex ) {
+            //评论
+            [self replyToComments:comment] ;
+        }
+    }
+}
+
+#pragma mark - LFItemDetailInformationTableViewCellDelegate
+
+//点击了位置
+- (void)itemCellDidClickedLocation:(LFItemDetailInformationTableViewCell *)cell {
+    [self toLocationViewController] ;
+}
+
+//点击了图片
+- (void)itemCellDidClickedImage:(LFItemDetailInformationTableViewCell *)cell {
+    [self showItemImage] ;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row ;
+    
+    if ( row <= 5 ) {
+        //Item+(分割)+User+(分割)+Tag+(分割)
+        BOOL isSeparate = row % 2 ;
+        row = row / 2 ;
+        if ( !isSeparate ) {
+            if ( 1 == row ) {
+                //User
+                LFUser *user = self.item.user ;
+                [self toUserMainPage:user] ;
+            }
+        }
+    } else {
+        row -= 7 ;
+        
+        LFComment *comment = self.comments[row] ;
+        [self showActionSheetForComment:comment] ;
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
 }
 
@@ -167,6 +260,8 @@
                     cell.locationLabel.text = self.item.place ;
                     [cell.itemImageView sd_setImageWithURL:[NSURL URLWithString:self.item.image.url]
                                           placeholderImage:[UIImage imageNamed:@"placeholderImage"]] ;
+                    
+                    cell.delegate = self ;
                     return cell ;
                     break ;
                 }
@@ -202,7 +297,7 @@
         //评论Nav+评论*N
         row -= 6 ;
         
-        if ( row == 0 ) {
+        if ( 0 == row ) {
             //评论Nav
             LFItemDetailCommentNavTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFItemDetailCommentNavTableViewCellReuseId" forIndexPath:indexPath] ;
             NSString *commentCount = @"评论" ;
@@ -287,18 +382,36 @@
 }
 
 - (void)viewController:(LFWriteCommentViewController *)viewcontroller shouldSendComent:(NSString *)comment {
+    Item *item = self.item ;
     
+    LFUser *me = [LFUser currentUser] ;
+    LFUser *replyedUser = viewcontroller.targetUser ;
+    LFUser *itemAuthor = item.user ;
+    
+    //new
     LFComment *aComment = [LFComment object] ;
     aComment.content = comment ;
     aComment.item = self.item ;
-    aComment.author = [LFUser currentUser] ;
+    aComment.author = me ;
+    aComment.replyTo = replyedUser ;
+    
     NSArray *replyToUsers ;
-    if ( [self.item.user.objectId isEqualToString:[LFUser currentUser].objectId]) {
-        replyToUsers = @[[LFUser currentUser]] ;
+    //看item的主人 和 回复的人
+    if ( replyedUser ) {
+        
+        if ( [replyedUser.objectId isEqualToString:itemAuthor.objectId] ) {
+            replyToUsers = @[replyToUsers] ;
+        } else {
+            replyToUsers = @[replyedUser,
+                             itemAuthor] ;
+        }
+        
     } else {
-        replyToUsers = @[[LFUser currentUser],
-                         self.item.user] ;
+        
+        replyToUsers = @[itemAuthor] ;
+        
     }
+    
     aComment.replyToUsers = replyToUsers ;
     LFWEAKSELF
     [aComment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -393,8 +506,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ( [segue.identifier isEqualToString:kItemDetailVC2WriteCommentVCSegueId]) {
         //
-        NSLog(@"23") ;
         LFWriteCommentViewController *vc = segue.destinationViewController ;
+        vc.delegate = self ;
+        vc.targetItem = self.item ;
+        vc.targetUser = nil ;
+        vc.placeHolderString = nil ;
         vc.delegate = self ;
     }
 }

@@ -63,6 +63,9 @@
     user.password = password ;
     user.name = @"未设置昵称" ;
     user.email = username ;
+    user.birth = [NSDate date] ;
+    user.gender = @"male" ;//female
+    
     [SVProgressHUD show] ;
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if ( succeeded ) {

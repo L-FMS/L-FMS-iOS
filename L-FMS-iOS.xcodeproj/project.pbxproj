@@ -98,6 +98,7 @@
 		19FEDCA51BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA41BCBE7D300C41186 /* LFAboutUsAuthorInfoTableViewCell.m */; };
 		19FEDCA91BCBFB5D00C41186 /* LFSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */; };
 		19FEDCAD1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */; };
+		19FEDCB11BCC12E100C41186 /* LFCommentActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCB01BCC12E100C41186 /* LFCommentActionSheet.m */; };
 		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +293,8 @@
 		19FEDCA81BCBFB5D00C41186 /* LFSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingTableViewController.m; sourceTree = "<group>"; };
 		19FEDCAB1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSettingSwitchTableViewCell.h; sourceTree = "<group>"; };
 		19FEDCAC1BCBFC6500C41186 /* LFSettingSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSettingSwitchTableViewCell.m; sourceTree = "<group>"; };
+		19FEDCAF1BCC12E100C41186 /* LFCommentActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCommentActionSheet.h; sourceTree = "<group>"; };
+		19FEDCB01BCC12E100C41186 /* LFCommentActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCommentActionSheet.m; sourceTree = "<group>"; };
 		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -512,6 +515,8 @@
 			children = (
 				191C5C511BC9BF170062442F /* LFToolBarView.h */,
 				191C5C521BC9BF170062442F /* LFToolBarView.m */,
+				19FEDCAF1BCC12E100C41186 /* LFCommentActionSheet.h */,
+				19FEDCB01BCC12E100C41186 /* LFCommentActionSheet.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1354,6 +1359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19FEDCB11BCC12E100C41186 /* LFCommentActionSheet.m in Sources */,
 				191C5C571BC9E5EF0062442F /* LFCheckItemAtMapViewController.m in Sources */,
 				191C5C631BC9E85C0062442F /* LFItemDetailCommentNavTableViewCell.m in Sources */,
 				19FEDC9B1BCBE10700C41186 /* LFVersionDescriptionViewController.m in Sources */,

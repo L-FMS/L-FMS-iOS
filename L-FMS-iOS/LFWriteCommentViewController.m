@@ -23,6 +23,9 @@
     
     self.textView.delegate = self ;
     self.placeHolderTextField.userInteractionEnabled = NO ;
+    if ( self.placeHolderString ) {
+        self.placeHolderTextField.placeholder = self.placeHolderString ;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

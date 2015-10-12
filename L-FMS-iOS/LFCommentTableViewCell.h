@@ -9,15 +9,34 @@
 #import <UIKit/UIKit.h>
 
 @class LFComment ;
+@class LFUser ;
+@class Item ;
 
-@protocol LFCommentTableViewCellDelegate <NSObject>
-
-@end
+@protocol LFCommentTableViewCellDelegate ;
 
 @interface LFCommentTableViewCell : UITableViewCell
 
 @property (weak) id<LFCommentTableViewCellDelegate> delegate ;
 
 - (void)setUpWithLFComment:(LFComment *)comment ;
+
+@property (weak) LFComment *comment ;
+@property (weak) LFUser *author ;
+@property (weak) Item *item ;
+
+@end
+
+@protocol LFCommentTableViewCellDelegate <NSObject>
+
+@optional
+
+//点击了回复
+- (void)commentCellDidClickedReplyButton:(LFCommentTableViewCell *)cell ;
+
+//点击了头像
+- (void)commentCellDidClickedUserAvatar:(LFCommentTableViewCell *)cell ;
+
+//点击了ItemView
+- (void)commentCellDidClickedItemView:(LFCommentTableViewCell *)cell ;
 
 @end

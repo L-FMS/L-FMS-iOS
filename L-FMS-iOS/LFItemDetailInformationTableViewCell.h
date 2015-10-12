@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LFItemDetailInformationTableViewCellDelegate ;
+
 @interface LFItemDetailInformationTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
@@ -17,5 +19,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+
+@property (weak) id<LFItemDetailInformationTableViewCellDelegate> delegate ;
+
+@end
+
+@protocol LFItemDetailInformationTableViewCellDelegate <NSObject>
+
+//点击了位置
+- (void)itemCellDidClickedLocation:(LFItemDetailInformationTableViewCell *)cell ;
+
+//点击了图片
+- (void)itemCellDidClickedImage:(LFItemDetailInformationTableViewCell *)cell ;
 
 @end

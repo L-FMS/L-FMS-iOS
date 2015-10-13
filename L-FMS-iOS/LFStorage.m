@@ -182,6 +182,20 @@
     return rooms ;
 }
 
+- (LFChatRoom *)getRoomByConvId:(NSString *)convId {
+    //临时写的一个无效率的。。
+    __block LFChatRoom *chatRoom ;
+    NSArray *rooms = [self getRooms] ;
+    [rooms enumerateObjectsUsingBlock:^(LFChatRoom *room, NSUInteger idx, BOOL *stop) {
+        if ( [room.convid isEqualToString:convId] ) {
+            chatRoom = room ;
+            *stop = YES ;
+        }
+    }] ;
+    
+    return chatRoom ;
+}
+
 - (NSArray *)getConvIds {
     NSMutableArray *convIds =[NSMutableArray array] ;
     NSArray *rooms = [self getRooms] ;

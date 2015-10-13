@@ -10,10 +10,12 @@
 #import "LFWriteCommentViewController.h"
 #import "LFCheckItemAtMapViewController.h"
 #import "LFUserMainPageTableViewController.h"
+#import "LFChatRoomViewController.h"
 
 #import "LFToolBarView.h"
 #import "LFCommon.h"
-
+#import "LFIMClient.h"
+#import "LFStorage.h"
 
 #import "LFItemDetailTagsTableViewCell.h"
 #import "LFItemDetailInformationTableViewCell.h" 
@@ -44,6 +46,10 @@
 @property (nonatomic,strong) NSMutableArray *comments ;
 @property (nonatomic,strong) NSMutableDictionary *commentsDic ;
 
+
+@property (nonatomic,weak) LFIMClient *IM ;
+@property (nonatomic,weak) LFStorage *storage ;
+
 @end
 
 @implementation LFItemDetailViewController
@@ -52,6 +58,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
+    self.IM = [LFUser currentUser].imClient ;
+    self.storage = [LFStorage shareInstance] ;
 
     self.tableView.delegate = self ;
     self.tableView.dataSource = self ;
@@ -334,7 +342,7 @@
             
             NSString *content = comment.content ;
             if ( comment.replyTo ) {
-                content = [NSString stringWithFormat:@"回复 %@ %@",comment.replyTo.displayName,content] ;
+                content = [NSString stringWithFormat:@"回复:%@ %@",comment.replyTo.displayName,content] ;
             }
             cell.contentLabel.text = content ;
             
@@ -410,7 +418,7 @@
     if ( replyedUser ) {
         
         if ( [replyedUser.objectId isEqualToString:itemAuthor.objectId] ) {
-            replyToUsers = @[replyToUsers] ;
+            replyToUsers = @[replyedUser] ;
         } else {
             replyToUsers = @[replyedUser,
                              itemAuthor] ;
@@ -486,6 +494,37 @@
 
 - (void)showMailBoxViewController {
     QYDebugLog(@"私信") ;
+    
+    [SVProgressHUD show] ;
+    [self.IM startConversationWithUserId:self.item.user.objectId completion:^(AVIMConversation *conversation, NSError *error) {
+        if ( conversation ) {
+            [self.storage insertRoomWithConversationId:conversation.conversationId] ;
+            AVIMTextMessage *message = [AVIMTextMessage messageWithText:@"你好" attributes:nil] ;
+            
+            [conversation sendMessage:message options:AVIMMessageSendOptionRequestReceipt callback:^(BOOL succeeded, NSError *error) {
+                [SVProgressHUD dismiss] ;
+                if ( succeeded ) {
+                    [self.storage insertMessage:message] ;
+                    [self toChatRoomWithConversation:conversation] ;
+                    [[LFNotify shareInstance] postMessageNotify:nil] ;
+                } else {
+                    QYDebugLog(@"发送失败Error:[%@]",error) ;
+                    [LFUtils alertError:error] ;
+                }
+            }] ;
+        } else {
+            [SVProgressHUD dismiss] ;
+        }
+    }] ;
+    
+}
+
+- (void)toChatRoomWithConversation:(AVIMConversation *)conversation {
+    if ( !conversation ) return ;
+    
+    LFChatRoomViewController *vc = [[LFChatRoomViewController alloc] initWithConersation:conversation] ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self.navigationController pushViewController:vc animated:YES] ;
 }
 
 #pragma mark - Helper 

@@ -151,7 +151,7 @@
     
     [self setRefreshing:YES] ;
     
-    AVQuery *query = [AVQuery queryWithClassName:NSStringFromClass([Item class])] ;
+    AVQuery *query = [Item query] ;
     [query whereKey:@"user" equalTo:[LFUser currentUser]] ;
     [query includeKey:@"user"] ;
     LFWEAKSELF

@@ -18,10 +18,24 @@
 @property (weak, nonatomic) IBOutlet UIButton *lotoutButton;
 
 @property (nonatomic) NSArray *titles ;
+@property (nonatomic) NSArray *values ;
 
 @end
 
 @implementation UserInformationViewController
+
+- (void)setUpValue {
+    self.titles = @[@"昵称",@"地址",@"邮箱",@"学院",@"手机号",@"性别",@"生日"] ;
+    LFUser *user = [LFUser currentUser] ;
+    
+    self.values = @[user.name,
+                    user.address?:@"",
+                    user.email,
+                    user.major?:@"",
+                    user.mobilePhoneNumber?:@"",
+                    user.gender?:@"",
+                    user.birth?[user.birth description]:@""] ;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad] ;
@@ -34,7 +48,7 @@
 
     self.title = @"账号信息" ;
     
-    self.titles = @[@"昵称",@"地址",@"邮箱",@"学院",@"手机号",@"性别",@"生日"] ;
+    [self setUpValue] ;
     
     [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
     
@@ -65,7 +79,8 @@
     static NSString *reuseId = @"UserInfoItemTableViewCellReuseId" ;
     
     UserInfoItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
-    [cell setUpWithTitle:self.titles[indexPath.row] detailDesc:@"描述"] ;
+    [cell setUpWithTitle:self.titles[indexPath.row]
+              detailDesc:self.values[indexPath.row]] ;
     
     return cell ;
 }

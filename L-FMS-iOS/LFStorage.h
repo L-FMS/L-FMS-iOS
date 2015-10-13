@@ -44,6 +44,8 @@
 
 - (NSArray *)getRooms ;
 
+- (LFChatRoom *)getRoomByConvId:(NSString *)convId ;
+
 - (NSArray *)getConvIds ;
 
 - (NSInteger)countUnread ;

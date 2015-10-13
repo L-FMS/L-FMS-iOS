@@ -102,9 +102,32 @@
     }
 }
 
+- (void)initBottomMenu {
+    // 添加第三方接入数据
+    /*
+     NSArray *plugIcons = @[@"sharemore_pic", @"sharemore_video",@"sharemore_location", @"sharemore_videovoip", @"sharemore_friendcard", @"sharemore_myfav", @"sharemore_wxtalk", @"sharemore_voiceinput", @"sharemore_openapi", @"sharemore_openapi", @"Avatar"] ;
+     NSArray *plugTitle = @[@"照片", @"拍摄",@"位置",@"视频",@"名片", @"我的收藏", @"实时对讲机", @"语音输入", @"大众点评", @"应用", @"曾宪华"] ;
+     for (NSString *plugIcon in plugIcons) {
+     XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]] ;
+     [shareMenuItems addObject:shareMenuItem] ;
+     }
+     */
+    NSMutableArray *shareMenuItems = [NSMutableArray array] ;
+    NSArray *plugIcons = @[@"pickPhotoIcon"] ;
+    NSArray *plugTitle = @[@"照片"] ;
+    for (NSString *plugIcon in plugIcons) {
+        XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]] ;
+        [shareMenuItems addObject:shareMenuItem] ;
+    }
+    self.shareMenuItems = shareMenuItems ;
+    [self.shareMenuView reloadData] ;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad] ;
     [self setUpChatRoomBackgroundImage] ;
+    [self initBottomMenu] ;
     
     self.messageInputView.inputTextView.placeHolder = @"发送文本消息" ;
     

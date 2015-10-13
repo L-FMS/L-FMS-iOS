@@ -75,6 +75,7 @@ typedef struct {
     [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged] ;
     [self.tableView addSubview:self.refreshControl] ;
     
+    [self refresh:nil] ;
 }
 
 - (void)didReceiveMemoryWarning {

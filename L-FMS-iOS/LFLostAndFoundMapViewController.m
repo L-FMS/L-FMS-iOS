@@ -138,14 +138,14 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     AVQuery *query = [Item query] ;
     AVGeoPoint *userLocation = [AVGeoPoint geoPointWithLocation:self.userLocation] ;
     [query whereKey:@"location" nearGeoPoint:userLocation] ;
-    query.limit = 10 ;
+    query.limit = 100 ;
 //    [query includeKey:@"user"] ;
     [query includeKey:@"user.avatar"] ;
     LFWEAKSELF
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         [self.refreshControl endRefreshing] ;
         if ( objects ) {
-            QYDebugLog(@"查找最近的物品成功 Items:[%@]",objects) ;
+            QYDebugLog(@"查找最近的物品成功") ;
             [weakSelf addItems:objects] ;
         } else {
             QYDebugLog(@"查找最近的物品失败 Erorr:[%@]",error) ;
@@ -219,6 +219,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     LFLostAFoundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFLostAFoundTableViewCellReuseId" forIndexPath:indexPath] ;
+    
     
     Item *item = self.items[indexPath.row] ;
     cell.itemNameLabel.text = item.name ;

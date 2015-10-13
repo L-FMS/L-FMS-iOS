@@ -7,12 +7,15 @@
 //
 
 #import "LFUserMainPageTableViewController.h"
+#import "LFChatRoomViewController.h"
 
 #import "LFUserMainPageButtonTableViewCell.h"
 #import "LFUserInfoItemTableViewCell.h"
 #import "LFUserMainInfoTableViewCell.h"
 
 #import "LFCommon.h"
+#import "LFIMClient.h"
+#import "LFStorage.h"
 
 #define itemnameKey @"itemname"
 #define itemDescriptionKey @"itemDescription"
@@ -20,6 +23,10 @@
 @interface LFUserMainPageTableViewController ()<LFUserMainPageButtonTableViewCellDelegate>
 
 @property (nonatomic) NSArray *dataSource ;
+
+@property (nonatomic,weak) LFIMClient *IM ;
+
+@property (nonatomic,weak) LFStorage *storage ;
 
 @end
 
@@ -33,10 +40,12 @@
                         @{itemnameKey:@"电话",
                           itemDescriptionKey:self.user.mobilePhoneNumber},
                         @{itemnameKey:@"地址",
-                          itemDescriptionKey:self.user.address},
+                          itemDescriptionKey:self.user.address?:@""},
                         @{itemnameKey:@"学院",
-                          itemDescriptionKey:self.user.major},
+                          itemDescriptionKey:self.user.major?:@""},
                         ] ;
+    self.IM = [LFUser currentUser].imClient ;
+    self.storage = [LFStorage shareInstance] ;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +57,36 @@
 - (void)chatWithCurrentUser {
     if ( !self.user ) return ;
     if ( [self.user.objectId isEqualToString:[LFUser currentUser].objectId]) return ;
+    
+    [SVProgressHUD show] ;
+    [self.IM startConversationWithUserId:self.user.objectId completion:^(AVIMConversation *conversation, NSError *error) {
+        if ( conversation ) {
+            [self.storage insertRoomWithConversationId:conversation.conversationId] ;
+            AVIMTextMessage *message = [AVIMTextMessage messageWithText:@"你好" attributes:nil] ;
+            
+            [conversation sendMessage:message options:AVIMMessageSendOptionRequestReceipt callback:^(BOOL succeeded, NSError *error) {
+                [SVProgressHUD dismiss] ;
+                if ( succeeded ) {
+                    [self.storage insertMessage:message] ;
+                    [self toChatRoomWithConversation:conversation] ;
+                    [[LFNotify shareInstance] postMessageNotify:nil] ;
+                } else {
+                    QYDebugLog(@"发送失败Error:[%@]",error) ;
+                    [LFUtils alertError:error] ;
+                }
+            }] ;
+        } else {
+            [SVProgressHUD dismiss] ;
+        }
+    }] ;
+}
+
+- (void)toChatRoomWithConversation:(AVIMConversation *)conversation {
+    if ( !conversation ) return ;
+    
+    LFChatRoomViewController *vc = [[LFChatRoomViewController alloc] initWithConersation:conversation] ;
+    vc.hidesBottomBarWhenPushed = YES ;
+    [self.navigationController pushViewController:vc animated:YES] ;
 }
 
 

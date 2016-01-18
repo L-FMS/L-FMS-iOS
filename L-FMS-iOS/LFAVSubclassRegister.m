@@ -13,12 +13,12 @@
 @implementation LFAVSubclassRegister
 
 + (void)registeAllAVSubclasses {
-    static dispatch_once_t onceToken ;
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [Item registerSubclass] ;
-        [LFUser registerSubclass] ;
-        [LFComment registerSubclass] ;
-    }) ;
+        [Item registerSubclass];
+        [LFUser registerSubclass];
+        [LFComment registerSubclass];
+    });
 }
 
 @end

@@ -31,29 +31,29 @@
 @interface LFChatRoomViewController () <XHAudioPlayerHelperDelegate>
 
 //AVIMConversation实例
-@property (nonatomic, strong) AVIMConversation *conversation ;
+@property (nonatomic, strong) AVIMConversation *conversation;
 
 
 
 
 //当前选中的Cell
-@property (nonatomic, strong) XHMessageTableViewCell *currentSelectedCell ;
+@property (nonatomic, strong) XHMessageTableViewCell *currentSelectedCell;
 
-@property LFIMClient *IM ;
+@property LFIMClient *IM;
 
 //是否正在加载Msg Flag
-@property BOOL isLoadingMsg ;
+@property BOOL isLoadingMsg;
 
 /**
  *  message数组[Type : AVIMMessage]
  */
-@property NSMutableArray *msgs ;
+@property NSMutableArray *msgs;
 
 //存储
-@property LFStorage *storage ;
+@property LFStorage *storage;
 
 //Notification
-@property LFNotify *notify ;
+@property LFNotify *notify;
 
 @end
 
@@ -67,107 +67,107 @@
 #pragma mark - init 
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        [self setUp] ;
+    if (self = [super init]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithConersation:(AVIMConversation *)conv {
-    if ( self = [super init] ) {
-        self.conversation = conv ;
-        [self setUp] ;
+    if (self = [super init]) {
+        self.conversation = conv;
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (void)setUp {
     // 配置输入框UI的样式
-    self.allowsSendFace = NO ;
-    self.isLoadingMsg = NO ;
-    self.IM = [LFUser currentUser].imClient ;
-    self.notify = [LFNotify shareInstance] ;
-    self.storage = [LFStorage shareInstance] ;
+    self.allowsSendFace = NO;
+    self.isLoadingMsg = NO;
+    self.IM = [LFUser currentUser].imClient;
+    self.notify = [LFNotify shareInstance];
+    self.storage = [LFStorage shareInstance];
 }
 
 #pragma mark - Life Cycle
 
 - (void)setUpChatRoomBackgroundImage {
-    if ( [LFUserDefaultService getChatRoomBackgroundSwitch] ) {
-        UIImage *backgroundImage = [UIImage imageNamed:@"testChatRoomBackgroundImg"] ;
-        UIImageView *backgroundView =[[UIImageView alloc] initWithImage:backgroundImage] ;
-        backgroundView.contentMode = UIViewContentModeScaleAspectFill ;
+    if ([LFUserDefaultService getChatRoomBackgroundSwitch]) {
+        UIImage *backgroundImage = [UIImage imageNamed:@"testChatRoomBackgroundImg"];
+        UIImageView *backgroundView =[[UIImageView alloc] initWithImage:backgroundImage];
+        backgroundView.contentMode = UIViewContentModeScaleAspectFill;
         
-        [self.messageTableView setBackgroundView:backgroundView] ;
+        [self.messageTableView setBackgroundView:backgroundView];
     }
 }
 
 - (void)initBottomMenu {
     // 添加第三方接入数据
     /*
-     NSArray *plugIcons = @[@"sharemore_pic", @"sharemore_video",@"sharemore_location", @"sharemore_videovoip", @"sharemore_friendcard", @"sharemore_myfav", @"sharemore_wxtalk", @"sharemore_voiceinput", @"sharemore_openapi", @"sharemore_openapi", @"Avatar"] ;
-     NSArray *plugTitle = @[@"照片", @"拍摄",@"位置",@"视频",@"名片", @"我的收藏", @"实时对讲机", @"语音输入", @"大众点评", @"应用", @"曾宪华"] ;
+     NSArray *plugIcons = @[@"sharemore_pic", @"sharemore_video",@"sharemore_location", @"sharemore_videovoip", @"sharemore_friendcard", @"sharemore_myfav", @"sharemore_wxtalk", @"sharemore_voiceinput", @"sharemore_openapi", @"sharemore_openapi", @"Avatar"];
+     NSArray *plugTitle = @[@"照片", @"拍摄",@"位置",@"视频",@"名片", @"我的收藏", @"实时对讲机", @"语音输入", @"大众点评", @"应用", @"曾宪华"];
      for (NSString *plugIcon in plugIcons) {
-     XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]] ;
-     [shareMenuItems addObject:shareMenuItem] ;
+     XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]];
+     [shareMenuItems addObject:shareMenuItem];
      }
      */
-    NSMutableArray *shareMenuItems = [NSMutableArray array] ;
-    NSArray *plugIcons = @[@"pickPhotoIcon"] ;
-    NSArray *plugTitle = @[@"照片"] ;
+    NSMutableArray *shareMenuItems = [NSMutableArray array];
+    NSArray *plugIcons = @[@"pickPhotoIcon"];
+    NSArray *plugTitle = @[@"照片"];
     for (NSString *plugIcon in plugIcons) {
-        XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]] ;
-        [shareMenuItems addObject:shareMenuItem] ;
+        XHShareMenuItem *shareMenuItem = [[XHShareMenuItem alloc] initWithNormalIconImage:[UIImage imageNamed:plugIcon] title:[plugTitle objectAtIndex:[plugIcons indexOfObject:plugIcon]]];
+        [shareMenuItems addObject:shareMenuItem];
     }
-    self.shareMenuItems = shareMenuItems ;
-    [self.shareMenuView reloadData] ;
+    self.shareMenuItems = shareMenuItems;
+    [self.shareMenuView reloadData];
 }
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
-    [self setUpChatRoomBackgroundImage] ;
-    [self initBottomMenu] ;
+    [super viewDidLoad];
+    [self setUpChatRoomBackgroundImage];
+    [self initBottomMenu];
     
-    self.messageInputView.inputTextView.placeHolder = @"发送文本消息" ;
+    self.messageInputView.inputTextView.placeHolder = @"发送文本消息";
     
-    self.messageSender = [LFUser currentUser].name ;
+    self.messageSender = [LFUser currentUser].name;
     
-    self.title = self.conversation.title ;
+    self.title = self.conversation.title;
     
-    [self.storage insertRoomWithConversationId:self.conversation.conversationId] ;
-    [self.storage clearUnreadWithConvid:self.conversation.conversationId] ;
-    [self.notify addMsgObserver:self selector:@selector(loadMessage)] ;
+    [self.storage insertRoomWithConversationId:self.conversation.conversationId];
+    [self.storage clearUnreadWithConvid:self.conversation.conversationId];
+    [self.notify addMsgObserver:self selector:@selector(loadMessage)];
     
-    [self loadMessagesWithLoadMore:NO] ;
+    [self loadMessagesWithLoadMore:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated] ;
+    [super viewWillDisappear:animated];
     //停止播放
-    [[XHAudioPlayerHelper shareInstance] stopAudio] ;
+    [[XHAudioPlayerHelper shareInstance] stopAudio];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated] ;
-    [self.storage clearUnreadWithConvid:self.conversation.conversationId] ;
+    [super viewDidDisappear:animated];
+    [self.storage clearUnreadWithConvid:self.conversation.conversationId];
     
-    [[XHAudioPlayerHelper shareInstance] setDelegate:nil] ;
+    [[XHAudioPlayerHelper shareInstance] setDelegate:nil];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 - (void)dealloc {
-    [self.notify removeMsgObserver:self] ;
+    [self.notify removeMsgObserver:self];
 }
 
 
 #pragma mark - Observer 
 
 - (void)loadMessage {
-    [self loadMessagesWithLoadMore:NO] ;
+    [self loadMessagesWithLoadMore:NO];
 }
 
 #pragma mark - actions
@@ -181,78 +181,78 @@
 
 //点击cell的时候
 - (void)multiMediaMessageDidSelectedOnMessage:(id<XHMessageModel>)message atIndexPath:(NSIndexPath *)indexPath onMessageTableViewCell:(XHMessageTableViewCell *)messageTableViewCell {
-    UIViewController *disPlayViewController ;
+    UIViewController *disPlayViewController;
     switch (message.messageMediaType) {
         case XHBubbleMessageMediaTypeVideo:
         case XHBubbleMessageMediaTypePhoto: {
-            DLog(@"message : %@", message.photo) ;
-            DLog(@"message : %@", message.videoConverPhoto) ;
-            XHDisplayMediaViewController *messageDisplayTextView = [[XHDisplayMediaViewController alloc] init] ;
-            messageDisplayTextView.message = message ;
-            disPlayViewController = messageDisplayTextView ;
-            break ;
+            DLog(@"message : %@", message.photo);
+            DLog(@"message : %@", message.videoConverPhoto);
+            XHDisplayMediaViewController *messageDisplayTextView = [[XHDisplayMediaViewController alloc] init];
+            messageDisplayTextView.message = message;
+            disPlayViewController = messageDisplayTextView;
+            break;
         }
-            break ;
+            break;
         case XHBubbleMessageMediaTypeVoice: {
-            DLog(@"message : %@", message.voicePath) ;
+            DLog(@"message : %@", message.voicePath);
             // Mark the voice as read and hide the red dot.
-            message.isRead = YES ;
-            messageTableViewCell.messageBubbleView.voiceUnreadDotImageView.hidden = YES ;
+            message.isRead = YES;
+            messageTableViewCell.messageBubbleView.voiceUnreadDotImageView.hidden = YES;
             
-            [[XHAudioPlayerHelper shareInstance] setDelegate:(id<NSFileManagerDelegate>)self] ;
+            [[XHAudioPlayerHelper shareInstance] setDelegate:(id<NSFileManagerDelegate>)self];
             if (_currentSelectedCell) {
-                [_currentSelectedCell.messageBubbleView.animationVoiceImageView stopAnimating] ;
+                [_currentSelectedCell.messageBubbleView.animationVoiceImageView stopAnimating];
             }
             if (_currentSelectedCell == messageTableViewCell) {
-                [messageTableViewCell.messageBubbleView.animationVoiceImageView stopAnimating] ;
-                [[XHAudioPlayerHelper shareInstance] stopAudio] ;
-                self.currentSelectedCell = nil ;
+                [messageTableViewCell.messageBubbleView.animationVoiceImageView stopAnimating];
+                [[XHAudioPlayerHelper shareInstance] stopAudio];
+                self.currentSelectedCell = nil;
             } else {
-                self.currentSelectedCell = messageTableViewCell ;
-                [messageTableViewCell.messageBubbleView.animationVoiceImageView startAnimating] ;
-                [[XHAudioPlayerHelper shareInstance] managerAudioWithFileName:message.voicePath toPlay:YES] ;
+                self.currentSelectedCell = messageTableViewCell;
+                [messageTableViewCell.messageBubbleView.animationVoiceImageView startAnimating];
+                [[XHAudioPlayerHelper shareInstance] managerAudioWithFileName:message.voicePath toPlay:YES];
             }
-            break ;
+            break;
         }
         case XHBubbleMessageMediaTypeEmotion:
-            DLog(@"facePath : %@", message.emotionPath) ;
-            break ;
+            DLog(@"facePath : %@", message.emotionPath);
+            break;
         case XHBubbleMessageMediaTypeLocalPosition: {
-            DLog(@"facePath : %@", message.localPositionPhoto) ;
-            XHDisplayLocationViewController *displayLocationViewController = [[XHDisplayLocationViewController alloc] init] ;
-            displayLocationViewController.message = message ;
-            disPlayViewController = displayLocationViewController ;
-            break ;
+            DLog(@"facePath : %@", message.localPositionPhoto);
+            XHDisplayLocationViewController *displayLocationViewController = [[XHDisplayLocationViewController alloc] init];
+            displayLocationViewController.message = message;
+            disPlayViewController = displayLocationViewController;
+            break;
         }
         default:
-            break ;
+            break;
     }
     if (disPlayViewController) {
-        [self.navigationController pushViewController:disPlayViewController animated:YES] ;
+        [self.navigationController pushViewController:disPlayViewController animated:YES];
     }
 }
 
 //点击文本出现文本详细。
 - (void)didDoubleSelectedOnTextMessage:(id<XHMessageModel>)message atIndexPath:(NSIndexPath *)indexPath {
-    DLog(@"text : %@", message.text) ;
-    XHDisplayTextViewController *displayTextViewController = [[XHDisplayTextViewController alloc] init] ;
-    displayTextViewController.message = message ;
-    [self.navigationController pushViewController:displayTextViewController animated:YES] ;
+    DLog(@"text : %@", message.text);
+    XHDisplayTextViewController *displayTextViewController = [[XHDisplayTextViewController alloc] init];
+    displayTextViewController.message = message;
+    [self.navigationController pushViewController:displayTextViewController animated:YES];
 }
 
 //点击头像
 - (void)didSelectedAvatarOnMessage:(id<XHMessageModel>)message atIndexPath:(NSIndexPath *)indexPath {
-    DLog(@"indexPath : %@", indexPath) ;
+    DLog(@"indexPath : %@", indexPath);
 }
 
 #pragma mark - XHAudioPlayerHelperDelegate
 
 - (void)didAudioPlayerStopPlay:(AVAudioPlayer *)audioPlayer {
     if (!_currentSelectedCell) {
-        return ;
+        return;
     }
-    [_currentSelectedCell.messageBubbleView.animationVoiceImageView stopAnimating] ;
-    self.currentSelectedCell = nil ;
+    [_currentSelectedCell.messageBubbleView.animationVoiceImageView stopAnimating];
+    self.currentSelectedCell = nil;
 }
 
 
@@ -261,12 +261,12 @@
 
 
 - (BOOL)shouldLoadMoreMessagesScrollToTop {
-    return YES ;
+    return YES;
 }
 
 //向前加载
 - (void)loadMoreMessagesScrollTotop {
-    [self loadMessagesWithLoadMore:YES] ;
+    [self loadMessagesWithLoadMore:YES];
 }
 
 /**
@@ -277,10 +277,10 @@
  * @param date   发送时间
  */
 - (void)didSendText:(NSString *)text fromSender:(NSString *)sender onDate:(NSDate *)date {
-    if( [text length] > 0 ) {
-        AVIMTextMessage *message = [AVIMTextMessage messageWithText:text attributes:nil] ;
-        [self sendMsg:message originFilePath:nil] ;
-        [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText] ;
+    if([text length] > 0) {
+        AVIMTextMessage *message = [AVIMTextMessage messageWithText:text attributes:nil];
+        [self sendMsg:message originFilePath:nil];
+        [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeText];
     }
 }
 
@@ -292,8 +292,8 @@
  * @param date   发送时间
  */
 - (void)didSendPhoto:(UIImage *)photo fromSender:(NSString *)sender onDate:(NSDate *)date {
-    [self sendImage:photo] ;
-    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto] ;
+    [self sendImage:photo];
+    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypePhoto];
 }
 
 /**
@@ -304,14 +304,14 @@
  * @param date      发送时间
  */
 - (void)didSendVideoConverPhoto:(UIImage *)videoConverPhoto videoPath:(NSString *)videoPath fromSender:(NSString *)sender onDate:(NSDate *)date {
-    //    AVIMVideoMessage *sendVideoMessage=[AVIMVideoMessage messageWithText:nil attachedFilePath:videoPath attributes:nil] ;
+    //    AVIMVideoMessage *sendVideoMessage=[AVIMVideoMessage messageWithText:nil attachedFilePath:videoPath attributes:nil];
     //    WEAKSELF
     //    [self.conversation sendMessage:sendVideoMessage callback:^(BOOL succeeded, NSError *error) {
     //        if([weakSelf filterError:error]){
-    //            [weakSelf insertAVIMTypedMessage:sendVideoMessage] ;
-    //            [weakSelf finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeVideo] ;
+    //            [weakSelf insertAVIMTypedMessage:sendVideoMessage];
+    //            [weakSelf finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeVideo];
     //        }
-    //    }] ;
+    //    }];
 }
 
 /**
@@ -324,18 +324,18 @@
  */
 - (void)didSendVoice:(NSString *)voicePath voiceDuration:(NSString *)voiceDuration fromSender:(NSString *)sender onDate:(NSDate *)date {
     
-    DLog(@"%@",voicePath) ;
-    [self sendFileMsgWithPath:voicePath type:kAVIMMessageMediaTypeAudio] ;
+    DLog(@"%@",voicePath);
+    [self sendFileMsgWithPath:voicePath type:kAVIMMessageMediaTypeAudio];
 }
 
 ///**
 // * 地理位置
 // */
 //- (void)didSendGeoLocationsPhoto:(UIImage *)geoLocationsPhoto geolocations:(NSString *)geolocations location:(CLLocation *)location fromSender:(NSString *)sender onDate:(NSDate *)date {
-//    XHMessage *geoLocationsMessage = [[XHMessage alloc] initWithLocalPositionPhoto:geoLocationsPhoto geolocations:geolocations location:location sender:sender timestamp:date] ;
-////    geoLocationsMessage.avatarUrl = [self avatarUrlByClientId:sender] ;
-//    [self addMessage:geoLocationsMessage] ;
-//    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeLocalPosition] ;
+//    XHMessage *geoLocationsMessage = [[XHMessage alloc] initWithLocalPositionPhoto:geoLocationsPhoto geolocations:geolocations location:location sender:sender timestamp:date];
+////    geoLocationsMessage.avatarUrl = [self avatarUrlByClientId:sender];
+//    [self addMessage:geoLocationsMessage];
+//    [self finishSendMessageWithBubbleMessageType:XHBubbleMessageMediaTypeLocalPosition];
 //}
 
 /**
@@ -348,15 +348,15 @@
 
 - (BOOL)shouldDisplayTimestampForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row==0 || indexPath.row>=self.messages.count){
-        return YES ;
+        return YES;
     }else{
-        XHMessage *message=[self.messages objectAtIndex:indexPath.row] ;
-        XHMessage *previousMessage=[self.messages objectAtIndex:indexPath.row-1] ;
-        NSInteger interval=[message.timestamp timeIntervalSinceDate:previousMessage.timestamp] ;
+        XHMessage *message=[self.messages objectAtIndex:indexPath.row];
+        XHMessage *previousMessage=[self.messages objectAtIndex:indexPath.row-1];
+        NSInteger interval=[message.timestamp timeIntervalSinceDate:previousMessage.timestamp];
         if(interval>60*3){
-            return YES ;
+            return YES;
         }else{
-            return NO ;
+            return NO;
         }
     }
 }
@@ -376,16 +376,16 @@
  * @return 返回YES or NO
  */
 - (BOOL)shouldPreventScrollToBottomWhileUserScrolling {
-    return YES ;
+    return YES;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    XHMessageTableViewCell *messageTableViewCell = (id)[super tableView:tableView cellForRowAtIndexPath:indexPath] ;
-    messageTableViewCell.backgroundColor = [UIColor clearColor] ;
-    messageTableViewCell.contentView.backgroundColor = [UIColor clearColor] ;
+    XHMessageTableViewCell *messageTableViewCell = (id)[super tableView:tableView cellForRowAtIndexPath:indexPath];
+    messageTableViewCell.backgroundColor = [UIColor clearColor];
+    messageTableViewCell.contentView.backgroundColor = [UIColor clearColor];
     
     return messageTableViewCell;
 }
@@ -394,115 +394,115 @@
 #pragma mark - Helper 
 
 - (void)loadMessagesWithLoadMore:(BOOL)isLoadMore {
-    if ( ![self.IM isOpened] ) {
-        QYDebugLog(@"没有网络") ;
-        return ;
+    if (![self.IM isOpened]) {
+        QYDebugLog(@"没有网络");
+        return;
     }
     
-    if( _isLoadingMsg ) {
+    if(_isLoadingMsg) {
         WEAKSELF
         [LFUtils runAfterSecs:1.0 block:^{
-            [weakSelf loadMessagesWithLoadMore:isLoadMore] ;
-        }] ;
-        return ;
+            [weakSelf loadMessagesWithLoadMore:isLoadMore];
+        }];
+        return;
     }
     
-    _isLoadingMsg = YES ;
+    _isLoadingMsg = YES;
     WEAKSELF
     [LFUtils runInGlobalQueue:^{
-        int64_t maxTimestamp = (((int64_t)[[NSDate date] timeIntervalSince1970]) + 10 ) *1000 ;
-        int64_t timestamp ;
-        NSUInteger limit = 0 ;
-        NSString *messageId ;
+        int64_t maxTimestamp = (((int64_t)[[NSDate date] timeIntervalSince1970]) + 10) *1000;
+        int64_t timestamp;
+        NSUInteger limit = 0;
+        NSString *messageId;
         //默认加载 20 个
-        limit = ONE_PAGE_SIZE ;
+        limit = ONE_PAGE_SIZE;
         
         //不加载更多消息
-        if( NO == isLoadMore && self.msgs.count > ONE_PAGE_SIZE ){
-            limit = self.msgs.count ;
+        if(NO == isLoadMore && self.msgs.count > ONE_PAGE_SIZE){
+            limit = self.msgs.count;
         }
         
         //默认时间戳
-        timestamp = maxTimestamp ;
-        if ( YES == isLoadMore && self.messages.count > 0 ) {
+        timestamp = maxTimestamp;
+        if (YES == isLoadMore && self.messages.count > 0) {
             //如果是加载更多更新时间戳 和 MessageId
-            XHMessage *firstMsg = self.messages[0] ;
-            NSDate *date = firstMsg.timestamp ;
-            timestamp = [date timeIntervalSince1970] * 1000 ;
+            XHMessage *firstMsg = self.messages[0];
+            NSDate *date = firstMsg.timestamp;
+            timestamp = [date timeIntervalSince1970] * 1000;
             
-            AVIMTypedMessage *msg = self.msgs[0] ;
-            messageId = msg.messageId ;
+            AVIMTypedMessage *msg = self.msgs[0];
+            messageId = msg.messageId;
         }
         
         //获取Messages
-        NSMutableArray *messages ;
-        if ( NO == isLoadMore ) {
+        NSMutableArray *messages;
+        if (NO == isLoadMore) {
             //本地获取
             messages = [[self.storage getMsgsWithConvid:self.conversation.conversationId
                                                maxTime:timestamp
-                                                  limit:limit] mutableCopy] ;
+                                                  limit:limit] mutableCopy];
             
         } else {
             //服务器拉取
-            NSError *error ;
+            NSError *error;
             NSArray *remoteMessages = [self.IM queryMsgsWithConv:self.conversation
                                                            msgId:messageId
                                                          maxTime:timestamp
                                                            limit:limit
-                                                           error:&error] ;
-            if ( error ) {
-                [LFUtils alertError:error] ;
+                                                           error:&error];
+            if (error) {
+                [LFUtils alertError:error];
                 
-                return  ;
+                return ;
             }
             
-            messages = [remoteMessages mutableCopy] ;
+            messages = [remoteMessages mutableCopy];
         }
         
 
 #warning 废弃
         //    {
-        //        NSMutableArray *msgs = [[_storage getMsgsWithConvid:self.conversation.conversationId maxTime:timestamp limit:limit] mutableCopy] ;
+        //        NSMutableArray *msgs = [[_storage getMsgsWithConvid:self.conversation.conversationId maxTime:timestamp limit:limit] mutableCopy];
         //         注释上面一行，取消掉下面几行的注释，消息记录将从远程服务器获取
         //
-        //        NSError *error ;
+        //        NSError *error;
         //
-        //        NSArray *arrayMsgs = [_IM queryMsgsWithConv:self.conversation msgId:msgId maxTime:timestamp limit:limit error:&error] ;
-        //        if( error ){
-        //            [SPUtils alertError:error] ;
-        //            return ;
+        //        NSArray *arrayMsgs = [_IM queryMsgsWithConv:self.conversation msgId:msgId maxTime:timestamp limit:limit error:&error];
+        //        if(error){
+        //            [SPUtils alertError:error];
+        //            return;
         //        }
-        //        NSMutableArray *msgs = [arrayMsgs mutableCopy] ;
+        //        NSMutableArray *msgs = [arrayMsgs mutableCopy];
         //    }
         
         [self cacheMsgs:messages callback:^(BOOL succeeded, NSError *error) {
             
             [LFUtils runInMainQueue:^{
                 
-                if ( !error ) {
-                    NSMutableArray *xhMessages = [[weakSelf getXHMessages:messages] mutableCopy] ;
-                    if( NO == isLoadMore ){
-                        weakSelf.messages = xhMessages ;
-                        weakSelf.msgs = messages ;
-                        [weakSelf.messageTableView reloadData] ;
-                        [weakSelf scrollToBottomAnimated:NO] ;
-                        _isLoadingMsg = NO ;
+                if (!error) {
+                    NSMutableArray *xhMessages = [[weakSelf getXHMessages:messages] mutableCopy];
+                    if(NO == isLoadMore){
+                        weakSelf.messages = xhMessages;
+                        weakSelf.msgs = messages;
+                        [weakSelf.messageTableView reloadData];
+                        [weakSelf scrollToBottomAnimated:NO];
+                        _isLoadingMsg = NO;
                     } else {
-                        NSMutableArray *newMsgs = [NSMutableArray arrayWithArray:messages] ;
-                        [newMsgs addObjectsFromArray:_msgs] ;
-                        _msgs = newMsgs ;
+                        NSMutableArray *newMsgs = [NSMutableArray arrayWithArray:messages];
+                        [newMsgs addObjectsFromArray:_msgs];
+                        _msgs = newMsgs;
                         [weakSelf insertOldMessages:xhMessages completion:^{
-                            _isLoadingMsg = NO ;
-                        }] ;
+                            _isLoadingMsg = NO;
+                        }];
                     }
                 }
                 
-            }] ;
+            }];
             
-        }] ;
+        }];
         
         
-    }] ;
+    }];
 }
 
 /**
@@ -512,24 +512,24 @@
  * @param callback 回调
  */
 - (void)cacheMsgs:(NSArray *)msgs callback:(AVBooleanResultBlock)callback{
-    __block NSMutableSet *userIds = [NSMutableSet set] ;
-    for( AVIMTypedMessage *message in msgs ) {
-        [userIds addObject:message.clientId] ;
+    __block NSMutableSet *userIds = [NSMutableSet set];
+    for(AVIMTypedMessage *message in msgs) {
+        [userIds addObject:message.clientId];
         
-        if ( kAVIMMessageMediaTypeImage == message.mediaType ||
-             kAVIMMessageMediaTypeAudio == message.mediaType ) {
+        if (kAVIMMessageMediaTypeImage == message.mediaType ||
+             kAVIMMessageMediaTypeAudio == message.mediaType) {
             //如果是图片或者音频
 
-            NSString *path = [self getPathByObjectId:message.messageId] ;
-            NSFileManager *manager = [NSFileManager defaultManager] ;
-            if( [manager fileExistsAtPath:path] == NO ){
-                NSData *data = [message.file getData] ;
-                [data writeToFile:path atomically:YES] ;
+            NSString *path = [self getPathByObjectId:message.messageId];
+            NSFileManager *manager = [NSFileManager defaultManager];
+            if([manager fileExistsAtPath:path] == NO){
+                NSData *data = [message.file getData];
+                [data writeToFile:path atomically:YES];
             }
         }
     }
     
-    [LFCacheService cacheUsersWithIds:userIds callback:callback] ;
+    [LFCacheService cacheUsersWithIds:userIds callback:callback];
 }
 
 /**
@@ -540,106 +540,106 @@
  * @return 转换成的XHMessages数组
  */
 - (NSArray *)getXHMessages:(NSArray *)messages {
-    NSMutableArray *xhMessages = [NSMutableArray array] ;
-    for( AVIMTypedMessage *avMessage in messages ) {
+    NSMutableArray *xhMessages = [NSMutableArray array];
+    for(AVIMTypedMessage *avMessage in messages) {
         
-        XHMessage *xhMessage = [self getXHMessageFromAVMessage:avMessage] ;
+        XHMessage *xhMessage = [self getXHMessageFromAVMessage:avMessage];
         
-        if( xhMessage ){
-            [xhMessages addObject:xhMessage] ;
+        if(xhMessage){
+            [xhMessages addObject:xhMessage];
         }
     }
-    return xhMessages ;
+    return xhMessages;
 }
 
 - (NSDate*)getTimestampDate:(int64_t)timestamp{
-    return [NSDate dateWithTimeIntervalSince1970:timestamp/1000] ;
+    return [NSDate dateWithTimeIntervalSince1970:timestamp/1000];
 }
 
 - (XHMessage *)getXHMessageFromAVMessage:(AVIMTypedMessage *)avMessage {
-    XHMessage *message ;
-    AVIMMessageMediaType messageType = avMessage.mediaType ;
+    XHMessage *message;
+    AVIMMessageMediaType messageType = avMessage.mediaType;
     
-    LFUser *fromUser = [[LFCacheService shareInstance] getUserById:avMessage.clientId] ;
+    LFUser *fromUser = [[LFCacheService shareInstance] getUserById:avMessage.clientId];
     
-    NSDate *timestamp = [self getTimestampDate:avMessage.sendTimestamp] ;
+    NSDate *timestamp = [self getTimestampDate:avMessage.sendTimestamp];
     
-    NSString *displayName = fromUser.name ;
+    NSString *displayName = fromUser.name;
     
-    switch ( messageType ) {
+    switch (messageType) {
         case kAVIMMessageMediaTypeText : {
             //文本
-            AVIMTextMessage *textMessage = (AVIMTextMessage *)avMessage ;
+            AVIMTextMessage *textMessage = (AVIMTextMessage *)avMessage;
             
-            message = [[XHMessage alloc] initWithText:textMessage.text sender:displayName timestamp:timestamp] ;
-            break ;
+            message = [[XHMessage alloc] initWithText:textMessage.text sender:displayName timestamp:timestamp];
+            break;
         }
         case kAVIMMessageMediaTypeImage : {
             //图片
-            AVIMImageMessage *imageMessage = (AVIMImageMessage *)avMessage ;
-            message = [[XHMessage alloc] initWithPhoto:nil thumbnailUrl:imageMessage.file.url originPhotoUrl:nil sender:displayName timestamp:timestamp] ;
-            break ;
+            AVIMImageMessage *imageMessage = (AVIMImageMessage *)avMessage;
+            message = [[XHMessage alloc] initWithPhoto:nil thumbnailUrl:imageMessage.file.url originPhotoUrl:nil sender:displayName timestamp:timestamp];
+            break;
         }
         case kAVIMMessageMediaTypeAudio:{
             //音频
-            NSError *error ;
-            NSString *path = [self fetchDataOfMessageFile:avMessage.file fileName:avMessage.messageId error:&error] ;
-            AVIMAudioMessage *audioMessage = (AVIMAudioMessage *)avMessage ;
-            message = [[XHMessage alloc] initWithVoicePath:path voiceUrl:nil voiceDuration:[NSString stringWithFormat:@"%.1f",audioMessage.duration] sender:displayName timestamp:timestamp] ;
-            break ;
+            NSError *error;
+            NSString *path = [self fetchDataOfMessageFile:avMessage.file fileName:avMessage.messageId error:&error];
+            AVIMAudioMessage *audioMessage = (AVIMAudioMessage *)avMessage;
+            message = [[XHMessage alloc] initWithVoicePath:path voiceUrl:nil voiceDuration:[NSString stringWithFormat:@"%.1f",audioMessage.duration] sender:displayName timestamp:timestamp];
+            break;
         }
             
 //        case kAVIMMessageMediaTypeVideo:{
 //            //视频
-//            AVIMVideoMessage *receiveVideoMessage=(AVIMVideoMessage*)typedMessage ;
-//            NSString *format=receiveVideoMessage.format ;
-//            NSError *error ;
-//            NSString *path=[self fetchDataOfMessageFile:typedMessage.file fileName:[NSString stringWithFormat:@"%@.%@",typedMessage.messageId,format] error:&error] ;
-//            message = [[XHMessage alloc] initWithVideoConverPhoto:[XHMessageVideoConverPhotoFactory videoConverPhotoWithVideoPath:path] videoPath:path videoUrl:nil sender:displayName timestamp:timestamp] ;
-//            break ;
+//            AVIMVideoMessage *receiveVideoMessage=(AVIMVideoMessage*)typedMessage;
+//            NSString *format=receiveVideoMessage.format;
+//            NSError *error;
+//            NSString *path=[self fetchDataOfMessageFile:typedMessage.file fileName:[NSString stringWithFormat:@"%@.%@",typedMessage.messageId,format] error:&error];
+//            message = [[XHMessage alloc] initWithVideoConverPhoto:[XHMessageVideoConverPhotoFactory videoConverPhotoWithVideoPath:path] videoPath:path videoUrl:nil sender:displayName timestamp:timestamp];
+//            break;
 //        }
 //        case kAVIMMessageMediaTypeLocation:{
-//            AVIMLocationMessage *locationMsg = (AVIMLocationMessage *)typedMessage ;
-//            UIImage *LocalPostionPhoto = [UIImage imageNamed:@"Fav_Cell_Loc"] ;
-//            NSString *geoLocations = locationMsg.text ;
-//            CLLocation *location = [[CLLocation alloc] initWithLatitude:locationMsg.latitude longitude:locationMsg.longitude] ;
-//            message = [[XHMessage alloc] initWithLocalPositionPhoto:LocalPostionPhoto geolocations:geoLocations location:location sender:fromUser.username timestamp:timestamp] ;
-//            break ;
+//            AVIMLocationMessage *locationMsg = (AVIMLocationMessage *)typedMessage;
+//            UIImage *LocalPostionPhoto = [UIImage imageNamed:@"Fav_Cell_Loc"];
+//            NSString *geoLocations = locationMsg.text;
+//            CLLocation *location = [[CLLocation alloc] initWithLatitude:locationMsg.latitude longitude:locationMsg.longitude];
+//            message = [[XHMessage alloc] initWithLocalPositionPhoto:LocalPostionPhoto geolocations:geoLocations location:location sender:fromUser.username timestamp:timestamp];
+//            break;
 //        }
             
         default : {
-            message = [[XHMessage alloc] initWithText:@"未知消息" sender:displayName timestamp:timestamp] ;
-            break ;
+            message = [[XHMessage alloc] initWithText:@"未知消息" sender:displayName timestamp:timestamp];
+            break;
         }
     }
     
     //设置头像
     {
-        message.sender = fromUser.objectId ;
-        //fromUser.name ;
-        message.avatarUrl = fromUser.avatar.url ;
-        message.avatar = message.avatarUrl ? nil : [UIImage imageNamed:@"testAvatar1"] ;
+        message.sender = fromUser.objectId;
+        //fromUser.name;
+        message.avatarUrl = fromUser.avatar.url;
+        message.avatar = message.avatarUrl ? nil : [UIImage imageNamed:@"testAvatar1"];
     }
     
     //设置message的bubbleMessageType
 #warning 因为不知道是AVOSCloud序列化的Bug还是FMBD序列化的BUG。这里修正判断方式为临时的。。
-    NSString *fromUserId = avMessage.clientId ;
-    if ( [fromUserId isEqualToString:[LFUser currentUser].objectId] )
-        message.bubbleMessageType = XHBubbleMessageTypeSending ;
+    NSString *fromUserId = avMessage.clientId;
+    if ([fromUserId isEqualToString:[LFUser currentUser].objectId])
+        message.bubbleMessageType = XHBubbleMessageTypeSending;
     else
-        message.bubbleMessageType = XHBubbleMessageTypeReceiving ;
+        message.bubbleMessageType = XHBubbleMessageTypeReceiving;
     
-//    if (avMessage.ioType == AVIMMessageIOTypeIn )
-//        message.bubbleMessageType = XHBubbleMessageTypeReceiving ;
+//    if (avMessage.ioType == AVIMMessageIOTypeIn)
+//        message.bubbleMessageType = XHBubbleMessageTypeReceiving;
 //    else
-//        message.bubbleMessageType = XHBubbleMessageTypeSending ;
+//        message.bubbleMessageType = XHBubbleMessageTypeSending;
     
     
     if (avMessage.status == AVIMMessageStatusSent) {
-        avMessage.status = AVIMMessageStatusDelivered ;
+        avMessage.status = AVIMMessageStatusDelivered;
     }
     
-    return message ;
+    return message;
 }
 
 /**
@@ -650,22 +650,22 @@
  *  @return path/files/ ＋ objectId 路径字符串
  */
 - (NSString *)getPathByObjectId:(NSString *)objectId {
-    return [[self getFilesPath] stringByAppendingFormat:@"%@",objectId] ;
+    return [[self getFilesPath] stringByAppendingFormat:@"%@",objectId];
 }
 
 - (NSString *)getFilesPath {
-    NSString *appPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] ;
-    NSString *filesPath = [appPath stringByAppendingString:@"/files/"] ;
-    NSFileManager *manager = [NSFileManager defaultManager] ;
-    NSError *error ;
-    BOOL isDir = YES ;
-    if( [manager fileExistsAtPath:filesPath isDirectory:&isDir] ==NO ){
-        [manager createDirectoryAtPath:filesPath withIntermediateDirectories:YES attributes:nil error:&error] ;
-        if( error ){
+    NSString *appPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *filesPath = [appPath stringByAppendingString:@"/files/"];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSError *error;
+    BOOL isDir = YES;
+    if([manager fileExistsAtPath:filesPath isDirectory:&isDir] ==NO){
+        [manager createDirectoryAtPath:filesPath withIntermediateDirectories:YES attributes:nil error:&error];
+        if(error){
             [NSException raise:@"error when create dir" format:@"error"];
         }
     }
-    return filesPath ;
+    return filesPath;
 }
 
 /**
@@ -677,14 +677,14 @@
     return [[self getFilesPath] stringByAppendingFormat:@"tmp"];
 }
 
-//保存AVFile到本地，fileName ＝ fileName ; 返回，文件路径
+//保存AVFile到本地，fileName ＝ fileName; 返回，文件路径
 - (NSString *)fetchDataOfMessageFile:(AVFile *)file fileName:(NSString*)fileName error:(NSError**)error {
-    NSString *path = [[self getFilesPath] stringByAppendingString:fileName] ;
-    NSData *data = [file getData:error] ;
-    if( *error == nil ) {
-        [data writeToFile:path atomically:YES] ;
+    NSString *path = [[self getFilesPath] stringByAppendingString:fileName];
+    NSData *data = [file getData:error];
+    if(*error == nil) {
+        [data writeToFile:path atomically:YES];
     }
-    return path ;
+    return path;
 }
 
 /**
@@ -697,24 +697,24 @@
     
     WEAKSELF
     [self.conversation sendMessage:msg options:AVIMMessageSendOptionRequestReceipt callback:^(BOOL succeeded, NSError *error) {
-        if( error ){
+        if(error){
             // 赋值一个临时的messageId，因为发送失败，messageId，sendTimestamp不能从服务端获取
             // resend 成功的时候再改过来
-            msg.messageId = [weakSelf.IM uuid] ;
-            msg.sendTimestamp = [[NSDate date] timeIntervalSince1970] * 1000 ;
+            msg.messageId = [weakSelf.IM uuid];
+            msg.sendTimestamp = [[NSDate date] timeIntervalSince1970] * 1000;
         }
-        if( path && error == nil ) {
+        if(path && error == nil) {
             //move file to new Path
-            NSString *newPath = [self getPathByObjectId:msg.messageId] ;
-            NSError *error1 ;
-            [[NSFileManager defaultManager] moveItemAtPath:path toPath:newPath error:&error1] ;
-            DLog(@"%@",newPath) ;
+            NSString *newPath = [self getPathByObjectId:msg.messageId];
+            NSError *error1;
+            [[NSFileManager defaultManager] moveItemAtPath:path toPath:newPath error:&error1];
+            DLog(@"%@",newPath);
         }
         
-        [self.storage insertMessage:msg] ;
+        [self.storage insertMessage:msg];
 
-        [self loadMessagesWithLoadMore:NO] ;
-    }] ;
+        [self loadMessagesWithLoadMore:NO];
+    }];
 }
 
 /**
@@ -723,15 +723,15 @@
  * @param image 图片
  */
 - (void)sendImage:(UIImage*)image{
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.6) ;
-    NSString *path = [self tmpPath] ;
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    NSString *path = [self tmpPath];
     
-    NSError *error ;
-    [imageData writeToFile:path options:NSDataWritingAtomic error:&error] ;
+    NSError *error;
+    [imageData writeToFile:path options:NSDataWritingAtomic error:&error];
     if(error==nil){
-        [self sendFileMsgWithPath:path type:kAVIMMessageMediaTypeImage] ;
+        [self sendFileMsgWithPath:path type:kAVIMMessageMediaTypeImage];
     }else{
-        [LFUtils alert:@"write image to file error"] ;
+        [LFUtils alert:@"write image to file error"];
     }
 }
 
@@ -742,13 +742,13 @@
  * @param type AVIMMessageMediaType
  */
 - (void)sendFileMsgWithPath:(NSString*)path type:(AVIMMessageMediaType)type{
-    AVIMTypedMessage *msg ;
+    AVIMTypedMessage *msg;
     if(type==kAVIMMessageMediaTypeImage){
-        msg=[AVIMImageMessage messageWithText:nil attachedFilePath:path attributes:nil] ;
+        msg=[AVIMImageMessage messageWithText:nil attachedFilePath:path attributes:nil];
     }else{
-        msg=[AVIMAudioMessage messageWithText:nil attachedFilePath:path attributes:nil] ;
+        msg=[AVIMAudioMessage messageWithText:nil attachedFilePath:path attributes:nil];
     }
-    [self sendMsg:msg originFilePath:path] ;
+    [self sendMsg:msg originFilePath:path];
 }
 
 @end

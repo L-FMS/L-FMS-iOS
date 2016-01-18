@@ -11,18 +11,18 @@
 
 @interface LFSingleItemAnnotation ()
 
-@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
 @end
 
 @implementation LFSingleItemAnnotation
 
 - (instancetype)initWithItem:(Item *)item location:(CLLocation *)location {
-    if ( self = [super init] ) {
-        self.item = item ;
-        self.coordinate = location.coordinate ;
+    if (self = [super init]) {
+        self.item = item;
+        self.coordinate = location.coordinate;
     }
-    return self ;
+    return self;
 }
 
 /**
@@ -30,7 +30,7 @@
  *@return 返回annotation的标题信息
  */
 - (NSString *)title {
-    return self.item.name ;
+    return self.item.name;
 }
 
 /**
@@ -38,7 +38,7 @@
  *@return 返回annotation的副标题信息
  */
 - (NSString *)subtitle {
-    return self.item.itemDescription ;    
+    return self.item.itemDescription;    
 }
 
 @end

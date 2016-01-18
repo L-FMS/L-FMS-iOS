@@ -8,20 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@class Item ;
-@protocol LFItemInfoPaopaoCustomViewDelegate ;
+@class Item;
+@protocol LFItemInfoPaopaoCustomViewDelegate;
 
 @interface LFItemInfoPaopaoCustomView : UIView
 
-@property (weak) id<LFItemInfoPaopaoCustomViewDelegate> delegate ;
-@property (weak) Item *item ;
+@property (weak) id<LFItemInfoPaopaoCustomViewDelegate> delegate;
+@property (weak) Item *item;
 
-- (instancetype)initWithItem:(Item *)item ;
+- (instancetype)initWithItem:(Item *)item;
 
 @end
 
 @protocol LFItemInfoPaopaoCustomViewDelegate <NSObject>
 
-- (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item ;
+- (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item;
 
 @end

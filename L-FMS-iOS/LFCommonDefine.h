@@ -9,7 +9,7 @@
 #ifndef L_FMS_iOS_LFCommonDefine_h
 #define L_FMS_iOS_LFCommonDefine_h
 
-#define LFWEAKSELF  typeof(self) __weak weakSelf=self ;
+#define LFWEAKSELF  typeof(self) __weak weakSelf=self;
 
 #import "LFLogger.h"
 

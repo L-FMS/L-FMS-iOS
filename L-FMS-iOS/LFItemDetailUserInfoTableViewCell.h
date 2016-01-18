@@ -10,8 +10,8 @@
 
 @interface LFItemDetailUserInfoTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView ;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel ;
-@property (weak, nonatomic) IBOutlet UILabel *emailOrTelLabel ;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailOrTelLabel;
 
 @end

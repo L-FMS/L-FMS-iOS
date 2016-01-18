@@ -20,22 +20,22 @@
 
 - (void)awakeFromNib {
     //LFAboutUsAuthorInfoTableViewCellReuseId
-    self.photoImageView.contentMode = UIViewContentModeScaleAspectFill ;
-    self.photoImageView.clipsToBounds = YES ;
+    self.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.photoImageView.clipsToBounds = YES;
     
-    self.nameLabel.numberOfLines = 4 ;
-    UILabel *descriptionLabel = self.descriptionLabel ;
-    [self.descriptionLabel removeFromSuperview] ;
-    [self.containerView addSubview:self.descriptionLabel] ;
+    self.nameLabel.numberOfLines = 4;
+    UILabel *descriptionLabel = self.descriptionLabel;
+    [self.descriptionLabel removeFromSuperview];
+    [self.containerView addSubview:self.descriptionLabel];
     
     [self.descriptionLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.and.right.equalTo(self.containerView) ;
-    }] ;
-    descriptionLabel = nil ;
+        make.top.left.and.right.equalTo(self.containerView);
+    }];
+    descriptionLabel = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 @end

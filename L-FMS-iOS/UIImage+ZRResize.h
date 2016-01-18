@@ -18,7 +18,7 @@
  *
  *  @return
  */
-+ (UIImage *)zrScaleFromImage:(UIImage *)image toSize:(CGSize)size ;
++ (UIImage *)zrScaleFromImage:(UIImage *)image toSize:(CGSize)size;
 
 /**
  *  保持原来的长宽比，生成一个缩略图
@@ -28,6 +28,6 @@
  *
  *  @return
  */
-+ (UIImage *)zrThumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize ;
++ (UIImage *)zrThumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize;
 
 @end

@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@class BMKSuggestionResult ;
-@class CLLocation ;
+@class BMKSuggestionResult;
+@class CLLocation;
 
-@protocol LFChooseLocationTableViewControllerDelegate ;
+@protocol LFChooseLocationTableViewControllerDelegate;
 
 @interface LFChooseLocationTableViewController : UITableViewController
 
-@property (weak) id<LFChooseLocationTableViewControllerDelegate> delegate ;
+@property (weak) id<LFChooseLocationTableViewControllerDelegate> delegate;
 
-@property (nonatomic,strong) BMKSuggestionResult *searchResult ;
+@property (nonatomic,strong) BMKSuggestionResult *searchResult;
 
 @end
 
 @protocol LFChooseLocationTableViewControllerDelegate <NSObject>
 
-- (void)viewController:(LFChooseLocationTableViewController *)vc didChooseLocation:(CLLocation *)location ;
+- (void)viewController:(LFChooseLocationTableViewController *)vc didChooseLocation:(CLLocation *)location;
 
 @end

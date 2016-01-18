@@ -10,10 +10,10 @@
 
 @interface LFActivityIndicatorLabel : UILabel
 
-- (void)setText:(NSString *)text showIndicator:(BOOL)show ;
+- (void)setText:(NSString *)text showIndicator:(BOOL)show;
 
-- (void)showIndicator:(BOOL)show ;
+- (void)showIndicator:(BOOL)show;
 
-- (BOOL)isRefreshing ;
+- (BOOL)isRefreshing;
 
 @end

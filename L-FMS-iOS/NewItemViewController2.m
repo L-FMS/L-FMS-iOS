@@ -20,58 +20,58 @@
 #define kNewItemStep1ToNewItemSetp2VCSegueId @"newItemStep1ToNewItemSetp2VCSegueId"
 
 @interface NewItemViewController2 ()<UITextViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,LFChooseLocationMapViewControllerDelegate,BMKGeoCodeSearchDelegate,LFImageViewDelegate> {
-    BOOL _isLost ;
-    NSString *_locationString ;
-    CLLocationCoordinate2D _choosedCoordinate2D ;
-    UIImage *_choosedImage ;
+    BOOL _isLost;
+    NSString *_locationString;
+    CLLocationCoordinate2D _choosedCoordinate2D;
+    UIImage *_choosedImage;
 }
 
-@property (weak, nonatomic) IBOutlet UITextView *textView ;
-@property (weak, nonatomic) IBOutlet UITextField *placeHolderTextField ;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextField *placeHolderTextField;
 
 
-@property (weak, nonatomic) IBOutlet LFImageView *imageView ;
+@property (weak, nonatomic) IBOutlet LFImageView *imageView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView ;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextSetpButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel ;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @end
 
 @implementation NewItemViewController2
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
+    [super viewDidLoad];
     
-    [self.imageView set2PlaceHolderImage] ;
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClicked)] ;
-    [self.imageView addGestureRecognizer:tapGes] ;
-    self.imageView.userInteractionEnabled = YES ;
+    [self.imageView set2PlaceHolderImage];
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClicked)];
+    [self.imageView addGestureRecognizer:tapGes];
+    self.imageView.userInteractionEnabled = YES;
     
-    self.iconImageView.userInteractionEnabled = YES ;
-    tapGes = [[UITapGestureRecognizer alloc] init] ;
-    [tapGes addTarget:self action:@selector(iconClicked)] ;
-    [self.iconImageView addGestureRecognizer:tapGes] ;
-    _isLost = YES ;
+    self.iconImageView.userInteractionEnabled = YES;
+    tapGes = [[UITapGestureRecognizer alloc] init];
+    [tapGes addTarget:self action:@selector(iconClicked)];
+    [self.iconImageView addGestureRecognizer:tapGes];
+    _isLost = YES;
     
     
-    _locationString = nil ;
-    self.locationLabel.userInteractionEnabled = YES ;
-    tapGes = [[UITapGestureRecognizer alloc] init] ;
-    [tapGes addTarget:self action:@selector(locationClicked)] ;
-    [self.locationLabel addGestureRecognizer:tapGes] ;
+    _locationString = nil;
+    self.locationLabel.userInteractionEnabled = YES;
+    tapGes = [[UITapGestureRecognizer alloc] init];
+    [tapGes addTarget:self action:@selector(locationClicked)];
+    [self.locationLabel addGestureRecognizer:tapGes];
     
-    self.textView.text = @"" ;
-    self.textView.delegate = self ;
+    self.textView.text = @"";
+    self.textView.delegate = self;
     
-    self.nextSetpButton.enabled = NO ;
-    self.placeHolderTextField.userInteractionEnabled = NO ;
+    self.nextSetpButton.enabled = NO;
+    self.placeHolderTextField.userInteractionEnabled = NO;
     
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
     
 }
 
@@ -79,73 +79,73 @@
 
 - (UIActionSheet *)getAImagePickerActionSheet {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选取照片"
-                                                             delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil] ;
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque ;
+                                                             delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     
-    return actionSheet ;
+    return actionSheet;
 }
 
 - (void)imageClicked {
-    QYDebugLog(@"233") ;
-    UIActionSheet *actionSheet = [self getAImagePickerActionSheet] ;
-    [actionSheet showInView:self.view] ;
+    QYDebugLog(@"233");
+    UIActionSheet *actionSheet = [self getAImagePickerActionSheet];
+    [actionSheet showInView:self.view];
 }
 
 - (void)iconClicked {
-    _isLost = _isLost ^ TRUE ;
-    if ( _isLost )
-        self.iconImageView.image = [UIImage imageNamed:@"Lost"] ;
+    _isLost = _isLost ^ TRUE;
+    if (_isLost)
+        self.iconImageView.image = [UIImage imageNamed:@"Lost"];
     else
-        self.iconImageView.image = [UIImage imageNamed:@"Found"] ;
+        self.iconImageView.image = [UIImage imageNamed:@"Found"];
 }
 
 - (void)locationClicked {
-    [self performSegueWithIdentifier:kNewItemVC22ChooseLocationMapVCSegueId sender:self] ;
+    [self performSegueWithIdentifier:kNewItemVC22ChooseLocationMapVCSegueId sender:self];
 }
 
 - (IBAction)nextSetpButtonClicked:(id)sender {
-    QYDebugLog(@"发布下一步") ;
-    Item *item = [Item object] ;
-    item.itemDescription = self.textView.text ;
-    item.type = _isLost ? @"lost" : @"found" ;
+    QYDebugLog(@"发布下一步");
+    Item *item = [Item object];
+    item.itemDescription = self.textView.text;
+    item.type = _isLost ? @"lost" : @"found";
     //image
-    if ( _choosedImage ) {
+    if (_choosedImage) {
         
-        NSData *imageData = UIImagePNGRepresentation(_choosedImage) ;
-        AVFile *file = [AVFile fileWithData:imageData] ;
-        item.image = file ;
+        NSData *imageData = UIImagePNGRepresentation(_choosedImage);
+        AVFile *file = [AVFile fileWithData:imageData];
+        item.image = file;
     }
     
     //location && coordinate
-    if ( _locationString ) {
-        item.place = _locationString ;
-        item.location = [AVGeoPoint geoPointWithLatitude:_choosedCoordinate2D.latitude longitude:_choosedCoordinate2D.longitude] ;
+    if (_locationString) {
+        item.place = _locationString;
+        item.location = [AVGeoPoint geoPointWithLatitude:_choosedCoordinate2D.latitude longitude:_choosedCoordinate2D.longitude];
     }
     
-    [self performSegueWithIdentifier:kNewItemStep1ToNewItemSetp2VCSegueId sender:item] ;
+    [self performSegueWithIdentifier:kNewItemStep1ToNewItemSetp2VCSegueId sender:item];
 }
 
 
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch ( buttonIndex ) {
+    switch (buttonIndex) {
         case 0 : {
             //拍照
-            QYDebugLog(@"拍照") ;
-            [LFUtils pickImageFromCameraAtController:self] ;
-            break ;
+            QYDebugLog(@"拍照");
+            [LFUtils pickImageFromCameraAtController:self];
+            break;
         }
             
         case 1 : {
-            QYDebugLog(@"从相册选择") ;
-            [LFUtils pickImageFromPhotoLibraryAtController:self] ;
-            break ;
+            QYDebugLog(@"从相册选择");
+            [LFUtils pickImageFromPhotoLibraryAtController:self];
+            break;
         }
             
         case 2 : {
             
-            break ;
+            break;
         }
             
         default:
@@ -157,40 +157,40 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage] ;
+        UIImage *image = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.imageView setImage:image] ;
-            _choosedImage = image ;
-        }) ;
+            [self.imageView setImage:image];
+            _choosedImage = image;
+        });
     });
     
-    [picker dismissViewControllerAnimated:YES completion:nil] ;
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    QYDebugLog(@"取消") ;
-    [picker dismissViewControllerAnimated:YES completion:nil] ;
+    QYDebugLog(@"取消");
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Touch
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.textView resignFirstResponder] ;
+    [self.textView resignFirstResponder];
 }
 
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ( [segue.identifier isEqualToString:kNewItemVC22ChooseLocationMapVCSegueId] ) {
-        LFChooseLocationMapViewController *vc = segue.destinationViewController ;
-        vc.delegate = self ;
-        return ;
+    if ([segue.identifier isEqualToString:kNewItemVC22ChooseLocationMapVCSegueId]) {
+        LFChooseLocationMapViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        return;
     }
     
-    if ( [segue.identifier isEqualToString:kNewItemStep1ToNewItemSetp2VCSegueId] ) {
-        NewItemStep2ViewController *vc = segue.destinationViewController ;
-        vc.item = sender ;
-        return ;
+    if ([segue.identifier isEqualToString:kNewItemStep1ToNewItemSetp2VCSegueId]) {
+        NewItemStep2ViewController *vc = segue.destinationViewController;
+        vc.item = sender;
+        return;
     }
 }
 
@@ -198,8 +198,8 @@
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.placeHolderTextField.hidden = self.textView.text.length > 0 ;
-    self.nextSetpButton.enabled = self.textView.text.length > 0 ;
+    self.placeHolderTextField.hidden = self.textView.text.length > 0;
+    self.nextSetpButton.enabled = self.textView.text.length > 0;
 }
 
 
@@ -207,17 +207,17 @@
 
 - (void)viewController:(LFChooseLocationMapViewController *)vc didClickedLocation:(CLLocation *)location {
     //
-    BMKGeoCodeSearch *search = [[BMKGeoCodeSearch alloc] init] ;
-    search.delegate = self ;
-    BMKReverseGeoCodeOption *option = [[BMKReverseGeoCodeOption alloc] init] ;
-    option.reverseGeoPoint = location.coordinate ;
+    BMKGeoCodeSearch *search = [[BMKGeoCodeSearch alloc] init];
+    search.delegate = self;
+    BMKReverseGeoCodeOption *option = [[BMKReverseGeoCodeOption alloc] init];
+    option.reverseGeoPoint = location.coordinate;
     
-    BOOL flag = [search reverseGeoCode:option] ;
+    BOOL flag = [search reverseGeoCode:option];
     
-    if ( flag ) {
-        QYDebugLog(@"请求成功") ;
+    if (flag) {
+        QYDebugLog(@"请求成功");
     } else {
-        QYDebugLog(@"请求失败") ;
+        QYDebugLog(@"请求失败");
     }
     
 }
@@ -225,7 +225,7 @@
 #pragma mark - LFImageViewDelegate
 
 - (void)imageViewDidDeleteImage:(LFImageView *)imageView {
-    _choosedImage = nil ;
+    _choosedImage = nil;
 }
 
 #pragma mark - BMKGeoCodeSearchDelegate
@@ -237,8 +237,8 @@
  *@param error 错误号，@see BMKSearchErrorCode
  */
 - (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
-    if ( error == BMK_SEARCH_NO_ERROR ) {
-        self.locationLabel.text = result.address ;
+    if (error == BMK_SEARCH_NO_ERROR) {
+        self.locationLabel.text = result.address;
     }
 }
 

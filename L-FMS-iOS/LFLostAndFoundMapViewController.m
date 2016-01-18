@@ -27,211 +27,211 @@
 typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     segnmentIndexForTable = 0 ,
     segnmentIndexForMap   = 1 ,
-} ;
+};
 
 @interface LFLostAndFoundMapViewController ()<BMKLocationServiceDelegate,BMKMapViewDelegate,UITableViewDelegate,UITableViewDataSource,LFItemInfoPaopaoCustomViewDelegate,QRCodeReaderDelegate>
 
 @property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UIRefreshControl *refreshControl ;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
-@property (nonatomic) BMKLocationService *service ;
+@property (nonatomic) BMKLocationService *service;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segnmentControl;
 
-@property (nonatomic) CLLocation *userLocation ;
+@property (nonatomic) CLLocation *userLocation;
 
-@property (strong) NSMutableArray *items ;
-@property (strong) NSMutableDictionary *itemsDic ;
+@property (strong) NSMutableArray *items;
+@property (strong) NSMutableDictionary *itemsDic;
 
 @end
 
 @implementation LFLostAndFoundMapViewController
 
 - (void)setUpMapView {
-    self.mapView.zoomLevel = 18 ;
-//    self.mapView.minZoomLevel = 18 ;
-    self.mapView.maxZoomLevel = 20 ;
+    self.mapView.zoomLevel = 18;
+//    self.mapView.minZoomLevel = 18;
+    self.mapView.maxZoomLevel = 20;
     
-    CLLocation *userLocation = [LFUserDefaultService getUserLocationForUser:[LFUser currentUser]] ;
-    self.userLocation = userLocation ;
-    if ( userLocation ) {
-        [self.mapView setCenterCoordinate:userLocation.coordinate] ;
+    CLLocation *userLocation = [LFUserDefaultService getUserLocationForUser:[LFUser currentUser]];
+    self.userLocation = userLocation;
+    if (userLocation) {
+        [self.mapView setCenterCoordinate:userLocation.coordinate];
     }
     
     //设置定位精确度，默认：kCLLocationAccuracyBest
-    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBest] ;
+    [BMKLocationService setLocationDesiredAccuracy:kCLLocationAccuracyBest];
     //指定最小距离更新(米)，默认：kCLDistanceFilterNone
-    [BMKLocationService setLocationDistanceFilter:100.f] ;
+    [BMKLocationService setLocationDistanceFilter:100.f];
     //初始化BMKLocationService
-    self.service = [[BMKLocationService alloc] init] ;
-    self.service.delegate = self ;
+    self.service = [[BMKLocationService alloc] init];
+    self.service.delegate = self;
     //启动LocationService
-    [self.service startUserLocationService] ;
+    [self.service startUserLocationService];
     
-    [[LFCacheService shareInstance] cacheUser:[LFUser currentUser]] ;
+    [[LFCacheService shareInstance] cacheUser:[LFUser currentUser]];
 }
 
 - (void)setUpTableView {
-    self.tableView.delegate = self ;
-    self.tableView.dataSource = self ;
-    [self.tableView addSubview:self.refreshControl] ;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView addSubview:self.refreshControl];
     
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
-    [self.navigationController.navigationBar setTranslucent:FALSE] ;
+    [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:FALSE];
     
-    [self setUpMapView] ;
-    [self setUpTableView] ;
-    self.items = [NSMutableArray array] ;
-    self.itemsDic = [NSMutableDictionary dictionary] ;
+    [self setUpMapView];
+    [self setUpTableView];
+    self.items = [NSMutableArray array];
+    self.itemsDic = [NSMutableDictionary dictionary];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.mapView.delegate = self ;
-    [super viewWillAppear:animated] ;
-    [self.tabBarController.tabBar setHidden:NO] ;
+    self.mapView.delegate = self;
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mapView.delegate = nil ;
-    [super viewWillAppear:animated] ;
+    self.mapView.delegate = nil;
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 
 #pragma mark - getter && setter 
 
 - (UIRefreshControl *)refreshControl {
-    if ( !_refreshControl ) {
-        _refreshControl = [[UIRefreshControl alloc] init] ;
+    if (!_refreshControl) {
+        _refreshControl = [[UIRefreshControl alloc] init];
         [_refreshControl addTarget:self
                             action:@selector(refresh:)
-                  forControlEvents:UIControlEventValueChanged] ;
+                  forControlEvents:UIControlEventValueChanged];
     }
-    return _refreshControl ;
+    return _refreshControl;
 }
 
 #pragma mark - IBActions
 
 - (IBAction)showLeftDrawerBtnClicked:(id)sender {
-    [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES] ;
+    [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES];
 }
 
 - (IBAction)showRightDrawerBtnClicked:(id)sender {
-    [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES] ;
+    [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES];
 }
 
 - (void)refresh:(id)sender {
     //拉取后端
     
-    if ( !self.userLocation ) {
-        [self.refreshControl endRefreshing] ;
-        [LFUtils alert:@"等待定位～"] ;
-        return ;
+    if (!self.userLocation) {
+        [self.refreshControl endRefreshing];
+        [LFUtils alert:@"等待定位～"];
+        return;
     }
     
-    AVQuery *query = [Item query] ;
-    AVGeoPoint *userLocation = [AVGeoPoint geoPointWithLocation:self.userLocation] ;
-    [query whereKey:@"location" nearGeoPoint:userLocation] ;
-    query.limit = 100 ;
-//    [query includeKey:@"user"] ;
-    [query includeKey:@"user.avatar"] ;
+    AVQuery *query = [Item query];
+    AVGeoPoint *userLocation = [AVGeoPoint geoPointWithLocation:self.userLocation];
+    [query whereKey:@"location" nearGeoPoint:userLocation];
+    query.limit = 100;
+//    [query includeKey:@"user"];
+    [query includeKey:@"user.avatar"];
     LFWEAKSELF
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        [self.refreshControl endRefreshing] ;
-        if ( objects ) {
-            QYDebugLog(@"查找最近的物品成功") ;
-            [weakSelf addItems:objects] ;
+        [self.refreshControl endRefreshing];
+        if (objects) {
+            QYDebugLog(@"查找最近的物品成功");
+            [weakSelf addItems:objects];
         } else {
-            QYDebugLog(@"查找最近的物品失败 Erorr:[%@]",error) ;
+            QYDebugLog(@"查找最近的物品失败 Erorr:[%@]",error);
         }
-    }] ;
+    }];
     
 }
 
 #pragma mark - Helper 
 
 - (void)addItems:(NSArray *)items {
-    if ( !items ) return ;
+    if (!items) return;
 
     [items enumerateObjectsUsingBlock:^(Item *item, NSUInteger idx, BOOL *stop) {
-        if ( !self.itemsDic[item.objectId] ) {
-            [self.itemsDic setObject:item forKey:item.objectId] ;
-            [self.items addObject:item] ;
+        if (!self.itemsDic[item.objectId]) {
+            [self.itemsDic setObject:item forKey:item.objectId];
+            [self.items addObject:item];
         }
-    }] ;
+    }];
     
-    [self.tableView reloadData] ;
+    [self.tableView reloadData];
     
     
     //添加地图的标记
     
-    [self.mapView removeAnnotations:self.mapView.annotations] ;
-    NSMutableArray *annotations = [NSMutableArray array] ;
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    NSMutableArray *annotations = [NSMutableArray array];
     
     [items enumerateObjectsUsingBlock:^(Item *item, NSUInteger idx, BOOL *stop) {
-        if ( item.location ) {
-            CLLocation *location = [[CLLocation alloc] initWithLatitude:item.location.latitude longitude:item.location.longitude] ;
-            LFBMKMapViewAnnotation *annotation = [[LFBMKMapViewAnnotation alloc] initWithCLCorrdinate:location.coordinate] ;
-            annotation.item = item ;
-            [annotations addObject:annotation] ;
+        if (item.location) {
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:item.location.latitude longitude:item.location.longitude];
+            LFBMKMapViewAnnotation *annotation = [[LFBMKMapViewAnnotation alloc] initWithCLCorrdinate:location.coordinate];
+            annotation.item = item;
+            [annotations addObject:annotation];
         }
-    }] ;
-    [self.mapView addAnnotations:annotations] ;
+    }];
+    [self.mapView addAnnotations:annotations];
     
-    LFBMKMapViewAnnotation *firstAnnotation = annotations[0] ;
-    [self.mapView setCenterCoordinate:firstAnnotation.coordinate] ;
+    LFBMKMapViewAnnotation *firstAnnotation = annotations[0];
+    [self.mapView setCenterCoordinate:firstAnnotation.coordinate];
 }
 
 - (void)toItemDetailViewControllerWithItem:(Item *)item {
-    if ( !item ) return ;
+    if (!item) return;
     
-    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"] ;
-    vc.item = item ;
-    vc.hidesBottomBarWhenPushed = YES ;
-    [self.navigationController pushViewController:vc animated:NO] ;
+    LFItemDetailViewController *vc = [AppDelegate getViewControllerById:@"LFItemDetailViewControllerSBID"];
+    vc.item = item;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 #pragma mark - UITableViewDelegate 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 70 ;
+    return 70;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //到详情界面
-    Item *item = self.items[indexPath.row] ;
-    [self toItemDetailViewControllerWithItem:item] ;
+    Item *item = self.items[indexPath.row];
+    [self toItemDetailViewControllerWithItem:item];
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.items ? self.items.count : 0 ;
+    return self.items ? self.items.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFLostAFoundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFLostAFoundTableViewCellReuseId" forIndexPath:indexPath] ;
+    LFLostAFoundTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFLostAFoundTableViewCellReuseId" forIndexPath:indexPath];
     
     
-    Item *item = self.items[indexPath.row] ;
-    cell.itemNameLabel.text = item.name ;
-    cell.itemDescriptionLabel.text = item.itemDescription ;
-    cell.iconImageView.image = [item isLost] ? [UIImage imageNamed:@"Lost"] : [UIImage imageNamed:@"Found"] ;
-    cell.nameLabel.text = [item.user displayName] ;
+    Item *item = self.items[indexPath.row];
+    cell.itemNameLabel.text = item.name;
+    cell.itemDescriptionLabel.text = item.itemDescription;
+    cell.iconImageView.image = [item isLost] ? [UIImage imageNamed:@"Lost"] : [UIImage imageNamed:@"Found"];
+    cell.nameLabel.text = [item.user displayName];
 
     
     [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:item.user.avatar.url]
-                            placeholderImage:[UIImage imageNamed:@"testAvatar1"]] ;
+                            placeholderImage:[UIImage imageNamed:@"testAvatar1"]];
     
-    return cell ;
+    return cell;
 }
 
 
@@ -242,13 +242,13 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
  *@param userLocation 新的用户位置
  */
 - (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-    QYDebugLog(@"定位成功") ;
-    CLLocation *location = userLocation.location ;
-    self.userLocation = location ;
-    [LFUserDefaultService saveUserLocation:location.coordinate forUser:[LFUser currentUser]] ;
+    QYDebugLog(@"定位成功");
+    CLLocation *location = userLocation.location;
+    self.userLocation = location;
+    [LFUserDefaultService saveUserLocation:location.coordinate forUser:[LFUser currentUser]];
     
-    [self.mapView setCenterCoordinate:userLocation.location.coordinate animated:YES] ;
-    [self.service stopUserLocationService] ;
+    [self.mapView setCenterCoordinate:userLocation.location.coordinate animated:YES];
+    [self.service stopUserLocationService];
 }
 
 /**
@@ -256,24 +256,24 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
  *@param error 错误号
  */
 - (void)didFailToLocateUserWithError:(NSError *)error {
-    QYDebugLog(@"定位失败Error:[%@]",error) ;
+    QYDebugLog(@"定位失败Error:[%@]",error);
 }
 
 #pragma mark - 地图Delegate
 
 - (IBAction)segnmentControlChanged:(UISegmentedControl *)sender {
-    LFLostAndFoundMapViewControllerSegnmentIndex index = sender.selectedSegmentIndex ;
+    LFLostAndFoundMapViewControllerSegnmentIndex index = sender.selectedSegmentIndex;
     switch (index) {
         case segnmentIndexForTable : {
             //列表
-            [self.view bringSubviewToFront:self.tableView] ;
-            break ;
+            [self.view bringSubviewToFront:self.tableView];
+            break;
         }
             
         case segnmentIndexForMap : {
             //地图
-            [self.view bringSubviewToFront:self.mapView] ;
-            break ;
+            [self.view bringSubviewToFront:self.mapView];
+            break;
         }
             
         default:
@@ -288,36 +288,36 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
  *@return 生成的标注View
  */
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation>)annotation {
-    LFItemAnnotationView *annotationView = (id)[mapView dequeueReusableAnnotationViewWithIdentifier:@"LFItemAnnotationViewReuseId"] ;
-    if ( !annotationView ) {
-        annotationView = [[LFItemAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"LFItemAnnotationViewReuseId"] ;
+    LFItemAnnotationView *annotationView = (id)[mapView dequeueReusableAnnotationViewWithIdentifier:@"LFItemAnnotationViewReuseId"];
+    if (!annotationView) {
+        annotationView = [[LFItemAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"LFItemAnnotationViewReuseId"];
     }
     
-    LFBMKMapViewAnnotation *lfAnnotation = annotation ;
-    annotationView.image = lfAnnotation.annotationImage ;
+    LFBMKMapViewAnnotation *lfAnnotation = annotation;
+    annotationView.image = lfAnnotation.annotationImage;
     
-    LFItemInfoPaopaoCustomView *customView = [[LFItemInfoPaopaoCustomView alloc] initWithItem:lfAnnotation.item] ;
-    customView.delegate = self ;
-    annotationView.paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:customView] ;
+    LFItemInfoPaopaoCustomView *customView = [[LFItemInfoPaopaoCustomView alloc] initWithItem:lfAnnotation.item];
+    customView.delegate = self;
+    annotationView.paopaoView = [[BMKActionPaopaoView alloc] initWithCustomView:customView];
     
-    return annotationView ;
+    return annotationView;
 }
 
 #pragma mark - LFItemInfoPaopaoCustomViewDelegate
 
 - (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item {
-    [self toItemDetailViewControllerWithItem:item] ;
+    [self toItemDetailViewControllerWithItem:item];
 }
 
 
 #pragma mark - QRCodeReaderDelegate
 
 - (void)reader:(QRCodeReaderViewController *)reader didScanResult:(NSString *)result {
-    [self.navigationController popViewControllerAnimated:YES] ;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader {
-    [self.navigationController popViewControllerAnimated:YES] ;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

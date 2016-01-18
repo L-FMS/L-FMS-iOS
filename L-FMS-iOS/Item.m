@@ -12,21 +12,21 @@
 
 @implementation Item
 
-@dynamic itemDescription ;
-@dynamic tags ;
-@dynamic place ;
-@dynamic location ;
-@dynamic name ;
-@dynamic type ;
-@dynamic image ;
-@dynamic user ;
+@dynamic itemDescription;
+@dynamic tags;
+@dynamic place;
+@dynamic location;
+@dynamic name;
+@dynamic type;
+@dynamic image;
+@dynamic user;
 
 + (NSString *)parseClassName {
-    return NSStringFromClass(self) ;
+    return NSStringFromClass(self);
 }
 
 - (BOOL)isLost {
-    return [self.type isEqualToString:@"lost"] ;
+    return [self.type isEqualToString:@"lost"];
 }
 
 @end

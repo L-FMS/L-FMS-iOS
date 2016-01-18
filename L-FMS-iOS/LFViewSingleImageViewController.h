@@ -10,8 +10,8 @@
 
 @interface LFViewSingleImageViewController : UIViewController
 
-+ (void)from:(UIViewController *)handleVC zoomInImage:(UIImage *)image ;
++ (void)from:(UIViewController *)handleVC zoomInImage:(UIImage *)image;
 
-+ (void)from:(UIViewController *)handleVC zoomInUrl:(NSString *)url ;
++ (void)from:(UIViewController *)handleVC zoomInUrl:(NSString *)url;
 
 @end

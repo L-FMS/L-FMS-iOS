@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class Item ;
+@class Item;
 
 @interface NewItemStep2ViewController : UIViewController
 
-@property (nonatomic,strong) Item *item ;
+@property (nonatomic,strong) Item *item;
 
 @end

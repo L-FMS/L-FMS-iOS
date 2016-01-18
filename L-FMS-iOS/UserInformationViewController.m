@@ -17,16 +17,16 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UIButton *lotoutButton;
 
-@property (nonatomic) NSArray *titles ;
-@property (nonatomic) NSArray *values ;
+@property (nonatomic) NSArray *titles;
+@property (nonatomic) NSArray *values;
 
 @end
 
 @implementation UserInformationViewController
 
 - (void)setUpValue {
-    self.titles = @[@"昵称",@"地址",@"邮箱",@"学院",@"手机号",@"性别",@"生日"] ;
-    LFUser *user = [LFUser currentUser] ;
+    self.titles = @[@"昵称",@"地址",@"邮箱",@"学院",@"手机号",@"性别",@"生日"];
+    LFUser *user = [LFUser currentUser];
     
     self.values = @[user.name,
                     user.address?:@"",
@@ -34,88 +34,88 @@
                     user.major?:@"",
                     user.mobilePhoneNumber?:@"",
                     user.gender?:@"",
-                    user.birth?[user.birth description]:@""] ;
+                    user.birth?[user.birth description]:@""];
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
+    [super viewDidLoad];
     
-    [self.avatarImageView.layer setMasksToBounds:YES] ;
-    [self.avatarImageView.layer setCornerRadius:self.avatarImageView.bounds.size.height/2] ;
-    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewClicked:)] ;
-    [self.avatarImageView addGestureRecognizer:tapGes] ;
-    self.avatarImageView.userInteractionEnabled = YES ;
+    [self.avatarImageView.layer setMasksToBounds:YES];
+    [self.avatarImageView.layer setCornerRadius:self.avatarImageView.bounds.size.height/2];
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(avatarImageViewClicked:)];
+    [self.avatarImageView addGestureRecognizer:tapGes];
+    self.avatarImageView.userInteractionEnabled = YES;
 
-    self.title = @"账号信息" ;
+    self.title = @"账号信息";
     
-    [self setUpValue] ;
+    [self setUpValue];
     
-    [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView] ;
+    [[LFUser currentUser] displayAvatarAtImageView:self.avatarImageView];
     
-    [self.lotoutButton.layer setMasksToBounds:YES] ;
-    [self.lotoutButton.layer setCornerRadius:5.0f] ;
+    [self.lotoutButton.layer setMasksToBounds:YES];
+    [self.lotoutButton.layer setCornerRadius:5.0f];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated] ;
-    [self.tabBarController.tabBar setHidden:YES] ;
+    [super viewWillAppear:animated];
+    [self.tabBarController.tabBar setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableViewDataSource 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1 ;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.titles.count ;
+    return self.titles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *reuseId = @"UserInfoItemTableViewCellReuseId" ;
+    static NSString *reuseId = @"UserInfoItemTableViewCellReuseId";
     
-    UserInfoItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath] ;
+    UserInfoItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId forIndexPath:indexPath];
     [cell setUpWithTitle:self.titles[indexPath.row]
-              detailDesc:self.values[indexPath.row]] ;
+              detailDesc:self.values[indexPath.row]];
     
-    return cell ;
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60 ;
+    return 60;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch ( buttonIndex ) {
+    switch (buttonIndex) {
         case 0 : {
             //拍照
-            QYDebugLog(@"拍照") ;
-            [LFUtils pickImageFromCameraAtController:self] ;
-            break ;
+            QYDebugLog(@"拍照");
+            [LFUtils pickImageFromCameraAtController:self];
+            break;
         }
             
         case 1 : {
-            QYDebugLog(@"从相册选择") ;
-            [LFUtils pickImageFromPhotoLibraryAtController:self] ;
-            break ;
+            QYDebugLog(@"从相册选择");
+            [LFUtils pickImageFromPhotoLibraryAtController:self];
+            break;
         }
             
         case 2 : {
             
-            break ;
+            break;
         }
             
         default:
@@ -126,57 +126,57 @@
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    QYDebugLog("选中了图片") ;
+    QYDebugLog("选中了图片");
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         UIImage *imageToSave = (UIImage *)[info objectForKey:UIImagePickerControllerEditedImage];
         
-        imageToSave = [UIImage zrScaleFromImage:imageToSave toSize:CGSizeMake(100, 100)] ;
-        NSData *imageData = UIImagePNGRepresentation(imageToSave) ;
-        AVFile *avatarFile = [AVFile fileWithData:imageData] ;
-        [avatarFile save] ;
+        imageToSave = [UIImage zrScaleFromImage:imageToSave toSize:CGSizeMake(100, 100)];
+        NSData *imageData = UIImagePNGRepresentation(imageToSave);
+        AVFile *avatarFile = [AVFile fileWithData:imageData];
+        [avatarFile save];
         
-        LFUser *currentUser = [LFUser currentUser] ;
-        currentUser.avatar = avatarFile ;
+        LFUser *currentUser = [LFUser currentUser];
+        currentUser.avatar = avatarFile;
         [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if ( succeeded ) {
-                QYDebugLog(@"保存头像成功") ;
+            if (succeeded) {
+                QYDebugLog(@"保存头像成功");
                 //发通知改头像
             } else {
-                QYDebugLog(@"保存头像失败 Error:[%@]",error) ;
+                QYDebugLog(@"保存头像失败 Error:[%@]",error);
             }
-        }] ;
+        }];
     });
     
-    [picker dismissViewControllerAnimated:YES completion:nil] ;
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    QYDebugLog(@"取消") ;
-    [picker dismissViewControllerAnimated:YES completion:nil] ;
+    QYDebugLog(@"取消");
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - IBActions 
 
 - (void)avatarImageViewClicked:(id)sender {
-    QYDebugLog(@"点击了头像，是自己能修改，别人就是查看图片") ;
-    UIActionSheet *actionSheet = [self getAImagePickerActionSheet] ;
+    QYDebugLog(@"点击了头像，是自己能修改，别人就是查看图片");
+    UIActionSheet *actionSheet = [self getAImagePickerActionSheet];
     
-    [actionSheet showInView:self.view] ;
+    [actionSheet showInView:self.view];
     
 }
 
 - (IBAction)logoffBtnClicked:(id)sender {
-    [LFUser logOut] ;
-    [LFUtils toLogin] ;
+    [LFUser logOut];
+    [LFUtils toLogin];
 }
 
 #pragma mark - Helper 
 
 - (UIActionSheet *)getAImagePickerActionSheet {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"选取照片"
-                                                             delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil] ;
-    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque ;
-    return actionSheet ;
+                                                             delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    return actionSheet;
 }
 
 @end

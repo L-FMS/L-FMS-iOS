@@ -12,41 +12,41 @@
 
 @interface LFCacheService ()
 
-@property (strong) NSMutableDictionary *cachedUsers ;//by Id
+@property (strong) NSMutableDictionary *cachedUsers;//by Id
 
 @end
 
 @implementation LFCacheService
 
 + (instancetype)shareInstance {
-    static LFCacheService *sharedInstance = nil ;
+    static LFCacheService *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[LFCacheService alloc] init] ;
+        sharedInstance = [[LFCacheService alloc] init];
     });
-    return sharedInstance ;
+    return sharedInstance;
 }
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        [self setUp] ;
+    if (self = [super init]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (void)setUp {
-    self.cachedUsers = [NSMutableDictionary dictionary] ;
+    self.cachedUsers = [NSMutableDictionary dictionary];
 }
 
 #pragma mark - User
 
 - (void)cacheUser:(LFUser *)user {
-    [self.cachedUsers setObject:user forKey:user.objectId] ;
+    [self.cachedUsers setObject:user forKey:user.objectId];
 }
 
 - (LFUser *)getUserById:(NSString *)userId {
-    if ( !userId ) return nil ;
-    return self.cachedUsers[userId] ;
+    if (!userId) return nil;
+    return self.cachedUsers[userId];
 }
 
 
@@ -56,24 +56,24 @@
 
 - (void)cacheUsers:(NSArray *)users {
     [users enumerateObjectsUsingBlock:^(LFUser *user, NSUInteger idx, BOOL *stop) {
-        [self cacheUser:user] ;
-    }] ;
+        [self cacheUser:user];
+    }];
 }
 
 + (void)cacheUsersWithIds:(NSSet*)userIds callback:(AVBooleanResultBlock)callback {
-    NSMutableSet *uncachedUserIds = [NSMutableSet set] ;
-    for( NSString* userId in userIds ){
-        LFUser *user = [[LFCacheService shareInstance] getUserById:userId] ;
+    NSMutableSet *uncachedUserIds = [NSMutableSet set];
+    for(NSString* userId in userIds){
+        LFUser *user = [[LFCacheService shareInstance] getUserById:userId];
         
-        if( nil == user )
-            [uncachedUserIds addObject:userId] ;
+        if(nil == user)
+            [uncachedUserIds addObject:userId];
     }
     
-    if( [uncachedUserIds count] > 0 ){
+    if([uncachedUserIds count] > 0){
         [self findUsersByIds:[uncachedUserIds allObjects] callback:^(NSArray *users, NSError *error) {
-            if( users ){
-                [[self shareInstance] cacheUsers:users] ;
-                callback(YES,error) ;
+            if(users){
+                [[self shareInstance] cacheUsers:users];
+                callback(YES,error);
             } else
                 callback(NO,error);
             
@@ -84,17 +84,17 @@
 }
 
 + (void)findUsersByIds:(NSArray*)userIds callback:(AVArrayResultBlock)callback {
-    if( userIds.count > 0 ){
-        AVQuery *q = [LFUser query] ;
-        [q setCachePolicy:kAVCachePolicyNetworkElseCache] ;
-        [q whereKey:@"objectId" containedIn:userIds] ;
+    if(userIds.count > 0){
+        AVQuery *q = [LFUser query];
+        [q setCachePolicy:kAVCachePolicyNetworkElseCache];
+        [q whereKey:@"objectId" containedIn:userIds];
         
         [q findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
-            [[LFCacheService shareInstance] cacheUsers:users] ;
-            callback(users,error) ;
-        }] ;
+            [[LFCacheService shareInstance] cacheUsers:users];
+            callback(users,error);
+        }];
     } else {
-        callback(@[],nil) ;
+        callback(@[],nil);
     }
 }
 

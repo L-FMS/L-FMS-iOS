@@ -271,7 +271,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             CGFloat freeHeight = CGRectGetHeight(self.bounds) - self.visibleKeyboardHeight;
             
             CGPoint center = CGPointMake(CGRectGetWidth(self.bounds)/2, freeHeight/2);
-            float radius = MIN(CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds)) ;
+            float radius = MIN(CGRectGetWidth(self.bounds) , CGRectGetHeight(self.bounds));
             CGContextDrawRadialGradient (context, gradient, center, 0, center, radius, kCGGradientDrawsAfterEndLocation);
             CGGradientRelease(gradient);
             

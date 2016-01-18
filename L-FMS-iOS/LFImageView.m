@@ -13,85 +13,85 @@
 
 @interface LFImageView ()
 
-@property (nonatomic,strong) UIImage *placeHolderImage ;
+@property (nonatomic,strong) UIImage *placeHolderImage;
 
-@property (nonatomic,strong) UIButton *xButton ;
+@property (nonatomic,strong) UIButton *xButton;
 
 @end
 
 @implementation LFImageView
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        [self setUp] ;
+    if (self = [super init]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if ( self = [super initWithCoder:aDecoder] ) {
-        [self setUp] ;
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if ( self = [super initWithFrame:frame] ) {
-        [self setUp] ;
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithImage:(UIImage *)image {
-    if ( self = [super initWithImage:image]) {
-        [self setUp] ;
+    if (self = [super initWithImage:image]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (void)setUp {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self addSubview:self.xButton] ;
+        [self addSubview:self.xButton];
         LFWEAKSELF
         [self.xButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.and.right.equalTo(weakSelf) ;
-            make.width.and.height.mas_equalTo(19.0f) ;
-        }] ;
-        [self.xButton addTarget:self action:@selector(deleteBtnClicked) forControlEvents:UIControlEventTouchUpInside] ;
-        [self.xButton setHidden:YES] ;
+            make.top.and.right.equalTo(weakSelf);
+            make.width.and.height.mas_equalTo(19.0f);
+        }];
+        [self.xButton addTarget:self action:@selector(deleteBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+        [self.xButton setHidden:YES];
     });
 }
 
 #pragma mark - getter && setter 
 
 - (UIImage *)placeHolderImage {
-    return _placeHolderImage ? : ( _placeHolderImage = [UIImage imageNamed:@"testAdd"]) ;
+    return _placeHolderImage ? : (_placeHolderImage = [UIImage imageNamed:@"testAdd"]);
 }
 
 - (void)setImage:(UIImage *)image {
-    [super setImage:image] ;
-    [self.xButton setHidden:NO] ;
+    [super setImage:image];
+    [self.xButton setHidden:NO];
 }
 
 - (UIButton *)xButton {
-    if ( !_xButton ) {
-        _xButton = [UIButton buttonWithType:UIButtonTypeCustom] ;
+    if (!_xButton) {
+        _xButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_xButton setImage:[UIImage imageNamed:@"testX"]
-                  forState:UIControlStateNormal] ;
+                  forState:UIControlStateNormal];
     }
-    return _xButton ;
+    return _xButton;
 }
 
 - (void)set2PlaceHolderImage {
-    [super setImage:self.placeHolderImage] ;
-    [self.xButton setHidden:YES] ;
+    [super setImage:self.placeHolderImage];
+    [self.xButton setHidden:YES];
 }
 
 - (void)deleteBtnClicked {
-    [self set2PlaceHolderImage] ;
-    if ( [self.delegate respondsToSelector:@selector(imageViewDidDeleteImage:)] ) {
-        [self.delegate imageViewDidDeleteImage:self] ;
+    [self set2PlaceHolderImage];
+    if ([self.delegate respondsToSelector:@selector(imageViewDidDeleteImage:)]) {
+        [self.delegate imageViewDidDeleteImage:self];
     }
 }
 

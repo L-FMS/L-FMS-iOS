@@ -19,17 +19,17 @@
 @implementation UserInfoItemTableViewCell
 
 - (void)setUpWithTitle:(NSString *)title detailDesc:(NSString *)detailDesc {
-    self.itemTitleLabel.text = title ? : @"" ;
-    self.itemDetailLabel.text = detailDesc ? : @"" ;
+    self.itemTitleLabel.text = title ? : @"";
+    self.itemDetailLabel.text = detailDesc ? : @"";
 }
 
 - (void)awakeFromNib {
-    self.itemTitleLabel.text = @"" ;
-    self.itemDetailLabel.text = @"" ;
+    self.itemTitleLabel.text = @"";
+    self.itemDetailLabel.text = @"";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 @end

@@ -10,64 +10,64 @@
 
 @interface LFActivityIndicatorLabel ()
 
-@property (nonatomic,strong) UIActivityIndicatorView *indicatorView ;
+@property (nonatomic,strong) UIActivityIndicatorView *indicatorView;
 
 @end
 
 @implementation LFActivityIndicatorLabel
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        [self setUp] ;
+    if (self = [super init]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if ( self = [super initWithFrame:frame] ) {
-        [self setUp] ;
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if ( self = [super initWithCoder:aDecoder] ) {
-        [self setUp] ;
+    if (self = [super initWithCoder:aDecoder]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (void)setUp {
-    [self addSubview:self.indicatorView] ;
+    [self addSubview:self.indicatorView];
 }
 
 #pragma mark -
 
 - (void)setText:(NSString *)text showIndicator:(BOOL)show {
-    [self setText:text] ;
-    [self showIndicator:show] ;
-    [self sizeToFit] ;
+    [self setText:text];
+    [self showIndicator:show];
+    [self sizeToFit];
 }
 
 - (void)showIndicator:(BOOL)show {
-    if ( show )
-        [self.indicatorView startAnimating] ;
+    if (show)
+        [self.indicatorView startAnimating];
     else
-        [self.indicatorView stopAnimating] ;
+        [self.indicatorView stopAnimating];
 }
 
 #pragma mark - getter && setter 
 
 - (UIActivityIndicatorView *)indicatorView {
-    if ( !_indicatorView ) {
-        _indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-25, 0, 20, 20)] ;
-        [_indicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray] ;
+    if (!_indicatorView) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(-25, 0, 20, 20)];
+        [_indicatorView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
     }
-    return _indicatorView ;
+    return _indicatorView;
 }
 
 - (BOOL)isRefreshing {
-    return [self.indicatorView isAnimating] ;
+    return [self.indicatorView isAnimating];
 }
 
 @end

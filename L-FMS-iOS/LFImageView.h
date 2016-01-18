@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LFImageViewDelegate ;
+@protocol LFImageViewDelegate;
 
 @interface LFImageView : UIImageView
 
-@property (weak) id<LFImageViewDelegate> delegate ;
+@property (weak) id<LFImageViewDelegate> delegate;
 
-- (void)set2PlaceHolderImage ;
+- (void)set2PlaceHolderImage;
 
 @end
 
 @protocol LFImageViewDelegate <NSObject>
 
-- (void)imageViewDidDeleteImage:(LFImageView *)imageView ;
+- (void)imageViewDidDeleteImage:(LFImageView *)imageView;
 
 @end

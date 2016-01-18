@@ -17,12 +17,12 @@
 - (void)awakeFromNib {
     //LFitemDetailCommentTableViewCellReuseId
     
-    [self.avatarImageView.layer setMasksToBounds:YES] ;
-    [self.avatarImageView.layer setCornerRadius:self.avatarImageView.bounds.size.height/2] ;
+    [self.avatarImageView.layer setMasksToBounds:YES];
+    [self.avatarImageView.layer setCornerRadius:self.avatarImageView.bounds.size.height/2];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 @end

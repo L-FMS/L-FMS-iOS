@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LFWriteCommentViewControllerDelegate ;
+@protocol LFWriteCommentViewControllerDelegate;
 
 @interface LFWriteCommentViewController : UIViewController
 
-@property (weak) id<LFWriteCommentViewControllerDelegate> delegate ;
+@property (weak) id<LFWriteCommentViewControllerDelegate> delegate;
 
-@property (nonatomic,copy) NSString *placeHolderString ;
+@property (nonatomic,copy) NSString *placeHolderString;
 
-@property (nonatomic,strong) id targetItem ;
-@property (nonatomic,strong) id targetUser ;
+@property (nonatomic,strong) id targetItem;
+@property (nonatomic,strong) id targetUser;
 
 @end
 
@@ -25,8 +25,8 @@
 
 @optional
 
-- (void)viewControllerDidCancel:(LFWriteCommentViewController *)viewcontroller ;
+- (void)viewControllerDidCancel:(LFWriteCommentViewController *)viewcontroller;
 
-- (void)viewController:(LFWriteCommentViewController *)viewcontroller shouldSendComent:(NSString *)comment ;
+- (void)viewController:(LFWriteCommentViewController *)viewcontroller shouldSendComent:(NSString *)comment;
 
 @end

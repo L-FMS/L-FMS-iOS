@@ -16,40 +16,40 @@
 
 @interface LFCheckItemAtMapViewController ()<BMKMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet BMKMapView *mapView ;
+@property (weak, nonatomic) IBOutlet BMKMapView *mapView;
 
 @end
 
 @implementation LFCheckItemAtMapViewController
 
 - (void)showAnnotation {
-    if ( self.itemLocation ) {
-        CLLocationCoordinate2D coordinate = self.itemLocation.coordinate ;
-        [self.mapView setCenterCoordinate:coordinate] ;
+    if (self.itemLocation) {
+        CLLocationCoordinate2D coordinate = self.itemLocation.coordinate;
+        [self.mapView setCenterCoordinate:coordinate];
         LFSingleItemAnnotation *itemAnnotation = [[LFSingleItemAnnotation alloc] initWithItem:self.item location:self.itemLocation];
-        [self.mapView addAnnotation:itemAnnotation] ;
+        [self.mapView addAnnotation:itemAnnotation];
     }
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
-    self.mapView.zoomLevel = 18 ;
-    [self showAnnotation] ;
+    [super viewDidLoad];
+    self.mapView.zoomLevel = 18;
+    [self showAnnotation];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.mapView.delegate = self ;
-    [super viewWillAppear:animated] ;
+    self.mapView.delegate = self;
+    [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mapView.delegate = nil ;
-    [super viewWillDisappear:animated] ;
+    self.mapView.delegate = nil;
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 @end

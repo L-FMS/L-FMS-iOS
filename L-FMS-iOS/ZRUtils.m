@@ -16,42 +16,42 @@
 
 //邮箱
 + (BOOL)validateEmail:(NSString *)email {
-    return [ZRRegularExpressionValidateUtilsImp validateEmail:email] ;
+    return [ZRRegularExpressionValidateUtilsImp validateEmail:email];
 }
 
 //手机号码验证
 + (BOOL)validateMobile:(NSString *)mobile {
-    return [ZRRegularExpressionValidateUtilsImp validateMobile:mobile] ;
+    return [ZRRegularExpressionValidateUtilsImp validateMobile:mobile];
 }
 
 //车牌号验证
 + (BOOL)validateCarNo:(NSString *)carNo {
-    return [ZRRegularExpressionValidateUtilsImp validateCarNo:carNo] ;
+    return [ZRRegularExpressionValidateUtilsImp validateCarNo:carNo];
 }
 
 //车型
 + (BOOL)validateCarType:(NSString *)CarType {
-    return [ZRRegularExpressionValidateUtilsImp validateCarType:CarType] ;
+    return [ZRRegularExpressionValidateUtilsImp validateCarType:CarType];
 }
 
 //用户名[大小写字母、0-9]6-20长度
 + (BOOL)validateUserName:(NSString *)name {
-    return [ZRRegularExpressionValidateUtilsImp validateUserName:name] ;
+    return [ZRRegularExpressionValidateUtilsImp validateUserName:name];
 }
 
 //密码同用户名
 + (BOOL)validatePassword:(NSString *)passWord {
-    return [ZRRegularExpressionValidateUtilsImp validatePassword:passWord] ;
+    return [ZRRegularExpressionValidateUtilsImp validatePassword:passWord];
 }
 
 //昵称
 + (BOOL)validateNickname:(NSString *)nickname {
-    return [ZRRegularExpressionValidateUtilsImp validateNickname:nickname] ;
+    return [ZRRegularExpressionValidateUtilsImp validateNickname:nickname];
 }
 
 //身份证号
 + (BOOL)validateIdentityCard:(NSString *)identityCard {
-    return [ZRRegularExpressionValidateUtilsImp validateIdentityCard:identityCard] ;
+    return [ZRRegularExpressionValidateUtilsImp validateIdentityCard:identityCard];
 }
 
 @end

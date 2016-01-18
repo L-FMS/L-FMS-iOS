@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LFToolBarViewDataSource ;
-@protocol LFToolBarViewDelegate ;
+@protocol LFToolBarViewDataSource;
+@protocol LFToolBarViewDelegate;
 
 @interface LFToolBarView : UIView
 
-@property (weak) id<LFToolBarViewDelegate> delegate ;
-@property (weak) id<LFToolBarViewDataSource> dataSource ;
+@property (weak) id<LFToolBarViewDelegate> delegate;
+@property (weak) id<LFToolBarViewDataSource> dataSource;
 
-- (void)reloadData ;
+- (void)reloadData;
 
 @end
 
@@ -24,8 +24,8 @@
 
 @required
 
-- (NSUInteger)numberOfItemsInToolBarView:(LFToolBarView *)toolBarView ;
-- (NSString *)toolBarView:(LFToolBarView *)toolBarView titleForItemAtIndex:(NSUInteger)index ;
+- (NSUInteger)numberOfItemsInToolBarView:(LFToolBarView *)toolBarView;
+- (NSString *)toolBarView:(LFToolBarView *)toolBarView titleForItemAtIndex:(NSUInteger)index;
 
 @end
 
@@ -33,6 +33,6 @@
 
 @optional
 
-- (void)toolBarView:(LFToolBarView *)toolBarView didSelectedItemAtIndex:(NSUInteger)index ;
+- (void)toolBarView:(LFToolBarView *)toolBarView didSelectedItemAtIndex:(NSUInteger)index;
 
 @end

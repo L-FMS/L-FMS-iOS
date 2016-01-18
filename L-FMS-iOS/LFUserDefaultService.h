@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 
 #import <CoreLocation/CoreLocation.h>
-@class LFUser ;
+@class LFUser;
 
 @interface LFUserDefaultService : NSObject
 
-+ (void)saveUserLocation:(CLLocationCoordinate2D)coordinate forUser:(LFUser *)user ;
++ (void)saveUserLocation:(CLLocationCoordinate2D)coordinate forUser:(LFUser *)user;
 
-+ (CLLocation *)getUserLocationForUser:(LFUser *)user ;
++ (CLLocation *)getUserLocationForUser:(LFUser *)user;
 
-+ (void)setChatRoomBackgroundSwitch:(BOOL)show ;
++ (void)setChatRoomBackgroundSwitch:(BOOL)show;
 
-+ (BOOL)getChatRoomBackgroundSwitch ;
++ (BOOL)getChatRoomBackgroundSwitch;
 
 @end

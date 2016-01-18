@@ -10,6 +10,6 @@
 
 @interface LFAVSubclassRegister : NSObject
 
-+ (void)registeAllAVSubclasses ;
++ (void)registeAllAVSubclasses;
 
 @end

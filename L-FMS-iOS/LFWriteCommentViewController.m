@@ -10,8 +10,8 @@
 
 @interface LFWriteCommentViewController ()<UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *textView ;
-@property (weak, nonatomic) IBOutlet UITextField *placeHolderTextField ;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextField *placeHolderTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *enSureButton;
 
 @end
@@ -19,25 +19,25 @@
 @implementation LFWriteCommentViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
+    [super viewDidLoad];
     
-    self.textView.delegate = self ;
-    self.placeHolderTextField.userInteractionEnabled = NO ;
-    if ( self.placeHolderString ) {
-        self.placeHolderTextField.placeholder = self.placeHolderString ;
+    self.textView.delegate = self;
+    self.placeHolderTextField.userInteractionEnabled = NO;
+    if (self.placeHolderString) {
+        self.placeHolderTextField.placeholder = self.placeHolderString;
     }
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 
 #pragma mark - UITextViewDelegate
 
 - (void)textViewDidChange:(UITextView *)textView {
-    self.placeHolderTextField.hidden = self.textView.text.length > 0 ;
-    self.enSureButton.enabled = self.textView.text.length > 0 ;
+    self.placeHolderTextField.hidden = self.textView.text.length > 0;
+    self.enSureButton.enabled = self.textView.text.length > 0;
     
 }
 
@@ -45,16 +45,16 @@
 #pragma mark - actions
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    [self.textView resignFirstResponder] ;
-    if ( [self.delegate respondsToSelector:@selector(viewControllerDidCancel:)]) {
-        [self.delegate viewControllerDidCancel:self] ;
+    [self.textView resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(viewControllerDidCancel:)]) {
+        [self.delegate viewControllerDidCancel:self];
     }
 }
 
 - (IBAction)sendButtonClicked:(id)sender {
-    [self.textView resignFirstResponder] ;
-    if ( [self.delegate respondsToSelector:@selector(viewController:shouldSendComent:)]) {
-        [self.delegate viewController:self shouldSendComent:self.textView.text] ;
+    [self.textView resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(viewController:shouldSendComent:)]) {
+        [self.delegate viewController:self shouldSendComent:self.textView.text];
     }
 }
 

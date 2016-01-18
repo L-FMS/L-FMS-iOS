@@ -10,8 +10,8 @@
 
 @interface LFItemTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *ItemDescriptionLabel ;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel ;
+@property (weak, nonatomic) IBOutlet UILabel *ItemDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *descImageView;
 
 @end

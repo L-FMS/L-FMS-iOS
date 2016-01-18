@@ -28,98 +28,98 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger row = indexPath.row / 2 ;
+    NSInteger row = indexPath.row / 2;
     
     switch (row) {
         case 2 : {
             //到选地图界面
-            [self performSegueWithIdentifier:kNewItemVC2ChooseLocationMapVCSegueId sender:self] ;
-            break ;
+            [self performSegueWithIdentifier:kNewItemVC2ChooseLocationMapVCSegueId sender:self];
+            break;
         }
             
         default : {
-            break ;
+            break;
         }
     }
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES] ;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger row = indexPath.row ;
-    BOOL isSeparator = (row % 2)^TRUE ;
-    row = row / 2 ;
-    if ( isSeparator ) {
-        return 36 ;
+    NSInteger row = indexPath.row;
+    BOOL isSeparator = (row % 2)^TRUE;
+    row = row / 2;
+    if (isSeparator) {
+        return 36;
     } else {
-        return 44 ;
+        return 44;
     }
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1 ;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return KTwo * 3 ;
+    return KTwo * 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger row = indexPath.row ;
-    BOOL isSeparator = (row % 2)^TRUE ;
-    row = row / 2 ;
-    if ( isSeparator ) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFSeparatorTableViewCellReuseId" forIndexPath:indexPath] ;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone ;
-        return cell ;
+    NSInteger row = indexPath.row;
+    BOOL isSeparator = (row % 2)^TRUE;
+    row = row / 2;
+    if (isSeparator) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFSeparatorTableViewCellReuseId" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     } else {
-        UITableViewCell *cell ;
+        UITableViewCell *cell;
         switch (row) {
             case 2 : {
-                cell = [tableView dequeueReusableCellWithIdentifier:@"LFLocationTableViewCellReuseId" forIndexPath:indexPath] ;
-                break ;
+                cell = [tableView dequeueReusableCellWithIdentifier:@"LFLocationTableViewCellReuseId" forIndexPath:indexPath];
+                break;
             }
                 
             default : {
-                cell = [tableView dequeueReusableCellWithIdentifier:@"LFTextFieldTableViewCellReuseId" forIndexPath:indexPath] ;
-                break ;
+                cell = [tableView dequeueReusableCellWithIdentifier:@"LFTextFieldTableViewCellReuseId" forIndexPath:indexPath];
+                break;
             }
         }
         
-        return cell ;
+        return cell;
     }
 
 }
 
 - (IBAction)ensureBtnClicked:(id)sender {
-    QYDebugLog(@"确定按钮") ;
+    QYDebugLog(@"确定按钮");
     
-    Item *newItem = [Item object] ;
-    newItem.itemDescription = @"TestDesc" ;
-    newItem.name = @"TestName" ;
-    newItem.tags = @[@"Tag1",@"Tag2",@"Tag3"] ;
-    newItem.type = @"found" ;
-    newItem.user = [LFUser currentUser] ;
+    Item *newItem = [Item object];
+    newItem.itemDescription = @"TestDesc";
+    newItem.name = @"TestName";
+    newItem.tags = @[@"Tag1",@"Tag2",@"Tag3"];
+    newItem.type = @"found";
+    newItem.user = [LFUser currentUser];
     
-    [SVProgressHUD show] ;
+    [SVProgressHUD show];
     [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        [SVProgressHUD dismiss] ;
-        if ( succeeded ) {
-            QYDebugLog(@"Successed") ;
-            [self.navigationController popViewControllerAnimated:YES] ;
+        [SVProgressHUD dismiss];
+        if (succeeded) {
+            QYDebugLog(@"Successed");
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
-            QYDebugLog(@"Error:[%@]",error) ;
+            QYDebugLog(@"Error:[%@]",error);
         }
-    }] ;
+    }];
 }
 
 #pragma mark -

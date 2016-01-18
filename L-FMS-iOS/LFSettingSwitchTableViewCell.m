@@ -15,12 +15,12 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 - (IBAction)switchStateChanged:(UISwitch *)sender {
-    if ( [self.delegate respondsToSelector:@selector(cell:switchToState:)]) {
-        [self.delegate cell:self switchToState:sender.isOn] ;
+    if ([self.delegate respondsToSelector:@selector(cell:switchToState:)]) {
+        [self.delegate cell:self switchToState:sender.isOn];
     }
 }
 

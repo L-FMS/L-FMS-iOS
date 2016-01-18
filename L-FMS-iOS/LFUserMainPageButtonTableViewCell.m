@@ -10,27 +10,27 @@
 
 @interface LFUserMainPageButtonTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *button ;
+@property (weak, nonatomic) IBOutlet UIButton *button;
 
 @end
 
 @implementation LFUserMainPageButtonTableViewCell
 
 - (void)awakeFromNib {
-    [self.button.layer setMasksToBounds:YES] ;
-    [self.button.layer setCornerRadius:5.0f] ;
-    [self.button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside] ;
+    [self.button.layer setMasksToBounds:YES];
+    [self.button.layer setCornerRadius:5.0f];
+    [self.button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 #pragma mark - actions 
 
 - (void)buttonClicked {
-    if ( [self.delegate respondsToSelector:@selector(buttonCellDidClickedButton:)]) {
-        [self.delegate buttonCellDidClickedButton:self] ;
+    if ([self.delegate respondsToSelector:@selector(buttonCellDidClickedButton:)]) {
+        [self.delegate buttonCellDidClickedButton:self];
     }
 }
 

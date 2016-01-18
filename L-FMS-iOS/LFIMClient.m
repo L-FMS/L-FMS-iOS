@@ -15,13 +15,13 @@
 
 @interface LFIMClient ()<AVIMClientDelegate>
 
-@property (nonatomic,strong) AVIMClient *aAVIMClient ;
+@property (nonatomic,strong) AVIMClient *aAVIMClient;
 
-@property (nonatomic,copy) NSString *clientId ;//userId
+@property (nonatomic,copy) NSString *clientId;//userId
 
-@property (weak) LFStorage *storage ;
+@property (weak) LFStorage *storage;
 
-@property (weak) LFNotify *notify ;
+@property (weak) LFNotify *notify;
 
 
 
@@ -42,81 +42,81 @@
 #pragma mark - init 
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        [self setUp] ;
+    if (self = [super init]) {
+        [self setUp];
     }
-    return self ;
+    return self;
 }
 
 - (void)setUp {
-    self.aAVIMClient = [[AVIMClient alloc] init] ;
-    self.aAVIMClient.delegate = self ;
-    self.storage = [LFStorage shareInstance] ;
-    self.notify = [LFNotify shareInstance] ;
+    self.aAVIMClient = [[AVIMClient alloc] init];
+    self.aAVIMClient.delegate = self;
+    self.storage = [LFStorage shareInstance];
+    self.notify = [LFNotify shareInstance];
 }
 
 #pragma mark - session
 
 - (void)openSessionWithClientID:(NSString *)clientID
                      completion:(void (^)(BOOL succeeded, NSError *error))completion {
-    self.clientId = clientID ;
-    [self.storage setupWithUserId:clientID] ;
-    if ( self.aAVIMClient.status == AVIMClientStatusNone ) {
-        [self.aAVIMClient openWithClientId:clientID callback:completion] ;
+    self.clientId = clientID;
+    [self.storage setupWithUserId:clientID];
+    if (self.aAVIMClient.status == AVIMClientStatusNone) {
+        [self.aAVIMClient openWithClientId:clientID callback:completion];
     } else {
         [self.aAVIMClient closeWithCallback:^(BOOL succeeded, NSError *error) {
-            if ( succeeded ) {
-                [self.aAVIMClient openWithClientId:clientID callback:completion] ;
+            if (succeeded) {
+                [self.aAVIMClient openWithClientId:clientID callback:completion];
             } else {
-                completion(false,error) ;
+                completion(false,error);
             }
-        }] ;
+        }];
     }
 }
 
 //关闭AVIMCLient
-- (void)closeSessionCompletion:(void (^)(BOOL succeeded, NSError *error))completion ; {
+- (void)closeSessionCompletion:(void (^)(BOOL succeeded, NSError *error))completion; {
     [self.aAVIMClient closeWithCallback:^(BOOL succeeded, NSError *error) {
-        if ( succeeded ) {
-            self.aAVIMClient.delegate = nil ;
-            self.aAVIMClient = nil ;
-            self.clientId = nil ;
+        if (succeeded) {
+            self.aAVIMClient.delegate = nil;
+            self.aAVIMClient = nil;
+            self.clientId = nil;
         }
-        completion(succeeded,error) ;
-    }] ;
+        completion(succeeded,error);
+    }];
 }
 
 - (void)startConversationWithUserId:(NSString *)targetUserId completion:(void (^)(AVIMConversation *conversation, NSError *error))completion {
-    assert(targetUserId) ;
-    AVIMConversationQuery *query = [self.aAVIMClient conversationQuery] ;
-    NSArray *cliendIds = @[self.clientId,targetUserId] ;
+    assert(targetUserId);
+    AVIMConversationQuery *query = [self.aAVIMClient conversationQuery];
+    NSArray *cliendIds = @[self.clientId,targetUserId];
     
-    [query whereKey:kAVIMKeyMember containsAllObjectsInArray:cliendIds] ;
+    [query whereKey:kAVIMKeyMember containsAllObjectsInArray:cliendIds];
     [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
-        if ( error ) {
-            QYDebugLog(@"查询会话失败 Error:[%@]",error) ;
-            completion(nil,error) ;
+        if (error) {
+            QYDebugLog(@"查询会话失败 Error:[%@]",error);
+            completion(nil,error);
         } else {
             
-            if ( !objects || objects.count < 1 ) {
+            if (!objects || objects.count < 1) {
                 //没有去创建一个
                 [self.aAVIMClient createConversationWithName:nil clientIds:cliendIds callback:^(AVIMConversation *conversation, NSError *error) {
-                    if ( error ) {
+                    if (error) {
                         //创建失败
-                        QYDebugLog(@"创建会话失败 Error:[%@]",error) ;
-                        completion(nil,error) ;
+                        QYDebugLog(@"创建会话失败 Error:[%@]",error);
+                        completion(nil,error);
                     } else {
                         //创建成功
-                        completion(conversation,nil) ;
+                        completion(conversation,nil);
                     }
-                }] ;
+                }];
             } else {
                 //有去获取一个
-                AVIMConversation *conv = [objects lastObject] ;
-                completion(conv,nil) ;
+                AVIMConversation *conv = [objects lastObject];
+                completion(conv,nil);
             }            
         }
-    }] ;
+    }];
     
     
 }
@@ -128,24 +128,24 @@
  注意：该回调会覆盖 imClientPaused: 方法。
  */
 - (void)imClientPaused:(AVIMClient *)imClient error:(NSError *)error {
-    QYDebugLog(@"断网") ;
-    [_notify postSessionNotify] ;
+    QYDebugLog(@"断网");
+    [_notify postSessionNotify];
 }
 
 /*!
  当前聊天状态开始恢复，常见于网络断开后开始重新连接。
  */
 - (void)imClientResuming:(AVIMClient *)imClient {
-    QYDebugLog(@"正在重连") ;
-    [_notify postSessionNotify] ;
+    QYDebugLog(@"正在重连");
+    [_notify postSessionNotify];
 }
 
 /*!
  当前聊天状态已经恢复，常见于网络断开后重新连接上。
  */
 - (void)imClientResumed:(AVIMClient *)imClient {
-    QYDebugLog(@"网络恢复") ;
-    [_notify postSessionNotify] ;
+    QYDebugLog(@"网络恢复");
+    [_notify postSessionNotify];
 }
 
 /*!
@@ -155,7 +155,7 @@
  @return None.
  */
 - (void)conversation:(AVIMConversation *)conversation didReceiveCommonMessage:(AVIMMessage *)message {
-    QYDebugLog(@"接收到新的普通消息。") ;
+    QYDebugLog(@"接收到新的普通消息。");
 }
 
 /*!
@@ -165,11 +165,11 @@
  @return None.
  */
 - (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
-    QYDebugLog(@"接收到新的富媒体消息。") ;
-    if( message.messageId ) {
-        [self didReceiveMessage:message fromConversation:conversation] ;
+    QYDebugLog(@"接收到新的富媒体消息。");
+    if(message.messageId) {
+        [self didReceiveMessage:message fromConversation:conversation];
     } else {
-        QYDebugLog(@"Received message , but messageId is nil") ;
+        QYDebugLog(@"Received message , but messageId is nil");
     }
 }
 
@@ -181,9 +181,9 @@
  */
 - (void)conversation:(AVIMConversation *)conversation messageDelivered:(AVIMMessage *)message {
     QYDebugLog(@"消息已经投递给对方")
-    if ( message && [message isKindOfClass:[AVIMTypedMessage class]]) {
-        [_storage updateMessageStatus:AVIMMessageStatusDelivered byMessageId:message.messageId] ;
-        [_notify postMessageNotify:(id)message] ;
+    if (message && [message isKindOfClass:[AVIMTypedMessage class]]) {
+        [_storage updateMessageStatus:AVIMMessageStatusDelivered byMessageId:message.messageId];
+        [_notify postMessageNotify:(id)message];
     }
 }
 
@@ -193,25 +193,25 @@
  @param unread 未读消息数量。
  */
 - (void)conversation:(AVIMConversation *)conversation didReceiveUnread:(NSInteger)unread {
-    QYDebugLog(@"收到未读通知 %ld",(long)unread) ;
+    QYDebugLog(@"收到未读通知 %ld",(long)unread);
 }
 
 #pragma mark - Helper 
 
 - (void)didReceiveMessage:(AVIMTypedMessage*)msg fromConversation:(AVIMConversation*)conv{
-    if ( ![msg isKindOfClass:[AVIMTypedMessage class]]) {
-        return ;
+    if (![msg isKindOfClass:[AVIMTypedMessage class]]) {
+        return;
     }
-    [_storage insertRoomWithConversationId:conv.conversationId] ;
-    [_storage insertMessage:msg] ;
-    [_storage incrementUnreadWithConversationId:conv.conversationId] ;
+    [_storage insertRoomWithConversationId:conv.conversationId];
+    [_storage insertMessage:msg];
+    [_storage incrementUnreadWithConversationId:conv.conversationId];
     //通知viewController
     
-    [_notify postMessageNotify:msg] ;
+    [_notify postMessageNotify:msg];
 }
 
 - (BOOL)isOpened {
-    return _aAVIMClient.status == AVIMClientStatusOpened ;
+    return _aAVIMClient.status == AVIMClientStatusOpened;
 }
 
 /**
@@ -220,10 +220,10 @@
  *  @param block
  */
 - (void)findConvsWithBlock:(AVIMArrayResultBlock)block {
-    AVIMConversationQuery *q = [self.aAVIMClient conversationQuery] ;
-    [q whereKey:@"m" containedIn:@[self.clientId]] ;
-    q.limit = 1000 ;
-    [q findConversationsWithCallback:block] ;
+    AVIMConversationQuery *q = [self.aAVIMClient conversationQuery];
+    [q whereKey:@"m" containedIn:@[self.clientId]];
+    q.limit = 1000;
+    [q findConversationsWithCallback:block];
 }
 
 
@@ -233,7 +233,7 @@
 #warning 以下是垃圾代码。。无参考价值
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    QYDebugLog(@"...") ;
+    QYDebugLog(@"...");
 }
 
 #pragma mark - conv cache
@@ -245,45 +245,45 @@
  *  @param callback (BOOL succeeded, NSError *error)
  */
 -(void)cacheAndFillRooms:(NSMutableArray*)rooms callback:(AVBooleanResultBlock)callback {
-    NSMutableSet *convids = [NSMutableSet set] ;
+    NSMutableSet *convids = [NSMutableSet set];
     
-    for( LFChatRoom *room in rooms )
-        [convids addObject:room.convid] ;
+    for(LFChatRoom *room in rooms)
+        [convids addObject:room.convid];
     
     
     [self cacheConvsWithIds:convids callback:^(NSArray *conversations, NSError *error) {
-        if( error ) {
-            callback(NO,error) ;
+        if(error) {
+            callback(NO,error);
         } else {
-            for( LFChatRoom *room in rooms ) {
+            for(LFChatRoom *room in rooms) {
                 
-                room.conv = [self lookupConvById:room.convid] ;
-                if ( nil == room.conv ) {
-                    [NSException raise:@"not found conv" format:nil] ;
+                room.conv = [self lookupConvById:room.convid];
+                if (nil == room.conv) {
+                    [NSException raise:@"not found conv" format:nil];
                 }
             }
-            NSMutableSet *userIds = [NSMutableSet set] ;
-            for( LFChatRoom *room in rooms ) {
-                [userIds addObject:room.conv.otherId] ;
+            NSMutableSet *userIds = [NSMutableSet set];
+            for(LFChatRoom *room in rooms) {
+                [userIds addObject:room.conv.otherId];
             }
-            [LFCacheService cacheUsersWithIds:userIds callback:callback] ;
+            [LFCacheService cacheUsersWithIds:userIds callback:callback];
         }
     }];
 }
 
 - (void)cacheConvsWithIds:(NSMutableSet*)convids callback:(AVArrayResultBlock)callback {
     
-    NSMutableSet *uncacheConvids = [NSMutableSet set] ;
+    NSMutableSet *uncacheConvids = [NSMutableSet set];
     //找出未缓存的部分。
-    for( NSString *convid in convids ){
-        if( nil == [self lookupConvById:convid] ){
+    for(NSString *convid in convids){
+        if(nil == [self lookupConvById:convid]){
             [uncacheConvids addObject:convid];
         }
     }
     //拉取未缓存的会话
     [self fetchConvsWithConvids:uncacheConvids callback:^(NSArray *conversations, NSError *error) {
-        if( error ){
-            callback(nil,error) ;
+        if(error){
+            callback(nil,error);
         } else {
             //缓存拉取的会话
             [self registerConvs:conversations];
@@ -293,13 +293,13 @@
 }
 
 - (AVIMConversation *)lookupConvById:(NSString*)convid {
-    return [self.cachedConvs valueForKey:convid] ;
+    return [self.cachedConvs valueForKey:convid];
 }
 
 //缓存会话数组
 - (void)registerConvs:(NSArray*)convs {
-    for( AVIMConversation *conv in convs ){
-        [self.cachedConvs setValue:conv forKey:conv.conversationId] ;
+    for(AVIMConversation *conv in convs){
+        [self.cachedConvs setValue:conv forKey:conv.conversationId];
     }
 }
 
@@ -311,21 +311,21 @@
  */
 - (void)fetchConvsWithConvids:(NSSet*)convids callback:(AVIMArrayResultBlock)callback {
     
-    if( convids.count > 0 ) {
-        AVIMConversationQuery *q = [self.aAVIMClient conversationQuery] ;
-        [q whereKey:@"objectId" containedIn:[convids allObjects]] ;
-        q.limit = 1000 ;  // default limit:10
-        [q findConversationsWithCallback:callback] ;
+    if(convids.count > 0) {
+        AVIMConversationQuery *q = [self.aAVIMClient conversationQuery];
+        [q whereKey:@"objectId" containedIn:[convids allObjects]];
+        q.limit = 1000;  // default limit:10
+        [q findConversationsWithCallback:callback];
     } else {
-        callback([NSMutableArray array],nil) ;
+        callback([NSMutableArray array],nil);
     }
 }
 
 #pragma mark - getter & setter
 
 - (NSMutableDictionary *)cachedConvs {
-    if ( _cachedConvs == nil ) _cachedConvs = [NSMutableDictionary new] ;
-    return _cachedConvs ;
+    if (_cachedConvs == nil) _cachedConvs = [NSMutableDictionary new];
+    return _cachedConvs;
 }
 
 #pragma mark - query msgs
@@ -340,26 +340,26 @@
         result=objects;
         blockError=error;
         dispatch_semaphore_signal(sema);
-    }] ;
-    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER) ;
+    }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
     
-    *theError=blockError ;
-    if( blockError == nil ){
+    *theError=blockError;
+    if(blockError == nil){
     }
-    return result ;
+    return result;
 }
 
 - (NSString *)uuid {
-    NSString *chars = @"abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" ;
-    assert(chars.length == 62) ;
-    int len = (int)chars.length ;
-    NSMutableString *result = [NSMutableString string] ;
-    for(int i = 0 ; i <24 ; i++ ) {
-        int p = arc4random_uniform(len) ;
-        NSRange range = NSMakeRange(p, 1) ;
-        [result appendString:[chars substringWithRange:range]] ;
+    NSString *chars = @"abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    assert(chars.length == 62);
+    int len = (int)chars.length;
+    NSMutableString *result = [NSMutableString string];
+    for(int i = 0; i <24; i++) {
+        int p = arc4random_uniform(len);
+        NSRange range = NSMakeRange(p, 1);
+        [result appendString:[chars substringWithRange:range]];
     }
-    return result ;
+    return result;
 }
 
-@end ;
+@end;

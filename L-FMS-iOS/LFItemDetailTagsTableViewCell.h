@@ -10,6 +10,6 @@
 
 @interface LFItemDetailTagsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *tagsLabel ;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 
 @end

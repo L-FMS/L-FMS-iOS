@@ -15,14 +15,14 @@
 
 @interface LFAboutUsTableViewController ()
 
-@property (nonatomic) NSArray *dataSource ;
+@property (nonatomic) NSArray *dataSource;
 
 @end
 
 @implementation LFAboutUsTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad] ;
+    [super viewDidLoad];
     
     self.dataSource = @[@{kUserNameKey:@"张思雨",
                           kUserAvatarKey:@"zsy",
@@ -35,37 +35,37 @@
                         @{kUserNameKey:@"张睿",
                           kUserAvatarKey:@"zr",
                           kUserDescriptionKey:@"大四\n"
-                                               "变态"}] ;
+                                               "变态"}];
     
-    self.tableView.dataSource = self ;
-    self.tableView.delegate = self ;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning] ;
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableViewDelegate 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120 ;
+    return 120;
 }
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataSource.count ;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LFAboutUsAuthorInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFAboutUsAuthorInfoTableViewCellReuseId" forIndexPath:indexPath] ;
-    NSDictionary *info = self.dataSource[indexPath.row] ;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone ;
+    LFAboutUsAuthorInfoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LFAboutUsAuthorInfoTableViewCellReuseId" forIndexPath:indexPath];
+    NSDictionary *info = self.dataSource[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.photoImageView.image = [UIImage imageNamed:info[kUserAvatarKey]] ;
-    cell.nameLabel.text = info[kUserNameKey] ;
-    cell.descriptionLabel.text = info[kUserDescriptionKey] ;
-    [cell.descriptionLabel sizeToFit] ;
+    cell.photoImageView.image = [UIImage imageNamed:info[kUserAvatarKey]];
+    cell.nameLabel.text = info[kUserNameKey];
+    cell.descriptionLabel.text = info[kUserDescriptionKey];
+    [cell.descriptionLabel sizeToFit];
     
     return cell;
 }

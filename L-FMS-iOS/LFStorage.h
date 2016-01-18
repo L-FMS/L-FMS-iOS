@@ -16,11 +16,11 @@
 
 @interface LFStorage : NSObject
 
-+ (instancetype)shareInstance ;
++ (instancetype)shareInstance;
 
-- (void)setupWithUserId:(NSString*)userId ;
+- (void)setupWithUserId:(NSString*)userId;
 
-- (NSArray *)getMsgsWithConvid:(NSString*)convid maxTime:(int64_t)time limit:(NSInteger)limit ;
+- (NSArray *)getMsgsWithConvid:(NSString*)convid maxTime:(int64_t)time limit:(NSInteger)limit;
 
 /**
  *  [异步]插入AVIMTypedMessage到数据库
@@ -29,45 +29,45 @@
  *
  *  @return rowId行号
  */
-- (int64_t)insertMessage:(AVIMTypedMessage*)msg ;
+- (int64_t)insertMessage:(AVIMTypedMessage*)msg;
 
-- (BOOL)updateMessageStatus:(AVIMMessageStatus)status byMessageId:(NSString*)msgId ;
+- (BOOL)updateMessageStatus:(AVIMMessageStatus)status byMessageId:(NSString*)msgId;
 
-- (BOOL)updateFailedMsg:(AVIMTypedMessage*)msg byTmpId:(NSString*)tmpId ;
+- (BOOL)updateFailedMsg:(AVIMTypedMessage*)msg byTmpId:(NSString*)tmpId;
 
 /**
  *  清除convid对应的Msgs，清除消息记录
  *
  *  @param convid AVIMConversation.conversationId
  */
-- (void)deleteMsgsByConvid:(NSString*)convid ;
+- (void)deleteMsgsByConvid:(NSString*)convid;
 
-- (NSArray *)getRooms ;
+- (NSArray *)getRooms;
 
-- (LFChatRoom *)getRoomByConvId:(NSString *)convId ;
+- (LFChatRoom *)getRoomByConvId:(NSString *)convId;
 
-- (NSArray *)getConvIds ;
+- (NSArray *)getConvIds;
 
-- (NSInteger)countUnread ;
+- (NSInteger)countUnread;
 
-- (void)insertRoomWithConversationId:(NSString*)convid ;
+- (void)insertRoomWithConversationId:(NSString*)convid;
 
 /**
  *  清除convid对应的聊天室，清除聊天室记录，解散聊天室情调用[CDStorage deleteRoomAndMsgsByConvid:]并删除云端数据。
  *
  *  @param convid AVIMConversation.conversationId
  */
-- (void)deleteRoomByConvid:(NSString*)convid ;
+- (void)deleteRoomByConvid:(NSString*)convid;
 
-- (void)incrementUnreadWithConversationId:(NSString*)convid ;
+- (void)incrementUnreadWithConversationId:(NSString*)convid;
 
-- (void)clearUnreadWithConvid:(NSString*)convid ;
+- (void)clearUnreadWithConvid:(NSString*)convid;
 
 /**
  *  删除本地聊天室所有数据。[解散聊天室]
  *
  *  @param convid AVIMConversation.conversationId
  */
-- (void)deleteRoomAndMsgsByConvid:(NSString *)convid ;
+- (void)deleteRoomAndMsgsByConvid:(NSString *)convid;
 
 @end

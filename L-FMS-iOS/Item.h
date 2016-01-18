@@ -10,20 +10,20 @@
 #import <AVObject+Subclass.h>
 #import <AVSubclassing.h>
 
-@class LFUser ;
-@class AVGeoPoint ;
+@class LFUser;
+@class AVGeoPoint;
 
 @interface Item : AVObject<AVSubclassing>
 
-@property (nonatomic,copy) NSString *itemDescription ;
-@property (nonatomic,copy) NSArray *tags ;
-@property (nonatomic,copy) NSString *place ;
-@property (nonatomic) AVGeoPoint *location ;
-@property (nonatomic,copy) NSString *name ;
-@property (nonatomic,copy) NSString *type ;
-@property (nonatomic) AVFile *image ;
-@property (nonatomic) LFUser *user ;
+@property (nonatomic,copy) NSString *itemDescription;
+@property (nonatomic,copy) NSArray *tags;
+@property (nonatomic,copy) NSString *place;
+@property (nonatomic) AVGeoPoint *location;
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *type;
+@property (nonatomic) AVFile *image;
+@property (nonatomic) LFUser *user;
 
-- (BOOL)isLost ;
+- (BOOL)isLost;
 
 @end

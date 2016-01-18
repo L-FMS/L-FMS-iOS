@@ -11,32 +11,32 @@
 
 @implementation LFComment
 
-@dynamic content ;
-@dynamic item ;
-@dynamic author ;
-@dynamic replyTo ;
-@dynamic replyToUsers ;
+@dynamic content;
+@dynamic item;
+@dynamic author;
+@dynamic replyTo;
+@dynamic replyToUsers;
 
 + (NSString *)parseClassName {
-    return @"Comment" ;
+    return @"Comment";
 }
 
 @end
 
 #import <objc/runtime.h>
 
-static const void *kLFCommentcellHeightKey = &kLFCommentcellHeightKey ;
+static const void *kLFCommentcellHeightKey = &kLFCommentcellHeightKey;
 
 @implementation LFComment(LFCommentNoticeTableViewController)
 
-@dynamic cellHeight ;
+@dynamic cellHeight;
 
 - (void)setCellHeight:(NSNumber *)cellHeight {
-    objc_setAssociatedObject(self, kLFCommentcellHeightKey, cellHeight, OBJC_ASSOCIATION_COPY_NONATOMIC) ;
+    objc_setAssociatedObject(self, kLFCommentcellHeightKey, cellHeight, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (NSNumber *)cellHeight {
-    return objc_getAssociatedObject(self, kLFCommentcellHeightKey) ;
+    return objc_getAssociatedObject(self, kLFCommentcellHeightKey);
 }
 
 @end

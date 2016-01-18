@@ -22,41 +22,41 @@
 
 @implementation LFUser
 
-@dynamic address ;
-@dynamic major ;
-@dynamic name ;
-@dynamic gender ;
-@dynamic birth ;
-@dynamic avatar ;
+@dynamic address;
+@dynamic major;
+@dynamic name;
+@dynamic gender;
+@dynamic birth;
+@dynamic avatar;
 
 + (NSString *)parseClassName {
-    return @"_User" ;
+    return @"_User";
 }
 
 + (void)logOut {
-    LFUser *user = [LFUser currentUser] ;
-    if ( user.imClient ) {
+    LFUser *user = [LFUser currentUser];
+    if (user.imClient) {
         [user.imClient closeSessionCompletion:^(BOOL succeeded, NSError *error) {
-            if ( error ) {
-                QYDebugLog(@"Close Session Error:[%@]",error) ;
+            if (error) {
+                QYDebugLog(@"Close Session Error:[%@]",error);
             }
-            user.imClient = nil ;
-        }] ;
+            user.imClient = nil;
+        }];
     }
-    user = nil ;
-    [super logOut] ;
-    [AppDelegate globalAppdelegate].drawerViewController = nil ;
+    user = nil;
+    [super logOut];
+    [AppDelegate globalAppdelegate].drawerViewController = nil;
 }
 
 #pragma mark - 
 
 - (void)displayAvatarAtImageView:(UIImageView *)avatarImageView {
     [avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.avatar.url]
-                       placeholderImage:[UIImage imageNamed:@"testAvatar1"]] ;
+                       placeholderImage:[UIImage imageNamed:@"testAvatar1"]];
 }
 
 - (NSString *)displayName {
-    return self.name ? : self.username ? : @"" ;
+    return self.name ? : self.username ? : @"";
 }
 
 #pragma mark - getter && setter 

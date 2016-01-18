@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "LFBaiduMapKit.h"
-@class Item ;
+@class Item;
 
 @interface LFSingleItemAnnotation : NSObject<BMKAnnotation>
 
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
-@property (nonatomic, retain) Item *item ;
+@property (nonatomic, retain) Item *item;
 
-- (instancetype)initWithItem:(Item *)item location:(CLLocation *)location ;
+- (instancetype)initWithItem:(Item *)item location:(CLLocation *)location;
 
 @end

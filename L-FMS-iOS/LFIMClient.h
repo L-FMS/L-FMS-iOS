@@ -23,25 +23,25 @@
  *  @param completion 回调
  */
 - (void)openSessionWithClientID:(NSString *)clientID
-                     completion:(void (^)(BOOL succeeded, NSError *error))completion ;
+                     completion:(void (^)(BOOL succeeded, NSError *error))completion;
 
-- (void)closeSessionCompletion:(void (^)(BOOL succeeded, NSError *error))completion ;
+- (void)closeSessionCompletion:(void (^)(BOOL succeeded, NSError *error))completion;
 
-- (void)startConversationWithUserId:(NSString *)targetUserId completion:(void (^)(AVIMConversation *conversation, NSError *error))completion ;
+- (void)startConversationWithUserId:(NSString *)targetUserId completion:(void (^)(AVIMConversation *conversation, NSError *error))completion;
 
-- (BOOL)isOpened ;
+- (BOOL)isOpened;
 
 /**
  *  查找后台会话,1000条上限
  *
  *  @param block
  */
-- (void)findConvsWithBlock:(AVIMArrayResultBlock)block ;
+- (void)findConvsWithBlock:(AVIMArrayResultBlock)block;
 
 #warning 以下是垃圾代码。。无参考价值
 
 #warning AVOSCloud的SDK的bug。user save的时候会调用这个。。不是dynamic也会调用。之后提issue。
-- (void)encodeWithCoder:(NSCoder *)aCoder ;
+- (void)encodeWithCoder:(NSCoder *)aCoder;
 
 #pragma mark - conv cache
 
@@ -51,12 +51,12 @@
  *  @param rooms    Array<CDRoom>
  *  @param callback (BOOL succeeded, NSError *error)
  */
--(void)cacheAndFillRooms:(NSMutableArray*)rooms callback:(AVBooleanResultBlock)callback ;
+-(void)cacheAndFillRooms:(NSMutableArray*)rooms callback:(AVBooleanResultBlock)callback;
 
 #pragma mark - query msgs
 
-- (NSArray *)queryMsgsWithConv:(AVIMConversation*)conv msgId:(NSString*)msgId maxTime:(int64_t)time limit:(NSUInteger)limit error:(NSError**)theError ;
+- (NSArray *)queryMsgsWithConv:(AVIMConversation*)conv msgId:(NSString*)msgId maxTime:(int64_t)time limit:(NSUInteger)limit error:(NSError**)theError;
 
-- (NSString *)uuid ;
+- (NSString *)uuid;
 
 @end

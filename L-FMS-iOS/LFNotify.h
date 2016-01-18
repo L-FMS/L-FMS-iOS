@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class AVIMTypedMessage ;
+@class AVIMTypedMessage;
 
 #define kNOTIFICATION_MESSAGE_UPDATED @"NOTIFICATION_MESSAGE_UPDATED"
 #define kNOTIFICATION_CONV_UPDATED @"NOTIFICATION _CONV_UPDATED"
@@ -16,30 +16,30 @@
 
 @interface LFNotify : NSObject
 
-+ (instancetype)shareInstance ;
++ (instancetype)shareInstance;
 
 #pragma mark - Conversation
 
-- (void)addConvObserver:(id)target selector:(SEL)selector ;
+- (void)addConvObserver:(id)target selector:(SEL)selector;
 
-- (void)removeConvObserver:(id)target ;
+- (void)removeConvObserver:(id)target;
 
-- (void)postConvNotify ;
+- (void)postConvNotify;
 
 #pragma mark - Message
 
-- (void)addMsgObserver:(id)target selector:(SEL)selector ;
+- (void)addMsgObserver:(id)target selector:(SEL)selector;
 
-- (void)removeMsgObserver:(id)target ;
+- (void)removeMsgObserver:(id)target;
 
-- (void)postMessageNotify:(AVIMTypedMessage *)msg ;
+- (void)postMessageNotify:(AVIMTypedMessage *)msg;
 
 #pragma mark - Session
 
-- (void)addSessionObserver:(id)target selector:(SEL)selector ;
+- (void)addSessionObserver:(id)target selector:(SEL)selector;
 
-- (void)removeSessionObserver:(id)target ;
+- (void)removeSessionObserver:(id)target;
 
-- (void)postSessionNotify ;
+- (void)postSessionNotify;
 
 @end

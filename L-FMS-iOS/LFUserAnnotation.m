@@ -10,17 +10,17 @@
 
 @interface LFUserAnnotation ()
 
-@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
 @end
 
 @implementation LFUserAnnotation
 
 - (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate {
-    if ( self = [super init] ) {
-        self.coordinate = coordinate ;
+    if (self = [super init]) {
+        self.coordinate = coordinate;
     }
-    return self ;
+    return self;
 }
 
 @end

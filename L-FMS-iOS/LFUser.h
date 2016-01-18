@@ -10,22 +10,22 @@
 #import <AVObject+Subclass.h>
 #import <AVSubclassing.h>
 
-@class UIImageView ;
-@class LFIMClient ;
+@class UIImageView;
+@class LFIMClient;
 
 @interface LFUser : AVUser<AVSubclassing>
 
-@property (nonatomic,copy) NSString *address ;
-@property (nonatomic,copy) NSString *major ;
-@property (nonatomic,copy) NSString *name ;//真名
-@property (nonatomic,copy) NSString *gender ;
-@property (nonatomic,copy) NSDate *birth ;
-@property (nonatomic) AVFile *avatar ;
+@property (nonatomic,copy) NSString *address;
+@property (nonatomic,copy) NSString *major;
+@property (nonatomic,copy) NSString *name;//真名
+@property (nonatomic,copy) NSString *gender;
+@property (nonatomic,copy) NSDate *birth;
+@property (nonatomic) AVFile *avatar;
 
-- (void)displayAvatarAtImageView:(UIImageView *)avatarImageView ;
+- (void)displayAvatarAtImageView:(UIImageView *)avatarImageView;
 
-- (NSString *)displayName ;
+- (NSString *)displayName;
 
-@property (nonatomic,strong) LFIMClient *imClient ;
+@property (nonatomic,strong) LFIMClient *imClient;
 
 @end

@@ -12,17 +12,17 @@
 
 @interface LFBMKMapViewAnnotation ()
 
-@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readwrite) CLLocationCoordinate2D coordinate;
 
 @end
 
 @implementation LFBMKMapViewAnnotation
 
 - (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate {
-    if ( self = [super init] ) {
-        self.coordinate = coordinate ;
+    if (self = [super init]) {
+        self.coordinate = coordinate;
     }
-    return self ;
+    return self;
 }
 
 /**
@@ -30,7 +30,7 @@
  *@return 返回annotation的标题信息
  */
 - (NSString *)title {
-    return self.item.name ;
+    return self.item.name;
 }
 
 /**
@@ -38,13 +38,13 @@
  *@return 返回annotation的副标题信息
  */
 - (NSString *)subtitle {
-    return self.item.itemDescription ;
+    return self.item.itemDescription;
 }
 
 - (UIImage *)annotationImage {
-    if ( !self.item ) return nil ;
+    if (!self.item) return nil;
     return self.item.isLost ? [UIImage imageNamed:@"LostAnnotation"] :
-                              [UIImage imageNamed:@"FoundAnnotation"] ;
+                              [UIImage imageNamed:@"FoundAnnotation"];
 }
 
 @end

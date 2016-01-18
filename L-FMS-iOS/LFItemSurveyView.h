@@ -10,8 +10,8 @@
 
 @interface LFItemSurveyView : UIView
 
-@property (nonatomic,strong) UIImageView *imageView ;
-@property (nonatomic,strong) UILabel *nameLabel ;
-@property (nonatomic,strong) UILabel *contentLabel ;
+@property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,strong) UILabel *nameLabel;
+@property (nonatomic,strong) UILabel *contentLabel;
 
 @end

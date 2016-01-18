@@ -10,6 +10,6 @@
 
 @interface LFCommentActionSheet : UIActionSheet
 
-@property (retain) id comment ;
+@property (retain) id comment;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface LFTapGestureRecognizer : UITapGestureRecognizer
 
-@property (nonatomic,assign) NSInteger tag ;
+@property (nonatomic,assign) NSInteger tag;
 
 @end

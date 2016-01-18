@@ -8,10 +8,10 @@
 
 #import "XHMessageTableViewController.h"
 
-@class AVIMConversation ;
+@class AVIMConversation;
 
 @interface LFChatRoomViewController : XHMessageTableViewController
 
-- (instancetype)initWithConersation:(AVIMConversation *)conv ;
+- (instancetype)initWithConersation:(AVIMConversation *)conv;
 
 @end

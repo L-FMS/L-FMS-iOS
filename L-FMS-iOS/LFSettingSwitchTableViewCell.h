@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LFSettingSwitchTableViewCellDelegate ;
+@protocol LFSettingSwitchTableViewCellDelegate;
 
 @interface LFSettingSwitchTableViewCell : UITableViewCell
 
-@property (weak) id<LFSettingSwitchTableViewCellDelegate> delegate ;
+@property (weak) id<LFSettingSwitchTableViewCellDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel ;
-@property (weak, nonatomic) IBOutlet UISwitch *itemSwitch ;
+@property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *itemSwitch;
 
 @end
 
 @protocol LFSettingSwitchTableViewCellDelegate <NSObject>
 
-- (void)cell:(LFSettingSwitchTableViewCell *)cell switchToState:(BOOL)on ;
+- (void)cell:(LFSettingSwitchTableViewCell *)cell switchToState:(BOOL)on;
 
 @end

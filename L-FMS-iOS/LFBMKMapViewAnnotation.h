@@ -10,18 +10,18 @@
 
 #import "LFBaiduMapKit.h"
 
-@class Item ;
-@class UIImage ;
+@class Item;
+@class UIImage;
 
 @interface LFBMKMapViewAnnotation : NSObject<BMKAnnotation>
 
 ///标注view中心坐标.
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
-- (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate ;
+- (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate;
 
-@property (nonatomic,strong) Item *item ;
+@property (nonatomic,strong) Item *item;
 
-- (UIImage *)annotationImage ;
+- (UIImage *)annotationImage;
 
 @end

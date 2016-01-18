@@ -19,9 +19,9 @@
  *  @return
  */
 + (UIImage *)zrScaleFromImage:(UIImage *)image toSize:(CGSize)size {
-    UIGraphicsBeginImageContext(size) ;
+    UIGraphicsBeginImageContext(size);
     
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)] ;
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
     
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -37,10 +37,10 @@
  *  @return
  */
 + (UIImage *)zrThumbnailWithImageWithoutScale:(UIImage *)image size:(CGSize)asize {
-    UIImage *newimage ;
+    UIImage *newimage;
     
-    if ( nil == image ) {
-        newimage = nil ;
+    if (nil == image) {
+        newimage = nil;
     }
     else{
         CGSize oldsize = image.size;

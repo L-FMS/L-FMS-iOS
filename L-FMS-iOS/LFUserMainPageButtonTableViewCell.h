@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LFUserMainPageButtonTableViewCellDelegate ;
+@protocol LFUserMainPageButtonTableViewCellDelegate;
 
 @interface LFUserMainPageButtonTableViewCell : UITableViewCell
 
-@property (weak) id<LFUserMainPageButtonTableViewCellDelegate> delegate ;
+@property (weak) id<LFUserMainPageButtonTableViewCellDelegate> delegate;
 
 @end
 
@@ -20,6 +20,6 @@
 
 //点击了按钮
 
-- (void)buttonCellDidClickedButton:(LFUserMainPageButtonTableViewCell *)cell ;
+- (void)buttonCellDidClickedButton:(LFUserMainPageButtonTableViewCell *)cell;
 
 @end

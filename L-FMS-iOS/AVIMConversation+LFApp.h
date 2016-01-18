@@ -15,7 +15,7 @@
  *
  *  @return 另一个人的clientId(userId)
  */
-- (NSString *)otherId ;
+- (NSString *)otherId;
 
 /**
  *  要显示什么title
@@ -24,11 +24,11 @@
  *
  *  @return
  */
-- (NSString *)displayName ;
+- (NSString *)displayName;
 
 /**
  *  聊天室标题 @"用户名"
  */
-- (NSString *)title ;
+- (NSString *)title;
 
 @end

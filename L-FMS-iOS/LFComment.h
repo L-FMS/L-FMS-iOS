@@ -10,21 +10,21 @@
 #import <AVObject+Subclass.h>
 #import <AVSubclassing.h>
 
-@class Item ;
-@class LFUser ;
+@class Item;
+@class LFUser;
 
 @interface LFComment : AVObject<AVSubclassing>
 
-@property (nonatomic,copy) NSString *content ;
-@property (nonatomic) Item *item ;
-@property (nonatomic) LFUser *author ;
-@property (nonatomic) LFUser *replyTo ;
-@property (nonatomic) NSArray *replyToUsers ;
+@property (nonatomic,copy) NSString *content;
+@property (nonatomic) Item *item;
+@property (nonatomic) LFUser *author;
+@property (nonatomic) LFUser *replyTo;
+@property (nonatomic) NSArray *replyToUsers;
 
 @end
 
 @interface LFComment (LFCommentNoticeTableViewController)
 
-@property (nonatomic,copy) NSNumber *cellHeight ;
+@property (nonatomic,copy) NSNumber *cellHeight;
 
 @end

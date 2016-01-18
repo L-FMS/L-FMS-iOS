@@ -8,29 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-@class AVIMConversation ;
-@class AVIMTypedMessage ;
+@class AVIMConversation;
+@class AVIMTypedMessage;
 
 @interface LFChatRoom : NSObject
 
 /**
  *  会话Id
  */
-@property NSString* convid ;
+@property NSString* convid;
 
 /**
  *  会话实例
  */
-@property AVIMConversation* conv ;
+@property AVIMConversation* conv;
 
 /**
  *  最后一条消息
  */
-@property AVIMTypedMessage* lastMsg ;
+@property AVIMTypedMessage* lastMsg;
 
 /**
  *  未读消息条数
  */
-@property NSInteger unreadCount ;
+@property NSInteger unreadCount;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface UserInfoItemTableViewCell : UITableViewCell
 
-- (void)setUpWithTitle:(NSString *)title detailDesc:(NSString *)detailDesc ;
+- (void)setUpWithTitle:(NSString *)title detailDesc:(NSString *)detailDesc;
 
 @end

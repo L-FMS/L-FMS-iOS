@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class LFUser ;
+@class LFUser;
 
 @interface LFUserMainPageTableViewController : UITableViewController
 
-@property (nonatomic,retain) LFUser *user ;
+@property (nonatomic,retain) LFUser *user;
 
 @end

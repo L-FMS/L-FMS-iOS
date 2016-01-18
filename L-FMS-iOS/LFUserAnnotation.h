@@ -12,8 +12,8 @@
 
 @interface LFUserAnnotation : NSObject<BMKAnnotation>
 
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate ;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
-- (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate ;
+- (instancetype)initWithCLCorrdinate:(CLLocationCoordinate2D)coordinate;
 
 @end

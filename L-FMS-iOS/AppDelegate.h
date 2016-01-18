@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@class JVFloatingDrawerViewController ;
+@class JVFloatingDrawerViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> 
 
-+ (AppDelegate *)globalAppdelegate ;
++ (AppDelegate *)globalAppdelegate;
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -26,21 +26,21 @@
 
 #pragma mark - 界面
 
-- (void)toMain ;
-- (void)toRegiste ;
-- (void)toLogin ;
+- (void)toMain;
+- (void)toRegiste;
+- (void)toLogin;
 
-+ (id)getViewControllerById:(NSString *)VCSBID ;
++ (id)getViewControllerById:(NSString *)VCSBID;
 
 /**
  *  整体的ViewController
  */
-@property (nonatomic, strong) JVFloatingDrawerViewController *drawerViewController ;
+@property (nonatomic, strong) JVFloatingDrawerViewController *drawerViewController;
 
 #pragma mark - 抽屉
 
-- (void)toggleLeftDrawer:(id)sender animated:(BOOL)animated ;
-- (void)toggleRightDrawer:(id)sender animated:(BOOL)animated ;
+- (void)toggleLeftDrawer:(id)sender animated:(BOOL)animated;
+- (void)toggleRightDrawer:(id)sender animated:(BOOL)animated;
 
 @end
 

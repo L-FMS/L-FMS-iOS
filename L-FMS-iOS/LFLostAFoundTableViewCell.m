@@ -16,12 +16,12 @@
 
 - (void)awakeFromNib {
     //LFLostAFoundTableViewCellReuseId
-    [self.avatarImageView.layer setMasksToBounds:YES] ;
-    [self.avatarImageView.layer setCornerRadius:25.0f/2] ;
+    [self.avatarImageView.layer setMasksToBounds:YES];
+    [self.avatarImageView.layer setCornerRadius:25.0f/2];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated] ;
+    [super setSelected:selected animated:animated];
 }
 
 @end

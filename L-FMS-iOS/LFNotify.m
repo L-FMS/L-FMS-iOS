@@ -10,46 +10,46 @@
 
 @interface LFNotify ()
 
-@property (weak) NSNotificationCenter* center ;
+@property (weak) NSNotificationCenter* center;
 
 @end
 
 @implementation LFNotify
 
 + (instancetype)shareInstance {
-    static LFNotify *sharedInstace = nil ;
+    static LFNotify *sharedInstace = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstace = [[LFNotify alloc] init] ;
+        sharedInstace = [[LFNotify alloc] init];
     });
-    return sharedInstace ;
+    return sharedInstace;
 }
 
 - (instancetype)init {
-    if ( self = [super init] ) {
-        _center = [NSNotificationCenter defaultCenter] ;
+    if (self = [super init]) {
+        _center = [NSNotificationCenter defaultCenter];
     }
-    return self ;
+    return self;
 }
 
 #pragma mark - Conversation
 
 - (void)addConvObserver:(id)target selector:(SEL)selector {
-    [_center addObserver:target selector:selector name:kNOTIFICATION_CONV_UPDATED object:nil] ;
+    [_center addObserver:target selector:selector name:kNOTIFICATION_CONV_UPDATED object:nil];
 }
 
 - (void)removeConvObserver:(id)target {
-    [_center removeObserver:target name:kNOTIFICATION_CONV_UPDATED object:nil] ;
+    [_center removeObserver:target name:kNOTIFICATION_CONV_UPDATED object:nil];
 }
 
 - (void)postConvNotify {
-    [_center postNotificationName:kNOTIFICATION_CONV_UPDATED object:nil] ;
+    [_center postNotificationName:kNOTIFICATION_CONV_UPDATED object:nil];
 }
 
 #pragma mark - Message
 
 - (void)addMsgObserver:(id)target selector:(SEL)selector {
-    [_center addObserver:target selector:selector name:kNOTIFICATION_MESSAGE_UPDATED object:nil] ;
+    [_center addObserver:target selector:selector name:kNOTIFICATION_MESSAGE_UPDATED object:nil];
 }
 
 - (void)removeMsgObserver:(id)target {

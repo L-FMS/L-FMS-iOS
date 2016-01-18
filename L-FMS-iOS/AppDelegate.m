@@ -21,12 +21,12 @@
 #import "LFBaiduMapKit.h"
 
 @interface AppDelegate () {
-    BMKMapManager *_mapManager ;
+    BMKMapManager *_mapManager;
 }
 
 #pragma mark - 左右侧栏
 
-@property (nonatomic, strong, readonly) UIStoryboard *mainStoryboard ;
+@property (nonatomic, strong, readonly) UIStoryboard *mainStoryboard;
 
 @end
 
@@ -34,80 +34,80 @@
 
 #pragma mark - getter && setter 
 
-@synthesize mainStoryboard = _mainStoryboard ;
+@synthesize mainStoryboard = _mainStoryboard;
 
 - (JVFloatingDrawerViewController *)drawerViewController {
-    if ( !_drawerViewController ) {
-        _drawerViewController = [[JVFloatingDrawerViewController alloc] init] ;
-        _drawerViewController.leftDrawerWidth = 240.0f ;
-        _drawerViewController.rightDrawerWidth = 120.0f ;
+    if (!_drawerViewController) {
+        _drawerViewController = [[JVFloatingDrawerViewController alloc] init];
+        _drawerViewController.leftDrawerWidth = 240.0f;
+        _drawerViewController.rightDrawerWidth = 120.0f;
         
-        _drawerViewController.leftViewController = [self controllerWithId:@"JVLeftDrawerTableViewControllerSBID"] ;
-        _drawerViewController.rightViewController = [self controllerWithId:@"JVRightDrawerTableViewControllerSBID"] ;
-        _drawerViewController.centerViewController = [self controllerWithId:@"MainTabbarVCSBID"] ;
+        _drawerViewController.leftViewController = [self controllerWithId:@"JVLeftDrawerTableViewControllerSBID"];
+        _drawerViewController.rightViewController = [self controllerWithId:@"JVRightDrawerTableViewControllerSBID"];
+        _drawerViewController.centerViewController = [self controllerWithId:@"MainTabbarVCSBID"];
         
         //animator
-        _drawerViewController.animator = [self getADrawerAnimator] ;
+        _drawerViewController.animator = [self getADrawerAnimator];
         
-        _drawerViewController.backgroundImage = [UIImage imageNamed:@"背景.png"] ;
+        _drawerViewController.backgroundImage = [UIImage imageNamed:@"背景.png"];
     }
-    return _drawerViewController ;
+    return _drawerViewController;
 }
 
 - (JVFloatingDrawerSpringAnimator *)getADrawerAnimator {
-    JVFloatingDrawerSpringAnimator *animator = [[JVFloatingDrawerSpringAnimator alloc] init] ;
+    JVFloatingDrawerSpringAnimator *animator = [[JVFloatingDrawerSpringAnimator alloc] init];
     
-    animator.animationDelay = 0.0 ;
-    animator.animationDuration = 0.8 ;
-    animator.initialSpringVelocity = 9.0 ;
-    animator.springDamping = 2.0 ;
+    animator.animationDelay = 0.0;
+    animator.animationDuration = 0.8;
+    animator.initialSpringVelocity = 9.0;
+    animator.springDamping = 2.0;
     
-    return animator ;
+    return animator;
 }
 
 - (UIViewController *)controllerWithId:(NSString *)VCSBID {
-    if ( !VCSBID ) return nil ;
-    return [self.mainStoryboard instantiateViewControllerWithIdentifier:VCSBID] ;
+    if (!VCSBID) return nil;
+    return [self.mainStoryboard instantiateViewControllerWithIdentifier:VCSBID];
 }
 
 - (UIStoryboard *)mainStoryboard {
     if(!_mainStoryboard)
-        _mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil] ;
-    return _mainStoryboard ;
+        _mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    return _mainStoryboard;
 }
 
 + (AppDelegate *)globalAppdelegate {
-    return [UIApplication sharedApplication].delegate ;
+    return [UIApplication sharedApplication].delegate;
 }
 
 #pragma mark - 界面
 
 - (void)toMain {
-    LFUser *user = [LFUser currentUser] ;
-    if ( nil == user.imClient ) {
-        user.imClient = [[LFIMClient alloc] init] ;
+    LFUser *user = [LFUser currentUser];
+    if (nil == user.imClient) {
+        user.imClient = [[LFIMClient alloc] init];
         [user.imClient openSessionWithClientID:user.objectId completion:^(BOOL succeeded, NSError *error) {            
-        }] ;
+        }];
     }
     
-    self.window.rootViewController = self.drawerViewController ;
+    self.window.rootViewController = self.drawerViewController;
 }
 
 - (void)toRegiste {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil] ;
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFRegisteViewControllerSBID] ;
-    self.window.rootViewController = vc ;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFRegisteViewControllerSBID];
+    self.window.rootViewController = vc;
 }
 
 - (void)toLogin {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil] ;
-    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFLoginViewControllerSBID] ;
-    self.window.rootViewController = vc ;
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:kRegisteAndLoginSBName bundle:nil];
+    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:kLFLoginViewControllerSBID];
+    self.window.rootViewController = vc;
 }
 
 + (id)getViewControllerById:(NSString *)VCSBID {
-    id vc = [[[self globalAppdelegate] mainStoryboard] instantiateViewControllerWithIdentifier:VCSBID] ;
-    return vc ;
+    id vc = [[[self globalAppdelegate] mainStoryboard] instantiateViewControllerWithIdentifier:VCSBID];
+    return vc;
 }
 
 #pragma mark - AVOSCloud 
@@ -117,27 +117,27 @@
 
 - (void)setUpAVOSCloudWithOptions:(NSDictionary *)launchOptions {
     [AVOSCloud setApplicationId:AVOSAPPID
-                      clientKey:AVOSAPPKEY] ;
+                      clientKey:AVOSAPPKEY];
     //统计应用打开情况
-    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions] ;
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 }
 
 #pragma makr - Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    _mapManager = [[BMKMapManager alloc] init] ;
-    BOOL ret = [_mapManager start:@"n3DceW93ZTS7LG8OVF4Hcu1d" generalDelegate:nil] ;
-    if ( !ret ) {
-        NSLog(@"manager start failed!") ;
+    _mapManager = [[BMKMapManager alloc] init];
+    BOOL ret = [_mapManager start:@"n3DceW93ZTS7LG8OVF4Hcu1d" generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
     }
     
-    [LFAVSubclassRegister registeAllAVSubclasses] ;
-    [self setUpAVOSCloudWithOptions:launchOptions] ;
+    [LFAVSubclassRegister registeAllAVSubclasses];
+    [self setUpAVOSCloudWithOptions:launchOptions];
     
-    if ( [AVUser currentUser] ) {
-        [self toMain] ;
+    if ([AVUser currentUser]) {
+        [self toMain];
     } else {
-        [self toLogin] ;
+        [self toLogin];
     }
     
     return YES;
@@ -253,11 +253,11 @@
  *  控制弹回
  */
 - (void)toggleLeftDrawer:(id)sender animated:(BOOL)animated {
-    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideLeft animated:animated completion:nil] ;
+    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideLeft animated:animated completion:nil];
 }
 
 - (void)toggleRightDrawer:(id)sender animated:(BOOL)animated {
-    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideRight animated:animated completion:nil] ;
+    [self.drawerViewController toggleDrawerWithSide:JVFloatingDrawerSideRight animated:animated completion:nil];
 }
 
 @end

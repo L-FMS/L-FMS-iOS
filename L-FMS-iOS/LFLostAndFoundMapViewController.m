@@ -47,6 +47,8 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 
 @implementation LFLostAndFoundMapViewController
 
+#pragma mark - Life Cycle
+
 - (void)setUpMapView {
     self.mapView.zoomLevel = 18;
 //    self.mapView.minZoomLevel = 18;
@@ -75,7 +77,6 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView addSubview:self.refreshControl];
-    
 }
 
 - (void)viewDidLoad {
@@ -104,19 +105,17 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
 }
 
 
-#pragma mark - getter && setter 
+#pragma mark - Accesstors
 
 - (UIRefreshControl *)refreshControl {
     if (!_refreshControl) {
         _refreshControl = [[UIRefreshControl alloc] init];
-        [_refreshControl addTarget:self
-                            action:@selector(refresh:)
-                  forControlEvents:UIControlEventValueChanged];
+        [_refreshControl addTarget:self action:@selector(refreshControlValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
     return _refreshControl;
 }
 
-#pragma mark - IBActions
+#pragma mark - Actions
 
 - (IBAction)showLeftDrawerBtnClicked:(id)sender {
     [[AppDelegate globalAppdelegate] toggleLeftDrawer:self animated:YES];
@@ -126,8 +125,9 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     [[AppDelegate globalAppdelegate] toggleRightDrawer:self animated:YES];
 }
 
-- (void)refresh:(id)sender {
+- (void)refreshControlValueChanged:(UIRefreshControl *)refreshControl {
     //拉取后端
+    
     
     if (!self.userLocation) {
         [self.refreshControl endRefreshing];
@@ -139,7 +139,7 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     AVGeoPoint *userLocation = [AVGeoPoint geoPointWithLocation:self.userLocation];
     [query whereKey:@"location" nearGeoPoint:userLocation];
     query.limit = 100;
-//    [query includeKey:@"user"];
+    //    [query includeKey:@"user"];
     [query includeKey:@"user.avatar"];
     LFWEAKSELF
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -303,12 +303,11 @@ typedef NS_ENUM(NSInteger, LFLostAndFoundMapViewControllerSegnmentIndex) {
     return annotationView;
 }
 
-#pragma mark - LFItemInfoPaopaoCustomViewDelegate
+#pragma mark - <LFItemInfoPaopaoCustomViewDelegate>
 
 - (void)view:(LFItemInfoPaopaoCustomView *)view shouldShowItemDetail:(Item *)item {
     [self toItemDetailViewControllerWithItem:item];
 }
-
 
 #pragma mark - QRCodeReaderDelegate
 

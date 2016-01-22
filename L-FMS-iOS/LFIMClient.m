@@ -259,7 +259,7 @@
                 
                 room.conv = [self lookupConvById:room.convid];
                 if (nil == room.conv) {
-                    [NSException raise:@"not found conv" format:nil];
+                    return;
                 }
             }
             NSMutableSet *userIds = [NSMutableSet set];

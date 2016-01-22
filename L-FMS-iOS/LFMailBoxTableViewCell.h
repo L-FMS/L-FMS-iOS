@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface LFMailBoxTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
@@ -16,3 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -11,22 +11,22 @@
 @interface LFMailBoxTableViewCell ()
 
 
-
 @end
 
 @implementation LFMailBoxTableViewCell
 
 - (void)awakeFromNib {
-    
     self.lastMessageLabel.text = @"";
-    [self.avatarImageView.layer setMasksToBounds:YES];
-    [self.avatarImageView.layer setCornerRadius:[self.avatarImageView bounds].size.height/2];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+#pragma mark - reuse
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
 }
 
 @end

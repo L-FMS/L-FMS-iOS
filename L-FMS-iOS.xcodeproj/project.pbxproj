@@ -60,8 +60,10 @@
 		1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1977C0F41BBFBE2500F15DC7 /* JVRightDrawerCell.m */; };
 		1977C0F81BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1977C0F71BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m */; };
 		1977C0FC1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1977C0FB1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.m */; };
+		19A57B8D9950C774AD9F55CB /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886BC04A25ACCD91D21B4AEA /* libPods-L-FMS-iOS.a */; };
 		19C92FAE1BC12DEA00316F0F /* NewItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C92FAD1BC12DEA00316F0F /* NewItemTableViewController.m */; };
 		19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19C92FB11BC13DF500316F0F /* UserInformationViewController.m */; };
+		19D1D8151C4D138E0052C72C /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D1D8141C4D138E0052C72C /* UIColor+AppColor.m */; };
 		19DF15941BC664E8007924A0 /* LFSearchItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DF15931BC664E8007924A0 /* LFSearchItemViewController.m */; };
 		19DF15981BC66CC4007924A0 /* LFItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19DF15971BC66CC4007924A0 /* LFItemDetailViewController.m */; };
 		19F73D5F1BC79A5F0096A517 /* LFIMClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F73D5E1BC79A5F0096A517 /* LFIMClient.m */; };
@@ -103,7 +105,7 @@
 		19FEDCC41BCC350A00C41186 /* LFUserMainInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCC31BCC350A00C41186 /* LFUserMainInfoTableViewCell.m */; };
 		19FEDCC91BCC353100C41186 /* LFUserInfoItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCC81BCC353100C41186 /* LFUserInfoItemTableViewCell.m */; };
 		19FEDCCD1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FEDCCC1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m */; };
-		A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */; };
+		C0917DCF9F962CCB2202DBA2 /* libPods-L-FMS-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1AE023C221532E93A2CDC81 /* libPods-L-FMS-iOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +119,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01503B5D97C9604D74D64431 /* Pods-L-FMS-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		1909E4A61BB043FF00662CD3 /* L-FMS-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "L-FMS-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1909E4AA1BB043FF00662CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1909E4AB1BB043FF00662CD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -231,6 +232,8 @@
 		19C92FAD1BC12DEA00316F0F /* NewItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemTableViewController.m; sourceTree = "<group>"; };
 		19C92FB01BC13DF500316F0F /* UserInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformationViewController.h; sourceTree = "<group>"; };
 		19C92FB11BC13DF500316F0F /* UserInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformationViewController.m; sourceTree = "<group>"; };
+		19D1D8131C4D138E0052C72C /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
+		19D1D8141C4D138E0052C72C /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
 		19DF15921BC664E8007924A0 /* LFSearchItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSearchItemViewController.h; sourceTree = "<group>"; };
 		19DF15931BC664E8007924A0 /* LFSearchItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSearchItemViewController.m; sourceTree = "<group>"; };
 		19DF15961BC66CC4007924A0 /* LFItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFItemDetailViewController.h; sourceTree = "<group>"; };
@@ -308,8 +311,12 @@
 		19FEDCC81BCC353100C41186 /* LFUserInfoItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserInfoItemTableViewCell.m; sourceTree = "<group>"; };
 		19FEDCCB1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFUserMainPageButtonTableViewCell.h; sourceTree = "<group>"; };
 		19FEDCCC1BCC356800C41186 /* LFUserMainPageButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFUserMainPageButtonTableViewCell.m; sourceTree = "<group>"; };
-		573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8483428BDC43EBC7F8ECC0CB /* Pods-L-FMS-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		886BC04A25ACCD91D21B4AEA /* libPods-L-FMS-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD3BFEE94CA28111015D284C /* Pods-L-FMS-iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOSTests/Pods-L-FMS-iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		C1AE023C221532E93A2CDC81 /* libPods-L-FMS-iOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-L-FMS-iOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF47C59912CC4734E2CD2601 /* Pods-L-FMS-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E3054ED48A23666FC15F8143 /* Pods-L-FMS-iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-L-FMS-iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-L-FMS-iOSTests/Pods-L-FMS-iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,7 +331,7 @@
 				19F73D7D1BC836F20096A517 /* OpenGLES.framework in Frameworks */,
 				19F73D7B1BC836E90096A517 /* QuartzCore.framework in Frameworks */,
 				19688CE31BC5627100ED9C96 /* CoreLocation.framework in Frameworks */,
-				A82860D5EC19A4D2949CB1BC /* libPods-L-FMS-iOS.a in Frameworks */,
+				19A57B8D9950C774AD9F55CB /* libPods-L-FMS-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0917DCF9F962CCB2202DBA2 /* libPods-L-FMS-iOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +352,8 @@
 				1909E4A81BB043FF00662CD3 /* L-FMS-iOS */,
 				1909E4C51BB043FF00662CD3 /* L-FMS-iOSTests */,
 				1909E4A71BB043FF00662CD3 /* Products */,
-				25BB05FB5F469E0EAF29410D /* Pods */,
 				DDF97E83D11054A49B6F5D16 /* Frameworks */,
+				8CE6DBD40583BACB54A770A1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -361,7 +369,8 @@
 		1909E4A81BB043FF00662CD3 /* L-FMS-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				191B03BA1BB6EC8500C8B3F8 /* App */,
+				19D1D8111C4D11F00052C72C /* Utils */,
+				191B03BA1BB6EC8500C8B3F8 /* LogicalLayer */,
 				191B03B61BB6E97200C8B3F8 /* PresentLayer */,
 				191B03AE1BB6E3A800C8B3F8 /* ThirdPartByHand */,
 				191B03A11BB6DDBC00C8B3F8 /* Settings */,
@@ -476,7 +485,7 @@
 			name = "主界面";
 			sourceTree = "<group>";
 		};
-		191B03BA1BB6EC8500C8B3F8 /* App */ = {
+		191B03BA1BB6EC8500C8B3F8 /* LogicalLayer */ = {
 			isa = PBXGroup;
 			children = (
 				1935ECB81BC70BEF0047C1A6 /* ThirdPartByHand */,
@@ -489,7 +498,7 @@
 				1909E4AD1BB043FF00662CD3 /* AppDelegate.h */,
 				1909E4AE1BB043FF00662CD3 /* AppDelegate.m */,
 			);
-			name = App;
+			name = LogicalLayer;
 			sourceTree = "<group>";
 		};
 		191B03BB1BB6EC9900C8B3F8 /* Marco */ = {
@@ -820,9 +829,8 @@
 		19367BB41BBEEBE10009D628 /* 失物&&地图 */ = {
 			isa = PBXGroup;
 			children = (
-				19FEDC7E1BCABABB00C41186 /* View */,
+				19FEDC7E1BCABABB00C41186 /* Views */,
 				19FEDC7A1BCAB52500C41186 /* Model */,
-				19F73DA41BC991C50096A517 /* Cell */,
 				19367BB51BBEEC900009D628 /* LFLostAndFoundMapViewController.h */,
 				19367BB61BBEEC900009D628 /* LFLostAndFoundMapViewController.m */,
 			);
@@ -832,7 +840,7 @@
 		19367BB81BBEEF650009D628 /* 私信 */ = {
 			isa = PBXGroup;
 			children = (
-				1977C0F91BBFCA6400F15DC7 /* Cell */,
+				1977C0F91BBFCA6400F15DC7 /* Views */,
 				1977C0F61BBFCA5E00F15DC7 /* LFMailBoxTableViewController.h */,
 				1977C0F71BBFCA5E00F15DC7 /* LFMailBoxTableViewController.m */,
 				19335B341BC50FD300E48ED4 /* 聊天室 */,
@@ -875,7 +883,7 @@
 			name = Cell;
 			sourceTree = "<group>";
 		};
-		1977C0F91BBFCA6400F15DC7 /* Cell */ = {
+		1977C0F91BBFCA6400F15DC7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				1977C0FA1BBFD15A00F15DC7 /* LFMailBoxTableViewCell.h */,
@@ -883,7 +891,7 @@
 				19335B311BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.h */,
 				19335B321BC4F3DC00E48ED4 /* LFMailBoxCommentTableViewCell.m */,
 			);
-			name = Cell;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		19C92FA91BC114A800316F0F /* Model */ = {
@@ -934,6 +942,23 @@
 				19C92FB11BC13DF500316F0F /* UserInformationViewController.m */,
 			);
 			name = "个人信息";
+			sourceTree = "<group>";
+		};
+		19D1D8111C4D11F00052C72C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				19D1D8121C4D134C0052C72C /* Category */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		19D1D8121C4D134C0052C72C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				19D1D8131C4D138E0052C72C /* UIColor+AppColor.h */,
+				19D1D8141C4D138E0052C72C /* UIColor+AppColor.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 		19DF15911BC664CB007924A0 /* 搜索 */ = {
@@ -1066,15 +1091,6 @@
 			name = UserDefault;
 			sourceTree = "<group>";
 		};
-		19F73DA41BC991C50096A517 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				19F73DA51BC991E20096A517 /* LFLostAFoundTableViewCell.h */,
-				19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
 		19FEDC761BCA95AC00C41186 /* 撰写评论 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1093,13 +1109,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		19FEDC7E1BCABABB00C41186 /* View */ = {
+		19FEDC7E1BCABABB00C41186 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19F73DA51BC991E20096A517 /* LFLostAFoundTableViewCell.h */,
+				19F73DA61BC991E20096A517 /* LFLostAFoundTableViewCell.m */,
 				19FEDC801BCABAC900C41186 /* 大头针泡泡View */,
 				19FEDC7F1BCABAC200C41186 /* 大头针Annotation */,
 			);
-			name = View;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		19FEDC7F1BCABAC200C41186 /* 大头针Annotation */ = {
@@ -1266,11 +1284,13 @@
 			name = "按钮";
 			sourceTree = "<group>";
 		};
-		25BB05FB5F469E0EAF29410D /* Pods */ = {
+		8CE6DBD40583BACB54A770A1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */,
-				01503B5D97C9604D74D64431 /* Pods-L-FMS-iOS.release.xcconfig */,
+				8483428BDC43EBC7F8ECC0CB /* Pods-L-FMS-iOS.debug.xcconfig */,
+				CF47C59912CC4734E2CD2601 /* Pods-L-FMS-iOS.release.xcconfig */,
+				E3054ED48A23666FC15F8143 /* Pods-L-FMS-iOSTests.debug.xcconfig */,
+				AD3BFEE94CA28111015D284C /* Pods-L-FMS-iOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1284,7 +1304,8 @@
 				19F73D7C1BC836F20096A517 /* OpenGLES.framework */,
 				19F73D7A1BC836E90096A517 /* QuartzCore.framework */,
 				19688CE21BC5627100ED9C96 /* CoreLocation.framework */,
-				DBF05683FDC51E37FC374549 /* libPods-L-FMS-iOS.a */,
+				886BC04A25ACCD91D21B4AEA /* libPods-L-FMS-iOS.a */,
+				C1AE023C221532E93A2CDC81 /* libPods-L-FMS-iOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1296,11 +1317,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1909E4CC1BB043FF00662CD3 /* Build configuration list for PBXNativeTarget "L-FMS-iOS" */;
 			buildPhases = (
-				3E6332A658993D5BC080D322 /* Check Pods Manifest.lock */,
+				A389EB439AAEC3F5C1BC929C /* Check Pods Manifest.lock */,
 				1909E4A21BB043FF00662CD3 /* Sources */,
 				1909E4A31BB043FF00662CD3 /* Frameworks */,
 				1909E4A41BB043FF00662CD3 /* Resources */,
-				C6A9AA83E1E8E8471B5332FF /* Copy Pods Resources */,
+				6FD037062FBD82830D6F6D5C /* Embed Pods Frameworks */,
+				3120928541EDAC5ACDBC51A7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1315,9 +1337,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1909E4CF1BB043FF00662CD3 /* Build configuration list for PBXNativeTarget "L-FMS-iOSTests" */;
 			buildPhases = (
+				2E366A6C40B9F61938FFD44C /* Check Pods Manifest.lock */,
 				1909E4BE1BB043FF00662CD3 /* Sources */,
 				1909E4BF1BB043FF00662CD3 /* Frameworks */,
 				1909E4C01BB043FF00662CD3 /* Resources */,
+				979CD27EDA12824978943067 /* Embed Pods Frameworks */,
+				430292EF5F5D8760A1968CE3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1335,7 +1360,7 @@
 		1909E49E1BB043FF00662CD3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "虎猫儿";
 				TargetAttributes = {
 					1909E4A51BB043FF00662CD3 = {
@@ -1391,7 +1416,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3E6332A658993D5BC080D322 /* Check Pods Manifest.lock */ = {
+		2E366A6C40B9F61938FFD44C /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1406,7 +1431,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C6A9AA83E1E8E8471B5332FF /* Copy Pods Resources */ = {
+		3120928541EDAC5ACDBC51A7 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1419,6 +1444,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		430292EF5F5D8760A1968CE3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-L-FMS-iOSTests/Pods-L-FMS-iOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FD037062FBD82830D6F6D5C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-L-FMS-iOS/Pods-L-FMS-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		979CD27EDA12824978943067 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-L-FMS-iOSTests/Pods-L-FMS-iOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A389EB439AAEC3F5C1BC929C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1501,6 +1586,7 @@
 				1977C0F51BBFBE2500F15DC7 /* JVRightDrawerCell.m in Sources */,
 				19FEDC791BCA95C900C41186 /* LFWriteCommentViewController.m in Sources */,
 				19C92FB21BC13DF500316F0F /* UserInformationViewController.m in Sources */,
+				19D1D8151C4D138E0052C72C /* UIColor+AppColor.m in Sources */,
 				19FEDC951BCB11D500C41186 /* LFTapGestureRecognizer.m in Sources */,
 				1977C0F11BBEF6E100F15DC7 /* JVLeftDrawerCell.m in Sources */,
 				1909E4AC1BB043FF00662CD3 /* main.m in Sources */,
@@ -1566,6 +1652,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1629,11 +1716,10 @@
 		};
 		1909E4CD1BB043FF00662CD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 573EFAED99B710C8CB67FDE1 /* Pods-L-FMS-iOS.debug.xcconfig */;
+			baseConfigurationReference = 8483428BDC43EBC7F8ECC0CB /* Pods-L-FMS-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/L-FMS-iOS/百度地图",
@@ -1641,6 +1727,7 @@
 				INFOPLIST_FILE = "L-FMS-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HSTZRZSY.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1648,11 +1735,10 @@
 		};
 		1909E4CE1BB043FF00662CD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 01503B5D97C9604D74D64431 /* Pods-L-FMS-iOS.release.xcconfig */;
+			baseConfigurationReference = CF47C59912CC4734E2CD2601 /* Pods-L-FMS-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/L-FMS-iOS/百度地图",
@@ -1660,6 +1746,7 @@
 				INFOPLIST_FILE = "L-FMS-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "HSTZRZSY.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1667,6 +1754,7 @@
 		};
 		1909E4D01BB043FF00662CD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3054ED48A23666FC15F8143 /* Pods-L-FMS-iOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1679,6 +1767,7 @@
 				);
 				INFOPLIST_FILE = "L-FMS-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "QianYan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/L-FMS-iOS.app/L-FMS-iOS";
 			};
@@ -1686,6 +1775,7 @@
 		};
 		1909E4D11BB043FF00662CD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD3BFEE94CA28111015D284C /* Pods-L-FMS-iOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1694,6 +1784,7 @@
 				);
 				INFOPLIST_FILE = "L-FMS-iOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "QianYan.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/L-FMS-iOS.app/L-FMS-iOS";
 			};
